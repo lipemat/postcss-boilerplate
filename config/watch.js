@@ -9,7 +9,7 @@ module.exports = {
 			'revision'
 		],
 		options: {
-			spawn: true,
+			spawn: false,
 			livereload: false
 		}
 	},

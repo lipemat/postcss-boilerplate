@@ -6,12 +6,15 @@ module.exports = function ( grunt ) {
 	 *
 	 */
 	var config = {
-		pkg: require( './helpers/package-config' )
+		pkg: require( './helpers/package-config' ),
+		postcss: configHelper.getConfig( 'postcss.js' ),
+		watch: configHelper.getConfig( 'watch.js' ),
+		stylelint: configHelper.getConfig( 'stylelint.js' )
 	};
 
-	grunt.registerTask( 'postcss', configHelper.getConfig( 'postcss.js' ) );
-	grunt.registerTask( 'watch', configHelper.getConfig( 'watch.js' ) );
-	grunt.registerTask( 'stylelint', configHelper.getConfig( 'stylelint.js' ) );
+	grunt.initConfig( config );
+	grunt.loadNpmTasks( 'grunt-postcss' );
+	grunt.loadNpmTasks( 'grunt-contrib-watch' );
 
 	/**
 	 *
@@ -34,4 +37,6 @@ module.exports = function ( grunt ) {
 	grunt.registerTask( 'revision', function () {
 		grunt.file.write( config.pkg.root + '.revision', Date.now() );
 	} );
+
+	return grunt;
 };
