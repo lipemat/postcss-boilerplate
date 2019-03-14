@@ -5,16 +5,16 @@ module.exports = function ( grunt ) {
 	 * Start up config by reading from package.json.
 	 *
 	 */
-	var config = {
+	grunt.initConfig( {
 		pkg: require( './helpers/package-config' ),
 		postcss: configHelper.getConfig( 'postcss.js' ),
 		watch: configHelper.getConfig( 'watch.js' ),
 		stylelint: configHelper.getConfig( 'stylelint.js' )
-	};
+	} );
 
-	grunt.initConfig( config );
 	grunt.loadNpmTasks( 'grunt-postcss' );
 	grunt.loadNpmTasks( 'grunt-contrib-watch' );
+	grunt.loadNpmTasks( 'grunt-stylelint' );
 
 	/**
 	 *

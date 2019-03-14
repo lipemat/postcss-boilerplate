@@ -1,3 +1,3 @@
-const eslint = require('eslint/lib/cli');
-
-eslint.execute( ['','', 'src', '--fix' ] );
+process.env.NODE_ENV = 'development';
+const runner = require( '../helpers/run-task' );
+runner.run( 'stylelint:theme' );
