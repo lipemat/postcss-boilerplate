@@ -1,0 +1,26 @@
+{
+	"extends": "../../../dev/node_modules/stylelint-config-wordpress",
+	"rules": {
+		"function-parentheses-space-inside": null,
+		"indentation": "tab",
+		"no-invalid-double-slash-comments": null,
+		"number-leading-zero": null,
+		"property-no-unknown": [
+			true,
+			{
+				"ignoreProperties": [
+					"/\/\//",
+					"/^composes/"
+				]
+			}
+		],
+		"selector-pseudo-class-no-unknown": [
+			true,
+			{
+				"ignorePseudoClasses": [
+					"global"
+				]
+			}
+		]
+	}
+}

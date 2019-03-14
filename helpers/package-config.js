@@ -7,7 +7,10 @@ const workingDirectory = fs.realpathSync( process.cwd() );
 
 let packageConfig = require( path.resolve( workingDirectory, 'package.json' ) );
 packageConfig.workingDirectory = workingDirectory;
-packageConfig.theme_path = packageConfig.theme_path || '';
+packageConfig.theme_path = packageConfig.theme_path || "../wp-content/themes/core/";
+packageConfig.root = packageConfig.root || "../";
+packageConfig.css_folder = packageConfig.css_folder || "";
+packageConfig.file_name = packageConfig.file_name || "front-end";
 
 try {
 	let localConfig = require( path.resolve( workingDirectory, './local-config.json' ) );

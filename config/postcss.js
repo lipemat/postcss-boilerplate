@@ -60,14 +60,14 @@ module.exports = {
 	toCSS : {
 		options : compileOptions,
 		files : {
-			'<%= pkg.theme_path %><%= pkg.css_folder %>front-end.css': '<%= pkg.theme_path %>pcss/front-end.pcss'
+			'<%= pkg.theme_path %><%= pkg.css_folder %><%= pkg.file_name %>.css': '<%= pkg.theme_path %>pcss/<%= pkg.file_name %>.pcss'
 		},
 	},
 
 	min: {
 		options: minOptions,
 		files: {
-			'<%= pkg.theme_path %><%= pkg.css_folder %>front-end.min.css': '<%= pkg.theme_path %><%= pkg.css_folder %>front-end.css'
+			'<%= pkg.theme_path %><%= pkg.css_folder %><%= pkg.file_name %>.min.css': '<%= pkg.theme_path %><%= pkg.css_folder %><%= pkg.file_name %>.css'
 		},
 	},
 };

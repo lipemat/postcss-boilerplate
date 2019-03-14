@@ -35,7 +35,7 @@ module.exports = function ( grunt ) {
 	 * bump the revision
 	 */
 	grunt.registerTask( 'revision', function () {
-		grunt.file.write( config.pkg.root + '.revision', Date.now() );
+		grunt.file.write( grunt.config.get('pkg' ).root + '.revision', Date.now() );
 	} );
 
 	return grunt;

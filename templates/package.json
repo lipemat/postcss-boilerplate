@@ -1,0 +1,18 @@
+{
+  "name": "starting-point-grunt",
+  "version": "1.0.0",
+  "author": "Mat Lipe",
+  "description": "Grunt configuration for the core theme and repo. Postcss is handled by lipemat-postcss-boilerplate",
+  "private": true,
+  "theme_path": "../wp-content/themes/core/",
+  "root": "../",
+  "file_name": "front-end",
+  "scripts": {
+    "dist": "lipemat-postcss-boilerplate dist",
+    "start": "lipemat-postcss-boilerplate start",
+    "lint": "lipemat-postcss-boilerplate lint"
+  },
+  "dependencies": {
+    "lipemat-postcss-boilerplate": "^1.0.0"
+  }
+}
