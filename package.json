@@ -1,0 +1,52 @@
+{
+  "name": "lipemat-postcss-boilerplate",
+  "version": "0.0.1",
+  "description": "Dependencies and scripts for a no config grunt postcss compiler. ",
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lipemat/postcss-boilerplate.git"
+  },
+  "keywords": [
+    "postcss",
+    "boilerplate",
+    "no-config"
+  ],
+  "bin": {
+    "lipemat-postcss-boilerplate": "./bin/lipemat-postcss-boilerplate.js"
+  },
+  "scripts": {
+    "dist": "lipemat-postcss-boilerplate dist"
+  },
+  "author": "Mat Lipe",
+  "license": "MIT",
+  "resolutions": {
+    "css-modules-loader-core": "https://github.com/lipemat/css-modules-loader-core.git"
+  },
+  "dependencies": {
+    "cross-spawn": "^6.0.5",
+    "css-mqpacker": "^6.0.2",
+    "fs-extra": "^7.0.1",
+    "grunt": "^1.0.3",
+    "grunt-contrib-watch": "~1.1.0",
+    "grunt-git": "^1.0.3",
+    "grunt-postcss": "^0.9.0",
+    "grunt-stylelint": "^0.10.1",
+    "postcss": "^7.0.4",
+    "postcss-clean": "^1.1.0",
+    "postcss-color-mod-function": "^3.0.3",
+    "postcss-custom-media": "^6.0.0",
+    "postcss-import": "^11.1.0",
+    "postcss-modules": "^1.1.0",
+    "postcss-nested": "^3.0.0",
+    "postcss-preset-env": "^5.0.0",
+    "postcss-scss": "^1.0.5",
+    "stylelint": "^9.6.0",
+    "stylelint-config-wordpress": "^13.1.0",
+    "update-notifier": "^2.5.0"
+  },
+  "bugs": {
+    "url": "https://github.com/lipemat/postcss-boilerplate/issues"
+  },
+  "homepage": "https://github.com/lipemat/postcss-boilerplate#readme"
+}
