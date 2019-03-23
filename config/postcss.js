@@ -42,7 +42,7 @@ let compileOptions = {
         //By default all stage 2 features work unless specified otherwise
         require('postcss-preset-env'),
         require('postcss-color-mod-function'),
-        require('css-mqpacker'),
+        require('lipemat-css-mqpacker'),
 	],
 	parser: require('postcss-scss'),
 };
