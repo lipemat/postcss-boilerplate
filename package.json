@@ -19,7 +19,7 @@
   "scripts": {
     "dist": "lipemat-postcss-boilerplate dist"
   },
-  "css_folder": "",
+  "css_folder": "css/",
   "resolutions": {
     "css-modules-loader-core": "https://github.com/lipemat/css-modules-loader-core.git"
   },
