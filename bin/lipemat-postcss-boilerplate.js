@@ -47,6 +47,6 @@ switch ( script ) {
 	}
 	default:
 		console.log( 'Unknown script "' + script + '".' );
-		console.log( 'Perhaps you need to update lipemat-postcss-boilerplate?' );
+		console.log( 'Perhaps you need to update @lipemat/postcss-boilerplate?' );
 		break;
 }
