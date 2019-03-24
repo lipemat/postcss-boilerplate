@@ -21,7 +21,7 @@ Add the following to your package.json. (this may also be found in the `template
       "lint": "lipemat-postcss-boilerplate lint"
     },
     "dependencies": {
-      "@lipemat/postcss-boilerplate": "^2.0.0"
+      "@lipemat/postcss-boilerplate": "^2.0.1"
     }
 }
 
