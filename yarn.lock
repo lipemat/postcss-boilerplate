@@ -124,6 +124,14 @@
   resolved "https://registry.yarnpkg.com/@csstools/convert-colors/-/convert-colors-1.4.0.tgz#ad495dc41b12e75d588c6db8b9834f08fa131eb7"
   integrity sha512-5a6wqoJV/xEdbRNKVo6I4hO3VjyDq//8q2f9I6PBAvMesJHFauXDorcNCsr9RzvsZnaWi5NYCcfyqP1QeFHFbw==
 
+"@lipemat/css-mqpacker@^8.0.1":
+  version "8.0.1"
+  resolved "https://registry.yarnpkg.com/@lipemat/css-mqpacker/-/css-mqpacker-8.0.1.tgz#64f2111150885cd90b6301541bb3acd5a796ce4e"
+  integrity sha512-Ijf1r+WiJHHeHvjZ1J3W3M+S3a0p5JNP7rxjqpRvbxq9MgwGW4QiFK3KGpIeBVfYVltV3t/YsAklFApVYlwkEA==
+  dependencies:
+    minimist "^1.2.0"
+    postcss "^7.0.0"
+
 "@mrmlnc/readdir-enhanced@^2.2.1":
   version "2.2.1"
   resolved "https://registry.yarnpkg.com/@mrmlnc/readdir-enhanced/-/readdir-enhanced-2.2.1.tgz#524af240d1a360527b730475ecfa1344aa540dde"
@@ -1953,14 +1961,6 @@ leven@^2.1.0:
   version "2.1.0"
   resolved "https://registry.yarnpkg.com/leven/-/leven-2.1.0.tgz#c2e7a9f772094dee9d34202ae8acce4687875580"
   integrity sha1-wuep93IJTe6dNCAq6KzORoeHVYA=
-
-lipemat-css-mqpacker@^8.0.0:
-  version "8.0.0"
-  resolved "https://registry.yarnpkg.com/lipemat-css-mqpacker/-/lipemat-css-mqpacker-8.0.0.tgz#24965fbdfd52f3b937058d917d88547892b19a71"
-  integrity sha512-PZGEEVlPi/F6+heGBjdFPxfwfdQQlXOQacOavQWTGjD8aO+Mqe8VUn4nOMejIqhuWX760yrJgk0l6qYsA4I9ew==
-  dependencies:
-    minimist "^1.2.0"
-    postcss "^7.0.0"
 
 livereload-js@^2.3.0:
   version "2.4.0"

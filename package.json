@@ -25,6 +25,7 @@
     "css-modules-loader-core": "https://github.com/lipemat/css-modules-loader-core.git"
   },
   "dependencies": {
+    "@lipemat/css-mqpacker": "^8.0.1",
     "cross-spawn": "^6.0.5",
     "fs-extra": "^7.0.1",
     "grunt": "^1.0.3",
@@ -32,7 +33,6 @@
     "grunt-git": "^1.0.3",
     "grunt-postcss": "^0.9.0",
     "grunt-stylelint": "^0.10.1",
-    "lipemat-css-mqpacker": "^8.0.0",
     "postcss": "^7.0.4",
     "postcss-clean": "^1.1.0",
     "postcss-color-mod-function": "^3.0.3",
