@@ -13,6 +13,9 @@
     "start": "lipemat-postcss-boilerplate start",
     "lint": "lipemat-postcss-boilerplate lint"
   },
+  "resolutions": {
+    "css-modules-loader-core": "https://github.com/lipemat/css-modules-loader-core.git"
+  },
   "dependencies": {
     "@lipemat/postcss-boilerplate": "^2.0.0"
   }

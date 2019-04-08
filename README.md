@@ -20,6 +20,9 @@ Add the following to your package.json. (this may also be found in the `template
       "start": "lipemat-postcss-boilerplate start",
       "lint": "lipemat-postcss-boilerplate lint"
     },
+    "resolutions": {
+        "css-modules-loader-core": "https://github.com/lipemat/css-modules-loader-core.git"
+      },
     "dependencies": {
       "@lipemat/postcss-boilerplate": "^2.0.1"
     }
