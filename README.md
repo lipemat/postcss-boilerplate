@@ -8,29 +8,27 @@ yarn add @lipemat/postcss-boilerplate
 ```
  
 ### Usage
-Add the following to your package.json. (this may also be found in the `templates` directory.
+Add the following to your package.json. You may adjust things to fit your environment but be sure to leave the `scripts` as is.
+
+_This may also be found in the "templates" directory._
 
 ```json
 {
     "theme_path": "../wp-content/themes/core/",
     "root": "../",
     "file_name": "front-end",
+    "css_folder": "css/",
     "scripts": {
       "dist": "lipemat-postcss-boilerplate dist",
       "start": "lipemat-postcss-boilerplate start",
       "lint": "lipemat-postcss-boilerplate lint"
     },
-    "resolutions": {
-        "css-modules-loader-core": "https://github.com/lipemat/css-modules-loader-core.git"
-      },
     "dependencies": {
-      "@lipemat/postcss-boilerplate": "^2.0.1"
+      "@lipemat/postcss-boilerplate": "^2.2.0"
     }
 }
 
 ```
-
-You may adjust things as needed by be sure to leave the `scripts` as is.
 
 
 ### Configuration Overrides

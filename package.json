@@ -20,16 +20,22 @@
     "lipemat-postcss-boilerplate": "./bin/lipemat-postcss-boilerplate.js"
   },
   "scripts": {
-    "dist": "lipemat-postcss-boilerplate dist"
+    "dist": "lipemat-postcss-boilerplate dist",
+    "lint": "lipemat-postcss-boilerplate lint",
+    "start": "lipemat-postcss-boilerplate start",
+    "build": "babel src --out-dir lib",
+    "prepublish": "rm -rf lib/* && yarn run build"
   },
   "css_folder": "css/",
   "file_name": "front-end",
-  "resolutions": {
-    "css-modules-loader-core": "https://github.com/lipemat/css-modules-loader-core.git"
+  "devDependencies": {
+    "@babel/cli": "^7.4.3",
+    "@babel/preset-env": "^7.4.3"
   },
   "dependencies": {
     "@lipemat/css-mqpacker": "^8.0.1",
     "cross-spawn": "^6.0.5",
+    "css-modules-loader-core": "^1.1.0",
     "fs-extra": "^7.0.1",
     "grunt": "^1.0.3",
     "grunt-contrib-watch": "~1.1.0",
