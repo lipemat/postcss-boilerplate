@@ -1,5 +1,5 @@
 let config = require("../helpers/package-config");
-const Loader = require( '../lib/FileSystemLoader' );
+const FileSystemLoader = require( '../lib/FileSystemLoader' );
 
 let compileOptions = {
 	map: true,
@@ -9,7 +9,7 @@ let compileOptions = {
 			plugins : [
 				require( 'postcss-modules' )( {
 					generateScopedName : '[name]_[local]__[hash:base64:4]',
-					Loader: Loader,
+					Loader: FileSystemLoader.default,
 					globalModulePaths : [
 						new RegExp( '.*?' + config.theme_path.replace( /\//g, '\\\\' ) + 'pcss', "i" ), new RegExp( '.*?' + config.theme_path + 'pcss', "i" ),
 					],
