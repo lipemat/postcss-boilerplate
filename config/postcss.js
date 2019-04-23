@@ -11,30 +11,32 @@ let compileOptions = {
 					generateScopedName : '[name]_[local]__[hash:base64:4]',
 					Loader: FileSystemLoader.default,
 					globalModulePaths : [
-						new RegExp( '.*?' + config.theme_path.replace( /\//g, '\\\\' ) + 'pcss', "i" ), new RegExp( '.*?' + config.theme_path + 'pcss', "i" ),
+						new RegExp( '.*?' + config.theme_path.replace( /\//g, '\\\\' ) + 'pcss', "i" ),
+						new RegExp( '.*?' + config.theme_path + 'pcss', "i" ),
 					],
-                    /**
-                     * Custom output of css modules JSON file to specified location
-                     * Also excludes json files from the global pcss files
-                     */
-                    getJSON: function(cssFileName, json) {
-                        const path          = require('path');
-                        const fse = require('fs-extra');
-                        let directory = path.relative( config.theme_path.replace( /\//g, '\\\\' ), cssFileName ).replace( /\\/g, '/' ) + '/';
-                        //exclude global pcss
-                        if ( directory.substr(0,4) === 'pcss' ){
-                            return;
-                        }
-                        let cssName       = path.basename(cssFileName, '.css');
-                        let jsonFileName  = config.theme_path.replace( /\\/g, '/' ) + '_css-modules-json/' + directory.replace( cssName + '/','') + cssName + '.json';
-	                    /**
-	                     * We use the Sync method here to fix issues where JSON is not
-	                     * being generated.
-	                     *
-	                     * @since 2019-01-22
-	                     */
-	                    fse.outputJsonSync(jsonFileName, json);
-                    }
+					/**
+					 * Custom output of css modules JSON file to specified location
+					 * Also excludes json files from the global pcss files
+					 */
+					getJSON: function(cssFileName, json) {
+						const path          = require('path');
+						const fse = require('fs-extra');
+						let directory = path.relative( config.theme_path, cssFileName ).replace( /\\/g, '/' ) + '/';
+						//exclude global pcss
+						if ( directory.substr(0,4) === 'pcss' ){
+							return;
+						}
+						let cssName       = path.basename(cssFileName, '.css');
+						let jsonFileName  = config.theme_path.replace( /\\/g, '/' ) + '_css-modules-json/' + directory.replace( cssName + '/','') + cssName + '.json';
+
+						/**
+						 * We use the Sync method here to fix issues where JSON is not
+						 * being generated.
+						 *
+						 * @since 2019-01-22
+						 */
+						fse.outputJsonSync(jsonFileName, json);
+					}
 				} ),
 			],
 		}),
