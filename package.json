@@ -1,6 +1,6 @@
 {
   "name": "@lipemat/postcss-boilerplate",
-  "version": "2.2.4",
+  "version": "2.2.5",
   "description": "Dependencies and scripts for a no config grunt postcss compiler.",
   "author": "Mat Lipe",
   "license": "MIT",

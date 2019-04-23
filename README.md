@@ -24,7 +24,7 @@ _This may also be found in the "templates" directory._
       "lint": "lipemat-postcss-boilerplate lint"
     },
     "dependencies": {
-      "@lipemat/postcss-boilerplate": "^2.2.4"
+      "@lipemat/postcss-boilerplate": "^2.2.5"
     }
 }
 
