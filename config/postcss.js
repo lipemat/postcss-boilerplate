@@ -1,5 +1,6 @@
 let config = require("../helpers/package-config");
 const FileSystemLoader = require( '../lib/FileSystemLoader' );
+const modulesFolder = process.env.NODE_ENV === 'production' ? '_css-modules-json/min/' : '_css-modules-json/';
 
 let compileOptions = {
 	map: true,
@@ -8,7 +9,7 @@ let compileOptions = {
 			extension: 'pcss',
 			plugins : [
 				require( 'postcss-modules' )( {
-					generateScopedName : '[name]_[local]__[hash:base64:4]',
+					generateScopedName : process.env.NODE_ENV === 'production' ? '[hash:base64:5]' : '[folder]--[name]__[local]',
 					Loader: FileSystemLoader.default,
 					globalModulePaths : [
 						new RegExp( '.*?' + config.theme_path.replace( /\//g, '\\\\' ) + 'pcss', "i" ),
@@ -27,7 +28,7 @@ let compileOptions = {
 							return;
 						}
 						let cssName       = path.basename(cssFileName, '.css');
-						let jsonFileName  = config.theme_path.replace( /\\/g, '/' ) + '_css-modules-json/' + directory.replace( cssName + '/','') + cssName + '.json';
+						let jsonFileName  = config.theme_path.replace( /\\/g, '/' ) + modulesFolder + directory.replace( cssName + '/','') + cssName + '.json';
 
 						/**
 						 * We use the Sync method here to fix issues where JSON is not
@@ -51,14 +52,14 @@ let compileOptions = {
 	parser: require('postcss-scss'),
 };
 
-let minOptions = {
-	map: false,
-	processors: [
-		require('postcss-clean')({
-            level: 2
-        }),
-	],
-};
+let minOptions = Object.assign({}, compileOptions);
+minOptions.map = false;
+minOptions.processors = [ ...compileOptions.processors ];
+minOptions.processors.push( require( 'postcss-clean' )( {
+		level: 2
+	} )
+);
+
 
 module.exports = {
 	toCSS : {
@@ -71,7 +72,7 @@ module.exports = {
 	min: {
 		options: minOptions,
 		files: {
-			'<%= pkg.theme_path %><%= pkg.css_folder %><%= pkg.file_name %>.min.css': '<%= pkg.theme_path %><%= pkg.css_folder %><%= pkg.file_name %>.css'
+			'<%= pkg.theme_path %><%= pkg.css_folder %><%= pkg.file_name %>.min.css': '<%= pkg.theme_path %>pcss/<%= pkg.file_name %>.pcss'
 		},
 	},
 };
