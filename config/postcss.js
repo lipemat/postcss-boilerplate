@@ -9,7 +9,7 @@ let compileOptions = {
 			extension: 'pcss',
 			plugins : [
 				require( 'postcss-modules' )( {
-					generateScopedName : process.env.NODE_ENV === 'production' ? '[hash:base64:5]' : '[folder]--[name]__[local]',
+					generateScopedName : process.env.NODE_ENV === 'production' ? '[hash:base64:5]' : 'Ⓜ[name]__[local]',
 					Loader: FileSystemLoader.default,
 					globalModulePaths : [
 						new RegExp( '.*?' + config.theme_path.replace( /\//g, '\\\\' ) + 'pcss', "i" ),
