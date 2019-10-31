@@ -11,7 +11,7 @@ let compileOptions = {
 			extension: 'pcss',
 			plugins : [
 				require( 'postcss-modules' )( {
-					generateScopedName : process.env.NODE_ENV === 'production' ? '[hash:base64:5]' : 'Ⓜ[name]__[local]',
+					generateScopedName : process.env.NODE_ENV === 'production' ? '[hash:base64:5]' : 'Ⓜ[name]__[local]__[hash:base64:1]',
 					Loader: FileSystemLoader.default,
 					globalModulePaths : [
 						new RegExp( '.*?' + config.theme_path.replace( /\//g, '\\\\' ) + 'pcss', "i" ),
