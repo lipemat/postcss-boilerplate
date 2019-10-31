@@ -21,6 +21,10 @@ export default class FileSystemLoader extends CSSModulesLoader {
         let newPath = _newPath.replace( /^["']|["']$/g, '' ),
             trace = _trace || String.fromCharCode( this.importNr ++ );
         return new Promise( ( resolve, reject ) => {
+        	// If the Drive letter was doubled up on Windows by the postcss parser.
+	        if (relativeTo.substring(0, 3) === relativeTo.substring(3, 6)) {
+		        relativeTo = relativeTo.substring(3);
+	        }
             let relativeDir = path.dirname( relativeTo ),
                 rootRelativePath = path.resolve( relativeDir, newPath ),
                 fileRelativePath = path.resolve( relativeDir, newPath );
