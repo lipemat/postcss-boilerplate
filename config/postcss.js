@@ -1,6 +1,8 @@
 let config = require("../helpers/package-config");
 const FileSystemLoader = require( '../lib/FileSystemLoader' );
 const modulesFolder = process.env.NODE_ENV === 'production' ? '_css-modules-json/min/' : '_css-modules-json/';
+const fs = require( 'fs' );
+const path = require( 'path' );
 
 let compileOptions = {
 	map: true,
@@ -9,7 +11,7 @@ let compileOptions = {
 			extension: 'pcss',
 			plugins : [
 				require( 'postcss-modules' )( {
-					generateScopedName : process.env.NODE_ENV === 'production' ? '[hash:base64:5]' : 'Ⓜ[name]__[local]',
+					generateScopedName : process.env.NODE_ENV === 'production' ? '[hash:base64:5]' : 'Ⓜ[name]__[local]__[hash:base64:1]',
 					Loader: FileSystemLoader.default,
 					globalModulePaths : [
 						new RegExp( '.*?' + config.theme_path.replace( /\//g, '\\\\' ) + 'pcss', "i" ),
@@ -60,19 +62,27 @@ minOptions.processors.push( require( 'postcss-clean' )( {
 	} )
 );
 
-
-module.exports = {
-	toCSS : {
-		options : compileOptions,
-		files : {
+let gruntTasks = {
+	toCSS: {
+		options: compileOptions,
+		files: {
 			'<%= pkg.theme_path %><%= pkg.css_folder %><%= pkg.file_name %>.css': '<%= pkg.theme_path %>pcss/<%= pkg.file_name %>.pcss'
-		},
+		}
 	},
 
 	min: {
 		options: minOptions,
 		files: {
 			'<%= pkg.theme_path %><%= pkg.css_folder %><%= pkg.file_name %>.min.css': '<%= pkg.theme_path %>pcss/<%= pkg.file_name %>.pcss'
-		},
-	},
+		}
+	}
 };
+
+// Loads an admin.pcss file if it exists @since 2.4.0
+if ( fs.existsSync( path.resolve( config.theme_path + 'pcss', 'admin.pcss' ) ) ) {
+	gruntTasks.toCSS.files[ '<%= pkg.theme_path %><%= pkg.css_folder %>admin.css' ] = '<%= pkg.theme_path %>pcss/admin.pcss';
+	gruntTasks.min.files[ '<%= pkg.theme_path %><%= pkg.css_folder %>admin.min.css' ] = '<%= pkg.theme_path %>pcss/admin.pcss';
+}
+
+
+module.exports = gruntTasks;
