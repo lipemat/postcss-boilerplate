@@ -14,6 +14,6 @@
     "lint": "lipemat-postcss-boilerplate lint"
   },
   "dependencies": {
-    "@lipemat/postcss-boilerplate": "^2.4.0"
+    "@lipemat/postcss-boilerplate": "^2.5.1"
   }
 }
