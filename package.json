@@ -16,6 +16,10 @@
     "boilerplate",
     "no-config"
   ],
+  "browserslist": [
+    "last 3 versions",
+    "IE 10"
+  ],
   "bin": {
     "lipemat-postcss-boilerplate": "./bin/lipemat-postcss-boilerplate.js"
   },
