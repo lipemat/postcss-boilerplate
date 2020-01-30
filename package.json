@@ -16,12 +16,6 @@
     "boilerplate",
     "no-config"
   ],
-  "browserslist": [
-    "last 3 versions",
-    "IE 11",
-    "iOS >= 9",
-    "Safari >= 9"
-  ]
   "bin": {
     "lipemat-postcss-boilerplate": "./bin/lipemat-postcss-boilerplate.js"
   },

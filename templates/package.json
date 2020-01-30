@@ -8,12 +8,6 @@
   "root": "../",
   "css_folder": "css/",
   "file_name": "front-end",
-  "browserslist": [
-    "last 3 versions",
-    "IE 11",
-    "iOS >= 9",
-    "Safari >= 9"
-  ],
   "scripts": {
     "dist": "lipemat-postcss-boilerplate dist",
     "start": "lipemat-postcss-boilerplate start",
