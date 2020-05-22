@@ -5,7 +5,6 @@
   "description": "Postcss theme driven by @lipemat/postcss-boilerplate",
   "private": true,
   "theme_path": "../wp-content/themes/core/",
-  "root": "../",
   "css_folder": "css/",
   "file_name": "front-end",
   "scripts": {
@@ -14,6 +13,6 @@
     "lint": "lipemat-postcss-boilerplate lint"
   },
   "dependencies": {
-    "@lipemat/postcss-boilerplate": "^2.5.1"
+    "@lipemat/postcss-boilerplate": "^2.6.0"
   }
 }
