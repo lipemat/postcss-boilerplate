@@ -29,13 +29,22 @@ module.exports = function ( grunt ) {
 		] );
 
 	/**
-	 * Bump the .revision file to the latest
-	 * Useful when PWA is active because Chrome will reload when developing via workspaces
-	 * but reloading the page will get the old "Application" cached resources unless we
-	 * bump the revision
+	 * Bump the .revision file to the current timestamp.
+	 *
+	 * Useful when PWA is active because Chrome will get the old service worker
+	 * cached resources unless we bump the revision.
+	 *
+	 * If not using PWA and using another form of .revision generation such as
+	 * Beanstalk or a deploy script, it's probably better to disable this so you
+	 * can match the git hash to the .revision file.
+	 *
+	 * May be enabed by adding "regenerate_revision":true to your package.json.
+	 *
 	 */
 	grunt.registerTask( 'revision', function () {
-		grunt.file.write( grunt.config.get('pkg' ).root + '.revision', Date.now() );
+		if ( grunt.config.get( 'pkg' ).regenerate_revision ) {
+			grunt.file.write( grunt.config.get( 'pkg' ).root + '.revision', Date.now() );
+		}
 	} );
 
 	return grunt;

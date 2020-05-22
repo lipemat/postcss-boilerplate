@@ -11,6 +11,7 @@ packageConfig.theme_path = packageConfig.theme_path || "../wp-content/themes/cor
 packageConfig.root = packageConfig.root || "../";
 packageConfig.css_folder = packageConfig.css_folder || "";
 packageConfig.file_name = packageConfig.file_name || "front-end";
+packageConfig.regenerate_revision = packageConfig.regenerate_revision || false;
 
 try {
 	let localConfig = require( path.resolve( workingDirectory, './local-config.json' ) );
