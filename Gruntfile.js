@@ -38,7 +38,7 @@ module.exports = function ( grunt ) {
 	 * Beanstalk or a deploy script, it's probably better to disable this so you
 	 * can match the git hash to the .revision file.
 	 *
-	 * May be enabed by adding "regenerate_revision":true to your package.json.
+	 * May be enabled by adding "regenerate_revision":true to your package.json.
 	 *
 	 */
 	grunt.registerTask( 'revision', function () {
