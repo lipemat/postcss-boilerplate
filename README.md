@@ -1,5 +1,13 @@
 ## The Start Of A Beautiful PostCSS Structure
 
+<p>
+<a href="https://www.npmjs.com/package/@lipemat/postcss-boilerplate">
+<img alt="npm" src="https://img.shields.io/npm/v/@lipemat/postcss-boilerplate.svg">
+</a>
+    <img alt="node" src="https://img.shields.io/node/v/@lipemat/postcss-boilerplate.svg">
+</p>
+
+
 A zero configuration starting point for postcss styled theme or plugin.
 
 ### Installation
