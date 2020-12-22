@@ -23,7 +23,7 @@ fs.readFile( PNP_FILE, 'utf8', ( err, data ) => {
 		return console.log( err );
 	}
 
-	const result = data.replace( /if \(reference != null\) {/, '// # Warnings suppressed via @lipemat/js-boilerplate/fix-pnp script. \n' +
+	const result = data.replace( /if \(reference != null\) {/, '// # Warnings suppressed via @lipemat/postcss-boilerplate/fix-pnp script. \n' +
 		'if (! alwaysWarnOnFallback && reference != null) { \n' +
 					'dependencyReference = reference; \n' +
 		'} else if (alwaysWarnOnFallback && reference != null) {' );
