@@ -58,8 +58,9 @@
     "update-notifier": "^2.5.0"
   },
   "devDependencies": {
-    "@babel/cli": "^7.4.3",
-    "@babel/preset-env": "^7.4.3"
+    "@babel/cli": "^7.12.10",
+    "@babel/core": "^7.12.10",
+    "@babel/preset-env": "^7.12.11"
   },
   "bugs": {
     "url": "https://github.com/lipemat/postcss-boilerplate/issues"

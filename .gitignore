@@ -2,11 +2,8 @@ node_modules
 yarn.lock
 
 # Yarn berry files
-.yarn/*
-!.yarn/releases
-!.yarn/plugins
-!.yarn/sdks
-!.yarn/versions
+install-state.gz
+/node_modules
 
 # PHPStorm files
 # https://github.com/github/gitignore/blob/master/Global/JetBrains.gitignore
