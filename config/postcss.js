@@ -1,5 +1,5 @@
 let config = require("../helpers/package-config");
-const FileSystemLoader = require( '../lib/FileSystemLoader' );
+const FileSystemLoader = require( '../dist/FileSystemLoader' );
 const modulesFolder = process.env.NODE_ENV === 'production' ? '_css-modules-json/min/' : '_css-modules-json/';
 const fs = require( 'fs' );
 const path = require( 'path' );

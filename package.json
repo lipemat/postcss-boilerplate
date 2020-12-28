@@ -16,6 +16,14 @@
     "boilerplate",
     "no-config"
   ],
+  "files": [
+    "bin/",
+    "config/",
+    "dist/",
+    "helpers/",
+    "scripts/",
+    "src/"
+  ],
   "bin": {
     "lipemat-postcss-boilerplate": "./bin/lipemat-postcss-boilerplate.js"
   },
@@ -23,15 +31,11 @@
     "dist": "lipemat-postcss-boilerplate dist",
     "lint": "lipemat-postcss-boilerplate lint",
     "start": "lipemat-postcss-boilerplate start",
-    "build": "babel src --out-dir lib",
-    "prepublish": "rm -rf lib/* && yarn run build"
+    "build": "babel src --out-dir dist",
+    "prepublishOnly": "rm -rf lib/* && yarn run build"
   },
   "css_folder": "css/",
   "file_name": "front-end",
-  "devDependencies": {
-    "@babel/cli": "^7.4.3",
-    "@babel/preset-env": "^7.4.3"
-  },
   "dependencies": {
     "@lipemat/css-mqpacker": "^8.0.1",
     "cross-spawn": "^6.0.5",
@@ -53,6 +57,10 @@
     "stylelint": "^9.10.1",
     "stylelint-config-wordpress": "^13.1.0",
     "update-notifier": "^2.5.0"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.4.3",
+    "@babel/preset-env": "^7.4.3"
   },
   "bugs": {
     "url": "https://github.com/lipemat/postcss-boilerplate/issues"
