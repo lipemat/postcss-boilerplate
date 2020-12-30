@@ -1,5 +1,22 @@
-node_modules
-yarn.lock
+# system/hidden files
+*~
+.DS_Store
+.DS_Store?
+.svn
+.cvs
+*.bak
+*.swp
+.sass-cache
+.project
+*.sublime-project
+*.sublime-workspace
+*.map
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# log files
+*.log
 
 # Yarn berry files
 install-state.gz
