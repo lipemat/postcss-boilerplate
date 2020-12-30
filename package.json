@@ -20,7 +20,7 @@
     "Gruntfile.js",
     "bin/",
     "config/",
-    "dist/",
+    "lib/",
     "helpers/",
     "scripts/",
     "src/"
@@ -29,10 +29,10 @@
     "lipemat-postcss-boilerplate": "./bin/lipemat-postcss-boilerplate.js"
   },
   "scripts": {
-    "dist": "lipemat-postcss-boilerplate dist",
+    "dist": "lipemat-postcss-boilerplate lib",
     "lint": "lipemat-postcss-boilerplate lint",
     "start": "lipemat-postcss-boilerplate start",
-    "build": "babel src --out-dir dist",
+    "build": "babel src --out-dir lib",
     "prepublishOnly": "rm -rf lib/* && yarn run build"
   },
   "css_folder": "css/",
