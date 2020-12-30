@@ -1208,12 +1208,12 @@ __metadata:
   linkType: soft
 
 "@lipemat/stylelint-config@npm:^1.0.0-beta.1":
-  version: 1.0.0-beta.1
-  resolution: "@lipemat/stylelint-config@npm:1.0.0-beta.1"
+  version: 1.0.0-beta.3
+  resolution: "@lipemat/stylelint-config@npm:1.0.0-beta.3"
   dependencies:
     stylelint: ^9.10.1
     stylelint-config-wordpress: ^13.1.0
-  checksum: 3eab8eca7743a7174266405191d80ace5d4bc2e88c2122d5233f10767debf2a27e31d43ca8d23785e8fa9b8c5e06547f7f95f06ecdb50ef3722b74f9bd6fd73a
+  checksum: b1ff3e6ade0abe99873dc62fb694b05b8a277bde135b4bf40047f748bc98b58dda5bf9a92c70a99b83e371ec21f72b8acdaee71a34ed94b67030516583c646e3
   languageName: node
   linkType: hard
 
@@ -1847,9 +1847,9 @@ __metadata:
   linkType: hard
 
 "caniuse-lite@npm:^1.0.30000981, caniuse-lite@npm:^1.0.30001109, caniuse-lite@npm:^1.0.30001165":
-  version: 1.0.30001170
-  resolution: "caniuse-lite@npm:1.0.30001170"
-  checksum: 26ec112bc9d09a2ba5391d6202dcb3de8c10b080766c79c58d6ab9bc2bcd0b5d9e9e440de04aace97a9537ea60ad51feaaf311e1336bf1a0536f17d52a1886d1
+  version: 1.0.30001171
+  resolution: "caniuse-lite@npm:1.0.30001171"
+  checksum: 6c6a0cdf48aa53202207cf68da4ff32fa3cba24d9a85673c60c0d21d4c0c31baca13a977ea885a52418fac03a03c39fe53077e296631c79c9cfe62f772deb5f2
   languageName: node
   linkType: hard
 
