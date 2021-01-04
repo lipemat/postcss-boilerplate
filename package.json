@@ -1,6 +1,6 @@
 {
   "name": "@lipemat/postcss-boilerplate",
-  "version": "3.0.0-beta.6",
+  "version": "3.0.0",
   "description": "Dependencies and scripts for a no config grunt postcss compiler.",
   "author": "Mat Lipe",
   "license": "MIT",
@@ -39,7 +39,7 @@
   "file_name": "front-end",
   "dependencies": {
     "@lipemat/css-mqpacker": "^8.0.1",
-    "@lipemat/stylelint-config": "^1.0.0-beta.1",
+    "@lipemat/stylelint-config": "^1.0.0",
     "cross-spawn": "^6.0.5",
     "css-modules-loader-core": "^1.1.0",
     "fs-extra": "^7.0.1",
