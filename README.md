@@ -28,11 +28,12 @@ _This may also be found in the "templates" directory._
     "css_folder": "css/",
     "scripts": {
       "dist": "lipemat-postcss-boilerplate dist",
-      "start": "lipemat-postcss-boilerplate start",
-      "lint": "lipemat-postcss-boilerplate lint"
+      "postinstall": "lipemat-postcss-boilerplate fix-pnp",
+      "lint": "lipemat-postcss-boilerplate lint",
+      "start": "lipemat-postcss-boilerplate start"
     },
     "dependencies": {
-      "@lipemat/postcss-boilerplate": "^2.6.0"
+      "@lipemat/postcss-boilerplate": "^3.0.0"
     }
 }
 
