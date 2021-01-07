@@ -1184,7 +1184,7 @@ __metadata:
     "@babel/core": ^7.12.10
     "@babel/preset-env": ^7.12.11
     "@lipemat/css-mqpacker": ^8.0.1
-    "@lipemat/stylelint-config": ^1.1.1
+    "@lipemat/stylelint-config": ^1.1.2
     cross-spawn: ^6.0.5
     css-modules-loader-core: ^1.1.0
     fs-extra: ^7.0.1
@@ -1207,13 +1207,13 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@lipemat/stylelint-config@npm:^1.1.1":
-  version: 1.1.1
-  resolution: "@lipemat/stylelint-config@npm:1.1.1"
+"@lipemat/stylelint-config@npm:^1.1.2":
+  version: 1.1.2
+  resolution: "@lipemat/stylelint-config@npm:1.1.2"
   dependencies:
     "@wordpress/stylelint-config": ^18.0.0
     stylelint: ^13.7.0
-  checksum: 2d0873f9a6f33480ccee51fc6b448b5143654d81baa8cd89db899a40bf96d7cef1511af1a16e220477de99fea5fe758fe1790f94ecb644b56452223dc732f916
+  checksum: 548e2571302323b2bcb99f898c6903c0f541fbd32bf0e9cc1424eac0ed4c35c649a8e1838d5da3d4ba1dd85c6dd87d2f45231644c4324de05b9ff95f16d53fc7
   languageName: node
   linkType: hard
 
