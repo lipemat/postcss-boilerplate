@@ -42,6 +42,8 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@babel/preset-env", "virtual:1638d8a1a2d593b8169ffe9d70f3c9e9d1509d2f5963ba8fea516113e9e47063b31f182107f616b8cf93bd7e0d863174da1e8f027f01dffdc7988bf1eec9ba20#npm:7.12.11"],
             ["@lipemat/css-mqpacker", "npm:8.0.1"],
             ["@lipemat/stylelint-config", "npm:1.1.2"],
+            ["@wordpress/browserslist-config", "npm:3.0.1"],
+            ["browserslist", "npm:4.16.3"],
             ["cross-spawn", "npm:6.0.5"],
             ["css-modules-loader-core", "npm:1.1.0"],
             ["fs-extra", "npm:7.0.1"],
@@ -49,6 +51,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["grunt-contrib-watch", "npm:1.1.0"],
             ["grunt-postcss", "virtual:1638d8a1a2d593b8169ffe9d70f3c9e9d1509d2f5963ba8fea516113e9e47063b31f182107f616b8cf93bd7e0d863174da1e8f027f01dffdc7988bf1eec9ba20#npm:0.9.0"],
             ["grunt-stylelint", "virtual:1638d8a1a2d593b8169ffe9d70f3c9e9d1509d2f5963ba8fea516113e9e47063b31f182107f616b8cf93bd7e0d863174da1e8f027f01dffdc7988bf1eec9ba20#npm:0.10.1"],
+            ["lodash", "npm:4.17.20"],
             ["postcss", "npm:7.0.35"],
             ["postcss-clean", "npm:1.1.0"],
             ["postcss-color-mod-function", "npm:3.0.3"],
@@ -2028,6 +2031,8 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@babel/preset-env", "virtual:1638d8a1a2d593b8169ffe9d70f3c9e9d1509d2f5963ba8fea516113e9e47063b31f182107f616b8cf93bd7e0d863174da1e8f027f01dffdc7988bf1eec9ba20#npm:7.12.11"],
             ["@lipemat/css-mqpacker", "npm:8.0.1"],
             ["@lipemat/stylelint-config", "npm:1.1.2"],
+            ["@wordpress/browserslist-config", "npm:3.0.1"],
+            ["browserslist", "npm:4.16.3"],
             ["cross-spawn", "npm:6.0.5"],
             ["css-modules-loader-core", "npm:1.1.0"],
             ["fs-extra", "npm:7.0.1"],
@@ -2035,6 +2040,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["grunt-contrib-watch", "npm:1.1.0"],
             ["grunt-postcss", "virtual:1638d8a1a2d593b8169ffe9d70f3c9e9d1509d2f5963ba8fea516113e9e47063b31f182107f616b8cf93bd7e0d863174da1e8f027f01dffdc7988bf1eec9ba20#npm:0.9.0"],
             ["grunt-stylelint", "virtual:1638d8a1a2d593b8169ffe9d70f3c9e9d1509d2f5963ba8fea516113e9e47063b31f182107f616b8cf93bd7e0d863174da1e8f027f01dffdc7988bf1eec9ba20#npm:0.10.1"],
+            ["lodash", "npm:4.17.20"],
             ["postcss", "npm:7.0.35"],
             ["postcss-clean", "npm:1.1.0"],
             ["postcss-color-mod-function", "npm:3.0.3"],
@@ -2237,6 +2243,15 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageLocation": "./.yarn/cache/@types-unist-npm-2.0.3-4b26dedfde-42e0dc4ac7.zip/node_modules/@types/unist/",
           "packageDependencies": [
             ["@types/unist", "npm:2.0.3"]
+          ],
+          "linkType": "HARD",
+        }]
+      ]],
+      ["@wordpress/browserslist-config", [
+        ["npm:3.0.1", {
+          "packageLocation": "./.yarn/cache/@wordpress-browserslist-config-npm-3.0.1-5b6557a8ab-ba5ed09eea.zip/node_modules/@wordpress/browserslist-config/",
+          "packageDependencies": [
+            ["@wordpress/browserslist-config", "npm:3.0.1"]
           ],
           "linkType": "HARD",
         }]
@@ -2752,6 +2767,18 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["node-releases", "npm:1.1.67"]
           ],
           "linkType": "HARD",
+        }],
+        ["npm:4.16.3", {
+          "packageLocation": "./.yarn/cache/browserslist-npm-4.16.3-e6f20ea590-dfab0d3c3d.zip/node_modules/browserslist/",
+          "packageDependencies": [
+            ["browserslist", "npm:4.16.3"],
+            ["caniuse-lite", "npm:1.0.30001183"],
+            ["colorette", "npm:1.2.1"],
+            ["electron-to-chromium", "npm:1.3.651"],
+            ["escalade", "npm:3.1.1"],
+            ["node-releases", "npm:1.1.70"]
+          ],
+          "linkType": "HARD",
         }]
       ]],
       ["bytes", [
@@ -2834,6 +2861,13 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageLocation": "./.yarn/cache/caniuse-lite-npm-1.0.30001171-39b12b1e53-6c6a0cdf48.zip/node_modules/caniuse-lite/",
           "packageDependencies": [
             ["caniuse-lite", "npm:1.0.30001171"]
+          ],
+          "linkType": "HARD",
+        }],
+        ["npm:1.0.30001183", {
+          "packageLocation": "./.yarn/cache/caniuse-lite-npm-1.0.30001183-64ee798200-effa2502ea.zip/node_modules/caniuse-lite/",
+          "packageDependencies": [
+            ["caniuse-lite", "npm:1.0.30001183"]
           ],
           "linkType": "HARD",
         }]
@@ -3595,6 +3629,13 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageLocation": "./.yarn/cache/electron-to-chromium-npm-1.3.633-7d9467177b-986784f90d.zip/node_modules/electron-to-chromium/",
           "packageDependencies": [
             ["electron-to-chromium", "npm:1.3.633"]
+          ],
+          "linkType": "HARD",
+        }],
+        ["npm:1.3.651", {
+          "packageLocation": "./.yarn/cache/electron-to-chromium-npm-1.3.651-53894b6050-3e9a010036.zip/node_modules/electron-to-chromium/",
+          "packageDependencies": [
+            ["electron-to-chromium", "npm:1.3.651"]
           ],
           "linkType": "HARD",
         }]
@@ -6021,6 +6062,13 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageLocation": "./.yarn/cache/node-releases-npm-1.1.67-4dcd9934d3-19a76af949.zip/node_modules/node-releases/",
           "packageDependencies": [
             ["node-releases", "npm:1.1.67"]
+          ],
+          "linkType": "HARD",
+        }],
+        ["npm:1.1.70", {
+          "packageLocation": "./.yarn/cache/node-releases-npm-1.1.70-92703f2c34-18e2b4b871.zip/node_modules/node-releases/",
+          "packageDependencies": [
+            ["node-releases", "npm:1.1.70"]
           ],
           "linkType": "HARD",
         }]
