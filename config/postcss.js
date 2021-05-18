@@ -62,6 +62,19 @@ const compileOptions = {
 		postcssPresetEnv( presetEnv ),
 		require( 'postcss-color-mod-function' ),
 		require( '@lipemat/css-mqpacker' ),
+
+		/**
+		 * Requires `focus-visible` polyfill to be loaded externally to support Safari.
+		 *
+		 * @link https://caniuse.com/css-focus-visible
+		 *
+		 * May be imported directly into index.js for SPA or site which load JS app on every page.
+		 * @link https://github.com/WICG/focus-visible
+		 *
+		 * Most often will need it site wide on pages which do and don't us the JS app.
+		 * @link https://unpkg.com/focus-visible@5.2.0/dist/focus-visible.min.js
+		 */
+		require( 'postcss-focus-visible' )( {replaceWith: ':global(.focus-visible)'} ),
 	],
 	parser: require( 'postcss-scss' ),
 };

@@ -56,6 +56,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["postcss-clean", "npm:1.1.0"],
             ["postcss-color-mod-function", "npm:3.0.3"],
             ["postcss-custom-media", "npm:6.0.0"],
+            ["postcss-focus-visible", "npm:5.0.0"],
             ["postcss-import", "npm:12.0.1"],
             ["postcss-modules", "npm:1.5.0"],
             ["postcss-nested", "npm:4.2.3"],
@@ -2045,6 +2046,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["postcss-clean", "npm:1.1.0"],
             ["postcss-color-mod-function", "npm:3.0.3"],
             ["postcss-custom-media", "npm:6.0.0"],
+            ["postcss-focus-visible", "npm:5.0.0"],
             ["postcss-import", "npm:12.0.1"],
             ["postcss-modules", "npm:1.5.0"],
             ["postcss-nested", "npm:4.2.3"],
@@ -6775,6 +6777,14 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageLocation": "./.yarn/cache/postcss-focus-visible-npm-4.0.0-8fa4e96a88-df9f0b029c.zip/node_modules/postcss-focus-visible/",
           "packageDependencies": [
             ["postcss-focus-visible", "npm:4.0.0"],
+            ["postcss", "npm:7.0.35"]
+          ],
+          "linkType": "HARD",
+        }],
+        ["npm:5.0.0", {
+          "packageLocation": "./.yarn/cache/postcss-focus-visible-npm-5.0.0-24d906ed49-8238bb66eb.zip/node_modules/postcss-focus-visible/",
+          "packageDependencies": [
+            ["postcss-focus-visible", "npm:5.0.0"],
             ["postcss", "npm:7.0.35"]
           ],
           "linkType": "HARD",
