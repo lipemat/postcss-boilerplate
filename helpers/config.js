@@ -1,6 +1,5 @@
 const packageConfig = require( './package-config' );
 const path = require( 'path' );
-const without = require( 'lodash/without' );
 const once = require( 'lodash/once' );
 const browserslist = require( 'browserslist' );
 
@@ -27,8 +26,7 @@ function getConfig( fileName ) {
 }
 
 /**
- * If browserslist is not specified, we fallback to WordPress defaults
- * except for IE11 which we don't support by default.
+ * If browserslist is not specified, we fallback to WordPress defaults.
  *
  * Return false if a browserslist is specified in the current project.
  *
@@ -38,9 +36,7 @@ function getConfig( fileName ) {
  */
 const getDefaultBrowsersList = once( () => {
 	if ( browserslist( browserslist.defaults ) === browserslist() ) {
-		const browsers = require( '@wordpress/browserslist-config' );
-		browsers.push( 'not IE 11' );
-		return without( browsers, 'ie >= 11' );
+		return require( '@wordpress/browserslist-config' );
 	}
 	return false;
 } );
