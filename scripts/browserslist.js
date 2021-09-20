@@ -24,17 +24,17 @@ const provided = getDefaultBrowsersList() || browserslist.loadConfig( {
 } );
 
 console.log( '' );
-console.log( 'Provided Browserslist' );
+console.log( 'CSS Provided Browserslist' );
 console.table( provided );
 
 console.log( '' );
-console.log( 'Included Browsers' );
+console.log( 'CSS Included Browsers' );
 console.table( browserslist( provided, {
 	env: 'production'
 } ) );
 
 console.log( '' );
-console.log( 'Browser Coverage' );
+console.log( 'CSS Browser Coverage' );
 console.table( browserslist.coverage( browserslist( provided, {
 	env: 'production'
 } ) ) );
