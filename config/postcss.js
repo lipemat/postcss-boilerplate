@@ -68,7 +68,7 @@ const compileOptions = {
 const minOptions = Object.assign( {}, compileOptions );
 minOptions.map = false;
 minOptions.processors = [ ...compileOptions.processors ];
-minOptions.processors.push( require( 'postcss-clean' )( {
+minOptions.processors.push( require( '../lib/postcss-clean' )( {
 		level: 2,
 	} )
 );
