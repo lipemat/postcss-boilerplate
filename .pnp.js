@@ -44,6 +44,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@lipemat/stylelint-config", "npm:1.1.2"],
             ["@wordpress/browserslist-config", "npm:4.1.0"],
             ["browserslist", "npm:4.17.0"],
+            ["clean-css", "npm:5.2.1"],
             ["cross-spawn", "npm:6.0.5"],
             ["css-modules-loader-core", "npm:1.1.0"],
             ["fs-extra", "npm:7.0.1"],
@@ -53,7 +54,6 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["grunt-stylelint", "virtual:1638d8a1a2d593b8169ffe9d70f3c9e9d1509d2f5963ba8fea516113e9e47063b31f182107f616b8cf93bd7e0d863174da1e8f027f01dffdc7988bf1eec9ba20#npm:0.10.1"],
             ["lodash", "npm:4.17.20"],
             ["postcss", "npm:7.0.35"],
-            ["postcss-clean", "npm:1.1.0"],
             ["postcss-color-mod-function", "npm:3.0.3"],
             ["postcss-custom-media", "npm:6.0.0"],
             ["postcss-import", "npm:12.0.1"],
@@ -2033,6 +2033,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@lipemat/stylelint-config", "npm:1.1.2"],
             ["@wordpress/browserslist-config", "npm:4.1.0"],
             ["browserslist", "npm:4.17.0"],
+            ["clean-css", "npm:5.2.1"],
             ["cross-spawn", "npm:6.0.5"],
             ["css-modules-loader-core", "npm:1.1.0"],
             ["fs-extra", "npm:7.0.1"],
@@ -2042,7 +2043,6 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["grunt-stylelint", "virtual:1638d8a1a2d593b8169ffe9d70f3c9e9d1509d2f5963ba8fea516113e9e47063b31f182107f616b8cf93bd7e0d863174da1e8f027f01dffdc7988bf1eec9ba20#npm:0.10.1"],
             ["lodash", "npm:4.17.20"],
             ["postcss", "npm:7.0.35"],
-            ["postcss-clean", "npm:1.1.0"],
             ["postcss-color-mod-function", "npm:3.0.3"],
             ["postcss-custom-media", "npm:6.0.0"],
             ["postcss-import", "npm:12.0.1"],
@@ -2999,10 +2999,10 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
         }]
       ]],
       ["clean-css", [
-        ["npm:4.2.3", {
-          "packageLocation": "./.yarn/cache/clean-css-npm-4.2.3-976d15760b-a60f780082.zip/node_modules/clean-css/",
+        ["npm:5.2.1", {
+          "packageLocation": "./.yarn/cache/clean-css-npm-5.2.1-0cb7e508c1-0d94030bcf.zip/node_modules/clean-css/",
           "packageDependencies": [
-            ["clean-css", "npm:4.2.3"],
+            ["clean-css", "npm:5.2.1"],
             ["source-map", "npm:0.6.1"]
           ],
           "linkType": "HARD",
@@ -6632,17 +6632,6 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["postcss-attribute-case-insensitive", "npm:4.0.2"],
             ["postcss", "npm:7.0.35"],
             ["postcss-selector-parser", "npm:6.0.4"]
-          ],
-          "linkType": "HARD",
-        }]
-      ]],
-      ["postcss-clean", [
-        ["npm:1.1.0", {
-          "packageLocation": "./.yarn/cache/postcss-clean-npm-1.1.0-0ecd58796b-e81179be0e.zip/node_modules/postcss-clean/",
-          "packageDependencies": [
-            ["postcss-clean", "npm:1.1.0"],
-            ["clean-css", "npm:4.2.3"],
-            ["postcss", "npm:6.0.23"]
           ],
           "linkType": "HARD",
         }]
