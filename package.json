@@ -1,11 +1,11 @@
 {
   "name": "@lipemat/postcss-boilerplate",
-  "version": "3.5.1",
+  "version": "3.6.0-beta.1",
   "description": "Dependencies and scripts for a no config grunt postcss compiler.",
   "author": "Mat Lipe",
   "license": "MIT",
   "engines": {
-    "node": ">=14.15.3"
+    "node": ">=14.17.6"
   },
   "repository": {
     "type": "git",
@@ -42,6 +42,7 @@
     "@lipemat/stylelint-config": "^1.1.2",
     "@wordpress/browserslist-config": "^4.1.0",
     "browserslist": "^4.17.0",
+    "clean-css": "^5.2.1",
     "cross-spawn": "^6.0.5",
     "css-modules-loader-core": "^1.1.0",
     "fs-extra": "^7.0.1",
@@ -51,7 +52,6 @@
     "grunt-stylelint": "^0.10.1",
     "lodash": "^4.17.20",
     "postcss": "^7.0.14",
-    "postcss-clean": "^1.1.0",
     "postcss-color-mod-function": "^3.0.3",
     "postcss-custom-media": "^6.0.0",
     "postcss-import": "^12.0.1",
