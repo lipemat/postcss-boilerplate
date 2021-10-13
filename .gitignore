@@ -20,6 +20,7 @@ Thumbs.db
 
 # Yarn berry files
 install-state.gz
+build-state.yml
 /node_modules
 
 # PHPStorm files
