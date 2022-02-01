@@ -19,9 +19,8 @@ module.exports = function ( grunt ) {
 	/**
 	 *
 	 * Tasks are registered here. Starts with default,
-	 * which is run by simply running "grunt" in your cli.
-	 * All other use grunt + taskname.
-	 *
+	 * Run by simply running "grunt" in your cli.
+	 * All other use grunt + task name.
 	 */
 	grunt.registerTask(
 		'default', [
@@ -29,20 +28,11 @@ module.exports = function ( grunt ) {
 		] );
 
 	/**
-	 * Bump the .revision file to the current timestamp.
-	 *
-	 * Useful when PWA is active because Chrome will get the old service worker
-	 * cached resources unless we bump the revision.
-	 *
-	 * If not using PWA and using another form of .revision generation such as
-	 * Beanstalk or a deploy script, it's probably better to disable this so you
-	 * can match the git hash to the .revision file.
-	 *
-	 * May be enabled by adding "regenerate_revision":true to your package.json.
-	 *
+	 * @deprecated Will be removed in next major version.
 	 */
 	grunt.registerTask( 'revision', function () {
 		if ( grunt.config.get( 'pkg' ).regenerate_revision ) {
+			console.log( 'Using `@lipemat/postcss-boilerplate.regenerate_revision` is deprecated and will be removed in the next version!' );
 			grunt.file.write( grunt.config.get( 'pkg' ).root + '.revision', Date.now() );
 		}
 	} );
