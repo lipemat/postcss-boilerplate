@@ -2,10 +2,10 @@
 
 /**
  * When using PNP loose mode, we get warnings for every module
- * we access which is not strictly declared.
+ * we access, not strictly declared.
  *
- * There is no built in way in Yarn to disable the warnings.
- * This script modifies the generate .pnp.js file to suppress
+ * No built-in way in Yarn to disable the warnings.
+ * This script modifies to generate .pnp.js file to suppress
  * all loose module warnings unless the environmental variable
  * it set to display all warnings.
  *
@@ -29,7 +29,7 @@ PNP_FILES.forEach( PNP_FILE => {
 				return console.log( readError );
 			}
 
-			const result = data.replace( /if \(reference != null\) {/, '// # Warnings suppressed via @lipemat/js-boilerplate/fix-pnp script. \n' +
+			const result = data.replace( /if \(reference != null\) {/, '// # Warnings suppressed via @lipemat/postcss-boilerplate/fix-pnp script. \n' +
 				'if (! alwaysWarnOnFallback && reference != null) { \n' +
 				'dependencyReference = reference; \n' +
 				'} else if (alwaysWarnOnFallback && reference != null) {' );
@@ -43,4 +43,3 @@ PNP_FILES.forEach( PNP_FILE => {
 		} );
 	}
 } );
-
