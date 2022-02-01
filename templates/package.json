@@ -3,9 +3,7 @@
   "version": "1.0.0",
   "author": "Mat Lipe",
   "description": "Postcss theme driven by @lipemat/postcss-boilerplate",
-  "private": true,
-  "theme_path": "../wp-content/themes/core/",
-  "css_folder": "css/",
+  "theme_path": "./",
   "file_name": "front-end",
   "scripts": {
     "dist": "lipemat-postcss-boilerplate dist",

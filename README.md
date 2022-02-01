@@ -22,10 +22,7 @@ _This may also be found in the "templates" directory._
 
 ```json
 {
-    "theme_path": "../wp-content/themes/core/",
-    "root": "../",
-    "file_name": "front-end",
-    "css_folder": "css/",
+    "theme_path": "./",
     "scripts": {
       "dist": "lipemat-postcss-boilerplate dist",
       "postinstall": "lipemat-postcss-boilerplate fix-pnp",
@@ -38,6 +35,10 @@ _This may also be found in the "templates" directory._
 }
 
 ```
+
+* `css_folder` : Path of directory for generate finished CSS files within. Defaults to `css/`.
+* `file_name` : Name of finished CSS file. Defaults to `front-end`.
+* `theme_path` : Path or theme's root relative to the package.json file.
 
 
 ### Configuration Overrides
