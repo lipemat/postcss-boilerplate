@@ -18,6 +18,9 @@ Thumbs.db
 # log files
 *.log
 
+# Files built during publish
+/lib
+
 # Yarn berry files
 install-state.gz
 build-state.yml
