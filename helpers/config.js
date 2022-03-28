@@ -36,7 +36,10 @@ function getConfig( fileName ) {
  */
 const getDefaultBrowsersList = once( () => {
 	if ( browserslist( browserslist.defaults ) === browserslist() ) {
-		return require( '@wordpress/browserslist-config' );
+		return require( '@wordpress/browserslist-config' ).map( range => {
+			// Swap out "> 1%" for "> 2%".
+			return '> 1%' === range ? '> 2%' : range;
+		} );
 	}
 	return false;
 } );
