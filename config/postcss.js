@@ -65,7 +65,7 @@ const compileOptions = {
 						const fse = require( 'fs-extra' );
 						const directory = path.relative( config.theme_path, cssFileName ).replace( /\\/g, '/' ) + '/';
 						// Exclude global pcss directory.
-						if ( 'pcss' === directory.substr( 0, 4 ) ) {
+						if ( 'pcss' === directory.substring( 0, 4 ) ) {
 							return;
 						}
 						const cssName = path.basename( cssFileName, '.css' );
