@@ -24,7 +24,8 @@ const compileOptions = {
 			extension: 'pcss',
 			plugins: [
 				require( 'postcss-modules' )( {
-					generateScopedName: 'production' === process.env.NODE_ENV ? '[contenthash:base64:5]' : 'Ⓜ[name]__[local]__[contenthash:base64:2]',
+					// @todo If run into issues with class name conflicts @see b36fc5309 as a more robust alternative.
+					generateScopedName: 'production' === process.env.NODE_ENV ? '[contenthash:base52:5]' : 'Ⓜ[name]__[local]__[contenthash:base52:2]',
 					Loader: FileSystemLoader.default,
 					globalModulePaths: [
 						new RegExp( '.*?' + config.theme_path.replace( /\//g, '\\\\' ) + 'pcss', 'i' ),
