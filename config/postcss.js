@@ -32,7 +32,7 @@ const compileOptions = {
 						new RegExp( '.*?' + config.theme_path + 'pcss', 'i' ),
 					],
 					/**
-					 * Custom output of css modules JSON file to specified location
+					 * Custom output of CSS modules JSON file to specified location
 					 * Also excludes json files from the global pcss files
 					 */
 					getJSON( cssFileName, json ) {
@@ -49,8 +49,6 @@ const compileOptions = {
 						/**
 						 * We use the Sync method here to fix issues where JSON is not
 						 * being generated.
-						 *
-						 * @since 2019-01-22
 						 */
 						fse.outputJsonSync( jsonFileName, json );
 					},
