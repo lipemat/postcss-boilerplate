@@ -1,14 +1,14 @@
 const config = require( '../helpers/package-config' );
 const postcssPresetEnv = require( 'postcss-preset-env' );
 const FileSystemLoader = require( '../lib/FileSystemLoader' );
-const modulesFolder = 'production' === process.env.NODE_ENV ? '_css-modules-json/min/' : '_css-modules-json/';
 const fs = require( 'fs' );
 const path = require( 'path' );
 const {getDefaultBrowsersList} = require( '../helpers/config' );
 
+const modulesFolder = 'production' === process.env.NODE_ENV ? '_css-modules-json/min/' : '_css-modules-json/';
 const presetEnv = {};
 /**
- * If browserslist is not specified, we fallback to WordPress defaults.
+ * If browserslist is not specified, we fall back to WordPress defaults.
  *
  * @link https://github.com/csstools/postcss-preset-env#browsers
  */
