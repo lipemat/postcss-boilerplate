@@ -33,12 +33,13 @@
     "lipemat-postcss-boilerplate": "./bin/lipemat-postcss-boilerplate.js"
   },
   "scripts": {
+    "build": "babel src --out-dir lib",
     "dist": "lipemat-postcss-boilerplate lib",
     "lint": "lipemat-postcss-boilerplate lint",
+    "postprepare": "lipemat-js-boilerplate fix-pnp",
+    "prepublishOnly": "rm -rf lib/* && yarn run build",
     "start": "lipemat-postcss-boilerplate start",
-    "test": "lipemat-js-boilerplate test --silent",
-    "build": "babel src --out-dir lib",
-    "prepublishOnly": "rm -rf lib/* && yarn run build"
+    "test": "lipemat-js-boilerplate test --silent"
   },
   "css_folder": "css/",
   "file_name": "front-end",
@@ -67,7 +68,9 @@
     "update-notifier": "^2.5.0"
   },
   "devDependencies": {
-    "@lipemat/js-boilerplate": "^8.5.0"
+    "@babel/cli": "^7.17.10",
+    "@lipemat/js-boilerplate": "^8.5.0",
+    "jest": "^26"
   },
   "packageManager": "yarn@3.2.0"
 }
