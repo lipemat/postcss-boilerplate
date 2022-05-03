@@ -15,8 +15,8 @@ function resetCounters() {
 
 /**
  * Get the next class is sequence based on:
- * 1. Single character from shortAlphabet (prevent conflicts with JS boilerplate).
- * 2. Incremented character from the `alphabet`.
+ * 1. Single character from SHORT_ALPHABET (prevent conflicts with JS boilerplate).
+ * 2. Incremented character from the `ALPHABET`.
  *      1. Used once require 2+ characters.
  *      2. Grows to 3+ characters as needed.
  *
