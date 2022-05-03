@@ -32,7 +32,7 @@ const getGenerateScopeName = () => {
 		// @todo If run into issues with class name conflicts @see b36fc5309 as a more robust alternative.
 		return '[contenthash:base52:5]';
 	}
-	return 'Ⓜ[name]__[local]__[contenthash:base52:5]';
+	return 'Ⓜ[name]__[local]__[contenthash:base52:2]';
 }
 
 
