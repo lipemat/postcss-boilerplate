@@ -7,6 +7,10 @@
   "engines": {
     "node": ">=14.17.6"
   },
+  "bugs": {
+    "url": "https://github.com/lipemat/postcss-boilerplate/issues"
+  },
+  "homepage": "https://github.com/lipemat/postcss-boilerplate#readme",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/lipemat/postcss-boilerplate.git"
@@ -66,8 +70,5 @@
     "@babel/core": "^7.12.10",
     "@babel/preset-env": "^7.12.11"
   },
-  "bugs": {
-    "url": "https://github.com/lipemat/postcss-boilerplate/issues"
-  },
-  "homepage": "https://github.com/lipemat/postcss-boilerplate#readme"
+  "packageManager": "yarn@3.2.0"
 }
