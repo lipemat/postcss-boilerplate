@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "author": "Mat Lipe",
   "description": "Postcss theme driven by @lipemat/postcss-boilerplate",
+  "shortCssClasses": true,
   "theme_path": "./",
   "file_name": "front-end",
   "scripts": {
@@ -12,6 +13,6 @@
     "start": "lipemat-postcss-boilerplate start"
   },
   "dependencies": {
-    "@lipemat/postcss-boilerplate": "^3.0.0"
+    "@lipemat/postcss-boilerplate": "^3.7.0"
   }
 }

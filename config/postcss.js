@@ -1,6 +1,7 @@
 const config = require( '../helpers/package-config' );
 const postcssPresetEnv = require( 'postcss-preset-env' );
 const FileSystemLoader = require( '../lib/FileSystemLoader' );
+const {generateScopedName} = require( '../helpers/css-classnames' );
 const fs = require( 'fs' );
 const path = require( 'path' );
 const {getDefaultBrowsersList} = require( '../helpers/config' );
@@ -16,6 +17,24 @@ if ( getDefaultBrowsersList() ) {
 	presetEnv.browsers = getDefaultBrowsersList();
 }
 
+/**
+ * Get the hash to generate the CSS module name, or
+ * the `generateScopeName` for short CSS classes
+ * if enabled.
+ *
+ */
+const getGenerateScopeName = () => {
+	if ( 'production' === process.env.NODE_ENV) {
+		// Use short CSS classes if enabled.
+		if ( config.shortCssClasses ) {
+			return generateScopedName;
+		}
+		// @todo If run into issues with class name conflicts @see b36fc5309 as a more robust alternative.
+		return '[contenthash:base52:5]';
+	}
+	return 'Ⓜ[name]__[local]__[contenthash:base52:5]';
+}
+
 
 const compileOptions = {
 	map: true,
@@ -24,8 +43,7 @@ const compileOptions = {
 			extension: 'pcss',
 			plugins: [
 				require( 'postcss-modules' )( {
-					// @todo If run into issues with class name conflicts @see b36fc5309 as a more robust alternative.
-					generateScopedName: 'production' === process.env.NODE_ENV ? '[contenthash:base52:5]' : 'Ⓜ[name]__[local]__[contenthash:base52:5]',
+					generateScopedName: getGenerateScopeName(),
 					Loader: FileSystemLoader.default,
 					globalModulePaths: [
 						new RegExp( '.*?' + config.theme_path.replace( /\//g, '\\\\' ) + 'pcss', 'i' ),

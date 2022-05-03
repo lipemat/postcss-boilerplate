@@ -37,6 +37,7 @@ _This may also be found in the "templates" directory._
 ```
 
 * `css_folder` : Path of directory for generate finished CSS files within. Defaults to `css/`.
+* `shortCssClasses`: Enable short 1-2 character CSS classes. Recommended if you're not running multiple instances of this package on the same site.
 * `file_name` : Name of finished CSS file. Defaults to `front-end`.
 * `theme_path` : Path or theme's root relative to the package.json file.
 
