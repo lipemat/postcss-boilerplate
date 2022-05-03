@@ -36,6 +36,7 @@
     "dist": "lipemat-postcss-boilerplate lib",
     "lint": "lipemat-postcss-boilerplate lint",
     "start": "lipemat-postcss-boilerplate start",
+    "test": "lipemat-js-boilerplate test --silent",
     "build": "babel src --out-dir lib",
     "prepublishOnly": "rm -rf lib/* && yarn run build"
   },
@@ -66,9 +67,7 @@
     "update-notifier": "^2.5.0"
   },
   "devDependencies": {
-    "@babel/cli": "^7.12.10",
-    "@babel/core": "^7.12.10",
-    "@babel/preset-env": "^7.12.11"
+    "@lipemat/js-boilerplate": "^8.5.0"
   },
   "packageManager": "yarn@3.2.0"
 }
