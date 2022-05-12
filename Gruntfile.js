@@ -27,15 +27,5 @@ module.exports = function ( grunt ) {
 			'watch'
 		] );
 
-	/**
-	 * @deprecated Will be removed in next major version.
-	 */
-	grunt.registerTask( 'revision', function () {
-		if ( grunt.config.get( 'pkg' ).regenerate_revision ) {
-			console.log( 'Using `@lipemat/postcss-boilerplate.regenerate_revision` is deprecated and will be removed in the next version!' );
-			grunt.file.write( grunt.config.get( 'pkg' ).root + '.revision', Date.now() );
-		}
-	} );
-
 	return grunt;
 };
