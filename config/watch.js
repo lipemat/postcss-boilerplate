@@ -16,8 +16,7 @@ module.exports = {
 			'<%= pkg.theme_path %>template-parts/**/*.{pcss,css}'
 		],
 		tasks: [
-			'postcss:toCSS',
-			'revision'
+			'postcss:toCSS'
 		],
 		options: {
 			spawn: false,

@@ -9,7 +9,6 @@ const runner = require( '../helpers/run-task' );
  * @type {string}
  */
 runner.run( 'postcss:min' );
-runner.run( 'revision' );
 
 /**
  * Compile the /pcss/* files to .css
