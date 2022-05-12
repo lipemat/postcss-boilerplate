@@ -2,7 +2,7 @@ const packageConfig = require( '../helpers/package-config' );
 const fs = require( "fs" );
 let livereload = true;
 // Load local certificates for https if available.
-if ( 'object' === typeof ( packageConfig.certificates ) ) {
+if ( 'object' === typeof ( packageConfig.certificates ) && 'development' === process.env.NODE_ENV ) {
 	livereload =  {
 		cert: fs.readFileSync( packageConfig.certificates.cert ),
 		key: fs.readFileSync( packageConfig.certificates.key ),
