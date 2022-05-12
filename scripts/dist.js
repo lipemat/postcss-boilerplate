@@ -15,6 +15,9 @@ runner.run( 'postcss:min' );
  * Allows for switching to .css on production and not having the
  * site fall apart.
  *
+ * @notice Does not work correctly when using an unplugged,
+ *         symbolic-linked package as the cache does not get cleared.
+ *
  * @type {string}
  */
 process.env.NODE_ENV = 'develop';
