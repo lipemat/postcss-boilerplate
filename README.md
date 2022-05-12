@@ -48,3 +48,18 @@ All configurations are found in the `config` directory and may be extended by ad
 For instance is you want to adjust `postcss.js` you may add a `config/postcss.js` file in your project directory.
 
 All declarations are merged in favor of the project config.
+
+## Certificates
+
+If you are using https in your local environment, you may point to the certificates in your package.json like so:
+
+```json
+{
+  "certificates": {
+    "cert": "<path to -crt.pem file>",
+    "key": "<path to -key.pem file>"
+  }
+}
+```
+
+If certificates are provided, live reload will load via https. You'll want to point your livereload script https, and the domain of certificates origin.
