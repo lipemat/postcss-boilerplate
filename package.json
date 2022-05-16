@@ -72,5 +72,5 @@
     "@lipemat/js-boilerplate": "^8.5.0",
     "jest": "^26"
   },
-  "packageManager": "yarn@3.2.0"
+  "packageManager": "yarn@3.2.1"
 }
