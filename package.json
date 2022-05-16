@@ -5,7 +5,7 @@
   "author": "Mat Lipe",
   "license": "MIT",
   "engines": {
-    "node": ">=14.17.6"
+    "node": ">=16.14.2"
   },
   "bugs": {
     "url": "https://github.com/lipemat/postcss-boilerplate/issues"
