@@ -12,7 +12,7 @@ module.exports = function ( grunt ) {
 		stylelint: configHelper.getConfig( 'stylelint.js' )
 	} );
 
-	grunt.loadNpmTasks( 'grunt-postcss' );
+	grunt.loadNpmTasks( '@lodder/grunt-postcss' );
 	grunt.loadNpmTasks( 'grunt-contrib-watch' );
 	grunt.loadNpmTasks( 'grunt-stylelint' );
 

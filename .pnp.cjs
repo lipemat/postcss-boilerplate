@@ -675,6 +675,10 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
         "virtual:c2f89f8f9a011c55bc36581a4a814e5cba7a28d20a034ab9e0f9170799be285b91a603cad0883718f3e03fbb8cec7ca3d33f5f3bd18ac9887de271553d063617#npm:1.0.0"\
       ],\
       [\
+        "@lodder/grunt-postcss",\
+        "virtual:1638d8a1a2d593b8169ffe9d70f3c9e9d1509d2f5963ba8fea516113e9e47063b31f182107f616b8cf93bd7e0d863174da1e8f027f01dffdc7988bf1eec9ba20#npm:3.1.1"\
+      ],\
+      [\
         "@nicolo-ribaudo/chokidar-2",\
         "npm:2.1.8-no-fsevents.3"\
       ],\
@@ -1824,7 +1828,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
       ],\
       [\
         "diff",\
-        "npm:3.5.0"\
+        "npm:5.0.0"\
       ],\
       [\
         "diff-sequences",\
@@ -1889,6 +1893,10 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
       [\
         "dot-prop",\
         "npm:5.3.0"\
+      ],\
+      [\
+        "duplexer",\
+        "npm:0.1.2"\
       ],\
       [\
         "duplexer3",\
@@ -2183,6 +2191,10 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
         "npm:2.0.1"\
       ],\
       [\
+        "figures",\
+        "npm:3.2.0"\
+      ],\
+      [\
         "file-entry-cache",\
         "npm:6.0.1"\
       ],\
@@ -2435,12 +2447,12 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
         "npm:2.0.1"\
       ],\
       [\
-        "grunt-postcss",\
-        "virtual:1638d8a1a2d593b8169ffe9d70f3c9e9d1509d2f5963ba8fea516113e9e47063b31f182107f616b8cf93bd7e0d863174da1e8f027f01dffdc7988bf1eec9ba20#npm:0.9.0"\
-      ],\
-      [\
         "grunt-stylelint",\
         "virtual:1638d8a1a2d593b8169ffe9d70f3c9e9d1509d2f5963ba8fea516113e9e47063b31f182107f616b8cf93bd7e0d863174da1e8f027f01dffdc7988bf1eec9ba20#npm:0.10.1"\
+      ],\
+      [\
+        "gzip-size",\
+        "npm:5.1.1"\
       ],\
       [\
         "handle-thing",\
@@ -3203,6 +3215,10 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
         "npm:1.0.0"\
       ],\
       [\
+        "maxmin",\
+        "npm:3.0.0"\
+      ],\
+      [\
         "media-typer",\
         "npm:0.3.0"\
       ],\
@@ -3868,6 +3884,10 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
       [\
         "prettier-linter-helpers",\
         "npm:1.0.0"\
+      ],\
+      [\
+        "pretty-bytes",\
+        "npm:5.6.0"\
       ],\
       [\
         "pretty-error",\
@@ -4875,6 +4895,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@lipemat/css-mqpacker", "virtual:1638d8a1a2d593b8169ffe9d70f3c9e9d1509d2f5963ba8fea516113e9e47063b31f182107f616b8cf93bd7e0d863174da1e8f027f01dffdc7988bf1eec9ba20#npm:9.0.0-beta.2"],\
             ["@lipemat/js-boilerplate", "npm:8.5.0"],\
             ["@lipemat/stylelint-config", "virtual:1638d8a1a2d593b8169ffe9d70f3c9e9d1509d2f5963ba8fea516113e9e47063b31f182107f616b8cf93bd7e0d863174da1e8f027f01dffdc7988bf1eec9ba20#npm:1.4.0"],\
+            ["@lodder/grunt-postcss", "virtual:1638d8a1a2d593b8169ffe9d70f3c9e9d1509d2f5963ba8fea516113e9e47063b31f182107f616b8cf93bd7e0d863174da1e8f027f01dffdc7988bf1eec9ba20#npm:3.1.1"],\
             ["@wordpress/browserslist-config", "npm:4.1.3"],\
             ["browserslist", "npm:4.20.3"],\
             ["clean-css", "npm:5.3.0"],\
@@ -4883,7 +4904,6 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["fs-extra", "npm:7.0.1"],\
             ["grunt", "npm:1.5.2"],\
             ["grunt-contrib-watch", "npm:1.1.0"],\
-            ["grunt-postcss", "virtual:1638d8a1a2d593b8169ffe9d70f3c9e9d1509d2f5963ba8fea516113e9e47063b31f182107f616b8cf93bd7e0d863174da1e8f027f01dffdc7988bf1eec9ba20#npm:0.9.0"],\
             ["grunt-stylelint", "virtual:1638d8a1a2d593b8169ffe9d70f3c9e9d1509d2f5963ba8fea516113e9e47063b31f182107f616b8cf93bd7e0d863174da1e8f027f01dffdc7988bf1eec9ba20#npm:0.10.1"],\
             ["jest", "npm:26.6.3"],\
             ["lodash", "npm:4.17.21"],\
@@ -8369,6 +8389,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@lipemat/css-mqpacker", "virtual:1638d8a1a2d593b8169ffe9d70f3c9e9d1509d2f5963ba8fea516113e9e47063b31f182107f616b8cf93bd7e0d863174da1e8f027f01dffdc7988bf1eec9ba20#npm:9.0.0-beta.2"],\
             ["@lipemat/js-boilerplate", "npm:8.5.0"],\
             ["@lipemat/stylelint-config", "virtual:1638d8a1a2d593b8169ffe9d70f3c9e9d1509d2f5963ba8fea516113e9e47063b31f182107f616b8cf93bd7e0d863174da1e8f027f01dffdc7988bf1eec9ba20#npm:1.4.0"],\
+            ["@lodder/grunt-postcss", "virtual:1638d8a1a2d593b8169ffe9d70f3c9e9d1509d2f5963ba8fea516113e9e47063b31f182107f616b8cf93bd7e0d863174da1e8f027f01dffdc7988bf1eec9ba20#npm:3.1.1"],\
             ["@wordpress/browserslist-config", "npm:4.1.3"],\
             ["browserslist", "npm:4.20.3"],\
             ["clean-css", "npm:5.3.0"],\
@@ -8377,7 +8398,6 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["fs-extra", "npm:7.0.1"],\
             ["grunt", "npm:1.5.2"],\
             ["grunt-contrib-watch", "npm:1.1.0"],\
-            ["grunt-postcss", "virtual:1638d8a1a2d593b8169ffe9d70f3c9e9d1509d2f5963ba8fea516113e9e47063b31f182107f616b8cf93bd7e0d863174da1e8f027f01dffdc7988bf1eec9ba20#npm:0.9.0"],\
             ["grunt-stylelint", "virtual:1638d8a1a2d593b8169ffe9d70f3c9e9d1509d2f5963ba8fea516113e9e47063b31f182107f616b8cf93bd7e0d863174da1e8f027f01dffdc7988bf1eec9ba20#npm:0.10.1"],\
             ["jest", "npm:26.6.3"],\
             ["lodash", "npm:4.17.21"],\
@@ -8451,6 +8471,35 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packagePeers": [\
             "@types/webpack",\
             "webpack"\
+          ],\
+          "linkType": "HARD"\
+        }]\
+      ]],\
+      ["@lodder/grunt-postcss", [\
+        ["npm:3.1.1", {\
+          "packageLocation": "./.yarn/cache/@lodder-grunt-postcss-npm-3.1.1-539d44d183-0d23f13071.zip/node_modules/@lodder/grunt-postcss/",\
+          "packageDependencies": [\
+            ["@lodder/grunt-postcss", "npm:3.1.1"]\
+          ],\
+          "linkType": "SOFT"\
+        }],\
+        ["virtual:1638d8a1a2d593b8169ffe9d70f3c9e9d1509d2f5963ba8fea516113e9e47063b31f182107f616b8cf93bd7e0d863174da1e8f027f01dffdc7988bf1eec9ba20#npm:3.1.1", {\
+          "packageLocation": "./.yarn/__virtual__/@lodder-grunt-postcss-virtual-ade8827cfb/0/cache/@lodder-grunt-postcss-npm-3.1.1-539d44d183-0d23f13071.zip/node_modules/@lodder/grunt-postcss/",\
+          "packageDependencies": [\
+            ["@lodder/grunt-postcss", "virtual:1638d8a1a2d593b8169ffe9d70f3c9e9d1509d2f5963ba8fea516113e9e47063b31f182107f616b8cf93bd7e0d863174da1e8f027f01dffdc7988bf1eec9ba20#npm:3.1.1"],\
+            ["@types/grunt", null],\
+            ["@types/postcss", null],\
+            ["diff", "npm:5.0.0"],\
+            ["grunt", "npm:1.5.2"],\
+            ["maxmin", "npm:3.0.0"],\
+            ["picocolors", "npm:1.0.0"],\
+            ["postcss", "npm:8.4.13"]\
+          ],\
+          "packagePeers": [\
+            "@types/grunt",\
+            "@types/postcss",\
+            "grunt",\
+            "postcss"\
           ],\
           "linkType": "HARD"\
         }]\
@@ -12593,10 +12642,10 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
         }]\
       ]],\
       ["diff", [\
-        ["npm:3.5.0", {\
-          "packageLocation": "./.yarn/cache/diff-npm-3.5.0-a321a0df19-00842950a6.zip/node_modules/diff/",\
+        ["npm:5.0.0", {\
+          "packageLocation": "./.yarn/cache/diff-npm-5.0.0-ad6900db18-f19fe29284.zip/node_modules/diff/",\
           "packageDependencies": [\
-            ["diff", "npm:3.5.0"]\
+            ["diff", "npm:5.0.0"]\
           ],\
           "linkType": "HARD"\
         }]\
@@ -12781,6 +12830,15 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageDependencies": [\
             ["dot-prop", "npm:5.3.0"],\
             ["is-obj", "npm:2.0.0"]\
+          ],\
+          "linkType": "HARD"\
+        }]\
+      ]],\
+      ["duplexer", [\
+        ["npm:0.1.2", {\
+          "packageLocation": "./.yarn/cache/duplexer-npm-0.1.2-952c810235-62ba61a830.zip/node_modules/duplexer/",\
+          "packageDependencies": [\
+            ["duplexer", "npm:0.1.2"]\
           ],\
           "linkType": "HARD"\
         }]\
@@ -13954,6 +14012,16 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "linkType": "HARD"\
         }]\
       ]],\
+      ["figures", [\
+        ["npm:3.2.0", {\
+          "packageLocation": "./.yarn/cache/figures-npm-3.2.0-85d357e955-85a6ad29e9.zip/node_modules/figures/",\
+          "packageDependencies": [\
+            ["figures", "npm:3.2.0"],\
+            ["escape-string-regexp", "npm:1.0.5"]\
+          ],\
+          "linkType": "HARD"\
+        }]\
+      ]],\
       ["file-entry-cache", [\
         ["npm:6.0.1", {\
           "packageLocation": "./.yarn/cache/file-entry-cache-npm-6.0.1-31965cf0af-f49701feaa.zip/node_modules/file-entry-cache/",\
@@ -14864,31 +14932,6 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "linkType": "HARD"\
         }]\
       ]],\
-      ["grunt-postcss", [\
-        ["npm:0.9.0", {\
-          "packageLocation": "./.yarn/cache/grunt-postcss-npm-0.9.0-a55573c8ad-c4b3737b88.zip/node_modules/grunt-postcss/",\
-          "packageDependencies": [\
-            ["grunt-postcss", "npm:0.9.0"]\
-          ],\
-          "linkType": "SOFT"\
-        }],\
-        ["virtual:1638d8a1a2d593b8169ffe9d70f3c9e9d1509d2f5963ba8fea516113e9e47063b31f182107f616b8cf93bd7e0d863174da1e8f027f01dffdc7988bf1eec9ba20#npm:0.9.0", {\
-          "packageLocation": "./.yarn/__virtual__/grunt-postcss-virtual-4ac1784621/0/cache/grunt-postcss-npm-0.9.0-a55573c8ad-c4b3737b88.zip/node_modules/grunt-postcss/",\
-          "packageDependencies": [\
-            ["grunt-postcss", "virtual:1638d8a1a2d593b8169ffe9d70f3c9e9d1509d2f5963ba8fea516113e9e47063b31f182107f616b8cf93bd7e0d863174da1e8f027f01dffdc7988bf1eec9ba20#npm:0.9.0"],\
-            ["@types/grunt", null],\
-            ["chalk", "npm:2.4.2"],\
-            ["diff", "npm:3.5.0"],\
-            ["grunt", "npm:1.5.2"],\
-            ["postcss", "npm:6.0.23"]\
-          ],\
-          "packagePeers": [\
-            "@types/grunt",\
-            "grunt"\
-          ],\
-          "linkType": "HARD"\
-        }]\
-      ]],\
       ["grunt-stylelint", [\
         ["npm:0.10.1", {\
           "packageLocation": "./.yarn/cache/grunt-stylelint-npm-0.10.1-93a4cd744c-56a0f36956.zip/node_modules/grunt-stylelint/",\
@@ -14908,6 +14951,17 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packagePeers": [\
             "@types/stylelint",\
             "stylelint"\
+          ],\
+          "linkType": "HARD"\
+        }]\
+      ]],\
+      ["gzip-size", [\
+        ["npm:5.1.1", {\
+          "packageLocation": "./.yarn/cache/gzip-size-npm-5.1.1-b757f76e19-6451ba2210.zip/node_modules/gzip-size/",\
+          "packageDependencies": [\
+            ["gzip-size", "npm:5.1.1"],\
+            ["duplexer", "npm:0.1.2"],\
+            ["pify", "npm:4.0.1"]\
           ],\
           "linkType": "HARD"\
         }]\
@@ -17594,6 +17648,19 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageDependencies": [\
             ["map-visit", "npm:1.0.0"],\
             ["object-visit", "npm:1.0.1"]\
+          ],\
+          "linkType": "HARD"\
+        }]\
+      ]],\
+      ["maxmin", [\
+        ["npm:3.0.0", {\
+          "packageLocation": "./.yarn/cache/maxmin-npm-3.0.0-030bab8f18-6efb19ccb4.zip/node_modules/maxmin/",\
+          "packageDependencies": [\
+            ["maxmin", "npm:3.0.0"],\
+            ["chalk", "npm:4.1.2"],\
+            ["figures", "npm:3.2.0"],\
+            ["gzip-size", "npm:5.1.1"],\
+            ["pretty-bytes", "npm:5.6.0"]\
           ],\
           "linkType": "HARD"\
         }]\
@@ -20458,6 +20525,15 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageDependencies": [\
             ["prettier-linter-helpers", "npm:1.0.0"],\
             ["fast-diff", "npm:1.2.0"]\
+          ],\
+          "linkType": "HARD"\
+        }]\
+      ]],\
+      ["pretty-bytes", [\
+        ["npm:5.6.0", {\
+          "packageLocation": "./.yarn/cache/pretty-bytes-npm-5.6.0-0061079c9f-9c082500d1.zip/node_modules/pretty-bytes/",\
+          "packageDependencies": [\
+            ["pretty-bytes", "npm:5.6.0"]\
           ],\
           "linkType": "HARD"\
         }]\
@@ -33015,7 +33091,10 @@ Required by: ${issuerForDisplay}
             if (runtimeState.enableTopLevelFallback) {
               if (dependencyReference == null && fallbackReference === null) {
                 const reference = runtimeState.fallbackPool.get(dependencyName);
-                if (reference != null) {
+                // # Warnings suppressed via @lipemat/js-boilerplate/fix-pnp script. 
+if (! alwaysWarnOnFallback && reference != null) { 
+dependencyReference = reference; 
+} else if (alwaysWarnOnFallback && reference != null) {
                   fallbackReference = reference;
                 }
               }

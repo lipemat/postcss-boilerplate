@@ -24,7 +24,7 @@ if ( getDefaultBrowsersList() ) {
  *
  */
 const getGenerateScopeName = () => {
-	if ( 'production' === process.env.NODE_ENV) {
+	if ( 'production' === process.env.NODE_ENV ) {
 		// Use short CSS classes if enabled.
 		if ( config.shortCssClasses ) {
 			return generateScopedName;
