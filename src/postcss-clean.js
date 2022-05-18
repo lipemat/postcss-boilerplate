@@ -29,8 +29,8 @@ module.exports = ( opts = {} ) => {
 						return reject( new Error( err.join( '\n' ) ) );
 					}
 
-					for ( const w of min.warnings ) {
-						result.warn( w );
+					if ( min.warnings.length > 0 ) {
+						return reject( new Error( 'postcss-clean minify failed! \n' + min.warnings.join( '\n' ) ) );
 					}
 
 					result.root = postcss.parse( min.styles );
