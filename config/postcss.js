@@ -73,8 +73,7 @@ const compileOptions = {
 				} ),
 			],
 		} ),
-		// Use until https://github.com/postcss/postcss-custom-media/pull/59 is merged.
-		require( 'postcss-custom-media-with-spaces' ),
+		require( 'postcss-custom-media' ),
 		require( 'postcss-nested' ),
 		postcssPresetEnv( presetEnv ),
 		require( 'postcss-color-mod-function' ),
