@@ -2125,7 +2125,7 @@ __metadata:
     lodash: ^4.17.20
     postcss: ^8.4.13
     postcss-color-mod-function: ^3.0.3
-    postcss-custom-media: ^8.0.0
+    postcss-custom-media: ^8.0.1
     postcss-import: ^14.1.0
     postcss-modules: ^3.2.2
     postcss-nested: ^5.0.6
@@ -11347,6 +11347,17 @@ __metadata:
   peerDependencies:
     postcss: ^8.1.0
   checksum: 11c22e1b8cd5ec13093cb563a3a44817b38127e7f97bde954027f377a6848976092fb5482b96ef0f8b3f716038d9804a01a928eebe98c2d8a1fa9806ff4d3436
+  languageName: node
+  linkType: hard
+
+"postcss-custom-media@npm:^8.0.1":
+  version: 8.0.2
+  resolution: "postcss-custom-media@npm:8.0.2"
+  dependencies:
+    postcss-value-parser: ^4.2.0
+  peerDependencies:
+    postcss: ^8.3
+  checksum: 887bbbacf6f8fab688123796e5dc1e8283b99f21e4c674235bd929dc8018c50df8634ea08932033ec93baaca32670ef2b87e6632863e0b4d84847375dbde9366
   languageName: node
   linkType: hard
 
