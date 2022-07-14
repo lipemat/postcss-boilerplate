@@ -652,7 +652,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
       ],\
       [\
         "@lipemat/css-mqpacker",\
-        "virtual:1638d8a1a2d593b8169ffe9d70f3c9e9d1509d2f5963ba8fea516113e9e47063b31f182107f616b8cf93bd7e0d863174da1e8f027f01dffdc7988bf1eec9ba20#npm:9.0.0-beta.2"\
+        "virtual:1638d8a1a2d593b8169ffe9d70f3c9e9d1509d2f5963ba8fea516113e9e47063b31f182107f616b8cf93bd7e0d863174da1e8f027f01dffdc7988bf1eec9ba20#npm:9.0.0"\
       ],\
       [\
         "@lipemat/eslint-config",\
@@ -4888,7 +4888,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageLocation": "./",\
           "packageDependencies": [\
             ["@babel/cli", "virtual:1638d8a1a2d593b8169ffe9d70f3c9e9d1509d2f5963ba8fea516113e9e47063b31f182107f616b8cf93bd7e0d863174da1e8f027f01dffdc7988bf1eec9ba20#npm:7.17.10"],\
-            ["@lipemat/css-mqpacker", "virtual:1638d8a1a2d593b8169ffe9d70f3c9e9d1509d2f5963ba8fea516113e9e47063b31f182107f616b8cf93bd7e0d863174da1e8f027f01dffdc7988bf1eec9ba20#npm:9.0.0-beta.2"],\
+            ["@lipemat/css-mqpacker", "virtual:1638d8a1a2d593b8169ffe9d70f3c9e9d1509d2f5963ba8fea516113e9e47063b31f182107f616b8cf93bd7e0d863174da1e8f027f01dffdc7988bf1eec9ba20#npm:9.0.0"],\
             ["@lipemat/js-boilerplate", "npm:8.5.0"],\
             ["@lipemat/stylelint-config", "virtual:1638d8a1a2d593b8169ffe9d70f3c9e9d1509d2f5963ba8fea516113e9e47063b31f182107f616b8cf93bd7e0d863174da1e8f027f01dffdc7988bf1eec9ba20#npm:1.4.0"],\
             ["@lodder/grunt-postcss", "virtual:1638d8a1a2d593b8169ffe9d70f3c9e9d1509d2f5963ba8fea516113e9e47063b31f182107f616b8cf93bd7e0d863174da1e8f027f01dffdc7988bf1eec9ba20#npm:3.1.1"],\
@@ -8283,17 +8283,17 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           ],\
           "linkType": "HARD"\
         }],\
-        ["npm:9.0.0-beta.2", {\
-          "packageLocation": "./.yarn/cache/@lipemat-css-mqpacker-npm-9.0.0-beta.2-3b6cb212e7-b42158c475.zip/node_modules/@lipemat/css-mqpacker/",\
+        ["npm:9.0.0", {\
+          "packageLocation": "./.yarn/cache/@lipemat-css-mqpacker-npm-9.0.0-9e408ae9f2-487b02c5a5.zip/node_modules/@lipemat/css-mqpacker/",\
           "packageDependencies": [\
-            ["@lipemat/css-mqpacker", "npm:9.0.0-beta.2"]\
+            ["@lipemat/css-mqpacker", "npm:9.0.0"]\
           ],\
           "linkType": "SOFT"\
         }],\
-        ["virtual:1638d8a1a2d593b8169ffe9d70f3c9e9d1509d2f5963ba8fea516113e9e47063b31f182107f616b8cf93bd7e0d863174da1e8f027f01dffdc7988bf1eec9ba20#npm:9.0.0-beta.2", {\
-          "packageLocation": "./.yarn/__virtual__/@lipemat-css-mqpacker-virtual-0f00677bcc/0/cache/@lipemat-css-mqpacker-npm-9.0.0-beta.2-3b6cb212e7-b42158c475.zip/node_modules/@lipemat/css-mqpacker/",\
+        ["virtual:1638d8a1a2d593b8169ffe9d70f3c9e9d1509d2f5963ba8fea516113e9e47063b31f182107f616b8cf93bd7e0d863174da1e8f027f01dffdc7988bf1eec9ba20#npm:9.0.0", {\
+          "packageLocation": "./.yarn/__virtual__/@lipemat-css-mqpacker-virtual-8b2a348380/0/cache/@lipemat-css-mqpacker-npm-9.0.0-9e408ae9f2-487b02c5a5.zip/node_modules/@lipemat/css-mqpacker/",\
           "packageDependencies": [\
-            ["@lipemat/css-mqpacker", "virtual:1638d8a1a2d593b8169ffe9d70f3c9e9d1509d2f5963ba8fea516113e9e47063b31f182107f616b8cf93bd7e0d863174da1e8f027f01dffdc7988bf1eec9ba20#npm:9.0.0-beta.2"],\
+            ["@lipemat/css-mqpacker", "virtual:1638d8a1a2d593b8169ffe9d70f3c9e9d1509d2f5963ba8fea516113e9e47063b31f182107f616b8cf93bd7e0d863174da1e8f027f01dffdc7988bf1eec9ba20#npm:9.0.0"],\
             ["@types/postcss", null],\
             ["minimist", "npm:1.2.6"],\
             ["postcss", "npm:8.4.13"]\
@@ -8382,7 +8382,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageDependencies": [\
             ["@lipemat/postcss-boilerplate", "workspace:."],\
             ["@babel/cli", "virtual:1638d8a1a2d593b8169ffe9d70f3c9e9d1509d2f5963ba8fea516113e9e47063b31f182107f616b8cf93bd7e0d863174da1e8f027f01dffdc7988bf1eec9ba20#npm:7.17.10"],\
-            ["@lipemat/css-mqpacker", "virtual:1638d8a1a2d593b8169ffe9d70f3c9e9d1509d2f5963ba8fea516113e9e47063b31f182107f616b8cf93bd7e0d863174da1e8f027f01dffdc7988bf1eec9ba20#npm:9.0.0-beta.2"],\
+            ["@lipemat/css-mqpacker", "virtual:1638d8a1a2d593b8169ffe9d70f3c9e9d1509d2f5963ba8fea516113e9e47063b31f182107f616b8cf93bd7e0d863174da1e8f027f01dffdc7988bf1eec9ba20#npm:9.0.0"],\
             ["@lipemat/js-boilerplate", "npm:8.5.0"],\
             ["@lipemat/stylelint-config", "virtual:1638d8a1a2d593b8169ffe9d70f3c9e9d1509d2f5963ba8fea516113e9e47063b31f182107f616b8cf93bd7e0d863174da1e8f027f01dffdc7988bf1eec9ba20#npm:1.4.0"],\
             ["@lodder/grunt-postcss", "virtual:1638d8a1a2d593b8169ffe9d70f3c9e9d1509d2f5963ba8fea516113e9e47063b31f182107f616b8cf93bd7e0d863174da1e8f027f01dffdc7988bf1eec9ba20#npm:3.1.1"],\
@@ -33086,10 +33086,7 @@ Required by: ${issuerForDisplay}
             if (runtimeState.enableTopLevelFallback) {
               if (dependencyReference == null && fallbackReference === null) {
                 const reference = runtimeState.fallbackPool.get(dependencyName);
-                // # Warnings suppressed via @lipemat/js-boilerplate/fix-pnp script. 
-if (! alwaysWarnOnFallback && reference != null) { 
-dependencyReference = reference; 
-} else if (alwaysWarnOnFallback && reference != null) {
+                if (reference != null) {
                   fallbackReference = reference;
                 }
               }
