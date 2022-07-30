@@ -106,10 +106,15 @@ const gruntTasks = {
 	},
 };
 
-// Loads an admin.pcss file if it exists @since 2.4.0
 if ( fs.existsSync( path.resolve( config.theme_path + 'pcss', 'admin.pcss' ) ) ) {
 	gruntTasks.toCSS.files[ '<%= pkg.theme_path %><%= pkg.css_folder %>admin.css' ] = '<%= pkg.theme_path %>pcss/admin.pcss';
 	gruntTasks.min.files[ '<%= pkg.theme_path %><%= pkg.css_folder %>admin.min.css' ] = '<%= pkg.theme_path %>pcss/admin.pcss';
+}
+
+// Loads a blocks.pcss file if it exists @since 4.2.0
+if ( fs.existsSync( path.resolve( config.theme_path + 'pcss', 'blocks.pcss' ) ) ) {
+	gruntTasks.toCSS.files[ '<%= pkg.theme_path %><%= pkg.css_folder %>blocks.css' ] = '<%= pkg.theme_path %>pcss/blocks.pcss';
+	gruntTasks.min.files[ '<%= pkg.theme_path %><%= pkg.css_folder %>blocks.min.css' ] = '<%= pkg.theme_path %>pcss/blocks.pcss';
 }
 
 
