@@ -7,7 +7,30 @@ const path = require( 'path' );
 const {getDefaultBrowsersList} = require( '../helpers/config' );
 
 const modulesFolder = 'production' === process.env.NODE_ENV ? '_css-modules-json/min/' : '_css-modules-json/';
-const presetEnv = {};
+
+const presetEnv = {
+	features: {
+		/**
+		 * Fixes `focus-visible` feature for CSS modules (included by preset-env anywhere
+		 * Safari is supported).
+		 *
+		 * Requires `focus-visible` polyfill to be loaded externally to support Safari.
+		 *
+		 * @link https://caniuse.com/css-focus-visible
+		 *
+		 * May be imported directly into the index.js for sites, which loads JS app
+		 * on every page.
+		 * @link https://github.com/WICG/focus-visible
+		 *
+		 * Most will often need it site wide on pages, which do and don't use the JS app.
+		 * @link https://unpkg.com/focus-visible@5.2.0/dist/focus-visible.min.js
+		 */
+		'focus-visible-pseudo-class': {
+			replaceWith: ':global(.focus-visible)',
+		},
+	},
+};
+
 /**
  * If browserslist is not specified, we fall back to WordPress defaults.
  *
