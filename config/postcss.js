@@ -72,6 +72,7 @@ const compileOptions = {
 					},
 				} ),
 			],
+			skipDuplicates: false,
 		} ),
 		require( 'postcss-custom-media' ),
 		require( 'postcss-nested' ),
