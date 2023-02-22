@@ -3747,6 +3747,10 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
         "npm:2.0.0"\
       ],\
       [\
+        "postcss-hash",\
+        "npm:3.0.0"\
+      ],\
+      [\
         "postcss-image-set-function",\
         "npm:3.0.1"\
       ],\
@@ -4906,6 +4910,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["postcss", "npm:8.4.13"],\
             ["postcss-color-mod-function", "npm:3.0.3"],\
             ["postcss-custom-media", "virtual:1638d8a1a2d593b8169ffe9d70f3c9e9d1509d2f5963ba8fea516113e9e47063b31f182107f616b8cf93bd7e0d863174da1e8f027f01dffdc7988bf1eec9ba20#npm:8.0.2"],\
+            ["postcss-hash", "npm:3.0.0"],\
             ["postcss-import", "virtual:1638d8a1a2d593b8169ffe9d70f3c9e9d1509d2f5963ba8fea516113e9e47063b31f182107f616b8cf93bd7e0d863174da1e8f027f01dffdc7988bf1eec9ba20#npm:14.1.0"],\
             ["postcss-modules", "npm:3.2.2"],\
             ["postcss-nested", "virtual:1638d8a1a2d593b8169ffe9d70f3c9e9d1509d2f5963ba8fea516113e9e47063b31f182107f616b8cf93bd7e0d863174da1e8f027f01dffdc7988bf1eec9ba20#npm:5.0.6"],\
@@ -8400,6 +8405,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["postcss", "npm:8.4.13"],\
             ["postcss-color-mod-function", "npm:3.0.3"],\
             ["postcss-custom-media", "virtual:1638d8a1a2d593b8169ffe9d70f3c9e9d1509d2f5963ba8fea516113e9e47063b31f182107f616b8cf93bd7e0d863174da1e8f027f01dffdc7988bf1eec9ba20#npm:8.0.2"],\
+            ["postcss-hash", "npm:3.0.0"],\
             ["postcss-import", "virtual:1638d8a1a2d593b8169ffe9d70f3c9e9d1509d2f5963ba8fea516113e9e47063b31f182107f616b8cf93bd7e0d863174da1e8f027f01dffdc7988bf1eec9ba20#npm:14.1.0"],\
             ["postcss-modules", "npm:3.2.2"],\
             ["postcss-nested", "virtual:1638d8a1a2d593b8169ffe9d70f3c9e9d1509d2f5963ba8fea516113e9e47063b31f182107f616b8cf93bd7e0d863174da1e8f027f01dffdc7988bf1eec9ba20#npm:5.0.6"],\
@@ -19601,6 +19607,16 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packagePeers": [\
             "@types/postcss",\
             "postcss"\
+          ],\
+          "linkType": "HARD"\
+        }]\
+      ]],\
+      ["postcss-hash", [\
+        ["npm:3.0.0", {\
+          "packageLocation": "./.yarn/cache/postcss-hash-npm-3.0.0-3d42f6b7f3-3f4d9f77f8.zip/node_modules/postcss-hash/",\
+          "packageDependencies": [\
+            ["postcss-hash", "npm:3.0.0"],\
+            ["mkdirp", "npm:0.5.6"]\
           ],\
           "linkType": "HARD"\
         }]\
@@ -33086,7 +33102,10 @@ Required by: ${issuerForDisplay}
             if (runtimeState.enableTopLevelFallback) {
               if (dependencyReference == null && fallbackReference === null) {
                 const reference = runtimeState.fallbackPool.get(dependencyName);
-                if (reference != null) {
+                // # Warnings suppressed via @lipemat/js-boilerplate/fix-pnp script. 
+if (! alwaysWarnOnFallback && reference != null) { 
+dependencyReference = reference; 
+} else if (alwaysWarnOnFallback && reference != null) {
                   fallbackReference = reference;
                 }
               }

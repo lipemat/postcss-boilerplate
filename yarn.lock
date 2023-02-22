@@ -2126,6 +2126,7 @@ __metadata:
     postcss: ^8.4.13
     postcss-color-mod-function: ^3.0.3
     postcss-custom-media: ^8.0.1
+    postcss-hash: ^3.0.0
     postcss-import: ^14.1.0
     postcss-modules: ^3.2.2
     postcss-nested: ^5.0.6
@@ -11540,6 +11541,15 @@ __metadata:
   peerDependencies:
     postcss: ^8.4
   checksum: 8b7bb4292093fa66fa874143b69297d25ab83e5b8aef643f0a39cff900d9754cae55f0fb267f9230dbccbf31d538f2e885c59274daabe57a7b56716292dd89d5
+  languageName: node
+  linkType: hard
+
+"postcss-hash@npm:^3.0.0":
+  version: 3.0.0
+  resolution: "postcss-hash@npm:3.0.0"
+  dependencies:
+    mkdirp: ^0.5.1
+  checksum: 3f4d9f77f8ed92bba02a8d67845df039add3e43227748859b9135bf9c618c0aa31b244fe5411aa8e66479e827c7aeef39dd5c6083f9631838b9c79a71fcc8d79
   languageName: node
   linkType: hard
 

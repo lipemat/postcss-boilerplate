@@ -102,6 +102,12 @@ const compileOptions = {
 		postcssPresetEnv( presetEnv ),
 		require( 'postcss-color-mod-function' ),
 		require( '@lipemat/css-mqpacker' ),
+		// Create a manifest for browser cache flushing.
+		require( 'postcss-hash' )( {
+			trim: 20,
+			manifest: config.css_folder + '/manifest.json',
+			name: ( {hash} ) => hash
+		} )
 	],
 	parser: require( 'postcss-scss' ),
 };
