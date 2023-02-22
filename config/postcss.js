@@ -2,8 +2,7 @@ const config = require( '../helpers/package-config' );
 const postcssPresetEnv = require( 'postcss-preset-env' );
 const FileSystemLoader = require( '../lib/FileSystemLoader' );
 const {generateScopedName} = require( '../helpers/css-classnames' );
-const fs = require( 'fs' );
-const path = require( 'path' );
+const {getEntries} = require( '../helpers/entries' );
 const {getDefaultBrowsersList} = require( '../helpers/config' );
 
 const modulesFolder = 'production' === process.env.NODE_ENV ? '_css-modules-json/min/' : '_css-modules-json/';
@@ -123,29 +122,13 @@ minOptions.processors.push( require( '../lib/postcss-clean' )( {
 const gruntTasks = {
 	toCSS: {
 		options: compileOptions,
-		files: {
-			'<%= pkg.theme_path %><%= pkg.css_folder %><%= pkg.file_name %>.css': '<%= pkg.theme_path %>pcss/<%= pkg.file_name %>.pcss',
-		},
+		files: getEntries().toCSS
 	},
 
 	min: {
 		options: minOptions,
-		files: {
-			'<%= pkg.theme_path %><%= pkg.css_folder %><%= pkg.file_name %>.min.css': '<%= pkg.theme_path %>pcss/<%= pkg.file_name %>.pcss',
-		},
+		files: getEntries().min
 	},
 };
-
-if ( fs.existsSync( path.resolve( config.theme_path + 'pcss', 'admin.pcss' ) ) ) {
-	gruntTasks.toCSS.files[ '<%= pkg.theme_path %><%= pkg.css_folder %>admin.css' ] = '<%= pkg.theme_path %>pcss/admin.pcss';
-	gruntTasks.min.files[ '<%= pkg.theme_path %><%= pkg.css_folder %>admin.min.css' ] = '<%= pkg.theme_path %>pcss/admin.pcss';
-}
-
-// Loads a blocks.pcss file if it exists @since 4.2.0
-if ( fs.existsSync( path.resolve( config.theme_path + 'pcss', 'blocks.pcss' ) ) ) {
-	gruntTasks.toCSS.files[ '<%= pkg.theme_path %><%= pkg.css_folder %>blocks.css' ] = '<%= pkg.theme_path %>pcss/blocks.pcss';
-	gruntTasks.min.files[ '<%= pkg.theme_path %><%= pkg.css_folder %>blocks.min.css' ] = '<%= pkg.theme_path %>pcss/blocks.pcss';
-}
-
 
 module.exports = gruntTasks;
