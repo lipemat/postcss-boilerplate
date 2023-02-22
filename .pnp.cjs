@@ -1468,7 +1468,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
       ],\
       [\
         "caniuse-lite",\
-        "npm:1.0.30001335"\
+        "npm:1.0.30001457"\
       ],\
       [\
         "capture-exit",\
@@ -10663,7 +10663,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageDependencies": [\
             ["autoprefixer", "npm:9.8.8"],\
             ["browserslist", "npm:4.20.3"],\
-            ["caniuse-lite", "npm:1.0.30001335"],\
+            ["caniuse-lite", "npm:1.0.30001457"],\
             ["normalize-range", "npm:0.1.2"],\
             ["num2fraction", "npm:1.2.2"],\
             ["picocolors", "npm:0.2.1"],\
@@ -10678,7 +10678,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["autoprefixer", "virtual:18556751567ee96135895a29fe56e9cda38f1e71418aa51affbea14249dae53df986f0d0650729c371f0e977520a3029292f48f6905e02fdda609885568740d9#npm:10.4.7"],\
             ["@types/postcss", null],\
             ["browserslist", "npm:4.20.3"],\
-            ["caniuse-lite", "npm:1.0.30001341"],\
+            ["caniuse-lite", "npm:1.0.30001457"],\
             ["fraction.js", "npm:4.2.0"],\
             ["normalize-range", "npm:0.1.2"],\
             ["picocolors", "npm:1.0.0"],\
@@ -11210,7 +11210,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageLocation": "./.yarn/cache/browserslist-npm-4.20.3-d7ff9d00b4-1e4b719ac2.zip/node_modules/browserslist/",\
           "packageDependencies": [\
             ["browserslist", "npm:4.20.3"],\
-            ["caniuse-lite", "npm:1.0.30001335"],\
+            ["caniuse-lite", "npm:1.0.30001457"],\
             ["electron-to-chromium", "npm:1.4.131"],\
             ["escalade", "npm:3.1.1"],\
             ["node-releases", "npm:2.0.4"],\
@@ -11404,17 +11404,10 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
         }]\
       ]],\
       ["caniuse-lite", [\
-        ["npm:1.0.30001335", {\
-          "packageLocation": "./.yarn/cache/caniuse-lite-npm-1.0.30001335-3a84d29032-fe08b49ec6.zip/node_modules/caniuse-lite/",\
+        ["npm:1.0.30001457", {\
+          "packageLocation": "./.yarn/cache/caniuse-lite-npm-1.0.30001457-2a5d99be1f-f311a7c509.zip/node_modules/caniuse-lite/",\
           "packageDependencies": [\
-            ["caniuse-lite", "npm:1.0.30001335"]\
-          ],\
-          "linkType": "HARD"\
-        }],\
-        ["npm:1.0.30001341", {\
-          "packageLocation": "./.yarn/cache/caniuse-lite-npm-1.0.30001341-7125d57b54-7262b093fb.zip/node_modules/caniuse-lite/",\
-          "packageDependencies": [\
-            ["caniuse-lite", "npm:1.0.30001341"]\
+            ["caniuse-lite", "npm:1.0.30001457"]\
           ],\
           "linkType": "HARD"\
         }]\
@@ -20188,7 +20181,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["postcss-preset-env", "npm:6.7.1"],\
             ["autoprefixer", "npm:9.8.8"],\
             ["browserslist", "npm:4.20.3"],\
-            ["caniuse-lite", "npm:1.0.30001335"],\
+            ["caniuse-lite", "npm:1.0.30001457"],\
             ["css-blank-pseudo", "npm:0.1.4"],\
             ["css-has-pseudo", "npm:0.10.0"],\
             ["css-prefers-color-scheme", "npm:3.1.1"],\
@@ -33102,10 +33095,7 @@ Required by: ${issuerForDisplay}
             if (runtimeState.enableTopLevelFallback) {
               if (dependencyReference == null && fallbackReference === null) {
                 const reference = runtimeState.fallbackPool.get(dependencyName);
-                // # Warnings suppressed via @lipemat/js-boilerplate/fix-pnp script. 
-if (! alwaysWarnOnFallback && reference != null) { 
-dependencyReference = reference; 
-} else if (alwaysWarnOnFallback && reference != null) {
+                if (reference != null) {
                   fallbackReference = reference;
                 }
               }
