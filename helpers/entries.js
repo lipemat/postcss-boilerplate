@@ -19,7 +19,7 @@ function getEntries() {
 		toCSS: {}
 	};
 
-	entries.forEach( possibleFile => {
+	Object.values( entries ).forEach( possibleFile => {
 		const filePath = config.theme_path + 'pcss/' + possibleFile;
 		if ( fs.existsSync( path.resolve( filePath + '.pcss' ) ) ) {
 			matches.toCSS[ config.css_folder + possibleFile + '.css' ] = config.theme_path + `pcss/${possibleFile}.pcss`;
