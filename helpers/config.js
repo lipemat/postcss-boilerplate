@@ -18,8 +18,12 @@ const browserslist = require( 'browserslist' );
 function getConfig( fileName ) {
 	let config = require( '../config/' + fileName );
 	try {
-		let localConfig = require( path.resolve( packageConfig.workingDirectory + '/config', fileName ) );
-		config = {...config, ...localConfig};
+		const localConfig = require( path.resolve( packageConfig.workingDirectory + '/config', fileName ) );
+		if ( 'function' === typeof localConfig ) {
+			config = {...config, ...localConfig( config )};
+		} else {
+			config = {...config, ...localConfig};
+		}
 	} catch ( e ) {
 	}
 	return config;
