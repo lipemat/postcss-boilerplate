@@ -41,8 +41,6 @@
     "start": "lipemat-postcss-boilerplate start",
     "test": "lipemat-js-boilerplate test --silent"
   },
-  "css_folder": "css/",
-  "file_name": "front-end",
   "dependencies": {
     "@lipemat/css-mqpacker": "^9.0.0",
     "@lipemat/stylelint-config": "^1.4.0",
@@ -61,8 +59,8 @@
     "postcss-color-mod-function": "^3.0.3",
     "postcss-custom-media": "^8.0.1",
     "postcss-hash": "^3.0.0",
-    "postcss-import": "^14.1.0",
-    "postcss-modules": "^3.2.2",
+    "postcss-import": "^15.1.0",
+    "postcss-modules": "^6.0.0",
     "postcss-nested": "^5.0.6",
     "postcss-preset-env": "^7.5.0",
     "postcss-scss": "^4.0.4",

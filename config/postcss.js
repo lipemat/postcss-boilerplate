@@ -66,7 +66,6 @@ const compileOptions = {
 			plugins: [
 				require( 'postcss-modules' )( {
 					generateScopedName: getGenerateScopeName(),
-					Loader: FileSystemLoader.default,
 					globalModulePaths: [
 						new RegExp( '.*?' + config.theme_path.replace( /\//g, '\\\\' ) + 'pcss', 'i' ),
 						new RegExp( '.*?' + config.theme_path + 'pcss', 'i' ),
