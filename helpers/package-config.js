@@ -12,6 +12,7 @@ packageConfig.theme_path ||= "./";
 if ( ! packageConfig.hasOwnProperty( 'css_folder' ) ) {
 	packageConfig.css_folder = "css/";
 }
+packageConfig.combinedJson ||= false;
 packageConfig.file_name ||= "front-end";
 packageConfig.shortCssClasses ||= false;
 

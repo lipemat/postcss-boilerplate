@@ -40,6 +40,7 @@ _This may also be found in the "templates" directory._
 * `shortCssClasses`: Enable short 1-2 character CSS classes. Recommended if you're not running multiple instances of this package on the same site.
 * `file_name` : Name of finished CSS file. Defaults to `front-end`.
 * `theme_path` : Path or theme's root relative to the package.json file.
+* `combinedJson` : Generate a single 'css-modules.json' file instead of JSON file per module.
 
 
 ### Configuration Overrides

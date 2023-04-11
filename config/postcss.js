@@ -4,8 +4,8 @@ const FileSystemLoader = require( '../lib/FileSystemLoader' );
 const {generateScopedName} = require( '../helpers/css-classnames' );
 const {getEntries} = require( '../helpers/entries' );
 const {getDefaultBrowsersList} = require( '../helpers/config' );
-
-const modulesFolder = 'production' === process.env.NODE_ENV ? '_css-modules-json/min/' : '_css-modules-json/';
+const {combinedJson, JsonModule, JsonModules, getJSON} = require( '../helpers/get-json' );
+const path = require( 'path' );
 
 const presetEnv = {
 	features: {
@@ -71,27 +71,7 @@ const compileOptions = {
 						new RegExp( '.*?' + config.theme_path.replace( /\//g, '\\\\' ) + 'pcss', 'i' ),
 						new RegExp( '.*?' + config.theme_path + 'pcss', 'i' ),
 					],
-					/**
-					 * Custom output of CSS modules JSON file to specified location
-					 * Also excludes json files from the global pcss files
-					 */
-					getJSON( cssFileName, json ) {
-						const path = require( 'path' );
-						const fse = require( 'fs-extra' );
-						const directory = path.relative( config.theme_path, cssFileName ).replace( /\\/g, '/' ) + '/';
-						// Exclude global pcss directory.
-						if ( 'pcss' === directory.substring( 0, 4 ) ) {
-							return;
-						}
-						const cssName = path.basename( cssFileName, '.css' );
-						const jsonFileName = config.theme_path.replace( /\\/g, '/' ) + modulesFolder + directory.replace( cssName + '/', '' ) + cssName + '.json';
-
-						/**
-						 * We use the Sync method here to fix issues where JSON is not
-						 * being generated.
-						 */
-						fse.outputJsonSync( jsonFileName, json );
-					},
+					getJSON,
 				} ),
 			],
 			skipDuplicates: false,

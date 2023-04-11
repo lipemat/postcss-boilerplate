@@ -4,7 +4,7 @@ const runner = require( '../helpers/run-task' );
 /**
  * Compile the /pcss/* files to .min.css
  * The main point of this script is to generate the minified
- * css file for production.
+ * CSS file for production.
  *
  * @type {string}
  */
@@ -22,4 +22,5 @@ runner.run( 'postcss:min' );
  */
 process.env.NODE_ENV = 'develop';
 delete require.cache[ require.resolve( '../config/postcss' ) ];
+delete require.cache[ require.resolve( '../helpers/get-json' ) ];
 runner.run( 'postcss:toCSS' );
