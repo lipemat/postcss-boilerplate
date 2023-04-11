@@ -1,11 +1,10 @@
-const config = require( '../helpers/package-config' );
 const postcssPresetEnv = require( 'postcss-preset-env' );
-const FileSystemLoader = require( '../lib/FileSystemLoader' );
+
+const config = require( '../helpers/package-config' );
 const {generateScopedName} = require( '../helpers/css-classnames' );
 const {getEntries} = require( '../helpers/entries' );
 const {getDefaultBrowsersList} = require( '../helpers/config' );
-const {combinedJson, JsonModule, JsonModules, getJSON} = require( '../helpers/get-json' );
-const path = require( 'path' );
+const {getJSON} = require( '../helpers/get-json' );
 
 const presetEnv = {
 	features: {
@@ -55,7 +54,7 @@ const getGenerateScopeName = () => {
 		return '[contenthash:base52:5]';
 	}
 	return 'Ⓜ[name]__[local]__[contenthash:base52:2]';
-}
+};
 
 
 const compileOptions = {
