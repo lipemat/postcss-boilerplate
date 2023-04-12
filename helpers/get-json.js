@@ -5,7 +5,7 @@ const config = require( './package-config' );
 
 const modulesFolder = 'production' === process.env.NODE_ENV ? '_css-modules-json/min/' : '_css-modules-json/';
 const distFolder = path.resolve( config.theme_path + config.css_folder )
-const combinedName = 'production' === process.env.NODE_ENV ? 'css-modules.min.json' : 'css-modules.json';
+const combinedName = 'production' === process.env.NODE_ENV ? 'modules.min.json' : 'modules.json';
 
 /**
  * Custom output of CSS modules JSON files to the `_css-modules-json` directory.
