@@ -8,9 +8,13 @@ const distFolder = path.resolve( config.theme_path + config.css_folder )
 const combinedName = 'production' === process.env.NODE_ENV ? 'modules.min.json' : 'modules.json';
 
 /**
- * Custom output of CSS modules JSON files to the `_css-modules-json` directory.
+ * Custom output of CSS modules JSON files to the `_css-modules-json` if not
+ * using `combinedJson`. If using `combinedJson` the results are combined into a
+ * single `modules.json` file generated in the `css_folder`.
  *
- * Excludes json files from the global "pcss" directory.
+ * Excludes CSS modules from the global "pcss" directory.
+ *
+ * @link https://www.npmjs.com/package/postcss-modules#user-content-saving-exported-classes
  */
 function getJSON( cssFileName, json ) {
 	const directory = path.relative( config.theme_path, cssFileName ).replace( /\\/g, '/' ) + '/';
