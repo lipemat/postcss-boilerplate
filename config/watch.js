@@ -1,19 +1,21 @@
+const fs = require( 'fs' );
+
 const packageConfig = require( '../helpers/package-config' );
-const fs = require( "fs" );
+
 let livereload = true;
 // Load local certificates for https if available.
 if ( 'object' === typeof ( packageConfig.certificates ) && 'development' === process.env.NODE_ENV ) {
-	livereload =  {
+	livereload = {
 		cert: fs.readFileSync( packageConfig.certificates.cert ),
 		key: fs.readFileSync( packageConfig.certificates.key ),
-	}
+	};
 }
 
 module.exports = {
 	postcss: {
 		files: [
-			'<%= pkg.theme_path %>pcss/**/*.{pcss,css}',
-			'<%= pkg.theme_path %>template-parts/**/*.{pcss,css}'
+			`${packageConfig.theme_path}pcss/**/*.{pcss,css}`,
+			`${packageConfig.theme_path}template-parts/**/*.{pcss,css}`
 		],
 		tasks: [
 			'postcss:toCSS'
@@ -25,7 +27,7 @@ module.exports = {
 	},
 
 	php: {
-		files: ['<%= pkg.theme_path %>**/*.php'],
+		files: [ `${packageConfig.theme_path}**/*.php` ],
 		options: {
 			livereload,
 		}

@@ -1,7 +1,9 @@
+const packageConfig = require( '../helpers/package-config' );
+
 module.exports = {
 	theme : {
 		options: {
-			configFile: '<%= pkg.theme_path %>.stylelintrc',
+			configFile: `${packageConfig.theme_path}.stylelintrc`,
 			formatter: 'string',
 			ignoreDisables: false,
 			failOnError: true,
@@ -11,9 +13,9 @@ module.exports = {
 			fix: true,
 		},
 		src: [
-            '<%= pkg.theme_path %>js/src/**/*.{pcss,css}',
-			'<%= pkg.theme_path %>pcss/**/*.{pcss,css}',
-			'<%= pkg.theme_path %>template-parts/**/*.{pcss,css}',
+            `${packageConfig.theme_path}js/src/**/*.{pcss,css}`,
+			`${packageConfig.theme_path}pcss/**/*.{pcss,css}`,
+			`${packageConfig.theme_path}template-parts/**/*.{pcss,css}`,
 		]
 	}
 };
