@@ -1,10 +1,4 @@
-import {
-	ALPHABET,
-	generateScopedName,
-	getNextClass,
-	resetCounters,
-	SHORT_ALPHABET,
-} from '../../helpers/css-classnames';
+import {ALPHABET, generateScopedName, getNextClass, resetCounters, SHORT_ALPHABET,} from '../../helpers/css-classnames';
 
 describe( 'Test CSS Classname Generation', () => {
 	beforeEach( () => {

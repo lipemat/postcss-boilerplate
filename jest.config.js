@@ -1,3 +1,2 @@
-let config = require( '@lipemat/js-boilerplate/config/jest.config' );
-
+const config = require( '@lipemat/js-boilerplate/config/jest.config' );
 module.exports = config;
