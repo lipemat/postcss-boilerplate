@@ -3,7 +3,7 @@ const config = require( '../helpers/package-config' );
 /**
  * Entry points to be loaded by Grunt.
  *
- * Checks each provided file for exists and includes if does.
+ * Checks each provided file for exists and includes if it does.
  *
  * @see getEntries
  */
