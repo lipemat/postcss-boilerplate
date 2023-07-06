@@ -52,6 +52,7 @@
     "css-modules-loader-core": "^1.1.0",
     "fs-extra": "^7.0.1",
     "grunt": "^1.0.4",
+    "grunt-contrib-compress": "^2.0.0",
     "grunt-contrib-watch": "^1.1.0",
     "grunt-stylelint": "^0.10.1",
     "lodash": "^4.17.20",

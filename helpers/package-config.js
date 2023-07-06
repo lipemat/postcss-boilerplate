@@ -6,6 +6,7 @@ const fs = require( 'fs' );
 const workingDirectory = fs.realpathSync( process.cwd() );
 
 let packageConfig = require( path.resolve( workingDirectory, 'package.json' ) );
+packageConfig.brotliFiles ||= false;
 packageConfig.workingDirectory = workingDirectory;
 packageConfig.theme_path ||= "./";
 // Could be set to "" which would always test false.

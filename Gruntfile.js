@@ -7,12 +7,14 @@ module.exports = function ( grunt ) {
 	 */
 	grunt.initConfig( {
 		pkg: require( './helpers/package-config' ),
+		compress: configHelper.getConfig( 'compress.js' ),
 		postcss: configHelper.getConfig( 'postcss.js' ),
 		watch: configHelper.getConfig( 'watch.js' ),
 		stylelint: configHelper.getConfig( 'stylelint.js' )
 	} );
 
 	grunt.loadNpmTasks( '@lodder/grunt-postcss' );
+	grunt.loadNpmTasks( 'grunt-contrib-compress' );
 	grunt.loadNpmTasks( 'grunt-contrib-watch' );
 	grunt.loadNpmTasks( 'grunt-stylelint' );
 

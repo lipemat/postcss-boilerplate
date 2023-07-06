@@ -1,5 +1,6 @@
 process.env.NODE_ENV = 'production';
 const runner = require( '../helpers/run-task' );
+const config = require( '../helpers/package-config' );
 
 /**
  * Compile the /pcss/* files to .min.css
@@ -24,3 +25,8 @@ process.env.NODE_ENV = 'develop';
 delete require.cache[ require.resolve( '../config/postcss' ) ];
 delete require.cache[ require.resolve( '../helpers/get-json' ) ];
 runner.run( 'postcss:toCSS' );
+
+// Compress the CSS files to .br files.
+if ( config.brotliFiles ) {
+	runner.run( 'compress:brotli' );
+}
