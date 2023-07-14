@@ -3,10 +3,11 @@ const postcssPresetEnv = require( 'postcss-preset-env' );
 const config = require( '../helpers/package-config' );
 const {generateScopedName} = require( '../helpers/css-classnames' );
 const {getEntries} = require( '../helpers/entries' );
-const {getDefaultBrowsersList} = require( '../helpers/config' );
+const {getBrowsersList} = require( '../helpers/config' );
 const {getJSON} = require( '../helpers/get-json' );
 
 const presetEnv = {
+	browsers: getBrowsersList(),
 	features: {
 		/**
 		 * Fixes `focus-visible` feature for CSS modules (included by preset-env anywhere
@@ -28,15 +29,6 @@ const presetEnv = {
 		},
 	},
 };
-
-/**
- * If browserslist is not specified, we fall back to WordPress defaults.
- *
- * @link https://github.com/csstools/postcss-preset-env#browsers
- */
-if ( getDefaultBrowsersList() ) {
-	presetEnv.browsers = getDefaultBrowsersList();
-}
 
 /**
  * Get the hash to generate the CSS module name, or
