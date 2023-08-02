@@ -1,6 +1,5 @@
-const path = require( 'path' );
 const browserslist = require( 'browserslist' );
-const {getDefaultBrowsersList} = require( '../helpers/config' );
+const {getBrowsersList} = require( '../helpers/config' );
 
 const help = `
 	List browsers being targeted by PostCSS.
@@ -19,9 +18,7 @@ if ( args[0] && ( args[0] === '-h' || args[0] === '--help' ) ) {
 }
 
 
-const provided = getDefaultBrowsersList() || browserslist.loadConfig( {
-	path: path.resolve( '.' )
-} );
+const provided = getBrowsersList();
 
 console.log( '' );
 console.log( 'CSS Provided Browserslist' );
@@ -29,7 +26,7 @@ console.table( provided );
 
 console.log( '' );
 console.log( 'CSS Included Browsers' );
-console.table( browserslist( provided, {
+console.table( browserslist( getBrowsersList(), {
 	env: 'production'
 } ) );
 

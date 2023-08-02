@@ -1,6 +1,5 @@
 const packageConfig = require( './package-config' );
 const path = require( 'path' );
-const once = require( 'lodash/once' );
 const browserslist = require( 'browserslist' );
 
 
@@ -33,6 +32,8 @@ function getConfig( fileName ) {
  * Get the browserslist from the current project.
  *
  * - If specified using standard browserslist config, we will use that.
+ *
+ *  @link https://github.com/browserslist/browserslist#config-file
  */
 function getBrowsersList() {
 	const projectBrowsersList = browserslist();
@@ -42,24 +43,26 @@ function getBrowsersList() {
 	return projectBrowsersList;
 }
 
+
 /**
- * If browserslist is not specified, we fallback to WordPress defaults.
+ * If browserslist is not specified, we fall back to WordPress defaults.
  *
- * Return false if a browserslist is specified in the current project.
+ * - Return the default browserslist if the current project does not specify one.
+ * - Return false if a browserslist is specified.
+ *
+ * Used in cases where we can fall back to standard browserslist config if the project
+ * has not specified one.
+ *
+ * @deprecated
  *
  * @link https://github.com/browserslist/browserslist#config-file
- *
- * @return {false | string[]}
  */
-const getDefaultBrowsersList = once( () => {
+const getDefaultBrowsersList = () => {
 	if ( browserslist( browserslist.defaults ) === browserslist() ) {
-		return require( '@wordpress/browserslist-config' ).map( range => {
-			// Swap out "> 1%" for "> 2%".
-			return '> 1%' === range ? '> 2%' : range;
-		} );
+		return require( '@wordpress/browserslist-config' );
 	}
 	return false;
-} );
+};
 
 module.exports = {
 	getBrowsersList,
