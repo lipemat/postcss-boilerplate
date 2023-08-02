@@ -1,10 +1,12 @@
 const postcssPresetEnv = require( 'postcss-preset-env' );
 
-const config = require( '../helpers/package-config' );
-const {generateScopedName} = require( '../helpers/css-classnames' );
+const {getPackageConfig} = require( '../helpers/package-config' );
+const {getGenerateScopeName} = require( '../helpers/css-classnames' );
 const {getEntries} = require( '../helpers/entries' );
 const {getBrowsersList} = require( '../helpers/config' );
 const {getJSON} = require( '../helpers/get-json' );
+
+const config = getPackageConfig();
 
 const presetEnv = {
 	browsers: getBrowsersList(),
@@ -28,24 +30,6 @@ const presetEnv = {
 			replaceWith: ':global(.focus-visible)',
 		},
 	},
-};
-
-/**
- * Get the hash to generate the CSS module name, or
- * the `generateScopeName` for short CSS classes
- * if enabled.
- *
- * @note If run into issues with class name conflicts @see b36fc5309 as a more robust alternative.
- */
-const getGenerateScopeName = () => {
-	if ( 'production' === process.env.NODE_ENV ) {
-		// Use short CSS classes if enabled.
-		if ( config.shortCssClasses ) {
-			return generateScopedName;
-		}
-		return '[contenthash:base52:5]';
-	}
-	return 'Ⓜ[name]__[local]__[contenthash:base52:2]';
 };
 
 

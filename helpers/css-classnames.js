@@ -1,8 +1,21 @@
+const {getPackageConfig} = require( './package-config' );
+
 const SHORT_ALPHABET = 'abcdefghijklmnopqrstuvwxyz';
 const ALPHABET = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
 
 const classes = {};
 let counters = [ -1 ];
+
+/**
+ * Check if short CSS classes are enabled.
+ *
+ * Using a helper function to allow for future enhancements.
+ *
+ * @since 4.6.0
+ */
+function usingShortCssClasses() {
+	return getPackageConfig().shortCssClasses;
+}
 
 /**
  * Reset all counters.
@@ -97,10 +110,31 @@ const generateScopedName = ( localName, resourcePath ) => {
 	return classes[ resourcePath ][ localName ];
 };
 
+
+/**
+ * Get the hash to generate the CSS module name, or
+ * the `generateScopeName` for short CSS classes
+ * if enabled.
+ *
+ * @note If run into issues with class name conflicts @see b36fc5309 as a more robust alternative.
+ */
+function getGenerateScopeName() {
+	if ( 'production' === process.env.NODE_ENV ) {
+		// Use short CSS classes if enabled.
+		if ( usingShortCssClasses() ) {
+			return generateScopedName;
+		}
+		return '[contenthash:base52:5]';
+	}
+	return 'Ⓜ[name]__[local]__[contenthash:base52:2]';
+}
+
 module.exports = {
 	ALPHABET,
 	SHORT_ALPHABET,
 	generateScopedName,
+	getGenerateScopeName,
 	getNextClass,
 	resetCounters,
+	usingShortCssClasses,
 };
