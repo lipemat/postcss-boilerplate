@@ -14,13 +14,28 @@ if ( ! packageConfig.hasOwnProperty( 'css_folder' ) ) {
 	packageConfig.css_folder = "css/";
 }
 packageConfig.combinedJson ||= false;
-packageConfig.file_name ||= "front-end";
+packageConfig.file_name ||= 'front-end';
 packageConfig.shortCssClasses ||= false;
 
 try {
 	let localConfig = require( path.resolve( workingDirectory, './local-config.json' ) );
-	packageConfig = { ...packageConfig, ...localConfig }
+	packageConfig = {...packageConfig, ...localConfig};
 } catch ( e ) {
 }
+
+/**
+ * Helper function to get the results of `packageConfig`.
+ *
+ * - Allows mocking the results of `packageConfig` for testing.
+ * - Allows getting the config through a callback instead of an import.
+ *
+ * @since 4.6.0
+ */
+function getPackageConfig() {
+	return packageConfig;
+}
+
+packageConfig.getPackageConfig = getPackageConfig;
+
 
 module.exports = packageConfig;
