@@ -40,8 +40,7 @@
     "postprepare": "lipemat-js-boilerplate fix-pnp",
     "prepublishOnly": "rm -rf lib/* && yarn run build",
     "start": "lipemat-postcss-boilerplate start",
-    "test": "lipemat-js-boilerplate test --silent",
-    "check": "node bin/lipemat-postcss-boilerplate.js dist"
+    "test": "lipemat-js-boilerplate test --silent"
   },
   "dependencies": {
     "@lipemat/css-mqpacker": "^9.0.0",
