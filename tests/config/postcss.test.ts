@@ -1,7 +1,37 @@
 const browserslist = require( 'browserslist' );
 const postcssPresetEnv = require( 'postcss-preset-env' );
 
-const {getDefaultBrowsersList, getBrowsersList} = require( '../../helpers/config.js' );
+
+type Config = {
+	browsers: Array<string>;
+	features: {
+		'focus-visible-pseudo-class': {
+			replaceWith: string;
+		};
+	};
+	processors: Array<{
+		plugins?: Array<{
+			postcssPlugin: string;
+		}>
+	}>;
+	parser: string;
+	map: boolean;
+}
+
+type GruntTask = {
+	options: Config;
+	files: {
+		[ key: string ]: string;
+	};
+}
+
+function getPostCSSConfig(): {
+	toCSS: GruntTask;
+	min: GruntTask;
+} {
+	jest.resetModules();
+	return require( '../../config/postcss.js' );
+}
 
 afterEach( () => {
 	delete process.env.BROWSERSLIST;
@@ -15,11 +45,6 @@ describe( 'postcss.js', () => {
 		 */
 		const config = require( '../../config/postcss' );
 		expect( config ).toMatchSnapshot( 'develop' );
-
-		jest.resetModules();
-		const config2 = require( '../../config/postcss' );
-		expect( config2 ).toMatchSnapshot( 'production' );
-
 	} );
 
 
@@ -44,7 +69,7 @@ describe( 'postcss.js', () => {
 			} );
 		};
 
-		const config = require( '../../config/postcss.js' );
+		const config = getPostCSSConfig();
 		// We want to make sure no matter what postcss-custom-properties is not included
 		// if a user did not provided a custom browserslist to override.
 		expect( config.toCSS.options.processors[ 3 ].plugins.filter( ( plugin ) => {
@@ -56,10 +81,9 @@ describe( 'postcss.js', () => {
 		expect( JSON.stringify( config.min.options.processors[ 3 ] ) )
 			.toEqual( JSON.stringify( creator( expectedBrowsers ) ) );
 
-		jest.resetModules();
 		// and_uc 15.5 requires postcss-custom-properties.
 		process.env.BROWSERSLIST = 'and_uc 15.5';
-		const config2 = require( '../../config/postcss' );
+		const config2 = getPostCSSConfig();
 		expect( config2.toCSS.options.processors[ 3 ].plugins.filter( ( plugin ) => {
 			return plugin.postcssPlugin === 'postcss-custom-properties';
 		} ).length ).toEqual( 1 );
@@ -70,10 +94,9 @@ describe( 'postcss.js', () => {
 
 
 		// @notice If this fails, we can probably remove the override in favor of default wp.
-		jest.resetModules();
 		const wpDefaultBrowsers = [ ...require( '@wordpress/browserslist-config' ) ];
 		process.env.BROWSERSLIST = browserslist( wpDefaultBrowsers );
-		const config3 = require( '../../config/postcss' );
+		const config3 = getPostCSSConfig();
 		expect( config3.toCSS.options.processors[ 3 ].plugins.filter( ( plugin ) => {
 			return plugin.postcssPlugin === 'postcss-custom-properties';
 		} ).length ).toEqual( 1 );
