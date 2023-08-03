@@ -4694,6 +4694,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@lipemat/stylelint-config", "virtual:1638d8a1a2d593b8169ffe9d70f3c9e9d1509d2f5963ba8fea516113e9e47063b31f182107f616b8cf93bd7e0d863174da1e8f027f01dffdc7988bf1eec9ba20#npm:2.1.1"],\
             ["@lodder/grunt-postcss", "virtual:1638d8a1a2d593b8169ffe9d70f3c9e9d1509d2f5963ba8fea516113e9e47063b31f182107f616b8cf93bd7e0d863174da1e8f027f01dffdc7988bf1eec9ba20#npm:3.1.1"],\
             ["@types/jest", "npm:29.5.3"],\
+            ["@types/node", "npm:20.4.6"],\
             ["@wordpress/browserslist-config", "npm:5.21.0"],\
             ["browserslist", "npm:4.21.10"],\
             ["clean-css", "npm:5.3.2"],\
@@ -8568,6 +8569,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@lipemat/stylelint-config", "virtual:1638d8a1a2d593b8169ffe9d70f3c9e9d1509d2f5963ba8fea516113e9e47063b31f182107f616b8cf93bd7e0d863174da1e8f027f01dffdc7988bf1eec9ba20#npm:2.1.1"],\
             ["@lodder/grunt-postcss", "virtual:1638d8a1a2d593b8169ffe9d70f3c9e9d1509d2f5963ba8fea516113e9e47063b31f182107f616b8cf93bd7e0d863174da1e8f027f01dffdc7988bf1eec9ba20#npm:3.1.1"],\
             ["@types/jest", "npm:29.5.3"],\
+            ["@types/node", "npm:20.4.6"],\
             ["@wordpress/browserslist-config", "npm:5.21.0"],\
             ["browserslist", "npm:4.21.10"],\
             ["clean-css", "npm:5.3.2"],\
@@ -21141,7 +21143,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@tsconfig/node12", "npm:1.0.11"],\
             ["@tsconfig/node14", "npm:1.0.3"],\
             ["@tsconfig/node16", "npm:1.0.4"],\
-            ["@types/node", null],\
+            ["@types/node", "npm:20.4.6"],\
             ["@types/swc__core", null],\
             ["@types/swc__wasm", null],\
             ["@types/typescript", null],\
@@ -32499,10 +32501,7 @@ Required by: ${issuerForDisplay}
             if (runtimeState.enableTopLevelFallback) {
               if (dependencyReference == null && fallbackReference === null) {
                 const reference = runtimeState.fallbackPool.get(dependencyName);
-                // # Warnings suppressed via @lipemat/js-boilerplate/fix-pnp script. 
-if (! alwaysWarnOnFallback && reference != null) { 
-dependencyReference = reference; 
-} else if (alwaysWarnOnFallback && reference != null) {
+                if (reference != null) {
                   fallbackReference = reference;
                 }
               }
