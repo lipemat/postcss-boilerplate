@@ -4,10 +4,10 @@ import {ALPHABET, generateScopedName, getGenerateScopeName, getNextClass, resetC
 let mockShortCssEnabled = false;
 
 // Change the result of the getPackageConfig function, so we can change shortCssClasses.
-jest.mock( '../../helpers/package-config.js', () => ( {
-	...jest.requireActual( '../../helpers/package-config.js' ),
+jest.mock( '../../helpers/package-config.ts', () => ( {
+	...jest.requireActual( '../../helpers/package-config.ts' ),
 	getPackageConfig: () => ( {
-		...jest.requireActual( '../../helpers/package-config.js' ),
+		...jest.requireActual( '../../helpers/package-config.ts' ),
 		// Change this variable during the test.
 		shortCssClasses: mockShortCssEnabled,
 	} ),

@@ -1,4 +1,4 @@
-const {getPackageConfig} = require( './package-config' );
+import {getPackageConfig} from './package-config';
 
 const SHORT_ALPHABET = 'abcdefghijklmnopqrstuvwxyz';
 const ALPHABET = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';

@@ -72,7 +72,7 @@ describe( 'postcss.js', () => {
 		const config = getPostCSSConfig();
 		// We want to make sure no matter what postcss-custom-properties is not included
 		// if a user did not provided a custom browserslist to override.
-		expect( config.toCSS.options.processors[ 3 ].plugins.filter( ( plugin ) => {
+		expect( config.toCSS.options.processors[ 3 ]?.plugins?.filter( ( plugin ) => {
 			return plugin.postcssPlugin === 'postcss-custom-properties';
 		} ).length ).toEqual( 0 );
 
@@ -84,7 +84,7 @@ describe( 'postcss.js', () => {
 		// and_uc 15.5 requires postcss-custom-properties.
 		process.env.BROWSERSLIST = 'and_uc 15.5';
 		const config2 = getPostCSSConfig();
-		expect( config2.toCSS.options.processors[ 3 ].plugins.filter( ( plugin ) => {
+		expect( config2.toCSS.options.processors[ 3 ]?.plugins?.filter( ( plugin ) => {
 			return plugin.postcssPlugin === 'postcss-custom-properties';
 		} ).length ).toEqual( 1 );
 		expect( JSON.stringify( config2.toCSS.options.processors[ 3 ] ) )
@@ -97,7 +97,7 @@ describe( 'postcss.js', () => {
 		const wpDefaultBrowsers = [ ...require( '@wordpress/browserslist-config' ) ];
 		process.env.BROWSERSLIST = browserslist( wpDefaultBrowsers );
 		const config3 = getPostCSSConfig();
-		expect( config3.toCSS.options.processors[ 3 ].plugins.filter( ( plugin ) => {
+		expect( config3.toCSS.options.processors[ 3 ]?.plugins?.filter( ( plugin ) => {
 			return plugin.postcssPlugin === 'postcss-custom-properties';
 		} ).length ).toEqual( 1 );
 	} );
