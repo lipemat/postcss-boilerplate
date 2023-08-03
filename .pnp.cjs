@@ -4661,7 +4661,6 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["grunt-contrib-watch", "npm:1.1.0"],\
             ["grunt-stylelint", "virtual:1638d8a1a2d593b8169ffe9d70f3c9e9d1509d2f5963ba8fea516113e9e47063b31f182107f616b8cf93bd7e0d863174da1e8f027f01dffdc7988bf1eec9ba20#npm:0.10.1"],\
             ["jest", "virtual:8e24a671cea8362db7864e781603b5ed1e1ae7b3ea8bf413ac9c9f0c6349356ccb530165d0a5c57a2fb52d6df5039197c017f93fb4050d459246da277b6ddd93#npm:29.6.2"],\
-            ["lodash", "npm:4.17.21"],\
             ["postcss", "npm:8.4.27"],\
             ["postcss-color-mod-function", "npm:3.0.3"],\
             ["postcss-custom-media", "virtual:8e24a671cea8362db7864e781603b5ed1e1ae7b3ea8bf413ac9c9f0c6349356ccb530165d0a5c57a2fb52d6df5039197c017f93fb4050d459246da277b6ddd93#npm:8.0.2"],\
@@ -8509,7 +8508,6 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["grunt-contrib-watch", "npm:1.1.0"],\
             ["grunt-stylelint", "virtual:1638d8a1a2d593b8169ffe9d70f3c9e9d1509d2f5963ba8fea516113e9e47063b31f182107f616b8cf93bd7e0d863174da1e8f027f01dffdc7988bf1eec9ba20#npm:0.10.1"],\
             ["jest", "virtual:8e24a671cea8362db7864e781603b5ed1e1ae7b3ea8bf413ac9c9f0c6349356ccb530165d0a5c57a2fb52d6df5039197c017f93fb4050d459246da277b6ddd93#npm:29.6.2"],\
-            ["lodash", "npm:4.17.21"],\
             ["postcss", "npm:8.4.27"],\
             ["postcss-color-mod-function", "npm:3.0.3"],\
             ["postcss-custom-media", "virtual:8e24a671cea8362db7864e781603b5ed1e1ae7b3ea8bf413ac9c9f0c6349356ccb530165d0a5c57a2fb52d6df5039197c017f93fb4050d459246da277b6ddd93#npm:8.0.2"],\
