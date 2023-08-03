@@ -22,11 +22,11 @@ switch ( script ) {
 	case 'lint':
 	case 'start': {
 		const result = spawn.sync(
-			'node',
+			'ts-node',
 			nodeArgs
-				.concat( require.resolve( '../scripts/' + script ) )
+				.concat( require.resolve( '../scripts/' + script + '.ts' ) )
 				.concat( args.slice( scriptIndex + 1 ) ),
-			{ stdio: 'inherit' }
+			{stdio: 'inherit'}
 		);
 		if ( result.signal ) {
 			if ( result.signal === 'SIGKILL' ) {

@@ -1,8 +1,18 @@
 {
   "extends": "@lipemat/js-boilerplate/config/tsconfig.json",
+  "$schema": "https://json.schemastore.org/tsconfig",
+  "display": "PostCSS Boilerplate",
   "include": [
-    "js/src/**/*",
-    "js/tests/**/*",
-    "js/types/**/*"
-  ]
+    "scripts/**/*",
+    "tests/**/*",
+    "helpers/**/*"
+  ],
+  "compilerOptions": {
+    "allowSyntheticDefaultImports": true,
+    "module": "CommonJS",
+    "moduleResolution": "Node",
+    "strict": false,
+    "esModuleInterop": true,
+    "verbatimModuleSyntax": false
+  }
 }

@@ -1,5 +1,5 @@
-const browserslist = require( 'browserslist' );
-const {getBrowsersList} = require( '../helpers/config' );
+import browserslist from 'browserslist';
+import {getBrowsersList} from '../helpers/config';
 
 const help = `
 	List browsers being targeted by PostCSS.
@@ -9,7 +9,7 @@ const help = `
 
 	Usage: lipemat-postcss-browserslist [options]
 
-	--help, -h       Show help menu.`
+	--help, -h       Show help menu.`;
 
 const args = process.argv.slice( 2 );
 if ( args[0] && ( args[0] === '-h' || args[0] === '--help' ) ) {
