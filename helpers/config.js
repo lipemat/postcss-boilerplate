@@ -32,34 +32,34 @@ function getConfig( fileName ) {
  * Get the browserslist from the current project.
  *
  * - If specified using standard browserslist config, we will use that.
- *
- *  @link https://github.com/browserslist/browserslist#config-file
+ * - Fallback to WordPress defaults except for "> 1%".
  */
 function getBrowsersList() {
 	const projectBrowsersList = browserslist();
 	if ( browserslist( browserslist.defaults ) === projectBrowsersList ) {
-		return require( '@wordpress/browserslist-config' );
+		const wp = [ ...require( '@wordpress/browserslist-config' ) ];
+		wp.push( 'not and_uc 15.5' );
+		return wp;
 	}
 	return projectBrowsersList;
 }
 
-
 /**
  * If browserslist is not specified, we fall back to WordPress defaults.
  *
- * - Return the default browserslist if the current project does not specify one.
- * - Return false if a browserslist is specified.
+ * Return false if a browserslist is specified in the current project.
  *
- * Used in cases where we can fall back to standard browserslist config if the project
- * has not specified one.
- *
- * @deprecated
+ * @deprecated Use getBrowsersList() instead.
  *
  * @link https://github.com/browserslist/browserslist#config-file
+ *
+ * @return {false | string[]}
  */
 const getDefaultBrowsersList = () => {
 	if ( browserslist( browserslist.defaults ) === browserslist() ) {
-		return require( '@wordpress/browserslist-config' );
+		const wp = [ ...require( '@wordpress/browserslist-config' ) ];
+		wp.push( 'not and_uc 15.5' );
+		return wp;
 	}
 	return false;
 };

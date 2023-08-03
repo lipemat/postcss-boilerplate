@@ -26,7 +26,7 @@ console.table( provided );
 
 console.log( '' );
 console.log( 'CSS Included Browsers' );
-console.table( browserslist( getBrowsersList(), {
+console.table( browserslist( provided, {
 	env: 'production'
 } ) );
 
