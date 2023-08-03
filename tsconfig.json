@@ -9,11 +9,9 @@
     "helpers/**/*"
   ],
   "compilerOptions": {
-    "allowSyntheticDefaultImports": true,
     "module": "CommonJS",
     "moduleResolution": "Node",
-    "strict": false,
-    "esModuleInterop": true,
-    "verbatimModuleSyntax": false
+    "strict": true,
+    "esModuleInterop": true
   }
 }

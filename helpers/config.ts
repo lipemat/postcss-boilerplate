@@ -14,7 +14,7 @@ import browserslist from 'browserslist';
  * @param {String} fileName
  * @returns {object}
  */
-export function getConfig( fileName ) {
+export function getConfig( fileName: string ) {
 	let config = require( '../config/' + fileName );
 	try {
 		const localConfig = require( path.resolve( packageConfig.workingDirectory + '/config', fileName ) );

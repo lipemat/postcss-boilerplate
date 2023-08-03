@@ -3,7 +3,12 @@ import {getPackageConfig} from './package-config';
 const SHORT_ALPHABET = 'abcdefghijklmnopqrstuvwxyz';
 const ALPHABET = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
 
-const classes = {};
+const classes: {
+	[ filename: string ]: {
+		[ className: string ]: string
+	}
+} = {};
+
 let counters = [ -1 ];
 
 /**
@@ -104,7 +109,7 @@ function incrementParent() {
  *
  * @link https://github.com/madyankin/postcss-modules#generating-scoped-names
  */
-const generateScopedName = ( localName, resourcePath ) => {
+const generateScopedName = ( localName: string, resourcePath: string ): string => {
 	classes[ resourcePath ] ||= {};
 	classes[ resourcePath ][ localName ] ||= getNextClass();
 	return classes[ resourcePath ][ localName ];
