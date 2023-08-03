@@ -34,7 +34,7 @@
   },
   "scripts": {
     "build": "babel src --out-dir lib",
-    "dist": "lipemat-postcss-boilerplate lib",
+    "dist": "lipemat-postcss-boilerplate dist",
     "lint": "lipemat-postcss-boilerplate lint",
     "postprepare": "lipemat-js-boilerplate fix-pnp",
     "prepublishOnly": "rm -rf lib/* && yarn run build",
