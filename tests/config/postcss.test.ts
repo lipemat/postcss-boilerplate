@@ -101,14 +101,10 @@ describe( 'postcss.js', () => {
 	test( 'Browserslist config', () => {
 		const expectedBrowsers = [ ...require( '@wordpress/browserslist-config' ) ];
 		expectedBrowsers.push( 'not and_uc 15.5' );
-		const creator = browsers => {
+		const creator = ( browsers, features = {} ) => {
 			return postcssPresetEnv( {
 				browsers,
-				features: {
-					'focus-visible-pseudo-class': {
-						replaceWith: ':global(.focus-visible)',
-					},
-				},
+				features: {...features},
 			} );
 		};
 
@@ -117,6 +113,9 @@ describe( 'postcss.js', () => {
 		// if a user did not provided a custom browserslist to override.
 		expect( config.toCSS.options.processors[ 3 ]?.plugins?.filter( plugin => {
 			return 'postcss-custom-properties' === plugin.postcssPlugin;
+		} ).length ).toEqual( 0 );
+		expect( config.toCSS.options.processors[ 3 ]?.plugins?.filter( plugin => {
+			return 'postcss-focus-visible' === plugin.postcssPlugin;
 		} ).length ).toEqual( 0 );
 
 		expect( JSON.stringify( config.toCSS.options.processors[ 3 ] ) )
@@ -135,8 +134,21 @@ describe( 'postcss.js', () => {
 		expect( JSON.stringify( config2.min.options.processors[ 3 ] ) )
 			.toEqual( JSON.stringify( creator( [ 'and_uc 15.5' ] ) ) );
 
+		// Safari 15 requires postcss-focus-visible.
+		process.env.BROWSERSLIST = 'safari 15';
+		const config4 = getPostCSSConfig();
+		expect( config4.toCSS.options.processors[ 3 ]?.plugins?.filter( plugin => {
+			return 'postcss-focus-visible' === plugin.postcssPlugin;
+		} ).length ).toEqual( 1 );
 
-		// @notice If this fails, we can probably remove the override in favor of default wp.
+		expect( JSON.stringify( config4.toCSS.options.processors[ 3 ] ) )
+			.toEqual( JSON.stringify( creator( [ 'safari 15' ], {
+				'focus-visible-pseudo-class': {
+					replaceWith: ':global(.focus-visible)',
+				},
+			} ) ) );
+
+		// @notice If this fails, we can probably remove the getBrowsersList() override in favor of default wp.
 		const wpDefaultBrowsers = [ ...require( '@wordpress/browserslist-config' ) ];
 		process.env.BROWSERSLIST = browserslist( wpDefaultBrowsers );
 		const config3 = getPostCSSConfig();
