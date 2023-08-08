@@ -1,7 +1,6 @@
 const browserslist = require( 'browserslist' );
 const postcssPresetEnv = require( 'postcss-preset-env' );
 
-
 type Config = {
 	browsers: Array<string>;
 	features: {
@@ -28,7 +27,7 @@ type GruntTask = {
 function getPostCSSConfig(): {
 	toCSS: GruntTask;
 	min: GruntTask;
-} {
+	} {
 	jest.resetModules();
 	return require( '../../config/postcss.js' );
 }
@@ -58,22 +57,22 @@ describe( 'postcss.js', () => {
 	test( 'Browserslist config', () => {
 		const expectedBrowsers = [ ...require( '@wordpress/browserslist-config' ) ];
 		expectedBrowsers.push( 'not and_uc 15.5' );
-		const creator = ( browsers ) => {
+		const creator = browsers => {
 			return postcssPresetEnv( {
 				browsers,
 				features: {
 					'focus-visible-pseudo-class': {
 						replaceWith: ':global(.focus-visible)',
-					}
-				}
+					},
+				},
 			} );
 		};
 
 		const config = getPostCSSConfig();
 		// We want to make sure no matter what postcss-custom-properties is not included
 		// if a user did not provided a custom browserslist to override.
-		expect( config.toCSS.options.processors[ 3 ].plugins.filter( ( plugin ) => {
-			return plugin.postcssPlugin === 'postcss-custom-properties';
+		expect( config.toCSS.options.processors[ 3 ]?.plugins?.filter( plugin => {
+			return 'postcss-custom-properties' === plugin.postcssPlugin;
 		} ).length ).toEqual( 0 );
 
 		expect( JSON.stringify( config.toCSS.options.processors[ 3 ] ) )
@@ -84,8 +83,8 @@ describe( 'postcss.js', () => {
 		// and_uc 15.5 requires postcss-custom-properties.
 		process.env.BROWSERSLIST = 'and_uc 15.5';
 		const config2 = getPostCSSConfig();
-		expect( config2.toCSS.options.processors[ 3 ].plugins.filter( ( plugin ) => {
-			return plugin.postcssPlugin === 'postcss-custom-properties';
+		expect( config2.toCSS.options.processors[ 3 ]?.plugins?.filter( plugin => {
+			return 'postcss-custom-properties' === plugin.postcssPlugin;
 		} ).length ).toEqual( 1 );
 		expect( JSON.stringify( config2.toCSS.options.processors[ 3 ] ) )
 			.toEqual( JSON.stringify( creator( [ 'and_uc 15.5' ] ) ) );
@@ -97,8 +96,8 @@ describe( 'postcss.js', () => {
 		const wpDefaultBrowsers = [ ...require( '@wordpress/browserslist-config' ) ];
 		process.env.BROWSERSLIST = browserslist( wpDefaultBrowsers );
 		const config3 = getPostCSSConfig();
-		expect( config3.toCSS.options.processors[ 3 ].plugins.filter( ( plugin ) => {
-			return plugin.postcssPlugin === 'postcss-custom-properties';
+		expect( config3.toCSS.options.processors[ 3 ]?.plugins?.filter( plugin => {
+			return 'postcss-custom-properties' === plugin.postcssPlugin;
 		} ).length ).toEqual( 1 );
 	} );
 } );
