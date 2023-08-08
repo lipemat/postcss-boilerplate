@@ -36,7 +36,6 @@
   "scripts": {
     "dist": "lipemat-postcss-boilerplate dist",
     "lint": "lipemat-postcss-boilerplate lint",
-    "postprepare": "lipemat-js-boilerplate fix-pnp",
     "start": "lipemat-postcss-boilerplate start",
     "test": "lipemat-js-boilerplate test --silent"
   },
