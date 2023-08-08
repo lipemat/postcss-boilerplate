@@ -1,4 +1,4 @@
-'use strict'
+'use strict';
 
 /**
  * Custom PostCSS plugin to format CSS output.
@@ -9,44 +9,54 @@
  */
 
 
+import {Container, Root} from 'postcss';
+import {ChildNode} from 'postcss/lib/node';
+import {AtRuleRaws} from 'postcss/lib/at-rule';
+
 /**
  * Get the depth of the current node.
  */
-function getDepth( node ) {
-	let depth = 0
-	let parent = node.parent
-	while ( parent.type !== 'root' ) {
-		depth += 1
-		parent = parent.parent
+function getDepth( node: ChildNode ): number {
+	let depth = 0;
+	let parent = node.parent;
+	if ( 'undefined' === typeof parent ) {
+		return 0;
 	}
-	return depth
+	while ( parent && parent.type !== 'root' ) {
+		depth += 1;
+		parent = parent.parent as Container<ChildNode> | undefined;
+	}
+	return depth;
 }
 
-function indent( node, depth, position = 'before' ) {
+function indent( node: ChildNode, depth: number, position: keyof AtRuleRaws = 'before' ) {
 	if ( node.raws[ position ] === undefined ) {
 		return;
 	}
 	const indentStr = '\t'.repeat( depth );
-	node.raws[ position ] = node.raws[ position ].trim().concat( `\n${indentStr}` )
+	if ( 'string' === typeof node.raws[ position ] ) {
+		const content = node.raws[ position ] as string;
+		node.raws[ position ] = content.trim().concat( `\n${indentStr}` );
+	}
 }
 
-function processCss( node ) {
-	const nodeDepth = getDepth( node )
+function processCss( node: ChildNode ) {
+	const nodeDepth = getDepth( node );
 	indent( node, nodeDepth, 'before' );
 	indent( node, nodeDepth, 'after' );
 
 	if ( 0 === nodeDepth ) {
-		node.raws.before += '\n'
+		node.raws.before += '\n';
 	}
 }
 
 module.exports = () => {
 	return {
 		postcssPlugin: 'js-boilerplate/postcss-pretty',
-		OnceExit( css ) {
+		OnceExit( css: Root ) {
 			css.walk( processCss );
 			if ( css.first !== undefined && css.first.raws !== undefined ) {
-				css.first.raws.before = ''
+				css.first.raws.before = '';
 			}
 		},
 	};
