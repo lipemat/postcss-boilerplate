@@ -57,11 +57,11 @@ const compileOptions = {
 		require( '@lipemat/css-mqpacker' ),
 		// Create a manifest for browser cache flushing.
 		require( 'postcss-hash' )( {
-            algorithm: 'md4',
+			algorithm: 'md4',
 			trim: 20,
 			manifest: config.css_folder + '/manifest.json',
-			name: ( {hash} ) => hash
-		} )
+			name: ( {hash} ) => hash,
+		} ),
 	],
 	parser: require( 'postcss-scss' ),
 };
@@ -70,19 +70,18 @@ const minOptions = Object.assign( {}, compileOptions );
 minOptions.map = false;
 minOptions.processors = [ ...compileOptions.processors ];
 minOptions.processors.push( require( '../lib/postcss-clean' )( {
-		level: 2,
-	} )
-);
+	level: 2,
+} ) );
 
 const gruntTasks = {
 	toCSS: {
 		options: compileOptions,
-		files: getEntries().toCSS
+		files: getEntries().toCSS,
 	},
 
 	min: {
 		options: minOptions,
-		files: getEntries().min
+		files: getEntries().min,
 	},
 };
 
