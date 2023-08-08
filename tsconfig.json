@@ -9,9 +9,8 @@
     "helpers/**/*"
   ],
   "compilerOptions": {
+    "esModuleInterop": true,
     "module": "CommonJS",
-    "moduleResolution": "Node",
-    "strict": true,
-    "esModuleInterop": true
+    "strict": false,
   }
 }

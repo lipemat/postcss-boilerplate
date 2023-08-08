@@ -61,10 +61,6 @@ exports[`postcss.js PostCSS config: develop 1`] = `
             },
             {
               "Rule": [Function],
-              "postcssPlugin": "postcss-focus-visible",
-            },
-            {
-              "Rule": [Function],
               "postcssPlugin": "postcss-dir-pseudo-class",
             },
             {
@@ -209,10 +205,6 @@ exports[`postcss.js PostCSS config: develop 1`] = `
             },
             {
               "Rule": [Function],
-              "postcssPlugin": "postcss-focus-visible",
-            },
-            {
-              "Rule": [Function],
               "postcssPlugin": "postcss-dir-pseudo-class",
             },
             {
@@ -291,6 +283,7 @@ exports[`postcss.js PostCSS config: develop 1`] = `
           "OnceExit": [Function],
           "postcssPlugin": "postcss-hash",
         },
+        [Function],
       ],
     },
   },

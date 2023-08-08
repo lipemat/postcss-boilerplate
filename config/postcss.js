@@ -8,29 +8,37 @@ const {getJSON} = require( '../helpers/get-json' );
 
 const config = getPackageConfig();
 
+/**
+ * Base postcss-presets-env config.
+ *
+ */
 const presetEnv = {
 	browsers: getBrowsersList(),
-	features: {
+	features: {},
+};
+
+// Get a list of included postcss plugins based no the browsers list.
+const includedPlugins = postcssPresetEnv( presetEnv )
+	.plugins
+	.map( plugin => plugin.postcssPlugin );
+
+
+if ( includedPlugins.includes( 'postcss-focus-visible' ) ) {
+	presetEnv.features[ 'focus-visible-pseudo-class' ] = {
 		/**
-		 * Fixes `focus-visible` feature for CSS modules (included by preset-env anywhere
-		 * Safari is supported).
+		 * Fixes `focus-visible` feature for CSS modules.
 		 *
-		 * Requires `focus-visible` polyfill to be loaded externally to support Safari.
+		 * Only needed if our browsers list includes non-supported browsers
+		 * such as Safari 15.3 and below.
 		 *
-		 * @link https://caniuse.com/css-focus-visible
-		 *
-		 * May be imported directly into the index.js for sites, which loads JS app
-		 * on every page.
-		 * @link https://github.com/WICG/focus-visible
-		 *
+		 * Requires `focus-visible` polyfill to be loaded externally.
 		 * Most will often need it site wide on pages, which do and don't use the JS app.
+		 *
 		 * @link https://unpkg.com/focus-visible@5.2.0/dist/focus-visible.min.js
 		 */
-		'focus-visible-pseudo-class': {
-			replaceWith: ':global(.focus-visible)',
-		},
-	},
-};
+		replaceWith: ':global(.focus-visible)',
+	};
+}
 
 
 const compileOptions = {
@@ -57,32 +65,38 @@ const compileOptions = {
 		require( '@lipemat/css-mqpacker' ),
 		// Create a manifest for browser cache flushing.
 		require( 'postcss-hash' )( {
-            algorithm: 'md4',
+			algorithm: 'md4',
 			trim: 20,
 			manifest: config.css_folder + '/manifest.json',
-			name: ( {hash} ) => hash
-		} )
+			name: ( {hash} ) => hash,
+		} ),
 	],
 	parser: require( 'postcss-scss' ),
 };
+
+if ( 'test' !== process.env.NODE_ENV ) {
+
+}
 
 const minOptions = Object.assign( {}, compileOptions );
 minOptions.map = false;
 minOptions.processors = [ ...compileOptions.processors ];
 minOptions.processors.push( require( '../lib/postcss-clean' )( {
-		level: 2,
-	} )
-);
+	level: 2,
+} ) );
+
+// Add pretty output for development.
+compileOptions.processors.push( require( '../lib/postcss-pretty' ) );
 
 const gruntTasks = {
 	toCSS: {
 		options: compileOptions,
-		files: getEntries().toCSS
+		files: getEntries().toCSS,
 	},
 
 	min: {
 		options: minOptions,
-		files: getEntries().min
+		files: getEntries().min,
 	},
 };
 
