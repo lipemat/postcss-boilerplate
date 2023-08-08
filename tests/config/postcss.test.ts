@@ -1,5 +1,10 @@
+import {readFileSync} from 'fs';
+import postcss, {AcceptedPlugin, Syntax} from 'postcss';
+import {basename} from 'path';
+
 const browserslist = require( 'browserslist' );
 const postcssPresetEnv = require( 'postcss-preset-env' );
+
 
 type Config = {
 	browsers: Array<string>;
@@ -8,12 +13,12 @@ type Config = {
 			replaceWith: string;
 		};
 	};
-	processors: Array<{
+	processors: Array<AcceptedPlugin & {
 		plugins?: Array<{
-			postcssPlugin: string;
+			postcssPlugin: string,
 		}>
 	}>;
-	parser: string;
+	parser: Syntax;
 	map: boolean;
 }
 
@@ -24,6 +29,14 @@ type GruntTask = {
 	};
 }
 
+export type Fixture = {
+	input: string;
+	output: string;
+	basename: string;
+	description: string;
+}
+
+
 function getPostCSSConfig(): {
 	toCSS: GruntTask;
 	min: GruntTask;
@@ -31,6 +44,29 @@ function getPostCSSConfig(): {
 	jest.resetModules();
 	return require( '../../config/postcss.js' );
 }
+
+function processPostCSS( input: string, min: boolean = false ): Promise<postcss.Result> {
+	const config = getPostCSSConfig();
+	const task = min ? 'min' : 'toCSS';
+	return postcss( config[ task ].options.processors ).process( input, {
+		from: 'test.pcss',
+		to: 'test.css',
+		parser: config[ task ].options.parser,
+	} );
+}
+
+// Create a data provider for fixtures.
+const fixtures: Fixture[] = require( 'glob' )
+	.sync( 'tests/fixtures/{postcss,safari-15}/*.pcss' )
+	.map( file => {
+		return {
+			basename: basename( file ),
+			input: file,
+			output: file.replace( '.pcss', '.css' ),
+			description: file.replace( /\\/g, '/' ).replace( 'tests/fixtures/', '' ),
+		};
+	} );
+
 
 afterEach( () => {
 	delete process.env.BROWSERSLIST;
@@ -99,5 +135,20 @@ describe( 'postcss.js', () => {
 		expect( config3.toCSS.options.processors[ 3 ]?.plugins?.filter( plugin => {
 			return 'postcss-custom-properties' === plugin.postcssPlugin;
 		} ).length ).toEqual( 1 );
+	} );
+
+	test.each( fixtures )( 'PostCSS fixtures ( $description )', async fixture => {
+		if ( fixture.input.includes( 'safari-15' ) ) {
+			process.env.BROWSERSLIST = 'safari 15';
+		}
+
+		const input = readFileSync( fixture.input, 'utf8' );
+		let output = readFileSync( fixture.output.replace( '.css', '.raw.css' ), 'utf8' );
+		let result = await processPostCSS( input, false );
+		expect( result.css.trim() ).toEqual( output.trim() );
+
+		result = await processPostCSS( input, true );
+		output = readFileSync( fixture.output.replace( '.css', '.raw.min.css' ), 'utf8' );
+		expect( result.css.trim() ).toEqual( output.trim() );
 	} );
 } );

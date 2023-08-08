@@ -4,8 +4,9 @@
     "jest.config.js",
     "config/**/*",
     "helpers/**/*",
-    "tests/**/*",
+    "lib/**/*",
     "scripts/**/*",
-    "src/**/*"
+    "src/**/*",
+    "tests/**/*"
   ]
 }
