@@ -1,5 +1,7 @@
 #!/usr/bin/env node
 
+import {existsSync} from 'fs';
+
 /**
  * When using PNP loose mode, we get warnings for every module
  * we access, not strictly declared.
@@ -9,10 +11,14 @@
  * all loose module warnings unless the environmental variable
  * it set to display all warnings.
  *
- * @usage "scripts": {
-    "postinstall": "lipemat-postcss-boilerplate fix-pnp"
-  },
- *
+ * @example
+ * ```json
+ * {
+ *      "scripts": {
+ *           "postinstall": "lipemat-postcss-boilerplate fix-pnp"
+ *      }
+ *  }
+ * ```
  */
 
 const fs = require( 'fs' );
@@ -23,9 +29,9 @@ const PNP_FILES = [
 ];
 
 PNP_FILES.forEach( PNP_FILE => {
-	if ( fs.existsSync( PNP_FILE ) ) {
+	if ( existsSync( PNP_FILE ) ) {
 		fs.readFile( PNP_FILE, 'utf8', ( readError, data ) => {
-			if ( readError ) {
+			if ( null !== readError ) {
 				return console.log( readError );
 			}
 
@@ -35,7 +41,7 @@ PNP_FILES.forEach( PNP_FILE => {
 				'} else if (alwaysWarnOnFallback && reference != null) {' );
 
 			fs.writeFile( PNP_FILE, result, 'utf8', writeError => {
-				if ( writeError ) {
+				if ( null !== writeError ) {
 					return console.log( writeError );
 				}
 				console.log( `The ${PNP_FILE} file has been adjusted to no longer display warnings for loose modules.` );

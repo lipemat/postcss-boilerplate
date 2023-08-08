@@ -1,3 +1,3 @@
 process.env.NODE_ENV = 'development';
-const runner = require( '../helpers/run-task' );
-runner.run( 'watch' );
+const startRunner = require( '../helpers/run-task' );
+startRunner.run( 'watch' );

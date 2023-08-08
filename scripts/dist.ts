@@ -27,6 +27,6 @@ delete require.cache[ require.resolve( '../helpers/get-json' ) ];
 runner.run( 'postcss:toCSS' );
 
 // Compress the CSS files to .br files.
-if ( config.brotliFiles ) {
+if ( true === config.brotliFiles ) {
 	runner.run( 'compress:brotli' );
 }

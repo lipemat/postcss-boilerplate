@@ -11,15 +11,15 @@ packageConfig.brotliFiles ||= false;
 packageConfig.workingDirectory = workingDirectory;
 packageConfig.theme_path ||= './';
 // Could be set to "" which would always test false.
-if ( ! packageConfig.hasOwnProperty( 'css_folder' ) ) {
-	packageConfig.css_folder = "css/";
+if ( ! Boolean( packageConfig.hasOwnProperty( 'css_folder' ) ) ) {
+	packageConfig.css_folder = 'css/';
 }
 packageConfig.combinedJson ||= false;
 packageConfig.file_name ||= 'front-end';
 packageConfig.shortCssClasses ||= false;
 
 try {
-	let localConfig = require( path.resolve( workingDirectory, './local-config.json' ) );
+	const localConfig = require( path.resolve( workingDirectory, './local-config.json' ) );
 	packageConfig = {...packageConfig, ...localConfig};
 } catch ( e ) {
 }

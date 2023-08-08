@@ -1,3 +1,3 @@
 process.env.NODE_ENV = 'development';
-const runner = require( '../helpers/run-task' );
-runner.run( 'stylelint:theme' );
+const lintRunner = require( '../helpers/run-task' );
+lintRunner.run( 'stylelint:theme' );
