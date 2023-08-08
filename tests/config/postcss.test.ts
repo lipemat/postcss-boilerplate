@@ -1,5 +1,5 @@
 import {readFileSync} from 'fs';
-import postcss, {AcceptedPlugin, Syntax} from 'postcss';
+import postcss, {Plugin, Syntax} from 'postcss';
 import {basename} from 'path';
 
 const browserslist = require( 'browserslist' );
@@ -13,10 +13,8 @@ type Config = {
 			replaceWith: string;
 		};
 	};
-	processors: Array<AcceptedPlugin & {
-		plugins?: Array<{
-			postcssPlugin: string,
-		}>
+	processors: Array<Plugin & {
+		plugins?: Plugin[];
 	}>;
 	parser: Syntax;
 	map: boolean;
@@ -48,7 +46,17 @@ function getPostCSSConfig(): {
 function processPostCSS( input: string, min: boolean = false ): Promise<postcss.Result> {
 	const config = getPostCSSConfig();
 	const task = min ? 'min' : 'toCSS';
-	return postcss( config[ task ].options.processors ).process( input, {
+	const plugins = config[ task ].options.processors;
+
+	// Prevent the manifest.json from being emitted.
+	const hashIndex = plugins.findIndex( ( plugin: Plugin ) => {
+		return plugin.postcssPlugin !== undefined && 'postcss-hash' === plugin.postcssPlugin;
+	} );
+	if ( hashIndex > -1 ) {
+		plugins.splice( hashIndex, 1 );
+	}
+
+	return postcss( plugins ).process( input, {
 		from: 'test.pcss',
 		to: 'test.css',
 		parser: config[ task ].options.parser,

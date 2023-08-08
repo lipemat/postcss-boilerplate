@@ -66,8 +66,11 @@ const compileOptions = {
 	parser: require( 'postcss-scss' ),
 };
 
-const minOptions = Object.assign( {}, compileOptions );
+if ( 'test' !== process.env.NODE_ENV ) {
 
+}
+
+const minOptions = Object.assign( {}, compileOptions );
 minOptions.map = false;
 minOptions.processors = [ ...compileOptions.processors ];
 minOptions.processors.push( require( '../lib/postcss-clean' )( {
