@@ -26,6 +26,7 @@ const fs = require( 'fs' );
 const PNP_FILES = [
 	'./.pnp.js',
 	'./.pnp.cjs',
+	'./.pnp.mjs',
 ];
 
 PNP_FILES.forEach( PNP_FILE => {
