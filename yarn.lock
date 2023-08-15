@@ -1549,6 +1549,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@csstools/postcss-global-data@npm:^2.0.1":
+  version: 2.0.1
+  resolution: "@csstools/postcss-global-data@npm:2.0.1"
+  peerDependencies:
+    postcss: ^8.4
+  checksum: 21e7057b7f527481c7374810c3b49a2d47414b39f4408c5d182bb6aab62d190da5b6173aa1accacb091994d1158cee2a651fbf2977957bbcf1fc654669886c1a
+  languageName: node
+  linkType: hard
+
 "@csstools/postcss-hwb-function@npm:^1.0.2":
   version: 1.0.2
   resolution: "@csstools/postcss-hwb-function@npm:1.0.2"
@@ -2184,6 +2193,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@lipemat/postcss-boilerplate@workspace:."
   dependencies:
+    "@csstools/postcss-global-data": ^2.0.1
     "@lipemat/css-mqpacker": ^9.0.0
     "@lipemat/eslint-config": ^3.1.3
     "@lipemat/js-boilerplate": ^10.3.1

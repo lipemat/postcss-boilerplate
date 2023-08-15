@@ -1,4 +1,5 @@
-import browserslist = require('browserslist');
+import browserslist = require( 'browserslist' );
+import {getExternalFiles} from '../../helpers/config';
 
 const {getDefaultBrowsersList, getBrowsersList} = require( '../../helpers/config' );
 
@@ -28,12 +29,21 @@ describe( 'config', () => {
 
 		// @notice If this fails, we can probably remove the override in favor of default wp.
 		const wpDefaultBrowsers = browserslist( require( '@wordpress/browserslist-config' ), {
-			env: 'production'
+			env: 'production',
 		} );
 		expect( wpDefaultBrowsers.includes( 'and_uc 15.5' ) ).toBe( true );
 		expect( browserslist( getBrowsersList() ).includes( 'and_uc 15.5' ) ).toBe( false );
 
 		process.env.BROWSERSLIST = 'chrome 71';
 		expect( getBrowsersList() ).toEqual( [ 'chrome 71' ] );
+	} );
+
+	test( 'getExternalFiles', () => {
+		const currentPath = process.cwd();
+		const expectedFiles = [
+			currentPath + '\\tests\\theme\\pcss\\globals\\media-queries.pcss',
+			currentPath + '\\tests\\theme\\pcss\\globals\\variables.pcss',
+		];
+		expect( getExternalFiles() ).toEqual( expectedFiles );
 	} );
 } );
