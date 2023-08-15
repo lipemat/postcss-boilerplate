@@ -10,5 +10,5 @@ const config = require( '../helpers/package-config' );
 module.exports = {
 	main: config.file_name, // Default: "front-end".
 	admin: 'admin',
-	blocks: 'blocks'
+	blocks: 'blocks',
 };

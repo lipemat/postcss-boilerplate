@@ -12,6 +12,10 @@ exports[`postcss.js PostCSS config: develop 1`] = `
       },
       "processors": [
         {
+          "postcssPlugin": "postcss-global-data",
+          "prepare": [Function],
+        },
+        {
           "Once": [Function],
           "postcssPlugin": "postcss-import",
         },
@@ -155,6 +159,10 @@ exports[`postcss.js PostCSS config: develop 1`] = `
         "stringify": [Function],
       },
       "processors": [
+        {
+          "postcssPlugin": "postcss-global-data",
+          "prepare": [Function],
+        },
         {
           "Once": [Function],
           "postcssPlugin": "postcss-import",

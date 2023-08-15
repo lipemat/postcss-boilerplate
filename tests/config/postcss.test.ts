@@ -43,7 +43,7 @@ function getPostCSSConfig(): {
 	return require( '../../config/postcss.js' );
 }
 
-function processPostCSS( input: string, min: boolean = false ): Promise<postcss.Result> {
+function processPostCSS( input: string, min: boolean = false, file: string ): Promise<postcss.Result> {
 	const config = getPostCSSConfig();
 	const task = min ? 'min' : 'toCSS';
 	const plugins = config[ task ].options.processors;
@@ -57,7 +57,7 @@ function processPostCSS( input: string, min: boolean = false ): Promise<postcss.
 	}
 
 	return postcss( plugins ).process( input, {
-		from: 'test.pcss',
+		from: file,
 		to: 'test.css',
 		parser: config[ task ].options.parser,
 	} );
@@ -111,37 +111,37 @@ describe( 'postcss.js', () => {
 		const config = getPostCSSConfig();
 		// We want to make sure no matter what postcss-custom-properties is not included
 		// if a user did not provided a custom browserslist to override.
-		expect( config.toCSS.options.processors[ 3 ]?.plugins?.filter( plugin => {
+		expect( config.toCSS.options.processors[ 4 ]?.plugins?.filter( plugin => {
 			return 'postcss-custom-properties' === plugin.postcssPlugin;
 		} ).length ).toEqual( 0 );
-		expect( config.toCSS.options.processors[ 3 ]?.plugins?.filter( plugin => {
+		expect( config.toCSS.options.processors[ 4 ]?.plugins?.filter( plugin => {
 			return 'postcss-focus-visible' === plugin.postcssPlugin;
 		} ).length ).toEqual( 0 );
 
-		expect( JSON.stringify( config.toCSS.options.processors[ 3 ] ) )
+		expect( JSON.stringify( config.toCSS.options.processors[ 4 ] ) )
 			.toEqual( JSON.stringify( creator( expectedBrowsers ) ) );
-		expect( JSON.stringify( config.min.options.processors[ 3 ] ) )
+		expect( JSON.stringify( config.min.options.processors[ 4 ] ) )
 			.toEqual( JSON.stringify( creator( expectedBrowsers ) ) );
 
 		// and_uc 15.5 requires postcss-custom-properties.
 		process.env.BROWSERSLIST = 'and_uc 15.5';
 		const config2 = getPostCSSConfig();
-		expect( config2.toCSS.options.processors[ 3 ]?.plugins?.filter( plugin => {
+		expect( config2.toCSS.options.processors[ 4 ]?.plugins?.filter( plugin => {
 			return 'postcss-custom-properties' === plugin.postcssPlugin;
 		} ).length ).toEqual( 1 );
-		expect( JSON.stringify( config2.toCSS.options.processors[ 3 ] ) )
+		expect( JSON.stringify( config2.toCSS.options.processors[ 4 ] ) )
 			.toEqual( JSON.stringify( creator( [ 'and_uc 15.5' ] ) ) );
-		expect( JSON.stringify( config2.min.options.processors[ 3 ] ) )
+		expect( JSON.stringify( config2.min.options.processors[ 4 ] ) )
 			.toEqual( JSON.stringify( creator( [ 'and_uc 15.5' ] ) ) );
 
 		// Safari 15 requires postcss-focus-visible.
 		process.env.BROWSERSLIST = 'safari 15';
 		const config4 = getPostCSSConfig();
-		expect( config4.toCSS.options.processors[ 3 ]?.plugins?.filter( plugin => {
+		expect( config4.toCSS.options.processors[ 4 ]?.plugins?.filter( plugin => {
 			return 'postcss-focus-visible' === plugin.postcssPlugin;
 		} ).length ).toEqual( 1 );
 
-		expect( JSON.stringify( config4.toCSS.options.processors[ 3 ] ) )
+		expect( JSON.stringify( config4.toCSS.options.processors[ 4 ] ) )
 			.toEqual( JSON.stringify( creator( [ 'safari 15' ], {
 				'focus-visible-pseudo-class': {
 					replaceWith: ':global(.focus-visible)',
@@ -152,7 +152,7 @@ describe( 'postcss.js', () => {
 		const wpDefaultBrowsers = [ ...require( '@wordpress/browserslist-config' ) ];
 		process.env.BROWSERSLIST = browserslist( wpDefaultBrowsers );
 		const config3 = getPostCSSConfig();
-		expect( config3.toCSS.options.processors[ 3 ]?.plugins?.filter( plugin => {
+		expect( config3.toCSS.options.processors[ 4 ]?.plugins?.filter( plugin => {
 			return 'postcss-custom-properties' === plugin.postcssPlugin;
 		} ).length ).toEqual( 1 );
 	} );
@@ -164,10 +164,10 @@ describe( 'postcss.js', () => {
 
 		const input = readFileSync( fixture.input, 'utf8' );
 		let output = readFileSync( fixture.output.replace( '.css', '.raw.css' ), 'utf8' );
-		let result = await processPostCSS( input, false );
+		let result = await processPostCSS( input, false, fixture.input );
 		expect( result.css.trim() ).toEqual( output.trim() );
 
-		result = await processPostCSS( input, true );
+		result = await processPostCSS( input, true, fixture.input );
 		output = readFileSync( fixture.output.replace( '.css', '.raw.min.css' ), 'utf8' );
 		expect( result.css.trim() ).toEqual( output.trim() );
 	} );

@@ -3,7 +3,7 @@ const postcssPresetEnv = require( 'postcss-preset-env' );
 const {getPackageConfig} = require( '../helpers/package-config' );
 const {getGenerateScopeName} = require( '../helpers/css-classnames' );
 const {getEntries} = require( '../helpers/entries' );
-const {getBrowsersList} = require( '../helpers/config' );
+const {getBrowsersList, getExternalFiles} = require( '../helpers/config' );
 const {getJSON} = require( '../helpers/get-json' );
 
 const config = getPackageConfig();
@@ -44,6 +44,9 @@ if ( includedPlugins.includes( 'postcss-focus-visible' ) ) {
 const compileOptions = {
 	map: true,
 	processors: [
+		require( '@csstools/postcss-global-data' )( {
+			files: getExternalFiles(),
+		} ),
 		require( 'postcss-import' )( {
 			extension: 'pcss',
 			plugins: [
@@ -73,10 +76,6 @@ const compileOptions = {
 	],
 	parser: require( 'postcss-scss' ),
 };
-
-if ( 'test' !== process.env.NODE_ENV ) {
-
-}
 
 const minOptions = Object.assign( {}, compileOptions );
 minOptions.map = false;
