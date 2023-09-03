@@ -28,6 +28,10 @@ switch ( script ) {
 				.concat( args.slice( scriptIndex + 1 ) ),
 			{stdio: 'inherit'}
 		);
+		if ( result.error ) {
+			console.log( result.error );
+			process.exit( 1 );
+		}
 		if ( result.signal ) {
 			if ( 'SIGKILL' === result.signal ) {
 				console.log(
