@@ -22,7 +22,7 @@ switch ( script ) {
 	case 'lint':
 	case 'start': {
 		const result = spawn.sync(
-			'npm exec ts-node -y',
+			'ts-node',
 			nodeArgs
 				.concat( require.resolve( '../scripts/' + script + '.ts' ) )
 				.concat( args.slice( scriptIndex + 1 ) ),
