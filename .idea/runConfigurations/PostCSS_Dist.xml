@@ -1,9 +1,9 @@
 <component name="ProjectRunConfigurationManager">
-  <configuration default="false" name="Pnp fix" type="js.build_tools.npm">
+  <configuration default="false" name="PostCSS Dist" type="js.build_tools.npm">
     <package-json value="$PROJECT_DIR$/package.json" />
     <command value="run" />
     <scripts>
-      <script value="postprepare" />
+      <script value="dist" />
     </scripts>
     <node-interpreter value="project" />
     <envs />
