@@ -45,8 +45,12 @@ describe( 'config', () => {
 		const wpDefaultBrowsers = browserslist( require( '@wordpress/browserslist-config' ), {
 			env: 'production',
 		} );
+		// See if we can remove the override in favor of default wp.
 		expect( wpDefaultBrowsers.includes( 'and_uc 15.5' ) ).toBe( true );
+		expect( wpDefaultBrowsers.includes( 'op_mini all' ) ).toBe( true );
 		expect( browserslist( getBrowsersList() ).includes( 'and_uc 15.5' ) ).toBe( false );
+		expect( browserslist( getBrowsersList() ).includes( 'op_mini all' ) ).toBe( false );
+
 
 		process.env.BROWSERSLIST = 'chrome 71';
 		expect( getBrowsersList() ).toEqual( [ 'chrome 71' ] );
