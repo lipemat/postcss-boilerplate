@@ -1,7 +1,7 @@
 import {getPackageConfig} from './package-config';
 
-const SHORT_ALPHABET = 'abcdefghijklmnopqrstuvwxyz';
-const ALPHABET = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
+export const SHORT_ALPHABET = 'abcdefghijklmnopqrstuvwxyz';
+export const ALPHABET = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
 
 const classes: {
 	[ filename: string ]: {
@@ -18,8 +18,8 @@ let counters = [ -1 ];
  *
  * @since 4.6.0
  */
-function usingShortCssClasses() {
-	return getPackageConfig().shortCssClasses;
+export function usingShortCssClasses(): boolean {
+	return Boolean( getPackageConfig().shortCssClasses );
 }
 
 /**
@@ -27,7 +27,7 @@ function usingShortCssClasses() {
  *
  * @notice Mostly here for unit tests.
  */
-function resetCounters() {
+export function resetCounters() {
 	counters = [ -1 ];
 }
 
@@ -40,7 +40,7 @@ function resetCounters() {
  *
  * @return {string}
  */
-function getNextClass() {
+export function getNextClass() {
 	const last = counters.length - 1;
 	let totalLetters = ALPHABET.length - 1;
 
@@ -109,7 +109,7 @@ function incrementParent() {
  *
  * @link https://github.com/madyankin/postcss-modules#generating-scoped-names
  */
-const generateScopedName = ( localName: string, resourcePath: string ): string => {
+export const generateScopedName = ( localName: string, resourcePath: string ): string => {
 	classes[ resourcePath ] ||= {};
 	classes[ resourcePath ][ localName ] ||= getNextClass();
 	return classes[ resourcePath ][ localName ];
@@ -123,7 +123,7 @@ const generateScopedName = ( localName: string, resourcePath: string ): string =
  *
  * @note If run into issues with class name conflicts @see b36fc5309 as a more robust alternative.
  */
-function getGenerateScopeName() {
+export function getGenerateScopeName() {
 	if ( 'production' === process.env.NODE_ENV ) {
 		// Use short CSS classes if enabled.
 		if ( usingShortCssClasses() ) {
@@ -133,13 +133,3 @@ function getGenerateScopeName() {
 	}
 	return 'Ⓜ[name]__[local]__[contenthash:base52:2]';
 }
-
-module.exports = {
-	ALPHABET,
-	SHORT_ALPHABET,
-	generateScopedName,
-	getGenerateScopeName,
-	getNextClass,
-	resetCounters,
-	usingShortCssClasses,
-};
