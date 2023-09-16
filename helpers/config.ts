@@ -38,8 +38,7 @@ export function getBrowsersList() {
 	const projectBrowsersList = browserslist();
 	if ( browserslist( browserslist.defaults ) === projectBrowsersList ) {
 		const wp = [ ...require( '@wordpress/browserslist-config' ) ];
-		wp.push( 'not and_uc 15.5' );
-		return wp;
+		return adjustBrowserslist( wp );
 	}
 	return projectBrowsersList;
 }
@@ -58,8 +57,7 @@ export function getBrowsersList() {
 export const getDefaultBrowsersList = () => {
 	if ( browserslist( browserslist.defaults ) === browserslist() ) {
 		const wp = [ ...require( '@wordpress/browserslist-config' ) ];
-		wp.push( 'not and_uc 15.5' );
-		return wp;
+		return adjustBrowserslist( wp );
 	}
 	return false;
 };
@@ -88,4 +86,13 @@ export function getExternalFiles(): string[] {
 	} );
 
 	return externalFiles;
+}
+
+/**
+ * Adjust the browserslist to include our defaults.
+ */
+export function adjustBrowserslist( browserRules: string[] ): string[] {
+	browserRules.push( 'not and_uc 15.5' );
+	browserRules.push( 'not op_mini all' );
+	return browserRules;
 }

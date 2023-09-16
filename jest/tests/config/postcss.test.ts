@@ -1,6 +1,7 @@
 import {readFileSync} from 'fs';
 import postcss, {Plugin, Syntax} from 'postcss';
 import {basename} from 'path';
+import {adjustBrowserslist} from '../../../helpers/config';
 
 const browserslist = require( 'browserslist' );
 const postcssPresetEnv = require( 'postcss-preset-env' );
@@ -106,8 +107,7 @@ describe( 'postcss.js', () => {
 
 
 	test( 'Browserslist config', () => {
-		const expectedBrowsers = [ ...require( '@wordpress/browserslist-config' ) ];
-		expectedBrowsers.push( 'not and_uc 15.5' );
+		const expectedBrowsers = adjustBrowserslist( [ ...require( '@wordpress/browserslist-config' ) ] );
 
 		const config = getPostCSSConfig();
 		// We want to make sure no matter what postcss-custom-properties is not included

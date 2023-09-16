@@ -1,5 +1,5 @@
 import browserslist = require( 'browserslist' );
-import {getExternalFiles} from '../../../helpers/config';
+import {adjustBrowserslist, getExternalFiles} from '../../../helpers/config';
 
 const {getDefaultBrowsersList, getBrowsersList} = require( '../../../helpers/config' );
 
@@ -8,9 +8,18 @@ afterEach( () => {
 } );
 
 describe( 'config', () => {
+	test( 'adjustBrowserslist', () => {
+		expect( adjustBrowserslist( [ 'chrome 71' ] ) ).toEqual( [
+			'chrome 71',
+			'not and_uc 15.5',
+			'not op_mini all',
+		] );
+	} );
+
 	test( 'getDefaultBrowsersList', () => {
 		const expectedBrowsers = [ ...require( '@wordpress/browserslist-config' ) ];
 		expectedBrowsers.push( 'not and_uc 15.5' );
+		expectedBrowsers.push( 'not op_mini all' );
 
 		expect( getDefaultBrowsersList() ).toEqual( expectedBrowsers );
 		expect( getDefaultBrowsersList() ).toEqual( getBrowsersList() );
@@ -22,6 +31,7 @@ describe( 'config', () => {
 	test( 'getBrowsersList', () => {
 		const expectedBrowsers = [ ...require( '@wordpress/browserslist-config' ) ];
 		expectedBrowsers.push( 'not and_uc 15.5' );
+		expectedBrowsers.push( 'not op_mini all' );
 
 		// Check if the browserslist results change, which may explain other failures.
 		expect( browserslist( getBrowsersList() ) ).toMatchSnapshot( 'browserslist' );
