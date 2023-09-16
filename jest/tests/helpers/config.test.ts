@@ -23,6 +23,10 @@ describe( 'config', () => {
 		const expectedBrowsers = [ ...require( '@wordpress/browserslist-config' ) ];
 		expectedBrowsers.push( 'not and_uc 15.5' );
 
+		// Check if the browserslist results change, which may explain other failures.
+		expect( browserslist( getBrowsersList() ) ).toMatchSnapshot( 'browserslist' );
+		expect( expectedBrowsers ).toMatchSnapshot( 'expectedBrowsers' );
+
 		expect( getBrowsersList() ).toEqual( expectedBrowsers );
 		expect( getBrowsersList() ).toEqual( getDefaultBrowsersList() );
 

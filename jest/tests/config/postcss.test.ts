@@ -34,6 +34,13 @@ export type Fixture = {
 	description: string;
 }
 
+const creator = ( browsers, features = {} ) => {
+	return postcssPresetEnv( {
+		browsers,
+		features: {...features},
+	} );
+};
+
 
 function getPostCSSConfig(): {
 	toCSS: GruntTask;
@@ -100,16 +107,7 @@ describe( 'postcss.js', () => {
 
 	test( 'Browserslist config', () => {
 		const expectedBrowsers = [ ...require( '@wordpress/browserslist-config' ) ];
-		// To determine if the browserslist has changed.
-		expect( expectedBrowsers ).toMatchSnapshot( 'browserslist-config' );
-
 		expectedBrowsers.push( 'not and_uc 15.5' );
-		const creator = ( browsers, features = {} ) => {
-			return postcssPresetEnv( {
-				browsers,
-				features: {...features},
-			} );
-		};
 
 		const config = getPostCSSConfig();
 		// We want to make sure no matter what postcss-custom-properties is not included
