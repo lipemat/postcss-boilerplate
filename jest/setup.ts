@@ -7,6 +7,6 @@ jest.mock( '../helpers/package-config.ts', () => ( {
 	getPackageConfig: () => ( {
 		...jest.requireActual( '../helpers/package-config.ts' ),
 		// Point to our data directory for the theme_path.
-		theme_path: 'tests/theme',
+		theme_path: 'jest/theme',
 	} ),
 } ) );

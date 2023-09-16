@@ -3,11 +3,10 @@
   "$schema": "https://json.schemastore.org/tsconfig",
   "display": "PostCSS Boilerplate",
   "include": [
-    "jest.config.js",
     "config/**/*",
-    "scripts/**/*",
-    "tests/**/*",
-    "helpers/**/*"
+    "helpers/**/*",
+    "jest/**/*",
+    "scripts/**/*"
   ],
   "compilerOptions": {
     "esModuleInterop": true,

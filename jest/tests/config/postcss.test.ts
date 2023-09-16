@@ -40,7 +40,7 @@ function getPostCSSConfig(): {
 	min: GruntTask;
 	} {
 	jest.resetModules();
-	return require( '../../config/postcss.js' );
+	return require( '../../../config/postcss.js' );
 }
 
 function processPostCSS( input: string, min: boolean = false, file: string ): Promise<postcss.Result> {
@@ -65,13 +65,13 @@ function processPostCSS( input: string, min: boolean = false, file: string ): Pr
 
 // Create a data provider for fixtures.
 const fixtures: Fixture[] = require( 'glob' )
-	.sync( 'tests/fixtures/{postcss,safari-15}/*.pcss' )
+	.sync( 'jest/fixtures/{postcss,safari-15}/*.pcss' )
 	.map( file => {
 		return {
 			basename: basename( file ),
 			input: file,
 			output: file.replace( '.pcss', '.css' ),
-			description: file.replace( /\\/g, '/' ).replace( 'tests/fixtures/', '' ),
+			description: file.replace( /\\/g, '/' ).replace( 'jest/fixtures/', '' ),
 		};
 	} );
 
@@ -86,13 +86,13 @@ describe( 'postcss.js', () => {
 		/**
 		 * @notice If the browserslist results change, the snapshot will need to be updated.
 		 */
-		const config = require( '../../config/postcss' );
+		const config = require( '../../../config/postcss' );
 		expect( config ).toMatchSnapshot( 'develop' );
 	} );
 
 
 	test( 'sourceMap', () => {
-		const config = require( '../../config/postcss' );
+		const config = require( '../../../config/postcss' );
 		expect( config.toCSS.options.map ).toEqual( true );
 		expect( config.min.options.map ).toEqual( false );
 	} );
@@ -100,6 +100,9 @@ describe( 'postcss.js', () => {
 
 	test( 'Browserslist config', () => {
 		const expectedBrowsers = [ ...require( '@wordpress/browserslist-config' ) ];
+		// To determine if the browserslist has changed.
+		expect( expectedBrowsers ).toMatchSnapshot( 'browserslist-config' );
+
 		expectedBrowsers.push( 'not and_uc 15.5' );
 		const creator = ( browsers, features = {} ) => {
 			return postcssPresetEnv( {
