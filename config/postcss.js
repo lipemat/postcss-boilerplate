@@ -68,7 +68,7 @@ const compileOptions = {
 		require( '@lipemat/css-mqpacker' ),
 		// Create a manifest for browser cache flushing.
 		require( 'postcss-hash' )( {
-			algorithm: 'md4',
+			algorithm: 'md5',
 			trim: 20,
 			manifest: config.css_folder + '/manifest.json',
 			name: ( {hash} ) => hash,
