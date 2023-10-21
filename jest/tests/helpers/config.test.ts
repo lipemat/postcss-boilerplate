@@ -11,14 +11,12 @@ describe( 'config', () => {
 	test( 'adjustBrowserslist', () => {
 		expect( adjustBrowserslist( [ 'chrome 71' ] ) ).toEqual( [
 			'chrome 71',
-			'not and_uc 15.5',
 			'not op_mini all',
 		] );
 	} );
 
 	test( 'getDefaultBrowsersList', () => {
 		const expectedBrowsers = [ ...require( '@wordpress/browserslist-config' ) ];
-		expectedBrowsers.push( 'not and_uc 15.5' );
 		expectedBrowsers.push( 'not op_mini all' );
 
 		expect( getDefaultBrowsersList() ).toEqual( expectedBrowsers );
@@ -30,7 +28,6 @@ describe( 'config', () => {
 
 	test( 'getBrowsersList', () => {
 		const expectedBrowsers = [ ...require( '@wordpress/browserslist-config' ) ];
-		expectedBrowsers.push( 'not and_uc 15.5' );
 		expectedBrowsers.push( 'not op_mini all' );
 
 		// Check if the browserslist results change, which may explain other failures.
@@ -46,7 +43,7 @@ describe( 'config', () => {
 			env: 'production',
 		} );
 		// See if we can remove the override in favor of default wp.
-		expect( wpDefaultBrowsers.includes( 'and_uc 15.5' ) ).toBe( true );
+		expect( wpDefaultBrowsers.includes( 'and_uc 15.5' ) ).toBe( false );
 		expect( wpDefaultBrowsers.includes( 'op_mini all' ) ).toBe( true );
 		expect( browserslist( getBrowsersList() ).includes( 'and_uc 15.5' ) ).toBe( false );
 		expect( browserslist( getBrowsersList() ).includes( 'op_mini all' ) ).toBe( false );

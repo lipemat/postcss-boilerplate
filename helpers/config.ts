@@ -92,7 +92,6 @@ export function getExternalFiles(): string[] {
  * Adjust the browserslist to include our defaults.
  */
 export function adjustBrowserslist( browserRules: string[] ): string[] {
-	browserRules.push( 'not and_uc 15.5' );
 	browserRules.push( 'not op_mini all' );
 	return browserRules;
 }

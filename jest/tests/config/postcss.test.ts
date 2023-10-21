@@ -124,16 +124,16 @@ describe( 'postcss.js', () => {
 		expect( JSON.stringify( config.min.options.processors[ 4 ] ) )
 			.toEqual( JSON.stringify( creator( expectedBrowsers ) ) );
 
-		// and_uc 15.5 requires postcss-custom-properties.
-		process.env.BROWSERSLIST = 'and_uc 15.5';
+		// op_mini all requires postcss-custom-properties.
+		process.env.BROWSERSLIST = 'op_mini all';
 		const config2 = getPostCSSConfig();
 		expect( config2.toCSS.options.processors[ 4 ]?.plugins?.filter( plugin => {
 			return 'postcss-custom-properties' === plugin.postcssPlugin;
 		} ).length ).toEqual( 1 );
 		expect( JSON.stringify( config2.toCSS.options.processors[ 4 ] ) )
-			.toEqual( JSON.stringify( creator( [ 'and_uc 15.5' ] ) ) );
+			.toEqual( JSON.stringify( creator( [ 'op_mini all' ] ) ) );
 		expect( JSON.stringify( config2.min.options.processors[ 4 ] ) )
-			.toEqual( JSON.stringify( creator( [ 'and_uc 15.5' ] ) ) );
+			.toEqual( JSON.stringify( creator( [ 'op_mini all' ] ) ) );
 
 		// Safari 15 requires postcss-focus-visible.
 		process.env.BROWSERSLIST = 'safari 15';

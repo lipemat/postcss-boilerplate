@@ -2,25 +2,26 @@
 
 exports[`config getBrowsersList: browserslist 1`] = `
 [
-  "and_chr 116",
-  "android 116",
+  "and_chr 117",
+  "android 117",
+  "chrome 118",
   "chrome 117",
   "chrome 116",
   "chrome 115",
-  "chrome 114",
   "chrome 109",
+  "edge 118",
+  "edge 117",
   "edge 116",
-  "edge 115",
+  "firefox 118",
   "firefox 117",
-  "firefox 116",
+  "ios_saf 17.0",
   "ios_saf 16.6",
-  "ios_saf 16.5",
-  "ios_saf 16.4",
   "ios_saf 15.6-15.7",
+  "opera 103",
   "opera 102",
-  "opera 101",
+  "safari 17.0",
   "safari 16.6",
-  "safari 16.5",
+  "samsung 22",
 ]
 `;
 
@@ -35,7 +36,6 @@ exports[`config getBrowsersList: expectedBrowsers 1`] = `
   "last 2 iOS versions",
   "last 2 Edge versions",
   "last 2 Opera versions",
-  "not and_uc 15.5",
   "not op_mini all",
 ]
 `;
