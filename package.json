@@ -34,6 +34,7 @@
     "lipemat-postcss-boilerplate": "./bin/lipemat-postcss-boilerplate.js"
   },
   "scripts": {
+    "browserslist": "lipemat-postcss-boilerplate browserslist",
     "dist": "lipemat-postcss-boilerplate dist",
     "lint": "lipemat-postcss-boilerplate lint",
     "start": "lipemat-postcss-boilerplate start",
