@@ -2,8 +2,8 @@
 
 exports[`config getBrowsersList: browserslist 1`] = `
 [
-  "and_chr 117",
-  "android 117",
+  "and_chr 118",
+  "android 118",
   "chrome 118",
   "chrome 117",
   "chrome 116",

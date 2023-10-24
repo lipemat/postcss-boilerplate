@@ -37,6 +37,7 @@
     "browserslist": "lipemat-postcss-boilerplate browserslist",
     "dist": "lipemat-postcss-boilerplate dist",
     "lint": "lipemat-postcss-boilerplate lint",
+    "pnp-fix": "lipemat-postcss-boilerplate fix-pnp",
     "start": "lipemat-postcss-boilerplate start",
     "test": "lipemat-js-boilerplate test --silent"
   },
