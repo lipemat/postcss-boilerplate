@@ -1,0 +1,26 @@
+.wrap {
+	composes: purple-bg from '../test.pcss';
+	background: #000;
+	border: 5px solid var(--color-yellow-20);
+	color: #fff;
+	margin: 10px;
+	padding: 25px;
+
+	@media (--mobile) {
+		background: #ff0 !important;
+		border: 5px solid #00f !important;
+		color: #800080 !important;
+	}
+}
+
+.global-composes {
+	composes: site-title from global;
+	composes: nothing from global;
+	color: color-mod(var(--c-grey) lightness(15%));
+}
+
+.extra {
+	background: #008000;
+	font-weight: 800;
+
+}
