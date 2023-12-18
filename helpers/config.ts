@@ -4,6 +4,8 @@ import browserslist from 'browserslist';
 
 import {getPackageConfig} from './package-config';
 
+export type Environment = 'production' | 'development';
+
 
 /**
  * Get a config for our /config directory merged with any

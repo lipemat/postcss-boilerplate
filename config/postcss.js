@@ -42,13 +42,15 @@ if ( includedPlugins.includes( 'postcss-focus-visible' ) ) {
 
 /**
  * A reusable config for postcss-import based on the environment.
+ *
+ * @param {'production'|'development'} env The environment to use.
  */
 function getImportConfig( env ) {
 	return {
 		extension: 'pcss',
 		plugins: [
 			require( 'postcss-modules' )( {
-				generateScopedName: getGenerateScopeName(),
+				generateScopedName: getGenerateScopeName( env ),
 				globalModulePaths: [
 					new RegExp( '.*?' + config.theme_path.replace( /\//g, '\\\\' ) + 'pcss', 'i' ),
 					new RegExp( '.*?' + config.theme_path + 'pcss', 'i' ),
@@ -67,7 +69,7 @@ const compileOptions = {
 		require( '@csstools/postcss-global-data' )( {
 			files: getExternalFiles(),
 		} ),
-		require( 'postcss-import' )( getImportConfig( 'develop' ) ),
+		require( 'postcss-import' )( getImportConfig( 'development' ) ),
 		require( 'postcss-custom-media' ),
 		require( 'postcss-nested' ),
 		postcssPresetEnv( presetEnv ),

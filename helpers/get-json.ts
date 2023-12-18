@@ -1,8 +1,7 @@
 import {getPackageConfig} from './package-config';
 import path from 'path';
 import fse from 'fs-extra';
-
-type Environment = 'production' | 'develop';
+import type {Environment} from './config';
 
 /**
  * Custom output of CSS modules JSON files to the `_css-modules-json` if not

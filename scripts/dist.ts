@@ -15,7 +15,7 @@ runner.run( 'postcss:min' );
  * Allows for switching to .css on production and not having the
  * site fall apart.
  */
-process.env.NODE_ENV = 'develop';
+process.env.NODE_ENV = 'development';
 runner.run( 'postcss:toCSS' );
 
 // Compress the CSS files to .br files.

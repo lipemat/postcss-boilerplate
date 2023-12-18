@@ -53,13 +53,12 @@ describe( 'Test CSS Classname Generation', () => {
 	} );
 
 	test( 'getGenerateScopedName', () => {
-		expect( getGenerateScopeName() ).toEqual( 'Ⓜ[name]__[local]__[contenthash:base52:2]' );
+		expect( getGenerateScopeName( 'development' ) ).toEqual( 'Ⓜ[name]__[local]__[contenthash:base52:2]' );
 
-		process.env.NODE_ENV = 'production';
-		expect( getGenerateScopeName() ).toEqual( '[contenthash:base52:5]' );
+		expect( getGenerateScopeName( 'production' ) ).toEqual( '[contenthash:base52:5]' );
 
 		jest.resetModules();
 		mockShortCssEnabled = true;
-		expect( getGenerateScopeName() ).toEqual( generateScopedName );
+		expect( getGenerateScopeName( 'production' ) ).toEqual( generateScopedName );
 	} );
 } );

@@ -1,4 +1,5 @@
 import {getPackageConfig} from './package-config';
+import type {Environment} from './config';
 
 export const SHORT_ALPHABET = 'abcdefghijklmnopqrstuvwxyz';
 export const ALPHABET = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
@@ -123,8 +124,8 @@ export const generateScopedName = ( localName: string, resourcePath: string ): s
  *
  * @note If run into issues with class name conflicts @see b36fc5309 as a more robust alternative.
  */
-export function getGenerateScopeName() {
-	if ( 'production' === process.env.NODE_ENV ) {
+export function getGenerateScopeName( env: Environment ) {
+	if ( 'production' === env ) {
 		// Use short CSS classes if enabled.
 		if ( usingShortCssClasses() ) {
 			return generateScopedName;
