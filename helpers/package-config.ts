@@ -1,12 +1,22 @@
 import path from 'path';
 import fs from 'fs';
 
+export type PackageConfig = {
+	brotliFiles: boolean;
+	combinedJson: boolean;
+	css_folder: string;
+	file_name: string;
+	shortCssClasses: boolean;
+	theme_path: string;
+	workingDirectory: string;
+};
+
 /**
  * Get all configurations for package.json of the project running this.
  */
-const workingDirectory = fs.realpathSync( process.cwd() );
+const workingDirectory = fs.realpathSync( process.cwd() ).replace( /\\/g, '/' );
 
-let packageConfig = require( path.resolve( workingDirectory, 'package.json' ) );
+let packageConfig: PackageConfig = require( path.resolve( workingDirectory, 'package.json' ) );
 packageConfig.brotliFiles ||= false;
 packageConfig.workingDirectory = workingDirectory;
 packageConfig.theme_path ||= './';
@@ -36,6 +46,7 @@ export function getPackageConfig() {
 	return packageConfig;
 }
 
+// @ts-ignore
 packageConfig.getPackageConfig = getPackageConfig;
 
 // Leaving old export structure for backwards compatibility.

@@ -832,6 +832,10 @@ const RAW_RUNTIME_STATE =
       "npm:1.5.2"\
     ],\
     [\
+      "@types/ejs",\
+      "npm:3.1.5"\
+    ],\
+    [\
       "@types/eslint",\
       "npm:8.44.6"\
     ],\
@@ -1964,6 +1968,10 @@ const RAW_RUNTIME_STATE =
       "npm:1.1.1"\
     ],\
     [\
+      "ejs",\
+      "npm:3.1.9"\
+    ],\
+    [\
       "electron-to-chromium",\
       "npm:1.4.566"\
     ],\
@@ -2234,6 +2242,10 @@ const RAW_RUNTIME_STATE =
     [\
       "file-entry-cache",\
       "npm:6.0.1"\
+    ],\
+    [\
+      "filelist",\
+      "npm:1.0.4"\
     ],\
     [\
       "fill-range",\
@@ -2950,6 +2962,10 @@ const RAW_RUNTIME_STATE =
     [\
       "jackspeak",\
       "npm:2.3.6"\
+    ],\
+    [\
+      "jake",\
+      "npm:10.8.7"\
     ],\
     [\
       "jest",\
@@ -4916,6 +4932,7 @@ const RAW_RUNTIME_STATE =
           ["@lipemat/js-boilerplate", "npm:10.4.2"],\
           ["@lipemat/stylelint-config", "virtual:1638d8a1a2d593b8169ffe9d70f3c9e9d1509d2f5963ba8fea516113e9e47063b31f182107f616b8cf93bd7e0d863174da1e8f027f01dffdc7988bf1eec9ba20#npm:2.2.1"],\
           ["@lodder/grunt-postcss", "virtual:1638d8a1a2d593b8169ffe9d70f3c9e9d1509d2f5963ba8fea516113e9e47063b31f182107f616b8cf93bd7e0d863174da1e8f027f01dffdc7988bf1eec9ba20#npm:3.1.1"],\
+          ["@types/ejs", "npm:3.1.5"],\
           ["@types/fs-extra", "npm:11.0.4"],\
           ["@types/jest", "npm:29.5.6"],\
           ["@types/node", "npm:16.18.59"],\
@@ -4924,6 +4941,7 @@ const RAW_RUNTIME_STATE =
           ["clean-css", "npm:5.3.2"],\
           ["cross-spawn", "npm:6.0.5"],\
           ["css-modules-loader-core", "npm:1.1.0"],\
+          ["ejs", "npm:3.1.9"],\
           ["eslint", "npm:8.52.0"],\
           ["fs-extra", "npm:7.0.1"],\
           ["glob", "npm:10.3.10"],\
@@ -8747,6 +8765,7 @@ const RAW_RUNTIME_STATE =
           ["@lipemat/js-boilerplate", "npm:10.4.2"],\
           ["@lipemat/stylelint-config", "virtual:1638d8a1a2d593b8169ffe9d70f3c9e9d1509d2f5963ba8fea516113e9e47063b31f182107f616b8cf93bd7e0d863174da1e8f027f01dffdc7988bf1eec9ba20#npm:2.2.1"],\
           ["@lodder/grunt-postcss", "virtual:1638d8a1a2d593b8169ffe9d70f3c9e9d1509d2f5963ba8fea516113e9e47063b31f182107f616b8cf93bd7e0d863174da1e8f027f01dffdc7988bf1eec9ba20#npm:3.1.1"],\
+          ["@types/ejs", "npm:3.1.5"],\
           ["@types/fs-extra", "npm:11.0.4"],\
           ["@types/jest", "npm:29.5.6"],\
           ["@types/node", "npm:16.18.59"],\
@@ -8755,6 +8774,7 @@ const RAW_RUNTIME_STATE =
           ["clean-css", "npm:5.3.2"],\
           ["cross-spawn", "npm:6.0.5"],\
           ["css-modules-loader-core", "npm:1.1.0"],\
+          ["ejs", "npm:3.1.9"],\
           ["eslint", "npm:8.52.0"],\
           ["fs-extra", "npm:7.0.1"],\
           ["glob", "npm:10.3.10"],\
@@ -9125,6 +9145,15 @@ const RAW_RUNTIME_STATE =
           ["@types/connect-history-api-fallback", "npm:1.5.2"],\
           ["@types/express-serve-static-core", "npm:4.17.39"],\
           ["@types/node", "npm:20.8.8"]\
+        ],\
+        "linkType": "HARD"\
+      }]\
+    ]],\
+    ["@types/ejs", [\
+      ["npm:3.1.5", {\
+        "packageLocation": "./.yarn/cache/@types-ejs-npm-3.1.5-b9db7fa2d7-13d994cf03.zip/node_modules/@types/ejs/",\
+        "packageDependencies": [\
+          ["@types/ejs", "npm:3.1.5"]\
         ],\
         "linkType": "HARD"\
       }]\
@@ -10914,6 +10943,13 @@ const RAW_RUNTIME_STATE =
         "packageLocation": "./.yarn/cache/async-npm-3.2.4-aba13508f9-b5d02fed64.zip/node_modules/async/",\
         "packageDependencies": [\
           ["async", "npm:3.2.4"]\
+        ],\
+        "linkType": "HARD"\
+      }],\
+      ["npm:3.2.5", {\
+        "packageLocation": "./.yarn/cache/async-npm-3.2.5-f5dbdabdfc-1408287b26.zip/node_modules/async/",\
+        "packageDependencies": [\
+          ["async", "npm:3.2.5"]\
         ],\
         "linkType": "HARD"\
       }]\
@@ -12993,6 +13029,16 @@ const RAW_RUNTIME_STATE =
         "linkType": "HARD"\
       }]\
     ]],\
+    ["ejs", [\
+      ["npm:3.1.9", {\
+        "packageLocation": "./.yarn/cache/ejs-npm-3.1.9-e201b2088c-f0e249c791.zip/node_modules/ejs/",\
+        "packageDependencies": [\
+          ["ejs", "npm:3.1.9"],\
+          ["jake", "npm:10.8.7"]\
+        ],\
+        "linkType": "HARD"\
+      }]\
+    ]],\
     ["electron-to-chromium", [\
       ["npm:1.4.566", {\
         "packageLocation": "./.yarn/cache/electron-to-chromium-npm-1.4.566-c3f1cf45ea-9df1aed0ec.zip/node_modules/electron-to-chromium/",\
@@ -14048,6 +14094,16 @@ const RAW_RUNTIME_STATE =
         "packageDependencies": [\
           ["file-entry-cache", "npm:6.0.1"],\
           ["flat-cache", "npm:3.1.1"]\
+        ],\
+        "linkType": "HARD"\
+      }]\
+    ]],\
+    ["filelist", [\
+      ["npm:1.0.4", {\
+        "packageLocation": "./.yarn/cache/filelist-npm-1.0.4-3a835ae0a7-426b1de394.zip/node_modules/filelist/",\
+        "packageDependencies": [\
+          ["filelist", "npm:1.0.4"],\
+          ["minimatch", "npm:5.1.6"]\
         ],\
         "linkType": "HARD"\
       }]\
@@ -16249,6 +16305,19 @@ const RAW_RUNTIME_STATE =
           ["jackspeak", "npm:2.3.6"],\
           ["@isaacs/cliui", "npm:8.0.2"],\
           ["@pkgjs/parseargs", "npm:0.11.0"]\
+        ],\
+        "linkType": "HARD"\
+      }]\
+    ]],\
+    ["jake", [\
+      ["npm:10.8.7", {\
+        "packageLocation": "./.yarn/cache/jake-npm-10.8.7-1caf9b4534-89326d01a8.zip/node_modules/jake/",\
+        "packageDependencies": [\
+          ["jake", "npm:10.8.7"],\
+          ["async", "npm:3.2.5"],\
+          ["chalk", "npm:4.1.2"],\
+          ["filelist", "npm:1.0.4"],\
+          ["minimatch", "npm:3.1.2"]\
         ],\
         "linkType": "HARD"\
       }]\
