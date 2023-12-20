@@ -2,7 +2,7 @@ import {getPackageConfig} from './package-config';
 import path from 'path';
 import fse from 'fs-extra';
 import type {Environment} from './config';
-import {CssModuleEnums} from './css-module-enums';
+import {EnumModules} from './enum-modules';
 
 /**
  * Custom output of CSS modules JSON files to the `_css-modules-json` if not
@@ -31,7 +31,7 @@ export function getJSON( env: Environment ) {
 			jsonModules.combinedJson( env );
 
 			if ( getPackageConfig().cssEnums ) {
-				const enums = new CssModuleEnums( filePath, json );
+				const enums = new EnumModules( filePath, json );
 				enums.addModuleToEnum( env );
 			}
 		} else {
@@ -61,10 +61,15 @@ function getDistFolder() {
  *
  * @see getJSON
  */
-class JsonModules {
+export class JsonModules {
 	private readonly json: Object;
 	private readonly cssName: string;
 	private filePath: string;
+
+	private static content: Object = {
+		production: {},
+		development: {},
+	};
 
 	constructor( directory: string, cssName: string, json: Object ) {
 		this.filePath = directory;
@@ -80,13 +85,8 @@ class JsonModules {
 	 */
 	combinedJson( env: Environment ) {
 		const combined = ( getDistFolder() + '/' + getCombinedName( env ) ).replace( /\\/g, '/' );
-		let content = {};
-		try {
-			content = fse.readJsonSync( combined ) ?? {};
-		} catch ( e ) {
-		}
-		content[ this.filePath.replace( this.cssName + '/', '' ) + this.cssName ] = this.json;
-		fse.outputJsonSync( combined, content );
+		JsonModules.content[ env ][ this.filePath.replace( this.cssName + '/', '' ) + this.cssName ] = this.json;
+		fse.outputJsonSync( combined, JsonModules.content[ env ] );
 	}
 
 	/**
@@ -98,5 +98,18 @@ class JsonModules {
 	moduleFile( env: Environment ) {
 		const jsonFileName = getPackageConfig().theme_path.replace( /\\/g, '/' ) + getModulesFolder( env ) + this.filePath.replace( this.cssName + '/', '' ) + this.cssName + '.json';
 		fse.outputJsonSync( jsonFileName, this.json );
+	}
+
+	/**
+	 * Reset the content of the JSON module file between
+	 * runs during the `start` task.
+	 *
+	 * Prevents removed CSS classes and files from remaining between runs.
+	 */
+	static _resetContent() {
+		JsonModules.content = {
+			production: {},
+			development: {},
+		};
 	}
 }

@@ -1,4 +1,5 @@
 import fse from 'fs-extra';
+import {JsonModules} from '../../../helpers/get-json';
 
 // Change this variable during tests.
 let mockCombinedJson = false;
@@ -8,7 +9,8 @@ let mockJsonContents = {};
  * To prevent: ReferenceError: Cannot access 'mockCombinedJson' before initialization
  */
 function getJSON( cssFileName: string, json: Object ) {
-	return require( '../../../helpers/get-json' ).getJSON( process.env.NODE_ENV )( cssFileName, json );
+	const env = 'production' === process.env.NODE_ENV ? 'production' : 'development';
+	return require( '../../../helpers/get-json' ).getJSON( env )( cssFileName, json );
 }
 
 // Change the result of the getPackageConfig function, so we can enable combined json.
@@ -33,8 +35,8 @@ jest.mock( 'fs-extra', () => {
 } );
 
 afterEach( () => {
+	JsonModules._resetContent();
 	mockCombinedJson = false;
-	mockJsonContents = {};
 	jest.clearAllMocks();
 	process.env.NODE_ENV = 'test';
 } );

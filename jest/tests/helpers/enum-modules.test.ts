@@ -1,4 +1,4 @@
-import {CssModuleEnums, getDistFolder} from '../../../helpers/css-module-enums';
+import {EnumModules, getDistFolder} from '../../../helpers/enum-modules';
 import {getPackageConfig, type PackageConfig} from '../../../helpers/package-config';
 import fs from 'fs';
 import fse from 'fs-extra';
@@ -35,6 +35,7 @@ jest.mock( 'fs-extra', () => ( {
 
 
 afterEach( () => {
+	EnumModules._resetContent();
 	mockEnumContents = '';
 	mockPackageConfig = {
 		css_folder: './css/dist/',
@@ -72,24 +73,23 @@ describe( 'cssModuleEnums', () => {
 
 	test( 'addModuleToEnum', () => {
 		const expected = fs.readFileSync( 'jest/fixtures/css-module-enums/module-enums.php', 'utf-8' );
-		const nav = new CssModuleEnums( 'template-parts/nav.pcss/', {
+		const nav = new EnumModules( 'template-parts/nav.pcss/', {
 			wrap: 'Ⓜnav__wrap__Jm Ⓜtest__purple-bg__ug',
 			'global-composes': 'Ⓜnav__global-composes__bw site-title nothing',
 			extra: 'Ⓜnav__extra__Ih',
 		} );
-		const deeper = new CssModuleEnums( 'template-parts/header/deeper.pcss/', {
+		const deeper = new EnumModules( 'template-parts/header/deeper.pcss/', {
 			'global-composes': 'Ⓜdeeper__global-composes__bw nothing',
 			extra: 'Ⓜdeeper__extra__Ih',
 		} );
 
 		nav.addModuleToEnum( 'production' );
 		deeper.addModuleToEnum( 'production' );
-		expect( fse.readFileSync ).toHaveBeenCalledTimes( 5 );
+		expect( fse.readFileSync ).toHaveBeenCalledTimes( 3 );
 		expect( fse.outputFileSync ).toHaveBeenCalledTimes( 2 );
 		expect( fse.outputFileSync ).toHaveBeenLastCalledWith( THEME_PATH + 'css/module-enums.min.php', expected );
 		expect( mockEnumContents ).toEqual( expected );
 
-		mockEnumContents = '';
 		nav.addModuleToEnum( 'development' );
 		deeper.addModuleToEnum( 'development' );
 		expect( fse.outputFileSync ).toHaveBeenLastCalledWith(
@@ -134,7 +134,7 @@ describe( 'cssModuleEnums', () => {
 			'global-composes': 'Ⓜdeeper__global-composes__bw nothing',
 			extra: 'Ⓜdeeper__extra__Ih',
 		} );
-		expect( fse.readFileSync ).toHaveBeenCalledTimes( 5 );
+		expect( fse.readFileSync ).toHaveBeenCalledTimes( 3 );
 		expect( fse.outputFileSync ).toHaveBeenCalledTimes( 2 );
 		expect( fse.outputFileSync ).toHaveBeenLastCalledWith( THEME_PATH + 'css/module-enums.min.php', expected );
 		expect( mockEnumContents ).toEqual( expected );

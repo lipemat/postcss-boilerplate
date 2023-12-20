@@ -26,17 +26,6 @@ function getCombinedName( env: Environment ): string {
 }
 
 
-function convertPathToEnum( fullPath: string ): string {
-	const pathWithoutExtension = fullPath.replace( '.pcss/', '' );
-	const parts = pathWithoutExtension.split( '/' );
-	return parts.map( word => {
-		return word.split( '-' ).map( subWord => {
-			return subWord.charAt( 0 ).toUpperCase() + subWord.slice( 1 );
-		} ).join( '_' );
-	} ).join( '__' );
-}
-
-
 function convertToCamelCase( cssClass: string ): string {
 	const words = cssClass.split( '-' );
 	for ( let i = 1; i < words.length; i++ ) {
@@ -51,9 +40,16 @@ function convertToCamelCase( cssClass: string ): string {
  *
  * Uses `ejs` to render the template.
  */
-export class CssModuleEnums {
+export class EnumModules {
 	private readonly json: Object;
 	private readonly filePath: string;
+
+	/**
+	 */
+	private static content: Object = {
+		production: '',
+		development: '',
+	};
 
 
 	constructor( filePath: string, json: Object ) {
@@ -67,21 +63,30 @@ export class CssModuleEnums {
 	 */
 	addModuleToEnum( env: Environment ) {
 		const combined = ( getDistFolder() + '/' + getCombinedName( env ) ).replace( /\\/g, '/' );
-		let content = '';
-		try {
-			content = fse.readFileSync( combined, 'utf-8' ) ?? '';
-		} catch ( e ) {
-		}
-		if ( '' === content ) {
-			content = fse.readFileSync( __dirname + '/templates/module-enum-header.ejs', 'utf-8' );
+		if ( '' === EnumModules.content[ env ] ) {
+			EnumModules.content[ env ] = fse.readFileSync( __dirname + '/templates/module-enum-header.ejs', 'utf-8' );
 		}
 
 		const template = fse.readFileSync( __dirname + '/templates/module-enum.ejs', 'utf-8' );
-		content += ejs.render( template, {
+		EnumModules.content[ env ] += ejs.render( template, {
 			classMap: this.getFormattedClassMap(),
-			className: convertPathToEnum( this.filePath ),
+			className: this.convertPathToEnum(),
 		} );
-		fse.outputFileSync( combined, content );
+		fse.outputFileSync( combined, EnumModules.content[ env ] );
+	}
+
+
+	/**
+	 * Convert a file path to the name of a PHP enum.
+	 */
+	private convertPathToEnum(): string {
+		const pathWithoutExtension = this.filePath.replace( '.pcss/', '' );
+		const parts = pathWithoutExtension.split( '/' );
+		return parts.map( word => {
+			return word.split( '-' ).map( subWord => {
+				return subWord.charAt( 0 ).toUpperCase() + subWord.slice( 1 );
+			} ).join( '_' );
+		} ).join( '__' );
 	}
 
 
@@ -95,5 +100,19 @@ export class CssModuleEnums {
 				result[ key ] = Object.values( this.json )[ index ];
 				return result;
 			}, {} );
+	}
+
+
+	/**
+	 * Reset the content of the combined PHP enum file between
+	 * runs during the `start` task.
+	 *
+	 * Prevents enums from being duplicated.
+	 */
+	static _resetContent() {
+		EnumModules.content = {
+			production: '',
+			development: '',
+		};
 	}
 }
