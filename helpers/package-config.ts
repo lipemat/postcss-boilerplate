@@ -1,6 +1,16 @@
 import path from 'path';
 import fs from 'fs';
 
+/**
+ * @todo In version 5 change default values.
+ * 1. `css_folder` should be `./css/dist/` instead of `css/`.
+ * 2. `combinedJson` should be `true` instead of `false`.
+ * 3. `shortCssClasses` should be `true` instead of `false`.
+ * 4. `brotliFiles` should be `true` instead of `false`.
+ * 5. `cssEnums` should be `true` instead of `false`.
+ *
+ * Update the Readme.md file to reflect these changes.
+ */
 export type PackageConfig = {
 	brotliFiles: boolean;
 	combinedJson: boolean;
