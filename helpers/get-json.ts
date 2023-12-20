@@ -2,6 +2,7 @@ import {getPackageConfig} from './package-config';
 import path from 'path';
 import fse from 'fs-extra';
 import type {Environment} from './config';
+import {CssModuleEnums} from './css-module-enums';
 
 /**
  * Custom output of CSS modules JSON files to the `_css-modules-json` if not
@@ -25,8 +26,14 @@ export function getJSON( env: Environment ) {
 			path.basename( cssFileName, '.css' ),
 			json
 		);
-		if ( false !== getPackageConfig().combinedJson ) {
+
+		if ( getPackageConfig().combinedJson ) {
 			jsonModules.combinedJson( env );
+
+			if ( getPackageConfig().cssEnums ) {
+				const enums = new CssModuleEnums( directory, path.basename( cssFileName, '.pcss' ), json );
+				enums.addModuleToEnum( env );
+			}
 		} else {
 			jsonModules.moduleFile( env );
 		}

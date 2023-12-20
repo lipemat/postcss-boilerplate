@@ -33,11 +33,11 @@ export function getDistFolder() {
 export class CssModuleEnums {
 	private readonly json: Object;
 	private readonly cssName: string;
-	private readonly directory: string;
+	private readonly fullPath: string;
 
 
-	constructor( relativeDirectory: string, cssName: string, json: Object ) {
-		this.directory = relativeDirectory;
+	constructor( fullPath: string, cssName: string, json: Object ) {
+		this.fullPath = fullPath;
 		this.cssName = cssName;
 		this.json = json;
 	}
@@ -57,7 +57,7 @@ export class CssModuleEnums {
 		const template = fse.readFileSync( __dirname + '/templates/module-enum.ejs', 'utf-8' );
 		content += ejs.render( template, {
 			classMap: this.json,
-			className: this.directory.replace( this.cssName + '/', '' ) + this.cssName,
+			className: this.fullPath.replace( this.cssName + '.pcss/', '' ) + this.cssName,
 		} );
 		fse.outputFileSync( combined, content );
 	}

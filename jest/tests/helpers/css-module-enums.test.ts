@@ -29,6 +29,8 @@ jest.mock( 'fs-extra', () => ( {
 		return jest.requireActual( 'fs-extra' ).readFileSync( file, encoding );
 	} ),
 	outputFileSync: jest.fn().mockImplementation( ( file, contents ) => mockEnumContents = contents ),
+	outputJsonSync: jest.fn(),
+	readJsonSync: jest.fn(),
 } ) );
 
 
@@ -70,12 +72,12 @@ describe( 'cssModuleEnums', () => {
 
 	test( 'addModuleToEnum', () => {
 		const expected = fs.readFileSync( 'jest/fixtures/css-module-enums/module-enums.php', 'utf-8' );
-		const nav = new CssModuleEnums( 'template-parts/', 'nav', {
+		const nav = new CssModuleEnums( 'template-parts/nav.pcss/', 'nav', {
 			wrap: 'Ⓜnav__wrap__Jm Ⓜtest__purple-bg__ug',
 			'global-composes': 'Ⓜnav__global-composes__bw site-title nothing',
 			extra: 'Ⓜnav__extra__Ih',
 		} );
-		const deeper = new CssModuleEnums( 'template-parts/header/', 'deeper', {
+		const deeper = new CssModuleEnums( 'template-parts/header/deeper.pcss/', 'deeper', {
 			'global-composes': 'Ⓜdeeper__global-composes__bw nothing',
 			extra: 'Ⓜdeeper__extra__Ih',
 		} );
@@ -93,6 +95,48 @@ describe( 'cssModuleEnums', () => {
 		expect( fse.outputFileSync ).toHaveBeenLastCalledWith(
 			THEME_PATH + 'css/module-enums.php',
 			expected );
+		expect( mockEnumContents ).toEqual( expected );
+	} );
+
+
+	test( 'Through getJSON', () => {
+		const expected = fs.readFileSync( 'jest/fixtures/css-module-enums/module-enums.php', 'utf-8' );
+		const getJSON = require( '../../../helpers/get-json.ts' ).getJSON( 'production' );
+		// Neither combinedJson nor cssEnums enabled.
+		getJSON( THEME_PATH + 'template-parts/nav.pcss', {
+			wrap: 'Ⓜnav__wrap__Jm Ⓜtest__purple-bg__ug',
+			'global-composes': 'Ⓜnav__global-composes__bw site-title nothing',
+			extra: 'Ⓜnav__extra__Ih',
+		} );
+		expect( mockEnumContents ).toEqual( '' );
+		expect( fse.outputFileSync ).toHaveBeenCalledTimes( 0 );
+
+
+		// Just enums enabled but not combinedJson.
+		mockPackageConfig.cssEnums = true;
+		getJSON( THEME_PATH + 'template-parts/nav.pcss', {
+			wrap: 'Ⓜnav__wrap__Jm Ⓜtest__purple-bg__ug',
+			'global-composes': 'Ⓜnav__global-composes__bw site-title nothing',
+			extra: 'Ⓜnav__extra__Ih',
+		} );
+		expect( mockEnumContents ).toEqual( '' );
+		expect( fse.outputFileSync ).toHaveBeenCalledTimes( 0 );
+
+
+		// Both combinedJson and cssEnums enabled.
+		mockPackageConfig.combinedJson = true;
+		getJSON( THEME_PATH + 'template-parts/nav.pcss', {
+			wrap: 'Ⓜnav__wrap__Jm Ⓜtest__purple-bg__ug',
+			'global-composes': 'Ⓜnav__global-composes__bw site-title nothing',
+			extra: 'Ⓜnav__extra__Ih',
+		} );
+		getJSON( THEME_PATH + 'template-parts/header/deeper.pcss', {
+			'global-composes': 'Ⓜdeeper__global-composes__bw nothing',
+			extra: 'Ⓜdeeper__extra__Ih',
+		} );
+		expect( fse.readFileSync ).toHaveBeenCalledTimes( 5 );
+		expect( fse.outputFileSync ).toHaveBeenCalledTimes( 2 );
+		expect( fse.outputFileSync ).toHaveBeenLastCalledWith( THEME_PATH + 'css/module-enums.min.php', expected );
 		expect( mockEnumContents ).toEqual( expected );
 	} );
 } );

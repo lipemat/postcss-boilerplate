@@ -4,6 +4,7 @@ import fs from 'fs';
 export type PackageConfig = {
 	brotliFiles: boolean;
 	combinedJson: boolean;
+	cssEnums: boolean;
 	css_folder: string;
 	file_name: string;
 	shortCssClasses: boolean;
@@ -24,6 +25,7 @@ packageConfig.theme_path ||= './';
 if ( ! Boolean( packageConfig.hasOwnProperty( 'css_folder' ) ) ) {
 	packageConfig.css_folder = 'css/';
 }
+packageConfig.cssEnums ||= false;
 packageConfig.combinedJson ||= false;
 packageConfig.file_name ||= 'front-end';
 packageConfig.shortCssClasses ||= false;
