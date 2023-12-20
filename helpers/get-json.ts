@@ -15,14 +15,14 @@ import {CssModuleEnums} from './css-module-enums';
  */
 export function getJSON( env: Environment ) {
 	return ( cssFileName: string, json: Object ) => {
-		const directory = path.relative( getPackageConfig().theme_path, cssFileName ).replace( /\\/g, '/' ) + '/';
+		const filePath = path.relative( getPackageConfig().theme_path, cssFileName ).replace( /\\/g, '/' ) + '/';
 		// Exclude global pcss directory.
-		if ( 'pcss' === directory.substring( 0, 4 ) ) {
+		if ( 'pcss' === filePath.substring( 0, 4 ) ) {
 			return;
 		}
 
 		const jsonModules = new JsonModules(
-			directory,
+			filePath,
 			path.basename( cssFileName, '.css' ),
 			json
 		);
@@ -31,7 +31,7 @@ export function getJSON( env: Environment ) {
 			jsonModules.combinedJson( env );
 
 			if ( getPackageConfig().cssEnums ) {
-				const enums = new CssModuleEnums( directory, path.basename( cssFileName, '.pcss' ), json );
+				const enums = new CssModuleEnums( filePath, json );
 				enums.addModuleToEnum( env );
 			}
 		} else {
@@ -64,10 +64,10 @@ function getDistFolder() {
 class JsonModules {
 	private readonly json: Object;
 	private readonly cssName: string;
-	private directory: string;
+	private filePath: string;
 
 	constructor( directory: string, cssName: string, json: Object ) {
-		this.directory = directory;
+		this.filePath = directory;
 		this.cssName = cssName;
 		this.json = json;
 	}
@@ -85,7 +85,7 @@ class JsonModules {
 			content = fse.readJsonSync( combined ) ?? {};
 		} catch ( e ) {
 		}
-		content[ this.directory.replace( this.cssName + '/', '' ) + this.cssName ] = this.json;
+		content[ this.filePath.replace( this.cssName + '/', '' ) + this.cssName ] = this.json;
 		fse.outputJsonSync( combined, content );
 	}
 
@@ -96,7 +96,7 @@ class JsonModules {
 	 * @note Here for backwards compatibility. Not really using this anymore.
 	 */
 	moduleFile( env: Environment ) {
-		const jsonFileName = getPackageConfig().theme_path.replace( /\\/g, '/' ) + getModulesFolder( env ) + this.directory.replace( this.cssName + '/', '' ) + this.cssName + '.json';
+		const jsonFileName = getPackageConfig().theme_path.replace( /\\/g, '/' ) + getModulesFolder( env ) + this.filePath.replace( this.cssName + '/', '' ) + this.cssName + '.json';
 		fse.outputJsonSync( jsonFileName, this.json );
 	}
 }

@@ -1,21 +1,5 @@
-<%
-const convertPathToEnum = (str) => {
-    return str.split('/')
-        .map(word => word.split('-')
-            .map(subWord => subWord.charAt(0).toUpperCase() + subWord.slice(1))
-            .join('_'))
-        .join('__');
-}
 
-const convertToCamelCase = (str) => {
-    let words = str.split('-');
-    for(let i = 1; i < words.length; i++) {
-        words[i] = words[i].charAt(0).toUpperCase() + words[i].slice(1);
-    }
-    return words.join('');
-}
-%>
-enum <%= convertPathToEnum( className ) %>: string {
+enum <%= className %>: string {
 <%_ Object.entries( classMap ).forEach( ([key, value]) => {
-%>	case <%= convertToCamelCase( key ) %> = '<%= value %>';
+%>	case <%= key %> = '<%= value %>';
 <% }) %>}

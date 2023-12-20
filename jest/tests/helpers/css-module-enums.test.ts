@@ -72,12 +72,12 @@ describe( 'cssModuleEnums', () => {
 
 	test( 'addModuleToEnum', () => {
 		const expected = fs.readFileSync( 'jest/fixtures/css-module-enums/module-enums.php', 'utf-8' );
-		const nav = new CssModuleEnums( 'template-parts/nav.pcss/', 'nav', {
+		const nav = new CssModuleEnums( 'template-parts/nav.pcss/', {
 			wrap: 'Ⓜnav__wrap__Jm Ⓜtest__purple-bg__ug',
 			'global-composes': 'Ⓜnav__global-composes__bw site-title nothing',
 			extra: 'Ⓜnav__extra__Ih',
 		} );
-		const deeper = new CssModuleEnums( 'template-parts/header/deeper.pcss/', 'deeper', {
+		const deeper = new CssModuleEnums( 'template-parts/header/deeper.pcss/', {
 			'global-composes': 'Ⓜdeeper__global-composes__bw nothing',
 			extra: 'Ⓜdeeper__extra__Ih',
 		} );

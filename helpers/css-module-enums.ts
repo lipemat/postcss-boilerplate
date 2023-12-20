@@ -4,10 +4,6 @@ import {getPackageConfig} from './package-config';
 import ejs from 'ejs';
 import fse from 'fs-extra';
 
-function getCombinedName( env: Environment ): string {
-	return 'production' === env ? 'module-enums.min.php' : 'module-enums.php';
-}
-
 /**
  * Get the top level folder from where the CSS is compiled.
  *
@@ -25,6 +21,31 @@ export function getDistFolder() {
 }
 
 
+function getCombinedName( env: Environment ): string {
+	return 'production' === env ? 'module-enums.min.php' : 'module-enums.php';
+}
+
+
+function convertPathToEnum( fullPath: string ): string {
+	const pathWithoutExtension = fullPath.replace( '.pcss/', '' );
+	const parts = pathWithoutExtension.split( '/' );
+	return parts.map( word => {
+		return word.split( '-' ).map( subWord => {
+			return subWord.charAt( 0 ).toUpperCase() + subWord.slice( 1 );
+		} ).join( '_' );
+	} ).join( '__' );
+}
+
+
+function convertToCamelCase( cssClass: string ): string {
+	const words = cssClass.split( '-' );
+	for ( let i = 1; i < words.length; i++ ) {
+		words[ i ] = words[ i ].charAt( 0 ).toUpperCase() + words[ i ].slice( 1 );
+	}
+	return words.join( '' );
+}
+
+
 /**
  * Create a PHP file with an enum for each CSS module.
  *
@@ -32,17 +53,18 @@ export function getDistFolder() {
  */
 export class CssModuleEnums {
 	private readonly json: Object;
-	private readonly cssName: string;
-	private readonly fullPath: string;
+	private readonly filePath: string;
 
 
-	constructor( fullPath: string, cssName: string, json: Object ) {
-		this.fullPath = fullPath;
-		this.cssName = cssName;
+	constructor( filePath: string, json: Object ) {
+		this.filePath = filePath;
 		this.json = json;
 	}
 
 
+	/**
+	 * Add the module to the combined PHP enum file.
+	 */
 	addModuleToEnum( env: Environment ) {
 		const combined = ( getDistFolder() + '/' + getCombinedName( env ) ).replace( /\\/g, '/' );
 		let content = '';
@@ -56,9 +78,22 @@ export class CssModuleEnums {
 
 		const template = fse.readFileSync( __dirname + '/templates/module-enum.ejs', 'utf-8' );
 		content += ejs.render( template, {
-			classMap: this.json,
-			className: this.fullPath.replace( this.cssName + '.pcss/', '' ) + this.cssName,
+			classMap: this.getFormattedClassMap(),
+			className: convertPathToEnum( this.filePath ),
 		} );
 		fse.outputFileSync( combined, content );
+	}
+
+
+	/**
+	 * Get the JSON classmap with all keys converted to camelCase.
+	 */
+	private getFormattedClassMap(): Object {
+		return Object.keys( this.json )
+			.map( key => convertToCamelCase( key ) )
+			.reduce( ( result, key, index ) => {
+				result[ key ] = Object.values( this.json )[ index ];
+				return result;
+			}, {} );
 	}
 }
