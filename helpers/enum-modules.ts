@@ -22,7 +22,7 @@ export function getDistFolder() {
 
 
 function getCombinedName( env: Environment ): string {
-	return 'production' === env ? 'module-enums.min.php' : 'module-enums.php';
+	return 'production' === env ? 'module-enums.min.inc' : 'module-enums.inc';
 }
 
 

@@ -72,7 +72,7 @@ describe( 'cssModuleEnums', () => {
 
 
 	test( 'addModuleToEnum', () => {
-		const expected = fs.readFileSync( 'jest/fixtures/css-module-enums/module-enums.php', 'utf-8' );
+		const expected = fs.readFileSync( 'jest/fixtures/css-module-enums/module-enums.inc', 'utf-8' );
 		const nav = new EnumModules( 'template-parts/nav.pcss/', {
 			wrap: 'Ⓜnav__wrap__Jm Ⓜtest__purple-bg__ug',
 			'global-composes': 'Ⓜnav__global-composes__bw site-title nothing',
@@ -87,20 +87,20 @@ describe( 'cssModuleEnums', () => {
 		deeper.addModuleToEnum( 'production' );
 		expect( fse.readFileSync ).toHaveBeenCalledTimes( 3 );
 		expect( fse.outputFileSync ).toHaveBeenCalledTimes( 2 );
-		expect( fse.outputFileSync ).toHaveBeenLastCalledWith( THEME_PATH + 'css/module-enums.min.php', expected );
+		expect( fse.outputFileSync ).toHaveBeenLastCalledWith( THEME_PATH + 'css/module-enums.min.inc', expected );
 		expect( mockEnumContents ).toEqual( expected );
 
 		nav.addModuleToEnum( 'development' );
 		deeper.addModuleToEnum( 'development' );
 		expect( fse.outputFileSync ).toHaveBeenLastCalledWith(
-			THEME_PATH + 'css/module-enums.php',
+			THEME_PATH + 'css/module-enums.inc',
 			expected );
 		expect( mockEnumContents ).toEqual( expected );
 	} );
 
 
 	test( 'Through getJSON', () => {
-		const expected = fs.readFileSync( 'jest/fixtures/css-module-enums/module-enums.php', 'utf-8' );
+		const expected = fs.readFileSync( 'jest/fixtures/css-module-enums/module-enums.inc', 'utf-8' );
 		const getJSON = require( '../../../helpers/get-json.ts' ).getJSON( 'production' );
 		// Neither combinedJson nor cssEnums enabled.
 		getJSON( THEME_PATH + 'template-parts/nav.pcss', {
@@ -136,7 +136,7 @@ describe( 'cssModuleEnums', () => {
 		} );
 		expect( fse.readFileSync ).toHaveBeenCalledTimes( 3 );
 		expect( fse.outputFileSync ).toHaveBeenCalledTimes( 2 );
-		expect( fse.outputFileSync ).toHaveBeenLastCalledWith( THEME_PATH + 'css/module-enums.min.php', expected );
+		expect( fse.outputFileSync ).toHaveBeenLastCalledWith( THEME_PATH + 'css/module-enums.min.inc', expected );
 		expect( mockEnumContents ).toEqual( expected );
 	} );
 } );
