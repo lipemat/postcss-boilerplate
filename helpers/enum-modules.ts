@@ -70,7 +70,8 @@ export class EnumModules {
 		const template = fse.readFileSync( __dirname + '/templates/module-enum.ejs', 'utf-8' );
 		EnumModules.content[ env ] += ejs.render( template, {
 			classMap: this.getFormattedClassMap(),
-			className: this.convertPathToEnum(),
+			className: this.formatPHPClass( path.basename( this.filePath, '.pcss' ) ),
+			nameSpace: 'CSS_Modules\\' + this.convertPathToEnum(),
 		} );
 		fse.outputFileSync( combined, EnumModules.content[ env ] );
 	}
@@ -82,11 +83,21 @@ export class EnumModules {
 	private convertPathToEnum(): string {
 		const pathWithoutExtension = this.filePath.replace( '.pcss/', '' );
 		const parts = pathWithoutExtension.split( '/' );
-		return parts.map( word => {
-			return word.split( '-' ).map( subWord => {
-				return subWord.charAt( 0 ).toUpperCase() + subWord.slice( 1 );
-			} ).join( '_' );
-		} ).join( '__' );
+		parts.pop();
+		return parts.map( this.formatPHPClass ).join( '\\' );
+	}
+
+
+	/**
+	 * Convert a directory slug to a PHP class name.
+	 *
+	 * - Convert the first letter of each word to uppercase.
+	 * - Replace hyphens with underscores.
+	 */
+	private formatPHPClass( directorySlug: string ): string {
+		return directorySlug.split( '-' ).map( subWord => {
+			return subWord.charAt( 0 ).toUpperCase() + subWord.slice( 1 );
+		} ).join( '_' );
 	}
 
 
