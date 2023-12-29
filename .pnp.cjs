@@ -925,7 +925,7 @@ const RAW_RUNTIME_STATE =
     ],\
     [\
       "@types/minimist",\
-      "npm:1.2.4"\
+      "npm:1.2.5"\
     ],\
     [\
       "@types/node",\
@@ -4935,6 +4935,7 @@ const RAW_RUNTIME_STATE =
           ["@types/ejs", "npm:3.1.5"],\
           ["@types/fs-extra", "npm:11.0.4"],\
           ["@types/jest", "npm:29.5.6"],\
+          ["@types/minimist", "npm:1.2.5"],\
           ["@types/node", "npm:16.18.59"],\
           ["@wordpress/browserslist-config", "npm:5.27.0"],\
           ["browserslist", "npm:4.22.1"],\
@@ -4950,6 +4951,7 @@ const RAW_RUNTIME_STATE =
           ["grunt-contrib-watch", "npm:1.1.0"],\
           ["grunt-stylelint", "virtual:1638d8a1a2d593b8169ffe9d70f3c9e9d1509d2f5963ba8fea516113e9e47063b31f182107f616b8cf93bd7e0d863174da1e8f027f01dffdc7988bf1eec9ba20#npm:0.10.1"],\
           ["jest", "virtual:4111b2d7864b3f45889e018a6a18110e43b1cb5378b82946a848ff19d00715f1c32704ba2e42fb9f901df7223405fb0a70ee8d47daacf15fc4ee002993c22ef3#npm:29.7.0"],\
+          ["minimist", "npm:1.2.8"],\
           ["postcss", "npm:8.4.31"],\
           ["postcss-color-mod-function", "npm:3.0.3"],\
           ["postcss-custom-media", "virtual:4111b2d7864b3f45889e018a6a18110e43b1cb5378b82946a848ff19d00715f1c32704ba2e42fb9f901df7223405fb0a70ee8d47daacf15fc4ee002993c22ef3#npm:8.0.2"],\
@@ -8768,6 +8770,7 @@ const RAW_RUNTIME_STATE =
           ["@types/ejs", "npm:3.1.5"],\
           ["@types/fs-extra", "npm:11.0.4"],\
           ["@types/jest", "npm:29.5.6"],\
+          ["@types/minimist", "npm:1.2.5"],\
           ["@types/node", "npm:16.18.59"],\
           ["@wordpress/browserslist-config", "npm:5.27.0"],\
           ["browserslist", "npm:4.22.1"],\
@@ -8783,6 +8786,7 @@ const RAW_RUNTIME_STATE =
           ["grunt-contrib-watch", "npm:1.1.0"],\
           ["grunt-stylelint", "virtual:1638d8a1a2d593b8169ffe9d70f3c9e9d1509d2f5963ba8fea516113e9e47063b31f182107f616b8cf93bd7e0d863174da1e8f027f01dffdc7988bf1eec9ba20#npm:0.10.1"],\
           ["jest", "virtual:4111b2d7864b3f45889e018a6a18110e43b1cb5378b82946a848ff19d00715f1c32704ba2e42fb9f901df7223405fb0a70ee8d47daacf15fc4ee002993c22ef3#npm:29.7.0"],\
+          ["minimist", "npm:1.2.8"],\
           ["postcss", "npm:8.4.31"],\
           ["postcss-color-mod-function", "npm:3.0.3"],\
           ["postcss-custom-media", "virtual:4111b2d7864b3f45889e018a6a18110e43b1cb5378b82946a848ff19d00715f1c32704ba2e42fb9f901df7223405fb0a70ee8d47daacf15fc4ee002993c22ef3#npm:8.0.2"],\
@@ -9395,6 +9399,13 @@ const RAW_RUNTIME_STATE =
         "packageLocation": "./.yarn/cache/@types-minimist-npm-1.2.4-536d4662b1-01403652c0.zip/node_modules/@types/minimist/",\
         "packageDependencies": [\
           ["@types/minimist", "npm:1.2.4"]\
+        ],\
+        "linkType": "HARD"\
+      }],\
+      ["npm:1.2.5", {\
+        "packageLocation": "./.yarn/cache/@types-minimist-npm-1.2.5-c85664a9d8-3f791258d8.zip/node_modules/@types/minimist/",\
+        "packageDependencies": [\
+          ["@types/minimist", "npm:1.2.5"]\
         ],\
         "linkType": "HARD"\
       }]\
@@ -30220,10 +30231,7 @@ Required by: ${issuerForDisplay}
             if (runtimeState.enableTopLevelFallback) {
               if (dependencyReference == null && fallbackReference === null) {
                 const reference = runtimeState.fallbackPool.get(dependencyName);
-                // # Warnings suppressed via @lipemat/postcss-boilerplate/fix-pnp script. 
-if (! alwaysWarnOnFallback && reference != null) { 
-dependencyReference = reference; 
-} else if (alwaysWarnOnFallback && reference != null) {
+                if (reference != null) {
                   fallbackReference = reference;
                 }
               }

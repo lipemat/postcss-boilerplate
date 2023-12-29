@@ -2204,6 +2204,7 @@ __metadata:
     "@types/ejs": "npm:^3"
     "@types/fs-extra": "npm:^11.0.4"
     "@types/jest": "npm:^29"
+    "@types/minimist": "npm:^1"
     "@types/node": "npm:^16"
     "@wordpress/browserslist-config": "npm:^5.19.0"
     browserslist: "npm:^4.21.9"
@@ -2219,6 +2220,7 @@ __metadata:
     grunt-contrib-watch: "npm:^1.1.0"
     grunt-stylelint: "npm:^0.10.1"
     jest: "npm:^29"
+    minimist: "npm:^1.2.8"
     postcss: "npm:^8.4.13"
     postcss-color-mod-function: "npm:^3.0.3"
     postcss-custom-media: "npm:^8.0.1"
@@ -2716,6 +2718,13 @@ __metadata:
   version: 5.1.2
   resolution: "@types/minimatch@npm:5.1.2"
   checksum: 83cf1c11748891b714e129de0585af4c55dd4c2cafb1f1d5233d79246e5e1e19d1b5ad9e8db449667b3ffa2b6c80125c429dbee1054e9efb45758dbc4e118562
+  languageName: node
+  linkType: hard
+
+"@types/minimist@npm:^1":
+  version: 1.2.5
+  resolution: "@types/minimist@npm:1.2.5"
+  checksum: 3f791258d8e99a1d7d0ca2bda1ca6ea5a94e5e7b8fc6cde84dd79b0552da6fb68ade750f0e17718f6587783c24254bbca0357648dd59dc3812c150305cabdc46
   languageName: node
   linkType: hard
 
@@ -9685,7 +9694,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"minimist@npm:^1.2.0, minimist@npm:^1.2.6":
+"minimist@npm:^1.2.0, minimist@npm:^1.2.6, minimist@npm:^1.2.8":
   version: 1.2.8
   resolution: "minimist@npm:1.2.8"
   checksum: 19d3fcdca050087b84c2029841a093691a91259a47def2f18222f41e7645a0b7c44ef4b40e88a1e58a40c84d2ef0ee6047c55594d298146d0eb3f6b737c20ce6
