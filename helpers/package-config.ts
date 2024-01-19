@@ -13,6 +13,10 @@ import fs from 'fs';
  */
 export type PackageConfig = {
 	brotliFiles: boolean;
+	certificates?: {
+		cert: string;
+		key: string;
+	};
 	combinedJson: boolean;
 	cssEnums: boolean;
 	css_folder: string;

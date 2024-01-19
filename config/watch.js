@@ -15,21 +15,21 @@ module.exports = {
 	postcss: {
 		files: [
 			`${packageConfig.theme_path}pcss/**/*.{pcss,css}`,
-			`${packageConfig.theme_path}template-parts/**/*.{pcss,css}`
+			`${packageConfig.theme_path}template-parts/**/*.{pcss,css}`,
 		],
 		tasks: [
-			'postcss:toCSS'
+			'postcss:toCSS',
 		],
 		options: {
 			spawn: false,
-			livereload: false
-		}
+			livereload: false,
+		},
 	},
 
 	php: {
 		files: [ `${packageConfig.theme_path}**/*.php` ],
 		options: {
 			livereload,
-		}
+		},
 	},
 };
