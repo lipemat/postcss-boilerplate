@@ -1,16 +1,16 @@
 const configHelper = require( './helpers/config' );
 
-module.exports = function ( grunt ) {
+module.exports = function( grunt ) {
 	/**
 	 * Start up config by reading from package.json.
 	 *
 	 */
 	grunt.initConfig( {
 		pkg: require( './helpers/package-config' ),
-		compress: configHelper.getConfig( 'compress.js' ),
-		postcss: configHelper.getConfig( 'postcss.js' ),
-		watch: configHelper.getConfig( 'watch.js' ),
-		stylelint: configHelper.getConfig( 'stylelint.js' )
+		compress: configHelper.getConfig( 'compress' ),
+		postcss: configHelper.getConfig( 'postcss' ),
+		watch: configHelper.getConfig( 'watch' ),
+		stylelint: configHelper.getConfig( 'stylelint' ),
 	} );
 
 	grunt.loadNpmTasks( '@lodder/grunt-postcss' );
@@ -26,7 +26,7 @@ module.exports = function ( grunt ) {
 	 */
 	grunt.registerTask(
 		'default', [
-			'watch'
+			'watch',
 		] );
 
 	return grunt;

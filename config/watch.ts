@@ -1,14 +1,14 @@
-const fs = require( 'fs' );
+import fs from 'fs';
+import {getPackageConfig, type PackageConfig} from '../helpers/package-config';
+import {getDistFolder} from '../helpers/enum-modules';
 
-const packageConfig = require( '../helpers/package-config' );
-const {getDistFolder} = require( '../helpers/enum-modules' );
-
-let livereload = true;
+const packageConfig: PackageConfig = getPackageConfig();
+let livereload: boolean | PackageConfig['certificates'] = true;
 // Load local certificates for https if available.
 if ( 'object' === typeof ( packageConfig.certificates ) && 'development' === process.env.NODE_ENV ) {
 	livereload = {
-		cert: fs.readFileSync( packageConfig.certificates.cert ),
-		key: fs.readFileSync( packageConfig.certificates.key ),
+		cert: fs.readFileSync( packageConfig.certificates.cert ).toString(),
+		key: fs.readFileSync( packageConfig.certificates.key ).toString(),
 	};
 }
 
