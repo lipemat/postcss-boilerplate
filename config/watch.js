@@ -30,7 +30,6 @@ module.exports = {
 		files: [
 			`${packageConfig.theme_path}**/*.php`,
 			`!${packageConfig.theme_path}css/**/*.php`,
-			`!${packageConfig.theme_path}pcss/**/*.php`,
 		],
 		options: {
 			livereload,
