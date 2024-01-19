@@ -53,24 +53,29 @@ describe( 'cssModuleEnums', () => {
 		mockPackageConfig.css_folder = 'css/';
 		expect( getDistFolder( 'production' ) ).toBe( THEME_PATH + 'css' );
 		expect( getDistFolder( 'development' ) ).toBe( THEME_PATH + 'css' );
+		expect( getDistFolder( 'development', true ) ).toBe( getPackageConfig().theme_path + 'css' );
 
 		mockPackageConfig.css_folder = './css/dist/';
 		expect( getDistFolder( 'development' ) ).toBe( THEME_PATH + 'css' );
 		expect( getDistFolder( 'production' ) ).toBe( THEME_PATH + 'css/dist' );
+		expect( getDistFolder( 'development', true ) ).toBe( getPackageConfig().theme_path + 'css' );
 
 		mockPackageConfig.css_folder = '';
 		expect( getDistFolder( 'production' ) + '/' ).toBe( THEME_PATH );
 		expect( getDistFolder( 'development' ) + '/' ).toBe( THEME_PATH );
+		expect( getDistFolder( 'development', true ) ).toBe( getPackageConfig().theme_path );
 
 		mockPackageConfig.css_folder = './css/dist/';
 		mockPackageConfig.theme_path = './';
 		expect( getDistFolder( 'production' ) ).toBe( getPackageConfig().workingDirectory + '/css/dist' );
 		expect( getDistFolder( 'development' ) ).toBe( getPackageConfig().workingDirectory + '/css' );
+		expect( getDistFolder( 'development', true ) ).toBe( './css' );
 
 		mockPackageConfig.theme_path = '';
 		mockPackageConfig.css_folder = './css/dist/';
 		expect( getDistFolder( 'development' ) ).toBe( getPackageConfig().workingDirectory + '/css' );
 		expect( getDistFolder( 'production' ) ).toBe( getPackageConfig().workingDirectory + '/css/dist' );
+		expect( getDistFolder( 'development', true ) ).toBe( 'css' );
 	} );
 
 

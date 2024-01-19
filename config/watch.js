@@ -1,6 +1,7 @@
 const fs = require( 'fs' );
 
 const packageConfig = require( '../helpers/package-config' );
+const {getDistFolder} = require( '../helpers/enum-modules' );
 
 let livereload = true;
 // Load local certificates for https if available.
@@ -29,7 +30,7 @@ module.exports = {
 	php: {
 		files: [
 			`${packageConfig.theme_path}**/*.php`,
-			`!${packageConfig.theme_path}css/**/*.php`,
+			`!${getDistFolder( 'development', true )}/**/*.php`,
 		],
 		options: {
 			livereload,

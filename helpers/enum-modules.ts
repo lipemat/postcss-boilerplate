@@ -10,20 +10,23 @@ import fse from 'fs-extra';
  *
  * @example production: './css-root/dist/' => config.theme_path + 'css-root/dist'
  * @example development: './css-root/dist/' => config.theme_path + 'css-root'
+ *
+ * @param {Environment} env          - The node environment to get the dist folder for.
+ * @param {boolean}     relativeOnly - Whether to return the path relative to `theme_path` or the full path.
  */
-export function getDistFolder( env: Environment ): string {
+export function getDistFolder( env: Environment, relativeOnly: boolean = false ): string {
+	const config = getPackageConfig();
 	if ( 'production' === env ) {
-		return path.resolve( getPackageConfig().theme_path + getPackageConfig().css_folder ).replace( /\\/g, '/' );
+		return path.resolve( config.theme_path + config.css_folder ).replace( /\\/g, '/' );
 	}
 
-	const config = getPackageConfig();
-	const directories = config.css_folder
-		.split( '/' )
-		.filter( ( part: string ) => '' !== part && '.' !== part );
+	const directories = config.css_folder.split( '/' ).filter( ( part: string ) => '' !== part && '.' !== part );
+	const relativePath = config.theme_path + ( directories[ 0 ] ?? '' );
 
-	return path
-		.resolve( config.theme_path + ( directories[ 0 ] ?? '' ) )
-		.replace( /\\/g, '/' );
+	if ( relativeOnly ) {
+		return relativePath;
+	}
+	return path.resolve( relativePath ).replace( /\\/g, '/' );
 }
 
 
