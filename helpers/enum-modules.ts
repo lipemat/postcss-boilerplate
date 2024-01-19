@@ -5,11 +5,17 @@ import ejs from 'ejs';
 import fse from 'fs-extra';
 
 /**
- * Get the top level folder from where the CSS is compiled.
+ * - production: Get the dist folder from the package config.
+ * - development: Get the top level folder from where the CSS is compiled.
  *
- * @example './css-root/dist/' => config.theme_path + 'css-root'
+ * @example production: './css-root/dist/' => config.theme_path + 'css-root/dist'
+ * @example development: './css-root/dist/' => config.theme_path + 'css-root'
  */
-export function getDistFolder() {
+export function getDistFolder( env: Environment ): string {
+	if ( 'production' === env ) {
+		return path.resolve( getPackageConfig().theme_path + getPackageConfig().css_folder ).replace( /\\/g, '/' );
+	}
+
 	const config = getPackageConfig();
 	const directories = config.css_folder
 		.split( '/' )
@@ -22,7 +28,7 @@ export function getDistFolder() {
 
 
 function getCombinedName( env: Environment ): string {
-	return 'production' === env ? 'module-enums.min.inc' : 'module-enums.inc';
+	return 'production' === env ? 'module-enums.min.inc' : 'module-enums.php';
 }
 
 
@@ -62,7 +68,7 @@ export class EnumModules {
 	 * Add the module to the combined PHP enum file.
 	 */
 	addModuleToEnum( env: Environment ) {
-		const combined = ( getDistFolder() + '/' + getCombinedName( env ) ).replace( /\\/g, '/' );
+		const combined = ( getDistFolder( env ) + '/' + getCombinedName( env ) ).replace( /\\/g, '/' );
 		if ( '' === EnumModules.content[ env ] ) {
 			EnumModules.content[ env ] = fse.readFileSync( __dirname + '/templates/module-enum-header.ejs', 'utf-8' );
 		}

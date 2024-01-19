@@ -51,23 +51,26 @@ describe( 'cssModuleEnums', () => {
 
 	test( 'getDistFolder', () => {
 		mockPackageConfig.css_folder = 'css/';
-		expect( getDistFolder() ).toBe( THEME_PATH + 'css' );
+		expect( getDistFolder( 'production' ) ).toBe( THEME_PATH + 'css' );
+		expect( getDistFolder( 'development' ) ).toBe( THEME_PATH + 'css' );
 
 		mockPackageConfig.css_folder = './css/dist/';
-		expect( getDistFolder() ).toBe( THEME_PATH + 'css' );
-
-		mockPackageConfig.css_folder = 'css/dist/';
-		expect( getDistFolder() ).toBe( THEME_PATH + 'css' );
+		expect( getDistFolder( 'development' ) ).toBe( THEME_PATH + 'css' );
+		expect( getDistFolder( 'production' ) ).toBe( THEME_PATH + 'css/dist' );
 
 		mockPackageConfig.css_folder = '';
-		expect( getDistFolder() + '/' ).toBe( THEME_PATH );
+		expect( getDistFolder( 'production' ) + '/' ).toBe( THEME_PATH );
+		expect( getDistFolder( 'development' ) + '/' ).toBe( THEME_PATH );
 
 		mockPackageConfig.css_folder = './css/dist/';
 		mockPackageConfig.theme_path = './';
-		expect( getDistFolder() ).toBe( getPackageConfig().workingDirectory + '/css' );
+		expect( getDistFolder( 'production' ) ).toBe( getPackageConfig().workingDirectory + '/css/dist' );
+		expect( getDistFolder( 'development' ) ).toBe( getPackageConfig().workingDirectory + '/css' );
 
 		mockPackageConfig.theme_path = '';
-		expect( getDistFolder() ).toBe( getPackageConfig().workingDirectory + '/css' );
+		mockPackageConfig.css_folder = './css/dist/';
+		expect( getDistFolder( 'development' ) ).toBe( getPackageConfig().workingDirectory + '/css' );
+		expect( getDistFolder( 'production' ) ).toBe( getPackageConfig().workingDirectory + '/css/dist' );
 	} );
 
 
@@ -87,13 +90,13 @@ describe( 'cssModuleEnums', () => {
 		deeper.addModuleToEnum( 'production' );
 		expect( fse.readFileSync ).toHaveBeenCalledTimes( 3 );
 		expect( fse.outputFileSync ).toHaveBeenCalledTimes( 2 );
-		expect( fse.outputFileSync ).toHaveBeenLastCalledWith( THEME_PATH + 'css/module-enums.min.inc', expected );
+		expect( fse.outputFileSync ).toHaveBeenLastCalledWith( THEME_PATH + 'css/dist/module-enums.min.inc', expected );
 		expect( mockEnumContents ).toEqual( expected );
 
 		nav.addModuleToEnum( 'development' );
 		deeper.addModuleToEnum( 'development' );
 		expect( fse.outputFileSync ).toHaveBeenLastCalledWith(
-			THEME_PATH + 'css/module-enums.inc',
+			THEME_PATH + 'css/module-enums.php',
 			expected );
 		expect( mockEnumContents ).toEqual( expected );
 	} );
@@ -136,7 +139,7 @@ describe( 'cssModuleEnums', () => {
 		} );
 		expect( fse.readFileSync ).toHaveBeenCalledTimes( 3 );
 		expect( fse.outputFileSync ).toHaveBeenCalledTimes( 2 );
-		expect( fse.outputFileSync ).toHaveBeenLastCalledWith( THEME_PATH + 'css/module-enums.min.inc', expected );
+		expect( fse.outputFileSync ).toHaveBeenLastCalledWith( THEME_PATH + 'css/dist/module-enums.min.inc', expected );
 		expect( mockEnumContents ).toEqual( expected );
 	} );
 } );
