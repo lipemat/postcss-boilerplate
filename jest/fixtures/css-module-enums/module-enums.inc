@@ -1,5 +1,6 @@
 <?php
 /** @noinspection PhpUnused, PhpMultipleClassDeclarationsInspection, EmptyClassInspection */
+//phpcs:disable
 declare( strict_types=1 );
 
 namespace CSS_Modules\Template_Parts {
