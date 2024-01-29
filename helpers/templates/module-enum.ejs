@@ -1,0 +1,8 @@
+
+namespace <%= nameSpace %> {
+
+	enum <%= className %>: string {
+        <%_ Object.entries( classMap ).forEach( ([key, value]) => {
+%>		case <%= key %> = '<%= value %>';
+<% }) %>	}
+}

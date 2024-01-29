@@ -40,6 +40,28 @@ if ( includedPlugins.includes( 'postcss-focus-visible' ) ) {
 	};
 }
 
+/**
+ * A reusable config for postcss-import based on the environment.
+ *
+ * @param {'production'|'development'} env The environment to use.
+ */
+function getImportConfig( env ) {
+	return {
+		extension: 'pcss',
+		plugins: [
+			require( 'postcss-modules' )( {
+				generateScopedName: getGenerateScopeName( env ),
+				globalModulePaths: [
+					new RegExp( '.*?' + config.theme_path.replace( /\//g, '\\\\' ) + 'pcss', 'i' ),
+					new RegExp( '.*?' + config.theme_path + 'pcss', 'i' ),
+				],
+				getJSON: getJSON( env ),
+			} ),
+		],
+		skipDuplicates: false,
+	};
+}
+
 
 const compileOptions = {
 	map: true,
@@ -47,20 +69,7 @@ const compileOptions = {
 		require( '@csstools/postcss-global-data' )( {
 			files: getExternalFiles(),
 		} ),
-		require( 'postcss-import' )( {
-			extension: 'pcss',
-			plugins: [
-				require( 'postcss-modules' )( {
-					generateScopedName: getGenerateScopeName(),
-					globalModulePaths: [
-						new RegExp( '.*?' + config.theme_path.replace( /\//g, '\\\\' ) + 'pcss', 'i' ),
-						new RegExp( '.*?' + config.theme_path + 'pcss', 'i' ),
-					],
-					getJSON,
-				} ),
-			],
-			skipDuplicates: false,
-		} ),
+		require( 'postcss-import' )( getImportConfig( 'development' ) ),
 		require( 'postcss-custom-media' ),
 		require( 'postcss-nested' ),
 		postcssPresetEnv( presetEnv ),
@@ -79,7 +88,12 @@ const compileOptions = {
 
 const minOptions = Object.assign( {}, compileOptions );
 minOptions.map = false;
-minOptions.processors = [ ...compileOptions.processors ];
+minOptions.processors = [ ...compileOptions.processors ].map( processor => {
+	if ( 'postcss-import' === processor.postcssPlugin ) {
+		return require( 'postcss-import' )( getImportConfig( 'production' ) );
+	}
+	return processor;
+} );
 minOptions.processors.push( require( '../lib/postcss-clean' )( {
 	level: 2,
 } ) );

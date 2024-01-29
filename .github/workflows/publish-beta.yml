@@ -1,7 +1,7 @@
 name: Publish Beta
 env:
-  VERSION: 3.0.1
-  NODE_VERSION: '16.14.2'
+  VERSION: 3.1.0
+  NODE_VERSION: '18.18.2'
 
 on:
   push:
@@ -10,7 +10,7 @@ on:
 
 jobs:
   publish:
-    name: Publish beta on NPM.js
+    name: Publish on NPM.js
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
@@ -18,7 +18,13 @@ jobs:
         with:
           node-version: ${{env.NODE_VERSION}}
           registry-url: 'https://registry.npmjs.org'
-      - run: yarn install
-      - run: npm publish --tag beta
+      - name: Install yarn
+        shell: bash
+        run: corepack enable
+      - name: Install ts-node
+        shell: bash
+        run: npm install -g ts-node
+      - name: Publish to NPM
+        run: npm publish --tag beta
         env:
           NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}

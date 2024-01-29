@@ -3,7 +3,7 @@ const fs = require( 'fs' );
 const path = require( 'path' );
 const {getConfig} = require( './config' );
 
-const entries = getConfig( 'postcss-entries.js' );
+const entries = getConfig( 'postcss-entries' );
 
 
 /**
@@ -16,7 +16,7 @@ const entries = getConfig( 'postcss-entries.js' );
 function getEntries() {
 	const matches = {
 		min: {},
-		toCSS: {}
+		toCSS: {},
 	};
 
 	Object.values( entries ).forEach( possibleFile => {
