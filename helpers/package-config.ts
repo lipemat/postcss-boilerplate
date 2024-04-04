@@ -23,6 +23,7 @@ export type PackageConfig = {
 	file_name: string;
 	shortCssClasses: boolean;
 	theme_path: string;
+	pcssWatch: string[];
 	workingDirectory: string;
 };
 
@@ -43,6 +44,7 @@ packageConfig.cssEnums ||= false;
 packageConfig.combinedJson ||= false;
 packageConfig.file_name ||= 'front-end';
 packageConfig.shortCssClasses ||= false;
+packageConfig.pcssWatch ||= [ 'pcss', 'template-parts' ];
 
 try {
 	const localConfig = require( path.resolve( workingDirectory, './local-config.json' ) );

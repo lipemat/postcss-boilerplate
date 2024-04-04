@@ -14,10 +14,9 @@ if ( 'object' === typeof ( packageConfig.certificates ) && 'development' === pro
 
 module.exports = {
 	postcss: {
-		files: [
-			`${packageConfig.theme_path}pcss/**/*.{pcss,css}`,
-			`${packageConfig.theme_path}template-parts/**/*.{pcss,css}`,
-		],
+		files: packageConfig.pcssWatch.map( ( folder: string ) => {
+			return `${packageConfig.theme_path}${folder}/**/*.{pcss,css}`;
+		} ),
 		tasks: [
 			'postcss:toCSS',
 		],

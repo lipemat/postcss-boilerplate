@@ -1,0 +1,56 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Test watch files from package.json matches snapshot 1`] = `
+{
+  "php": {
+    "files": [
+      "./**/*.php",
+      "!./css/**/*.php",
+    ],
+    "options": {
+      "livereload": true,
+    },
+  },
+  "postcss": {
+    "files": [
+      "./pcss/**/*.{pcss,css}",
+      "./template-parts/**/*.{pcss,css}",
+    ],
+    "options": {
+      "livereload": false,
+      "spawn": false,
+    },
+    "tasks": [
+      "postcss:toCSS",
+    ],
+  },
+}
+`;
+
+exports[`Test watch files from package.json matches snapshot 2`] = `
+{
+  "php": {
+    "files": [
+      "./**/*.php",
+      "!./css/**/*.php",
+    ],
+    "options": {
+      "livereload": true,
+    },
+  },
+  "postcss": {
+    "files": [
+      "./woocommerce/**/*.{pcss,css}",
+      "./template-parts/**/*.{pcss,css}",
+      "./pcss/**/*.{pcss,css}",
+    ],
+    "options": {
+      "livereload": false,
+      "spawn": false,
+    },
+    "tasks": [
+      "postcss:toCSS",
+    ],
+  },
+}
+`;

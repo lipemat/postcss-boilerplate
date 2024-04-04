@@ -19,6 +19,6 @@ process.env.NODE_ENV = 'development';
 runner.run( 'postcss:toCSS' );
 
 // Compress the CSS files to .br files.
-if ( true === getPackageConfig().brotliFiles ) {
+if ( getPackageConfig().brotliFiles ) {
 	runner.run( 'compress:brotli' );
 }
