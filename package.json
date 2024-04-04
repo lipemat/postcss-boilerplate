@@ -21,7 +21,7 @@
     "no-config"
   ],
   "files": [
-    "Gruntfile.js",
+    "Gruntfile.ts",
     "tsconfig.json",
     "bin/",
     "config/",
@@ -47,6 +47,7 @@
     "@lipemat/stylelint-config": "^2.0.1",
     "@lodder/grunt-postcss": "^3.1.1",
     "@types/fs-extra": "^11.0.4",
+    "@types/grunt": "^0.4.31",
     "@types/node": "^16",
     "@wordpress/browserslist-config": "^5.19.0",
     "browserslist": "^4.21.9",

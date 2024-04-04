@@ -3,7 +3,8 @@
   "$schema": "https://json.schemastore.org/tsconfig",
   "display": "PostCSS Boilerplate",
   "include": [
-    "Gruntfile.js",
+    "Gruntfile.ts",
+    "bin/**/*",
     "config/**/*",
     "helpers/**/*",
     "jest/**/*",

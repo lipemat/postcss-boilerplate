@@ -1,6 +1,15 @@
 import grunt from 'grunt';
 import {EnumModules} from './enum-modules';
 import {JsonModules} from './get-json';
+import gruntConfig from '../Gruntfile';
+
+export type GruntExposed = IGrunt & {
+	task: IGrunt['task'] & {
+		init: () => void;
+	},
+	tasks: ( taskName: string ) => void;
+}
+
 
 export function resetLocalCache() {
 	EnumModules._resetContent();
@@ -12,13 +21,12 @@ export function resetLocalCache() {
  * Run a grunt task by name.
  */
 export function run( taskName: string ) {
-	grunt.task.init = function() {
-	};
-	require( '../Gruntfile' )( grunt );
-	grunt.tasks( taskName );
+	const configured: GruntExposed = gruntConfig( grunt as GruntExposed );
+
+	configured.tasks( taskName );
 
 	// Reset the local cache between watch runs during the `start` command.
-	grunt.event.on( 'watch', resetLocalCache );
+	configured.event.on( 'watch', resetLocalCache );
 }
 
 export default {
