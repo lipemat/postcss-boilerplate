@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Test watch files from package.json matches snapshot 1`] = `
+exports[`Test watch config matches snapshot 1`] = `
 {
   "php": {
     "files": [
@@ -21,13 +21,15 @@ exports[`Test watch files from package.json matches snapshot 1`] = `
       "spawn": false,
     },
     "tasks": [
+      "caching:reset",
       "postcss:toCSS",
+      "caching:reload",
     ],
   },
 }
 `;
 
-exports[`Test watch files from package.json matches snapshot 2`] = `
+exports[`Test watch config matches snapshot 2`] = `
 {
   "php": {
     "files": [
@@ -49,7 +51,9 @@ exports[`Test watch files from package.json matches snapshot 2`] = `
       "spawn": false,
     },
     "tasks": [
+      "caching:reset",
       "postcss:toCSS",
+      "caching:reload",
     ],
   },
 }

@@ -27,7 +27,7 @@ afterEach( () => {
 	mockWatch = false;
 } );
 
-describe( 'Test watch files from package.json', () => {
+describe( 'Test watch config', () => {
 	it( 'watch files from package.json', () => {
 		expect( getWatchConfig().postcss.files ).toStrictEqual( [
 			getPackageConfig().theme_path + 'pcss/**/*.{pcss,css}',

@@ -18,7 +18,9 @@ module.exports = {
 			return `${packageConfig.theme_path}${folder}/**/*.{pcss,css}`;
 		} ),
 		tasks: [
+			'caching:reset',
 			'postcss:toCSS',
+			'caching:reload',
 		],
 		options: {
 			spawn: false,
