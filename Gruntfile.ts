@@ -1,5 +1,6 @@
 import {getConfig} from './helpers/config';
 import type {GruntExposed} from './helpers/run-task';
+import caching from './config/caching';
 
 export default function( grunt: GruntExposed ) {
 	grunt.task.init = () => {
@@ -10,6 +11,7 @@ export default function( grunt: GruntExposed ) {
 	 */
 	grunt.initConfig( {
 		pkg: require( './helpers/package-config' ),
+		caching: getConfig( 'caching' ).config,
 		compress: getConfig( 'compress' ),
 		postcss: getConfig( 'postcss' ),
 		watch: getConfig( 'watch' ),
@@ -21,16 +23,10 @@ export default function( grunt: GruntExposed ) {
 	grunt.loadNpmTasks( 'grunt-contrib-watch' );
 	grunt.loadNpmTasks( 'grunt-stylelint' );
 
-	/**
-	 *
-	 * Tasks are registered here. Starts with default,
-	 * Run by simply running "grunt" in your cli.
-	 * All other use grunt + task name.
-	 */
-	grunt.registerTask(
-		'default', [
-			'watch',
-		] );
+
+	grunt.registerMultiTask( 'caching', 'Cache management for Enums and JSON', function() {
+		caching( this.target as 'reset' | 'reload', this.data );
+	} );
 
 	return grunt;
 }

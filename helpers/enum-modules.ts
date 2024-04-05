@@ -29,6 +29,10 @@ export function getDistFolder( env: Environment, relativeOnly: boolean = false )
 	return path.resolve( relativePath ).replace( /\\/g, '/' );
 }
 
+export function getEnumFilePath( env: Environment ): string {
+	return ( getDistFolder( env ) + '/' + getCombinedName( env ) ).replace( /\\/g, '/' );
+}
+
 
 function getCombinedName( env: Environment ): string {
 	return 'production' === env ? 'module-enums.min.inc' : 'module-enums.php';
@@ -53,13 +57,12 @@ export class EnumModules {
 	private readonly json: Object;
 	private readonly filePath: string;
 
-	/**
-	 */
 	private static content: Object = {
 		production: '',
 		development: '',
 	};
 
+	private static cssClasses: string[] = [];
 
 	constructor( filePath: string, json: Object ) {
 		this.filePath = filePath;
@@ -71,10 +74,12 @@ export class EnumModules {
 	 * Add the module to the combined PHP enum file.
 	 */
 	addModuleToEnum( env: Environment ) {
-		const combined = ( getDistFolder( env ) + '/' + getCombinedName( env ) ).replace( /\\/g, '/' );
+		const combined = getEnumFilePath( env );
 		if ( '' === EnumModules.content[ env ] ) {
 			EnumModules.content[ env ] = fse.readFileSync( __dirname + '/templates/module-enum-header.ejs', 'utf-8' );
 		}
+
+		EnumModules.cssClasses = EnumModules.cssClasses.concat( Object.values( this.json ) );
 
 		const template = fse.readFileSync( __dirname + '/templates/module-enum.ejs', 'utf-8' );
 		EnumModules.content[ env ] += ejs.render( template, {
@@ -122,6 +127,15 @@ export class EnumModules {
 			}, {} );
 	}
 
+	/**
+	 * Get a list of all CSS classes which have been added to the enums.
+	 *
+	 * Uses for comparison to see if the enums have changed and the browser
+	 * needs to be reloaded.
+	 */
+	public static getCssClasses(): string[] {
+		return EnumModules.cssClasses;
+	}
 
 	/**
 	 * Reset the content of the combined PHP enum file between
@@ -134,5 +148,6 @@ export class EnumModules {
 			production: '',
 			development: '',
 		};
+		EnumModules.cssClasses = [];
 	}
 }

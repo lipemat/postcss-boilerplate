@@ -4967,6 +4967,7 @@ const RAW_RUNTIME_STATE =
           ["postcss-preset-env", "virtual:4111b2d7864b3f45889e018a6a18110e43b1cb5378b82946a848ff19d00715f1c32704ba2e42fb9f901df7223405fb0a70ee8d47daacf15fc4ee002993c22ef3#npm:7.8.3"],\
           ["postcss-scss", "virtual:4111b2d7864b3f45889e018a6a18110e43b1cb5378b82946a848ff19d00715f1c32704ba2e42fb9f901df7223405fb0a70ee8d47daacf15fc4ee002993c22ef3#npm:4.0.9"],\
           ["stylelint", "npm:14.16.1"],\
+          ["tiny-lr", "npm:1.1.1"],\
           ["ts-node", "virtual:4111b2d7864b3f45889e018a6a18110e43b1cb5378b82946a848ff19d00715f1c32704ba2e42fb9f901df7223405fb0a70ee8d47daacf15fc4ee002993c22ef3#npm:10.9.1"],\
           ["typescript", "patch:typescript@npm%3A5.2.2#optional!builtin<compat/typescript>::version=5.2.2&hash=f3b441"],\
           ["update-notifier", "npm:4.1.3"]\
@@ -8803,6 +8804,7 @@ const RAW_RUNTIME_STATE =
           ["postcss-preset-env", "virtual:4111b2d7864b3f45889e018a6a18110e43b1cb5378b82946a848ff19d00715f1c32704ba2e42fb9f901df7223405fb0a70ee8d47daacf15fc4ee002993c22ef3#npm:7.8.3"],\
           ["postcss-scss", "virtual:4111b2d7864b3f45889e018a6a18110e43b1cb5378b82946a848ff19d00715f1c32704ba2e42fb9f901df7223405fb0a70ee8d47daacf15fc4ee002993c22ef3#npm:4.0.9"],\
           ["stylelint", "npm:14.16.1"],\
+          ["tiny-lr", "npm:1.1.1"],\
           ["ts-node", "virtual:4111b2d7864b3f45889e018a6a18110e43b1cb5378b82946a848ff19d00715f1c32704ba2e42fb9f901df7223405fb0a70ee8d47daacf15fc4ee002993c22ef3#npm:10.9.1"],\
           ["typescript", "patch:typescript@npm%3A5.2.2#optional!builtin<compat/typescript>::version=5.2.2&hash=f3b441"],\
           ["update-notifier", "npm:4.1.3"]\
