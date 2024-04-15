@@ -1,0 +1,58 @@
+@custom-media --desktop ( width >= 1200px);
+
+@custom-media --first-breakpoint (width <= 1200px);
+
+@custom-media --second-breakpoint ( width <= 960px);
+
+@custom-media --tablet ( 800px <= width <= 1200px);
+
+@custom-media --mobile (max-width: 800px);
+
+@custom-media --small-width (width <= 480px);
+
+.genesis-nav-menu {
+	background: teal;
+	@media (--mobile) {
+		display: none;
+	}
+
+	@media (any-hover: hover) {
+		&:hover {
+			ul {
+				background: purple;
+			}
+		}
+	}
+
+	@media print {
+		display: none;
+	}
+
+	@media (--small-width) {
+		display: inline-flex;
+
+		@media (hover: hover) {
+			&:hover {
+				ul {
+					background: red;
+				}
+			}
+		}
+	}
+
+	@media (--second-breakpoint ) {
+		float: none;
+	}
+}
+
+.second {
+	@media (hover: hover) {
+		&:hover {
+			display: none;
+		}
+	}
+}
+
+.header {
+	background: chocolate;
+}

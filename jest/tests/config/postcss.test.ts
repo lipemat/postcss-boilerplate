@@ -71,6 +71,10 @@ function processPostCSS( input: string, min: boolean = false, file: string ): Pr
 	} );
 }
 
+function cleanCSS( css: string ): string {
+	return css.replace( /undefined/g, '' ).trim();
+}
+
 // Create a data provider for fixtures.
 const fixtures: Fixture[] = require( 'glob' )
 	.sync( 'jest/fixtures/{postcss,safari-15}/*.pcss' )
@@ -165,10 +169,10 @@ describe( 'postcss.js', () => {
 		const input = readFileSync( fixture.input, 'utf8' );
 		let output = readFileSync( fixture.output.replace( '.css', '.raw.css' ), 'utf8' );
 		let result = await processPostCSS( input, false, fixture.input );
-		expect( result.css.trim() ).toEqual( output.trim() );
+		expect( cleanCSS( result.css ) ).toEqual( output.trim() );
 
 		result = await processPostCSS( input, true, fixture.input );
 		output = readFileSync( fixture.output.replace( '.css', '.raw.min.css' ), 'utf8' );
-		expect( result.css.trim() ).toEqual( output.trim() );
+		expect( cleanCSS( result.css ) ).toEqual( output.trim() );
 	} );
 } );

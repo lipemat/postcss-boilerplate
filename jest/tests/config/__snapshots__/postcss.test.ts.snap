@@ -131,7 +131,10 @@ exports[`postcss.js PostCSS config: develop 1`] = `
           "postcssPlugin": "postcss-preset-env",
         },
         [Function],
-        [Function],
+        {
+          "OnceExit": [Function],
+          "postcssPlugin": "postcss-sort-media-queries",
+        },
         {
           "OnceExit": [Function],
           "postcssPlugin": "postcss-hash",
@@ -272,7 +275,10 @@ exports[`postcss.js PostCSS config: develop 1`] = `
           "postcssPlugin": "postcss-preset-env",
         },
         [Function],
-        [Function],
+        {
+          "OnceExit": [Function],
+          "postcssPlugin": "postcss-sort-media-queries",
+        },
         {
           "OnceExit": [Function],
           "postcssPlugin": "postcss-hash",

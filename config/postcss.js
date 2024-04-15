@@ -74,7 +74,13 @@ const compileOptions = {
 		require( 'postcss-nested' ),
 		postcssPresetEnv( presetEnv ),
 		require( 'postcss-color-mod-function' ),
-		require( '@lipemat/css-mqpacker' ),
+		require( 'postcss-sort-media-queries' )( {
+			onlyTopLevel: true,
+			sort: 'mobile-first',
+			configuration: {
+				unitlessMqAlwaysFirst: true,
+			},
+		} ),
 		// Create a manifest for browser cache flushing.
 		require( 'postcss-hash' )( {
 			algorithm: 'md5',
