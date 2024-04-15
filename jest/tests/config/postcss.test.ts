@@ -149,13 +149,12 @@ describe( 'postcss.js', () => {
 				},
 			} ) ) );
 
-		// @notice If this fails, we can probably remove the getBrowsersList() override in favor of default wp.
+		// @notice If this fails, we can probably remove the @todo from adjustBrowserslist and the toEqual to `1`.
 		const wpDefaultBrowsers = [ ...require( '@wordpress/browserslist-config' ) ];
 		process.env.BROWSERSLIST = browserslist( wpDefaultBrowsers );
-		const config3 = getPostCSSConfig();
-		expect( config3.toCSS.options.processors[ 4 ]?.plugins?.filter( plugin => {
+		expect( getPostCSSConfig().toCSS.options.processors[ 4 ]?.plugins?.filter( plugin => {
 			return 'postcss-custom-properties' === plugin.postcssPlugin;
-		} ).length ).toEqual( 1 );
+		} ).length ).toEqual( 0 );
 	} );
 
 	test.each( fixtures )( 'PostCSS fixtures ( $description )', async fixture => {

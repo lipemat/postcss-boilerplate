@@ -1517,7 +1517,7 @@ const RAW_RUNTIME_STATE =
     ],\
     [\
       "caniuse-lite",\
-      "npm:1.0.30001553"\
+      "npm:1.0.30001610"\
     ],\
     [\
       "capital-case",\
@@ -11016,7 +11016,7 @@ const RAW_RUNTIME_STATE =
           ["autoprefixer", "virtual:2d56c369b4df2c0f0cbaa525cad67f60479b2020c6de16f02a8bffdbce1e3df938031920c59dc66ef6bba95c50c346ae43ff501151f3d7dce26cf09220aacba9#npm:10.4.16"],\
           ["@types/postcss", null],\
           ["browserslist", "npm:4.22.1"],\
-          ["caniuse-lite", "npm:1.0.30001553"],\
+          ["caniuse-lite", "npm:1.0.30001610"],\
           ["fraction.js", "npm:4.3.7"],\
           ["normalize-range", "npm:0.1.2"],\
           ["picocolors", "npm:1.0.0"],\
@@ -11466,7 +11466,7 @@ const RAW_RUNTIME_STATE =
         "packageLocation": "./.yarn/cache/browserslist-npm-4.22.1-cccae6d74e-6810f2d63f.zip/node_modules/browserslist/",\
         "packageDependencies": [\
           ["browserslist", "npm:4.22.1"],\
-          ["caniuse-lite", "npm:1.0.30001553"],\
+          ["caniuse-lite", "npm:1.0.30001610"],\
           ["electron-to-chromium", "npm:1.4.566"],\
           ["node-releases", "npm:2.0.13"],\
           ["update-browserslist-db", "virtual:cccae6d74e613cbaceb4c608cb01004dea3f5ca235673f5c541d60f516ef320907d258256abf63eac9b8704e23cf5d52eb19f2a57a07471accc943ea645de308#npm:1.0.13"]\
@@ -11634,10 +11634,10 @@ const RAW_RUNTIME_STATE =
       }]\
     ]],\
     ["caniuse-lite", [\
-      ["npm:1.0.30001553", {\
-        "packageLocation": "./.yarn/cache/caniuse-lite-npm-1.0.30001553-af33af7fcd-7565642956.zip/node_modules/caniuse-lite/",\
+      ["npm:1.0.30001610", {\
+        "packageLocation": "./.yarn/cache/caniuse-lite-npm-1.0.30001610-1c6e94779d-015956a0bf.zip/node_modules/caniuse-lite/",\
         "packageDependencies": [\
-          ["caniuse-lite", "npm:1.0.30001553"]\
+          ["caniuse-lite", "npm:1.0.30001610"]\
         ],\
         "linkType": "HARD"\
       }]\
