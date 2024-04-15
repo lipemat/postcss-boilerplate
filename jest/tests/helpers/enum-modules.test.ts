@@ -2,11 +2,14 @@ import {EnumModules, getDistFolder} from '../../../helpers/enum-modules';
 import {getPackageConfig, type PackageConfig} from '../../../helpers/package-config';
 import fs from 'fs';
 import fse from 'fs-extra';
+import cachingTask from '../../../config/caching';
 
 
 let mockPackageConfig: Partial<PackageConfig> = {
 	css_folder: './css/dist/',
 	theme_path: 'jest/theme/',
+	cssEnums: true,
+	combinedJson: true,
 };
 let mockEnumContents = {};
 
@@ -40,6 +43,8 @@ afterEach( () => {
 	mockPackageConfig = {
 		css_folder: './css/dist/',
 		theme_path: 'jest/theme/',
+		cssEnums: true,
+		combinedJson: true,
 	};
 	jest.clearAllMocks();
 } );
@@ -93,13 +98,18 @@ describe( 'cssModuleEnums', () => {
 
 		nav.addModuleToEnum( 'production' );
 		deeper.addModuleToEnum( 'production' );
-		expect( fse.readFileSync ).toHaveBeenCalledTimes( 3 );
-		expect( fse.outputFileSync ).toHaveBeenCalledTimes( 2 );
+		expect( fse.readFileSync ).toHaveBeenCalledTimes( 2 );
+		expect( fse.outputFileSync ).toHaveBeenCalledTimes( 0 );
+		EnumModules.flushToDisk( 'production' );
+		expect( fse.outputFileSync ).toHaveBeenCalledTimes( 1 );
 		expect( fse.outputFileSync ).toHaveBeenLastCalledWith( THEME_PATH + 'css/dist/module-enums.min.inc', expected );
 		expect( mockEnumContents ).toEqual( expected );
 
 		nav.addModuleToEnum( 'development' );
 		deeper.addModuleToEnum( 'development' );
+		expect( fse.outputFileSync ).toHaveBeenCalledTimes( 1 );
+		cachingTask( 'writeModules', 'development' );
+		expect( fse.outputFileSync ).toHaveBeenCalledTimes( 2 );
 		expect( fse.outputFileSync ).toHaveBeenLastCalledWith(
 			THEME_PATH + 'css/module-enums.php',
 			expected );
@@ -108,6 +118,8 @@ describe( 'cssModuleEnums', () => {
 
 
 	test( 'Through getJSON', () => {
+		mockPackageConfig.cssEnums = false;
+		mockPackageConfig.combinedJson = false;
 		const expected = fs.readFileSync( 'jest/fixtures/css-module-enums/module-enums.inc', 'utf-8' );
 		const getJSON = require( '../../../helpers/get-json.ts' ).getJSON( 'production' );
 		// Neither combinedJson nor cssEnums enabled.
@@ -116,6 +128,7 @@ describe( 'cssModuleEnums', () => {
 			'global-composes': 'Ⓜnav__global-composes__bw site-title nothing',
 			extra: 'Ⓜnav__extra__Ih',
 		} );
+		cachingTask( 'writeModules', 'production' );
 		expect( mockEnumContents ).toEqual( '' );
 		expect( fse.outputFileSync ).toHaveBeenCalledTimes( 0 );
 
@@ -127,6 +140,7 @@ describe( 'cssModuleEnums', () => {
 			'global-composes': 'Ⓜnav__global-composes__bw site-title nothing',
 			extra: 'Ⓜnav__extra__Ih',
 		} );
+		cachingTask( 'writeModules', 'production' );
 		expect( mockEnumContents ).toEqual( '' );
 		expect( fse.outputFileSync ).toHaveBeenCalledTimes( 0 );
 
@@ -142,8 +156,9 @@ describe( 'cssModuleEnums', () => {
 			'global-composes': 'Ⓜdeeper__global-composes__bw nothing',
 			extra: 'Ⓜdeeper__extra__Ih',
 		} );
-		expect( fse.readFileSync ).toHaveBeenCalledTimes( 3 );
-		expect( fse.outputFileSync ).toHaveBeenCalledTimes( 2 );
+		cachingTask( 'writeModules', 'production' );
+		expect( fse.readFileSync ).toHaveBeenCalledTimes( 1 );
+		expect( fse.outputFileSync ).toHaveBeenCalledTimes( 1 );
 		expect( fse.outputFileSync ).toHaveBeenLastCalledWith( THEME_PATH + 'css/dist/module-enums.min.inc', expected );
 		expect( mockEnumContents ).toEqual( expected );
 	} );

@@ -64,30 +64,31 @@ export class EnumModules {
 
 	private static cssClasses: string[] = [];
 
+	private static template = '';
+
 	constructor( filePath: string, json: Object ) {
 		this.filePath = filePath;
 		this.json = json;
+		if ( '' === EnumModules.template ) {
+			EnumModules.template = fse.readFileSync( __dirname + '/templates/module-enum.ejs', 'utf-8' );
+		}
 	}
-
 
 	/**
 	 * Add the module to the combined PHP enum file.
 	 */
 	addModuleToEnum( env: Environment ) {
-		const combined = getEnumFilePath( env );
 		if ( '' === EnumModules.content[ env ] ) {
 			EnumModules.content[ env ] = fse.readFileSync( __dirname + '/templates/module-enum-header.ejs', 'utf-8' );
 		}
 
 		EnumModules.cssClasses = EnumModules.cssClasses.concat( Object.values( this.json ) );
 
-		const template = fse.readFileSync( __dirname + '/templates/module-enum.ejs', 'utf-8' );
-		EnumModules.content[ env ] += ejs.render( template, {
+		EnumModules.content[ env ] += ejs.render( EnumModules.template, {
 			classMap: this.getFormattedClassMap(),
 			className: this.formatPHPClass( path.basename( this.filePath, '.pcss' ) ),
 			nameSpace: 'CSS_Modules\\' + this.convertPathToEnum(),
 		} );
-		fse.outputFileSync( combined, EnumModules.content[ env ] );
 	}
 
 
@@ -125,6 +126,14 @@ export class EnumModules {
 				result[ key ] = Object.values( this.json )[ index ];
 				return result;
 			}, {} );
+	}
+
+	/**
+	 * Write the combined PHP enum file to disk.
+	 */
+	public static flushToDisk( env: Environment ) {
+		const combined = getEnumFilePath( env );
+		fse.outputFileSync( combined, EnumModules.content[ env ] );
 	}
 
 	/**

@@ -12,16 +12,22 @@ if ( 'object' === typeof ( packageConfig.certificates ) && 'development' === pro
 	};
 }
 
+const postCSSTasks = [
+	'caching:reset',
+	'postcss:toCSS',
+	'caching:writeModules:development',
+];
+
+if ( getPackageConfig().cssEnums ) {
+	postCSSTasks.push( 'caching:reload' );
+}
+
 module.exports = {
 	postcss: {
 		files: packageConfig.pcssWatch.map( ( folder: string ) => {
 			return `${packageConfig.theme_path}${folder}/**/*.{pcss,css}`;
 		} ),
-		tasks: [
-			'caching:reset',
-			'postcss:toCSS',
-			'caching:reload',
-		],
+		tasks: postCSSTasks,
 		options: {
 			spawn: false,
 			livereload: false,

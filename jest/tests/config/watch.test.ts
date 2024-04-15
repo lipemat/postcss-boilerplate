@@ -1,20 +1,18 @@
-// Change this variable during tests.
 import {getPackageConfig} from '../../../helpers/package-config';
 
 let mockWatch: false | string[] = false;
+let mockCssEnums: boolean = false;
 
-// Change the result of the getPackageConfig function, so we can change shortCssClasses.
+// Change the result of the getPackageConfig function.
 jest.mock( '../../../helpers/package-config.ts', () => ( {
 	...jest.requireActual( '../../../helpers/package-config.ts' ),
 	getPackageConfig: () => {
-		if ( false === mockWatch ) {
-			return jest.requireActual( '../../../helpers/package-config.ts' );
+		const pkgConfig = jest.requireActual( '../../../helpers/package-config.ts' );
+		pkgConfig.cssEnums = mockCssEnums;
+		if ( false !== mockWatch ) {
+			pkgConfig.pcssWatch = mockWatch;
 		}
-		return {
-			...jest.requireActual( '../../../helpers/package-config.ts' ),
-			// Change this variable during the test.
-			pcssWatch: mockWatch,
-		};
+		return pkgConfig;
 	},
 } ) );
 
@@ -43,9 +41,13 @@ describe( 'Test watch config', () => {
 	} );
 
 	it( 'matches snapshot', () => {
+		mockCssEnums = true;
 		expect( getWatchConfig() ).toMatchSnapshot();
 
 		mockWatch = [ 'woocommerce', 'template-parts', 'pcss' ];
+		expect( getWatchConfig() ).toMatchSnapshot();
+
+		mockCssEnums = false;
 		expect( getWatchConfig() ).toMatchSnapshot();
 	} );
 } );

@@ -84,9 +84,7 @@ export class JsonModules {
 	 * Faster reading via PHP.
 	 */
 	combinedJson( env: Environment ) {
-		const combined = ( getDistFolder() + '/' + getCombinedName( env ) ).replace( /\\/g, '/' );
 		JsonModules.content[ env ][ this.filePath.replace( this.cssName + '/', '' ) + this.cssName ] = this.json;
-		fse.outputJsonSync( combined, JsonModules.content[ env ] );
 	}
 
 	/**
@@ -98,6 +96,14 @@ export class JsonModules {
 	moduleFile( env: Environment ) {
 		const jsonFileName = getPackageConfig().theme_path.replace( /\\/g, '/' ) + getModulesFolder( env ) + this.filePath.replace( this.cssName + '/', '' ) + this.cssName + '.json';
 		fse.outputJsonSync( jsonFileName, this.json );
+	}
+
+	/**
+	 * Flush the combined JSON file to disk.
+	 */
+	public static flushToDisk( env: Environment ) {
+		const combined = ( getDistFolder() + '/' + getCombinedName( env ) ).replace( /\\/g, '/' );
+		fse.outputJsonSync( combined, JsonModules.content[ env ] );
 	}
 
 	/**

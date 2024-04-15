@@ -9,6 +9,7 @@ process.env.NODE_ENV = 'production';
  * CSS file for production.
  */
 runner.run( 'postcss:min' );
+runner.run( 'caching:writeModules:production' );
 
 /**
  * Compile the /pcss/* files to .css
@@ -17,6 +18,7 @@ runner.run( 'postcss:min' );
  */
 process.env.NODE_ENV = 'development';
 runner.run( 'postcss:toCSS' );
+runner.run( 'caching:writeModules:development' );
 
 // Compress the CSS files to .br files.
 if ( getPackageConfig().brotliFiles ) {

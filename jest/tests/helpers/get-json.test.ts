@@ -50,6 +50,8 @@ describe( 'getJSON', () => {
 		getJSON( THEME_PATH + '/test.pcss', {
 			'purple-bg': 'test_purple_bg_1',
 		} );
+		expect( fse.outputJsonSync ).toHaveBeenCalledTimes( 0 );
+		JsonModules.flushToDisk( 'development' );
 		expect( fse.outputJsonSync ).toHaveBeenCalledTimes( 1 );
 		expect( fse.outputJsonSync ).toHaveBeenLastCalledWith( THEME_PATH + 'css/modules.json', {
 			'test.pcss': {
@@ -57,16 +59,28 @@ describe( 'getJSON', () => {
 			},
 		} );
 
-		// Global pcss is excluded
-		getJSON( THEME_PATH + 'pcss/globals/variables.pcss', {} );
-		expect( fse.outputJsonSync ).toHaveBeenCalledTimes( 1 );
-
 		getJSON( THEME_PATH + '/template-parts/nav.pcss', {
 			wrap: 'Ⓜnav__wrap__Jm Ⓜtest__purple-bg__ug',
 			'global-composes': 'Ⓜnav__global-composes__bw site-title nothing',
 			extra: 'Ⓜnav__extra__Ih',
 		} );
+		JsonModules.flushToDisk( 'development' );
 		expect( fse.outputJsonSync ).toHaveBeenCalledTimes( 2 );
+		expect( fse.outputJsonSync ).toHaveBeenLastCalledWith( THEME_PATH + 'css/modules.json', {
+			'test.pcss': {
+				'purple-bg': 'test_purple_bg_1',
+			},
+			'template-parts/nav.pcss': {
+				wrap: 'Ⓜnav__wrap__Jm Ⓜtest__purple-bg__ug',
+				'global-composes': 'Ⓜnav__global-composes__bw site-title nothing',
+				extra: 'Ⓜnav__extra__Ih',
+			},
+		} );
+
+		// Global pcss is excluded
+		getJSON( THEME_PATH + 'pcss/globals/variables.pcss', {} );
+		JsonModules.flushToDisk( 'development' );
+		expect( fse.outputJsonSync ).toHaveBeenCalledTimes( 3 );
 		expect( fse.outputJsonSync ).toHaveBeenLastCalledWith( THEME_PATH + 'css/modules.json', {
 			'test.pcss': {
 				'purple-bg': 'test_purple_bg_1',
@@ -114,6 +128,7 @@ describe( 'getJSON', () => {
 		getJSON( THEME_PATH + '/test.pcss', {
 			'purple-bg': 'a',
 		} );
+		JsonModules.flushToDisk( 'production' );
 		expect( fse.outputJsonSync ).toHaveBeenCalledTimes( 1 );
 		expect( fse.outputJsonSync ).toHaveBeenLastCalledWith( THEME_PATH + 'css/modules.min.json', {
 			'test.pcss': {

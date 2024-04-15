@@ -4,6 +4,17 @@ import {getPackageConfig} from '../../../helpers/package-config';
 import {resolve} from 'path';
 
 
+// Change the result of the getPackageConfig function.
+jest.mock( '../../../helpers/package-config.ts', () => ( {
+	...jest.requireActual( '../../../helpers/package-config.ts' ),
+	getPackageConfig: () => {
+		const pkgConfig = jest.requireActual( '../../../helpers/package-config.ts' );
+		pkgConfig.cssEnums = true;
+		return pkgConfig;
+	},
+} ) );
+
+
 describe( 'Test caching config', () => {
 	test( 'reset', () => {
 		( new EnumModules( 'template-parts/nav.pcss/', {
@@ -24,7 +35,7 @@ describe( 'Test caching config', () => {
 			'Ⓜdeeper__global-composes__bw nothing',
 			'Ⓜdeeper__extra__Ih',
 		] );
-		cachingTask( 'reset', {} );
+		cachingTask( 'reset', undefined );
 		expect( EnumModules.getCssClasses() ).toStrictEqual( [] );
 		// @ts-ignore --  Accessing a private field.
 		expect( EnumModules.content ).toStrictEqual( {
@@ -51,17 +62,17 @@ describe( 'Test caching config', () => {
 			extra: 'Ⓜdeeper__extra__Ih',
 		} ) ).addModuleToEnum( 'development' );
 
-		cachingTask( 'reload', {} );
+		cachingTask( 'reload', undefined );
 		expect( triggerReload ).toHaveBeenCalledTimes( 1 );
 		expect( triggerReload ).toHaveBeenLastCalledWith( dir + '/module-enums.php', expect.any( Function ) );
 
-		cachingTask( 'reload', {} );
+		cachingTask( 'reload', undefined );
 		expect( triggerReload ).toHaveBeenCalledTimes( 1 );
 
 		( new EnumModules( 'template-parts/header/deeper.pcss/', {
 			'global-composes': 'changed nothing',
 		} ) ).addModuleToEnum( 'development' );
-		cachingTask( 'reload', {} );
+		cachingTask( 'reload', undefined );
 		expect( triggerReload ).toHaveBeenCalledTimes( 2 );
 		expect( triggerReload ).toHaveBeenLastCalledWith( dir + '/module-enums.php', expect.any( Function ) );
 	} );

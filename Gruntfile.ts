@@ -1,4 +1,4 @@
-import {getConfig} from './helpers/config';
+import {type Environment, getConfig} from './helpers/config';
 import type {GruntExposed} from './helpers/run-task';
 import caching from './config/caching';
 
@@ -24,8 +24,8 @@ export default function( grunt: GruntExposed ) {
 	grunt.loadNpmTasks( 'grunt-stylelint' );
 
 
-	grunt.registerMultiTask( 'caching', 'Cache management for Enums and JSON', function() {
-		caching( this.target as 'reset' | 'reload', this.data );
+	grunt.registerMultiTask( 'caching', 'Cache management for Enums and JSON', function( env: Environment | undefined ) {
+		caching( this.target as 'reset' | 'reload' | 'writeModules', env );
 	} );
 
 	return grunt;

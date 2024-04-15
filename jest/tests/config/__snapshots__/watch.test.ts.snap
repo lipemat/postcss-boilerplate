@@ -23,6 +23,7 @@ exports[`Test watch config matches snapshot 1`] = `
     "tasks": [
       "caching:reset",
       "postcss:toCSS",
+      "caching:writeModules:development",
       "caching:reload",
     ],
   },
@@ -53,7 +54,38 @@ exports[`Test watch config matches snapshot 2`] = `
     "tasks": [
       "caching:reset",
       "postcss:toCSS",
+      "caching:writeModules:development",
       "caching:reload",
+    ],
+  },
+}
+`;
+
+exports[`Test watch config matches snapshot 3`] = `
+{
+  "php": {
+    "files": [
+      "./**/*.php",
+      "!./css/**/*.php",
+    ],
+    "options": {
+      "livereload": true,
+    },
+  },
+  "postcss": {
+    "files": [
+      "./woocommerce/**/*.{pcss,css}",
+      "./template-parts/**/*.{pcss,css}",
+      "./pcss/**/*.{pcss,css}",
+    ],
+    "options": {
+      "livereload": false,
+      "spawn": false,
+    },
+    "tasks": [
+      "caching:reset",
+      "postcss:toCSS",
+      "caching:writeModules:development",
     ],
   },
 }

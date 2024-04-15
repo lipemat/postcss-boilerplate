@@ -5,6 +5,7 @@ exports[`Test caching config matches snapshot 1`] = `
   "config": {
     "reload": {},
     "reset": {},
+    "writeModules": {},
   },
   "default": [Function],
 }
