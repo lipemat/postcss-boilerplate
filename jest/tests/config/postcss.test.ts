@@ -1,32 +1,11 @@
 import {readFileSync} from 'fs';
-import postcss, {Plugin, Syntax} from 'postcss';
+import postcss, {Plugin} from 'postcss';
 import {basename} from 'path';
 import {adjustBrowserslist} from '../../../helpers/config';
+import type {PostCSSGruntTasks} from '../../../config/postcss';
 
 const browserslist = require( 'browserslist' );
 const postcssPresetEnv = require( 'postcss-preset-env' );
-
-
-type Config = {
-	browsers: Array<string>;
-	features: {
-		'focus-visible-pseudo-class': {
-			replaceWith: string;
-		};
-	};
-	processors: Array<Plugin & {
-		plugins?: Plugin[];
-	}>;
-	parser: Syntax;
-	map: boolean;
-}
-
-type GruntTask = {
-	options: Config;
-	files: {
-		[ key: string ]: string;
-	};
-}
 
 export type Fixture = {
 	input: string;
@@ -35,7 +14,7 @@ export type Fixture = {
 	description: string;
 }
 
-const creator = ( browsers, features = {} ) => {
+const creator = ( browsers: string[], features = {} ) => {
 	return postcssPresetEnv( {
 		browsers,
 		features: {...features},
@@ -43,13 +22,15 @@ const creator = ( browsers, features = {} ) => {
 };
 
 
-function getPostCSSConfig(): {
-	toCSS: GruntTask;
-	min: GruntTask;
-	} {
-	jest.resetModules();
-	return require( '../../../config/postcss' );
+function getPostCSSConfig(): PostCSSGruntTasks {
+	// @ts-ignore
+	let config: PostCSSGruntTasks = {};
+	jest.isolateModules( () => {
+		config = require( '../../../config/postcss' );
+	} );
+	return config;
 }
+
 
 function processPostCSS( input: string, min: boolean = false, file: string ): Promise<postcss.Result> {
 	const config = getPostCSSConfig();
@@ -73,6 +54,12 @@ function processPostCSS( input: string, min: boolean = false, file: string ): Pr
 
 function cleanCSS( css: string ): string {
 	return css.replace( /undefined/g, '' ).trim();
+}
+
+function getBrowsersPlugin( plugins: Plugin[] ): { plugins: Plugin[] } {
+	return plugins.find( plugin => 'postcss-preset-env' === plugin.postcssPlugin ) as unknown as {
+		plugins: Plugin[]
+	};
 }
 
 // Create a data provider for fixtures.
@@ -116,37 +103,37 @@ describe( 'postcss.js', () => {
 		const config = getPostCSSConfig();
 		// We want to make sure no matter what postcss-custom-properties is not included
 		// if a user did not provided a custom browserslist to override.
-		expect( config.toCSS.options.processors[ 4 ]?.plugins?.filter( plugin => {
+		expect( getBrowsersPlugin( config.toCSS.options.processors ).plugins.filter( plugin => {
 			return 'postcss-custom-properties' === plugin.postcssPlugin;
 		} ).length ).toEqual( 0 );
-		expect( config.toCSS.options.processors[ 4 ]?.plugins?.filter( plugin => {
+		expect( getBrowsersPlugin( config.toCSS.options.processors ).plugins.filter( plugin => {
 			return 'postcss-focus-visible' === plugin.postcssPlugin;
 		} ).length ).toEqual( 0 );
 
-		expect( JSON.stringify( config.toCSS.options.processors[ 4 ] ) )
+		expect( JSON.stringify( getBrowsersPlugin( config.toCSS.options.processors ) ) )
 			.toEqual( JSON.stringify( creator( expectedBrowsers ) ) );
-		expect( JSON.stringify( config.min.options.processors[ 4 ] ) )
+		expect( JSON.stringify( getBrowsersPlugin( config.min.options.processors ) ) )
 			.toEqual( JSON.stringify( creator( expectedBrowsers ) ) );
 
 		// op_mini all requires postcss-custom-properties.
 		process.env.BROWSERSLIST = 'op_mini all';
 		const config2 = getPostCSSConfig();
-		expect( config2.toCSS.options.processors[ 4 ]?.plugins?.filter( plugin => {
+		expect( getBrowsersPlugin( config2.toCSS.options.processors ).plugins.filter( plugin => {
 			return 'postcss-custom-properties' === plugin.postcssPlugin;
 		} ).length ).toEqual( 1 );
-		expect( JSON.stringify( config2.toCSS.options.processors[ 4 ] ) )
+		expect( JSON.stringify( getBrowsersPlugin( config2.toCSS.options.processors ) ) )
 			.toEqual( JSON.stringify( creator( [ 'op_mini all' ] ) ) );
-		expect( JSON.stringify( config2.min.options.processors[ 4 ] ) )
+		expect( JSON.stringify( getBrowsersPlugin( config2.min.options.processors ) ) )
 			.toEqual( JSON.stringify( creator( [ 'op_mini all' ] ) ) );
 
 		// Safari 15 requires postcss-focus-visible.
 		process.env.BROWSERSLIST = 'safari 15';
 		const config4 = getPostCSSConfig();
-		expect( config4.toCSS.options.processors[ 4 ]?.plugins?.filter( plugin => {
+		expect( getBrowsersPlugin( config4.toCSS.options.processors ).plugins.filter( plugin => {
 			return 'postcss-focus-visible' === plugin.postcssPlugin;
 		} ).length ).toEqual( 1 );
 
-		expect( JSON.stringify( config4.toCSS.options.processors[ 4 ] ) )
+		expect( JSON.stringify( getBrowsersPlugin( config4.toCSS.options.processors ) ) )
 			.toEqual( JSON.stringify( creator( [ 'safari 15' ], {
 				'focus-visible-pseudo-class': {
 					replaceWith: ':global(.focus-visible)',
@@ -156,7 +143,7 @@ describe( 'postcss.js', () => {
 		// @notice If this fails, we can probably remove the @todo from adjustBrowserslist and the toEqual to `1`.
 		const wpDefaultBrowsers = [ ...require( '@wordpress/browserslist-config' ) ];
 		process.env.BROWSERSLIST = browserslist( wpDefaultBrowsers );
-		expect( getPostCSSConfig().toCSS.options.processors[ 4 ]?.plugins?.filter( plugin => {
+		expect( getBrowsersPlugin( getPostCSSConfig().toCSS.options.processors ).plugins.filter( plugin => {
 			return 'postcss-custom-properties' === plugin.postcssPlugin;
 		} ).length ).toEqual( 0 );
 	} );

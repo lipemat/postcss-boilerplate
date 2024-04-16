@@ -20,7 +20,7 @@ export type PostCSSConfig = Pick<ProcessOptions, 'map' | 'parser'> & {
 	writeDest?: boolean;
 }
 
-type GruntTasks = {
+export type PostCSSGruntTasks = {
 	min: {
 		options: PostCSSConfig;
 		files: Record<string, string>;
@@ -129,7 +129,7 @@ minOptions.processors.push( require( '../lib/postcss-clean' )( {
 // Add pretty output for development.
 compileOptions.processors.push( PrettyPlugin );
 
-const gruntTasks: GruntTasks = {
+const gruntTasks: PostCSSGruntTasks = {
 	toCSS: {
 		options: compileOptions,
 		files: getEntries().toCSS,

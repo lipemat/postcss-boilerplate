@@ -18,19 +18,19 @@
 	}
 }
 
-@media ( width <= 960px) {
+@media (max-width: 960px) {
 	.genesis-nav-menu {
 		float: none
 	}
 }
 
-@media (width <= 800px) {
+@media (max-width: 800px) {
 	.genesis-nav-menu {
 		display: none
 	}
 }
 
-@media (width <= 480px) {
+@media (max-width: 480px) {
 	.genesis-nav-menu {
 		display: inline-flex
 	}
