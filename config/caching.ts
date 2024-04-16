@@ -57,9 +57,9 @@ export default function cachingTask<K extends keyof Config>( task: K, env: Envir
 		triggerReload();
 	}
 
-	if ( 'writeModules' === task && isEnvironment( env ) ) {
+	if ( 'writeModules' === task && isEnvironment( env ) && getPackageConfig().combinedJson ) {
 		JsonModules.flushToDisk( env );
-		if ( getPackageConfig().cssEnums && getPackageConfig().combinedJson ) {
+		if ( getPackageConfig().cssEnums ) {
 			EnumModules.flushToDisk( env );
 		}
 	}

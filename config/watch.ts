@@ -13,10 +13,13 @@ if ( 'object' === typeof ( packageConfig.certificates ) && 'development' === pro
 }
 
 const postCSSTasks = [
-	'caching:reset',
 	'postcss:toCSS',
-	'caching:writeModules:development',
 ];
+
+if ( getPackageConfig().combinedJson ) {
+	postCSSTasks.unshift( 'caching:reset' );
+	postCSSTasks.push( 'caching:writeModules:development' );
+}
 
 if ( getPackageConfig().cssEnums ) {
 	postCSSTasks.push( 'caching:reload' );

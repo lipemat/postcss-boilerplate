@@ -90,3 +90,31 @@ exports[`Test watch config matches snapshot 3`] = `
   },
 }
 `;
+
+exports[`Test watch config matches snapshot 4`] = `
+{
+  "php": {
+    "files": [
+      "./**/*.php",
+      "!./css/**/*.php",
+    ],
+    "options": {
+      "livereload": true,
+    },
+  },
+  "postcss": {
+    "files": [
+      "./woocommerce/**/*.{pcss,css}",
+      "./template-parts/**/*.{pcss,css}",
+      "./pcss/**/*.{pcss,css}",
+    ],
+    "options": {
+      "livereload": false,
+      "spawn": false,
+    },
+    "tasks": [
+      "postcss:toCSS",
+    ],
+  },
+}
+`;
