@@ -2206,6 +2206,8 @@ __metadata:
     "@types/jest": "npm:^29"
     "@types/minimist": "npm:^1"
     "@types/node": "npm:^16"
+    "@types/postcss-import": "npm:^14.0.3"
+    "@types/postcss-preset-env": "npm:7.7.0"
     "@wordpress/browserslist-config": "npm:^5.19.0"
     browserslist: "npm:^4.21.9"
     clean-css: "npm:^5.3.0"
@@ -2773,6 +2775,25 @@ __metadata:
   version: 4.0.1
   resolution: "@types/parse-json@npm:4.0.1"
   checksum: 10c0/6851183c2ffe4aff607f034f6b5325ebc81ff90409132e2d59fe6cae030d7064593e521d75cda017d9f6b696a7e19d26d1703f366b3e7cbfec8c825331c79c31
+  languageName: node
+  linkType: hard
+
+"@types/postcss-import@npm:^14.0.3":
+  version: 14.0.3
+  resolution: "@types/postcss-import@npm:14.0.3"
+  dependencies:
+    postcss: "npm:^8.0.0"
+  checksum: 10c0/9d3649bde28f8dfe034820475751080f52f4b3bf56e28d9925582d5dec9fe84ae07a158b7191e8beb981fceadfb7b6b68a9e1818214d530e3f65e11375bf09c8
+  languageName: node
+  linkType: hard
+
+"@types/postcss-preset-env@npm:7.7.0":
+  version: 7.7.0
+  resolution: "@types/postcss-preset-env@npm:7.7.0"
+  dependencies:
+    autoprefixer: "npm:^10.4.7"
+    postcss: "npm:^8.4.14"
+  checksum: 10c0/d13e72f165021f9e2efc77e5df695c4166b7eab6a773a67f4d6a22988e1865cfeff9a973ae1159b5f0378252f7bad3f9b871f87e2a3cdf8ef12b9bc2fd78b302
   languageName: node
   linkType: hard
 
@@ -3990,6 +4011,24 @@ __metadata:
   languageName: node
   linkType: hard
 
+"autoprefixer@npm:^10.4.7":
+  version: 10.4.19
+  resolution: "autoprefixer@npm:10.4.19"
+  dependencies:
+    browserslist: "npm:^4.23.0"
+    caniuse-lite: "npm:^1.0.30001599"
+    fraction.js: "npm:^4.3.7"
+    normalize-range: "npm:^0.1.2"
+    picocolors: "npm:^1.0.0"
+    postcss-value-parser: "npm:^4.2.0"
+  peerDependencies:
+    postcss: ^8.1.0
+  bin:
+    autoprefixer: bin/autoprefixer
+  checksum: 10c0/fe0178eb8b1da4f15c6535cd329926609b22d1811e047371dccce50563623f8075dd06fb167daff059e4228da651b0bdff6d9b44281541eaf0ce0b79125bfd19
+  languageName: node
+  linkType: hard
+
 "available-typed-arrays@npm:^1.0.5":
   version: 1.0.5
   resolution: "available-typed-arrays@npm:1.0.5"
@@ -4300,6 +4339,20 @@ __metadata:
   languageName: node
   linkType: hard
 
+"browserslist@npm:^4.23.0":
+  version: 4.23.0
+  resolution: "browserslist@npm:4.23.0"
+  dependencies:
+    caniuse-lite: "npm:^1.0.30001587"
+    electron-to-chromium: "npm:^1.4.668"
+    node-releases: "npm:^2.0.14"
+    update-browserslist-db: "npm:^1.0.13"
+  bin:
+    browserslist: cli.js
+  checksum: 10c0/8e9cc154529062128d02a7af4d8adeead83ca1df8cd9ee65a88e2161039f3d68a4d40fea7353cab6bae4c16182dec2fdd9a1cf7dc2a2935498cee1af0e998943
+  languageName: node
+  linkType: hard
+
 "bser@npm:2.1.1":
   version: 2.1.1
   resolution: "bser@npm:2.1.1"
@@ -4442,7 +4495,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"caniuse-lite@npm:^1.0.30001538, caniuse-lite@npm:^1.0.30001541":
+"caniuse-lite@npm:^1.0.30001538, caniuse-lite@npm:^1.0.30001541, caniuse-lite@npm:^1.0.30001587, caniuse-lite@npm:^1.0.30001599":
   version: 1.0.30001610
   resolution: "caniuse-lite@npm:1.0.30001610"
   checksum: 10c0/015956a0bf2e3e233da3dc00c5632bbb4d416bcd6ced2f839e33e45b197a856234f97cb046e7427b83d7e3a3d6df314dfab1c86eb9d970970e00ad85a50b4933
@@ -5620,6 +5673,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"electron-to-chromium@npm:^1.4.668":
+  version: 1.4.737
+  resolution: "electron-to-chromium@npm:1.4.737"
+  checksum: 10c0/af407082035aac17e1c4c99b1bd44f6b4dc359c2be538d04508c7a4013badd894c6fc79333c7d80e2de19baac4e9da6061b95b09765868c5278180f02dfe31c1
+  languageName: node
+  linkType: hard
+
 "emittery@npm:^0.13.1":
   version: 0.13.1
   resolution: "emittery@npm:0.13.1"
@@ -6696,7 +6756,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"fraction.js@npm:^4.3.6":
+"fraction.js@npm:^4.3.6, fraction.js@npm:^4.3.7":
   version: 4.3.7
   resolution: "fraction.js@npm:4.3.7"
   checksum: 10c0/df291391beea9ab4c263487ffd9d17fed162dbb736982dee1379b2a8cc94e4e24e46ed508c6d278aded9080ba51872f1bc5f3a5fd8d7c74e5f105b508ac28711
@@ -9858,6 +9918,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"nanoid@npm:^3.3.7":
+  version: 3.3.7
+  resolution: "nanoid@npm:3.3.7"
+  bin:
+    nanoid: bin/nanoid.cjs
+  checksum: 10c0/e3fb661aa083454f40500473bb69eedb85dc160e763150b9a2c567c7e9ff560ce028a9f833123b618a6ea742e311138b591910e795614a629029e86e180660f3
+  languageName: node
+  linkType: hard
+
 "natural-compare-lite@npm:^1.4.0":
   version: 1.4.0
   resolution: "natural-compare-lite@npm:1.4.0"
@@ -9949,6 +10018,13 @@ __metadata:
   version: 2.0.13
   resolution: "node-releases@npm:2.0.13"
   checksum: 10c0/2fb44bf70fc949d27f3a48a7fd1a9d1d603ddad4ccd091f26b3fb8b1da976605d919330d7388ccd55ca2ade0dc8b2e12841ba19ef249c8bb29bf82532d401af7
+  languageName: node
+  linkType: hard
+
+"node-releases@npm:^2.0.14":
+  version: 2.0.14
+  resolution: "node-releases@npm:2.0.14"
+  checksum: 10c0/199fc93773ae70ec9969bc6d5ac5b2bbd6eb986ed1907d751f411fef3ede0e4bfdb45ceb43711f8078bea237b6036db8b1bf208f6ff2b70c7d615afd157f3ab9
   languageName: node
   linkType: hard
 
@@ -11224,6 +11300,17 @@ __metadata:
   languageName: node
   linkType: hard
 
+"postcss@npm:^8.0.0, postcss@npm:^8.4.14":
+  version: 8.4.38
+  resolution: "postcss@npm:8.4.38"
+  dependencies:
+    nanoid: "npm:^3.3.7"
+    picocolors: "npm:^1.0.0"
+    source-map-js: "npm:^1.2.0"
+  checksum: 10c0/955407b8f70cf0c14acf35dab3615899a2a60a26718a63c848cf3c29f2467b0533991b985a2b994430d890bd7ec2b1963e36352b0774a19143b5f591540f7c06
+  languageName: node
+  linkType: hard
+
 "postcss@npm:^8.4.13, postcss@npm:^8.4.19, postcss@npm:^8.4.21, postcss@npm:^8.4.7":
   version: 8.4.31
   resolution: "postcss@npm:8.4.31"
@@ -12366,6 +12453,13 @@ __metadata:
   version: 1.0.2
   resolution: "source-map-js@npm:1.0.2"
   checksum: 10c0/32f2dfd1e9b7168f9a9715eb1b4e21905850f3b50cf02cf476e47e4eebe8e6b762b63a64357896aa29b37e24922b4282df0f492e0d2ace572b43d15525976ff8
+  languageName: node
+  linkType: hard
+
+"source-map-js@npm:^1.2.0":
+  version: 1.2.0
+  resolution: "source-map-js@npm:1.2.0"
+  checksum: 10c0/7e5f896ac10a3a50fe2898e5009c58ff0dc102dcb056ed27a354623a0ece8954d4b2649e1a1b2b52ef2e161d26f8859c7710350930751640e71e374fe2d321a4
   languageName: node
   linkType: hard
 

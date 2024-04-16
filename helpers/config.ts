@@ -3,8 +3,13 @@ import path from 'path';
 import browserslist from 'browserslist';
 
 import {getPackageConfig} from './package-config';
+import type {PostCSSConfig} from '../config/postcss';
 
 export type Environment = 'production' | 'development';
+
+type Configs = {
+	'postcss-entries': PostCSSConfig;
+};
 
 
 /**
@@ -15,7 +20,7 @@ export type Environment = 'production' | 'development';
  * we will merge the contents with our config/babel.config.js in favor of whatever
  * is specified with the project's file.
  */
-export function getConfig( fileName: string ) {
+export function getConfig<T extends keyof Configs>( fileName: T ): Configs[T] {
 	let config = require( '../config/' + fileName );
 	const packageConfig = getPackageConfig();
 	try {
@@ -34,9 +39,10 @@ export function getConfig( fileName: string ) {
  * Get the browserslist from the current project.
  *
  * - If specified using standard browserslist config, we will use that.
- * - Fallback to WordPress defaults except for "> 1%".
+ *
+ *  @link https://github.com/browserslist/browserslist#config-file
  */
-export function getBrowsersList() {
+export function getBrowsersList(): readonly string[] {
 	const projectBrowsersList = browserslist();
 	if ( browserslist( browserslist.defaults ) === projectBrowsersList ) {
 		const wp = [ ...require( '@wordpress/browserslist-config' ) ];

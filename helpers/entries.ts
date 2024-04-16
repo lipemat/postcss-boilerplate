@@ -1,10 +1,16 @@
-const config = require( './package-config' );
-const fs = require( 'fs' );
-const path = require( 'path' );
-const {getConfig} = require( './config' );
+import {existsSync} from 'fs';
+import {resolve} from 'path';
+import {getPackageConfig} from './package-config';
+import {getConfig} from './config';
 
+const config = getPackageConfig();
 const entries = getConfig( 'postcss-entries' );
 
+
+type Entries = {
+	min: Record<string, string>;
+	toCSS: Record<string, string>;
+};
 
 /**
  * Entry points to be loaded by Grunt.
@@ -13,7 +19,7 @@ const entries = getConfig( 'postcss-entries' );
  *
  * @see config/postcss-entries.js
  */
-function getEntries() {
+export function getEntries(): Entries {
 	const matches = {
 		min: {},
 		toCSS: {},
@@ -21,14 +27,10 @@ function getEntries() {
 
 	Object.values( entries ).forEach( possibleFile => {
 		const filePath = config.theme_path + 'pcss/' + possibleFile;
-		if ( fs.existsSync( path.resolve( filePath + '.pcss' ) ) ) {
+		if ( existsSync( resolve( filePath + '.pcss' ) ) ) {
 			matches.toCSS[ config.css_folder + possibleFile + '.css' ] = config.theme_path + `pcss/${possibleFile}.pcss`;
 			matches.min[ config.css_folder + possibleFile + '.min.css' ] = config.theme_path + `pcss/${possibleFile}.pcss`;
 		}
 	} );
 	return matches;
 }
-
-module.exports = {
-	getEntries,
-};

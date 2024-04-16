@@ -48,7 +48,7 @@ function getPostCSSConfig(): {
 	min: GruntTask;
 	} {
 	jest.resetModules();
-	return require( '../../../config/postcss.js' );
+	return require( '../../../config/postcss' );
 }
 
 function processPostCSS( input: string, min: boolean = false, file: string ): Promise<postcss.Result> {

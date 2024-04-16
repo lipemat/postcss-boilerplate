@@ -283,7 +283,10 @@ exports[`postcss.js PostCSS config: develop 1`] = `
           "OnceExit": [Function],
           "postcssPlugin": "postcss-hash",
         },
-        [Function],
+        {
+          "OnceExit": [Function],
+          "postcssPlugin": "js-boilerplate/postcss-pretty",
+        },
       ],
     },
   },

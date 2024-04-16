@@ -1,29 +1,52 @@
-const postcssPresetEnv = require( 'postcss-preset-env' );
-
-const {getPackageConfig} = require( '../helpers/package-config' );
-const {getGenerateScopeName} = require( '../helpers/css-classnames' );
-const {getEntries} = require( '../helpers/entries' );
-const {getBrowsersList, getExternalFiles} = require( '../helpers/config' );
-const {getJSON} = require( '../helpers/get-json' );
+import {getGenerateScopeName} from '../helpers/css-classnames';
+import {getPackageConfig} from '../helpers/package-config';
+import {getEntries} from '../helpers/entries';
+import {type Environment, getBrowsersList, getExternalFiles} from '../helpers/config';
+import {getJSON} from '../helpers/get-json';
+import type {Plugin, ProcessOptions, Processor} from 'postcss';
+import PrettyPlugin from '../lib/postcss-pretty';
+import {pluginOptions} from 'postcss-preset-env';
+import type {AtImportOptions} from 'postcss-import';
 
 const config = getPackageConfig();
+const postcssPresetEnv = require( 'postcss-preset-env' );
+
+export type PostCSSConfig = Pick<ProcessOptions, 'map' | 'parser'> & {
+	processors: Plugin[];
+	diff?: string| boolean;
+	failOnError?: boolean;
+	onError?: ( error: Error ) => void;
+	sequential?: boolean;
+	writeDest?: boolean;
+}
+
+type GruntTasks = {
+	min: {
+		options: PostCSSConfig;
+		files: Record<string, string>;
+	};
+	toCSS: {
+		options: PostCSSConfig;
+		files: Record<string, string>;
+	};
+}
 
 /**
  * Base postcss-presets-env config.
  *
  */
-const presetEnv = {
-	browsers: getBrowsersList(),
+const presetEnv: pluginOptions = {
+	browsers: [ ...getBrowsersList() ],
 	features: {},
 };
 
 // Get a list of included postcss plugins based no the browsers list.
-const includedPlugins = postcssPresetEnv( presetEnv )
-	.plugins
-	.map( plugin => plugin.postcssPlugin );
+const includedPlugins: string[] = postcssPresetEnv( presetEnv ).plugins.map( ( plugin: Processor['plugins'][number] ) => {
+	return 'postcssPlugin' in plugin ? plugin.postcssPlugin : '';
+} );
 
 
-if ( includedPlugins.includes( 'postcss-focus-visible' ) ) {
+if ( 'object' === typeof presetEnv.features && includedPlugins.includes( 'postcss-focus-visible' ) ) {
 	presetEnv.features[ 'focus-visible-pseudo-class' ] = {
 		/**
 		 * Fixes `focus-visible` feature for CSS modules.
@@ -45,9 +68,8 @@ if ( includedPlugins.includes( 'postcss-focus-visible' ) ) {
  *
  * @param {'production'|'development'} env The environment to use.
  */
-function getImportConfig( env ) {
+function getImportConfig( env: Environment ): AtImportOptions {
 	return {
-		extension: 'pcss',
 		plugins: [
 			require( 'postcss-modules' )( {
 				generateScopedName: getGenerateScopeName( env ),
@@ -63,7 +85,7 @@ function getImportConfig( env ) {
 }
 
 
-const compileOptions = {
+const compileOptions: PostCSSConfig = {
 	map: true,
 	processors: [
 		require( '@csstools/postcss-global-data' )( {
@@ -105,14 +127,13 @@ minOptions.processors.push( require( '../lib/postcss-clean' )( {
 } ) );
 
 // Add pretty output for development.
-compileOptions.processors.push( require( '../lib/postcss-pretty' ) );
+compileOptions.processors.push( PrettyPlugin );
 
-const gruntTasks = {
+const gruntTasks: GruntTasks = {
 	toCSS: {
 		options: compileOptions,
 		files: getEntries().toCSS,
 	},
-
 	min: {
 		options: minOptions,
 		files: getEntries().min,
