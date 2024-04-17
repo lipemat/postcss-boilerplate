@@ -1,6 +1,7 @@
 import {type Environment, getConfig} from './helpers/config';
 import type {GruntExposed} from './helpers/run-task';
 import caching from './config/caching';
+import {getPackageConfig} from './helpers/package-config';
 
 export default function( grunt: GruntExposed ) {
 	grunt.task.init = () => {
@@ -10,7 +11,7 @@ export default function( grunt: GruntExposed ) {
 	 *
 	 */
 	grunt.initConfig( {
-		pkg: require( './helpers/package-config' ),
+		pkg: getPackageConfig(),
 		caching: getConfig( 'caching' ).config,
 		compress: getConfig( 'compress' ),
 		postcss: getConfig( 'postcss' ),
