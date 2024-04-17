@@ -5,7 +5,7 @@ import type {Environment} from '../helpers/config';
 import {getPackageConfig} from '../helpers/package-config';
 
 
-type Config = {
+export type CachingGruntTasks = {
 	reset: {}
 	reload: {}
 	writeModules: {}
@@ -13,7 +13,7 @@ type Config = {
 
 let lastCssClasses: string[] = [];
 
-export const config: Config = {
+export const config: CachingGruntTasks = {
 	reset: {},
 	reload: {},
 	writeModules: {},
@@ -43,7 +43,7 @@ function triggerReload() {
  * `caching:writeModules` - Write contents if JSON or PHP Enums for CSS modules.
  *
  */
-export default function cachingTask<K extends keyof Config>( task: K, env: Environment | undefined ) {
+export default function cachingTask<K extends keyof CachingGruntTasks>( task: K, env: Environment | undefined ) {
 	if ( 'reset' === task ) {
 		EnumModules._resetContent();
 		JsonModules._resetContent();

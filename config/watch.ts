@@ -2,6 +2,31 @@ import fs from 'fs';
 import {getPackageConfig, type PackageConfig} from '../helpers/package-config';
 import {getDistFolder} from '../helpers/enum-modules';
 
+
+type Event = 'all' | 'changed' | 'added' | 'deleted';
+
+type Task = {
+	files: string[];
+	tasks?: string[];
+	options: {
+		atBegin?: boolean;
+		dateFormat?: ( time: number ) => void;
+		debounceDelay?: number;
+		event?: Event | Event[];
+		forever?: boolean;
+		interval?: number;
+		livereload?: boolean | PackageConfig['certificates'];
+		reload?: boolean;
+		spawn?: boolean;
+	};
+};
+
+
+export type WatchGruntTasks = {
+	postcss: Task;
+	php: Task;
+};
+
 const packageConfig: PackageConfig = getPackageConfig();
 let livereload: boolean | PackageConfig['certificates'] = true;
 // Load local certificates for https if available.
@@ -25,7 +50,7 @@ if ( getPackageConfig().cssEnums ) {
 	postCSSTasks.push( 'caching:reload' );
 }
 
-module.exports = {
+const config: WatchGruntTasks = {
 	postcss: {
 		files: packageConfig.pcssWatch.map( ( folder: string ) => {
 			return `${packageConfig.theme_path}${folder}/**/*.{pcss,css}`;
@@ -36,7 +61,6 @@ module.exports = {
 			livereload: false,
 		},
 	},
-
 	php: {
 		files: [
 			`${packageConfig.theme_path}**/*.php`,
@@ -47,3 +71,5 @@ module.exports = {
 		},
 	},
 };
+
+module.exports = config;

@@ -3,12 +3,24 @@ import path from 'path';
 import browserslist from 'browserslist';
 
 import {getPackageConfig} from './package-config';
-import type {PostCSSConfig} from '../config/postcss';
+import type {PostCSSGruntTasks} from '../config/postcss';
+import type {CachingGruntTasks} from '../config/caching';
+import type {CompressGruntTasks} from '../config/compress';
+import type {PostcssEntries} from '../config/postcss-entries';
+import type {WatchGruntTasks} from '../config/watch';
+import type {StylelintGruntTasks} from '../config/stylelint';
 
 export type Environment = 'production' | 'development';
 
 type Configs = {
-	'postcss-entries': PostCSSConfig;
+	'postcss-entries': PostcssEntries;
+	'caching': {
+		config: CachingGruntTasks
+	};
+	'compress': CompressGruntTasks;
+	'postcss': PostCSSGruntTasks;
+	'stylelint': StylelintGruntTasks;
+	'watch': WatchGruntTasks;
 };
 
 
