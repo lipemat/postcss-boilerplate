@@ -116,6 +116,16 @@ describe( 'cssModuleEnums', () => {
 		expect( mockEnumContents ).toEqual( expected );
 	} );
 
+	test( 'No contents to write', () => {
+		const consoleSpy = jest.spyOn( console, 'log' ).mockImplementation( () => {
+		} );
+		EnumModules.flushToDisk( 'production' );
+		expect( fse.readFileSync ).toHaveBeenCalledTimes( 0 );
+		expect( fse.outputFileSync ).toHaveBeenCalledTimes( 0 );
+		expect( consoleSpy ).toHaveBeenCalledTimes( 1 );
+		expect( consoleSpy ).toHaveBeenCalledWith( 'No CSS modules to write to disk.' );
+	} );
+
 
 	test( 'Through getJSON', () => {
 		mockPackageConfig.cssEnums = false;

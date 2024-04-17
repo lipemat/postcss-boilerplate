@@ -133,7 +133,11 @@ export class EnumModules {
 	 */
 	public static flushToDisk( env: Environment ) {
 		const combined = getEnumFilePath( env );
-		fse.outputFileSync( combined, EnumModules.content[ env ] );
+		if ( '' === EnumModules.content[ env ] ) {
+			console.log( 'No CSS modules to write to disk.' );
+		} else {
+			fse.outputFileSync( combined, EnumModules.content[ env ] );
+		}
 	}
 
 	/**
