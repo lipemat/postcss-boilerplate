@@ -1,11 +1,6 @@
 #!/usr/bin/env node
 'use strict';
 
-// Update notifier.
-const updateNotifier = require( 'update-notifier' );
-const pkg = require( '../package.json' );
-updateNotifier( {pkg} ).notify();
-
 const spawn = require( 'cross-spawn' );
 const args = process.argv.slice( 2 );
 
@@ -22,9 +17,9 @@ switch ( script ) {
 	case 'lint':
 	case 'start': {
 		// If the ts-node command is not available install it globally.
-		if ( spawn.sync( 'ts-node', ['-v'] ).error ) {
+		if ( spawn.sync( 'ts-node', [ '-v' ] ).error ) {
 			console.log( 'Installing ts-node globally.' );
-			spawn.sync( 'npm', ['install', '-g', 'ts-node'] );
+			spawn.sync( 'npm', [ 'install', '-g', 'ts-node' ] );
 		}
 
 		// Run the script.
