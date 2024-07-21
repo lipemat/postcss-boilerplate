@@ -1,5 +1,5 @@
 <?php
-/** @noinspection PhpUnused, PhpMultipleClassDeclarationsInspection, EmptyClassInspection */
+/** @noinspection PhpUnused, PhpMultipleClassDeclarationsInspection, EmptyClassInspection, AutoloadingIssuesInspection */
 //phpcs:disable
 declare( strict_types=1 );
 
