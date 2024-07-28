@@ -1,11 +1,11 @@
 {
   "name": "@lipemat/postcss-boilerplate",
-  "version": "4.11.1",
+  "version": "4.12.0",
   "description": "Dependencies and scripts for a no config grunt postcss compiler.",
   "author": "Mat Lipe",
   "license": "MIT",
   "engines": {
-    "node": ">=16.14.2"
+    "node": ">=20.11.0"
   },
   "bugs": {
     "url": "https://github.com/lipemat/postcss-boilerplate/issues"
@@ -89,5 +89,5 @@
     "glob": "^10.3.3",
     "jest": "^29"
   },
-  "packageManager": "yarn@4.1.1"
+  "packageManager": "yarn@4.3.1"
 }

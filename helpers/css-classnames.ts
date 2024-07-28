@@ -28,7 +28,7 @@ export function usingShortCssClasses(): boolean {
  *
  * @notice Mostly here for unit tests.
  */
-export function resetCounters() {
+export function resetCounters(): void {
 	counters = [ -1 ];
 }
 
@@ -41,7 +41,7 @@ export function resetCounters() {
  *
  * @return {string}
  */
-export function getNextClass() {
+export function getNextClass(): string {
 	const last = counters.length - 1;
 	let totalLetters = ALPHABET.length - 1;
 
