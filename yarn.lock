@@ -2205,7 +2205,7 @@ __metadata:
     "@types/grunt": "npm:^0.4.31"
     "@types/jest": "npm:^29"
     "@types/minimist": "npm:^1"
-    "@types/node": "npm:^16"
+    "@types/node": "npm:~20.11.0"
     "@types/postcss-import": "npm:^14.0.3"
     "@types/postcss-preset-env": "npm:7.7.0"
     "@wordpress/browserslist-config": "npm:^5.19.0"
@@ -2753,6 +2753,15 @@ __metadata:
   version: 16.18.59
   resolution: "@types/node@npm:16.18.59"
   checksum: 10c0/1fd91564762fa985cba30b0018851d45c5528e14b432b99ab3732501a85a2d2776a4d8c2e0d082834ecae43b390d6ddcfafc42f5af0aea3cda2302aad326f0cf
+  languageName: node
+  linkType: hard
+
+"@types/node@npm:~20.11.0":
+  version: 20.11.30
+  resolution: "@types/node@npm:20.11.30"
+  dependencies:
+    undici-types: "npm:~5.26.4"
+  checksum: 10c0/867cfaf969c6d8850d8d7304e7ab739898a50ecb1395b61ff2335644f5f48d7a46fbc4a14cee967aed65ec134b61a746edae70d1f32f11321ccf29165e3bc4e6
   languageName: node
   linkType: hard
 
@@ -13454,6 +13463,13 @@ __metadata:
   version: 5.25.3
   resolution: "undici-types@npm:5.25.3"
   checksum: 10c0/60a47c6db451c00d27186d86a41fbd9677fa1f6d1a5350bff342c3985bd79fc3f5a638ebf56bbce21df46c701a687db43b3fbd588e1726e58047cea14d182fef
+  languageName: node
+  linkType: hard
+
+"undici-types@npm:~5.26.4":
+  version: 5.26.5
+  resolution: "undici-types@npm:5.26.5"
+  checksum: 10c0/bb673d7876c2d411b6eb6c560e0c571eef4a01c1c19925175d16e3a30c4c428181fb8d7ae802a261f283e4166a0ac435e2f505743aa9e45d893f9a3df017b501
   languageName: node
   linkType: hard
 
