@@ -926,7 +926,7 @@ const RAW_RUNTIME_STATE =
     ],\
     [\
       "@types/node",\
-      "npm:16.18.59"\
+      "npm:20.11.30"\
     ],\
     [\
       "@types/normalize-package-data",\
@@ -4580,7 +4580,7 @@ const RAW_RUNTIME_STATE =
     ],\
     [\
       "ts-node",\
-      "virtual:4111b2d7864b3f45889e018a6a18110e43b1cb5378b82946a848ff19d00715f1c32704ba2e42fb9f901df7223405fb0a70ee8d47daacf15fc4ee002993c22ef3#npm:10.9.1"\
+      "virtual:1638d8a1a2d593b8169ffe9d70f3c9e9d1509d2f5963ba8fea516113e9e47063b31f182107f616b8cf93bd7e0d863174da1e8f027f01dffdc7988bf1eec9ba20#npm:10.9.1"\
     ],\
     [\
       "tsconfig-paths",\
@@ -4949,7 +4949,7 @@ const RAW_RUNTIME_STATE =
           ["@types/grunt", "npm:0.4.31"],\
           ["@types/jest", "npm:29.5.6"],\
           ["@types/minimist", "npm:1.2.5"],\
-          ["@types/node", "npm:16.18.59"],\
+          ["@types/node", "npm:20.11.30"],\
           ["@types/postcss-import", "npm:14.0.3"],\
           ["@types/postcss-preset-env", "npm:7.7.0"],\
           ["@wordpress/browserslist-config", "npm:5.27.0"],\
@@ -4979,7 +4979,7 @@ const RAW_RUNTIME_STATE =
           ["postcss-sort-media-queries", "virtual:1638d8a1a2d593b8169ffe9d70f3c9e9d1509d2f5963ba8fea516113e9e47063b31f182107f616b8cf93bd7e0d863174da1e8f027f01dffdc7988bf1eec9ba20#npm:5.2.0"],\
           ["stylelint", "npm:14.16.1"],\
           ["tiny-lr", "npm:1.1.1"],\
-          ["ts-node", "virtual:4111b2d7864b3f45889e018a6a18110e43b1cb5378b82946a848ff19d00715f1c32704ba2e42fb9f901df7223405fb0a70ee8d47daacf15fc4ee002993c22ef3#npm:10.9.1"],\
+          ["ts-node", "virtual:1638d8a1a2d593b8169ffe9d70f3c9e9d1509d2f5963ba8fea516113e9e47063b31f182107f616b8cf93bd7e0d863174da1e8f027f01dffdc7988bf1eec9ba20#npm:10.9.1"],\
           ["typescript", "patch:typescript@npm%3A5.2.2#optional!builtin<compat/typescript>::version=5.2.2&hash=f3b441"]\
         ],\
         "linkType": "SOFT"\
@@ -8796,7 +8796,7 @@ const RAW_RUNTIME_STATE =
           ["@types/grunt", "npm:0.4.31"],\
           ["@types/jest", "npm:29.5.6"],\
           ["@types/minimist", "npm:1.2.5"],\
-          ["@types/node", "npm:16.18.59"],\
+          ["@types/node", "npm:20.11.30"],\
           ["@types/postcss-import", "npm:14.0.3"],\
           ["@types/postcss-preset-env", "npm:7.7.0"],\
           ["@wordpress/browserslist-config", "npm:5.27.0"],\
@@ -8826,7 +8826,7 @@ const RAW_RUNTIME_STATE =
           ["postcss-sort-media-queries", "virtual:1638d8a1a2d593b8169ffe9d70f3c9e9d1509d2f5963ba8fea516113e9e47063b31f182107f616b8cf93bd7e0d863174da1e8f027f01dffdc7988bf1eec9ba20#npm:5.2.0"],\
           ["stylelint", "npm:14.16.1"],\
           ["tiny-lr", "npm:1.1.1"],\
-          ["ts-node", "virtual:4111b2d7864b3f45889e018a6a18110e43b1cb5378b82946a848ff19d00715f1c32704ba2e42fb9f901df7223405fb0a70ee8d47daacf15fc4ee002993c22ef3#npm:10.9.1"],\
+          ["ts-node", "virtual:1638d8a1a2d593b8169ffe9d70f3c9e9d1509d2f5963ba8fea516113e9e47063b31f182107f616b8cf93bd7e0d863174da1e8f027f01dffdc7988bf1eec9ba20#npm:10.9.1"],\
           ["typescript", "patch:typescript@npm%3A5.2.2#optional!builtin<compat/typescript>::version=5.2.2&hash=f3b441"]\
         ],\
         "linkType": "SOFT"\
@@ -9424,6 +9424,14 @@ const RAW_RUNTIME_STATE =
         "packageLocation": "./.yarn/cache/@types-node-npm-16.18.59-4e24b17922-1fd9156476.zip/node_modules/@types/node/",\
         "packageDependencies": [\
           ["@types/node", "npm:16.18.59"]\
+        ],\
+        "linkType": "HARD"\
+      }],\
+      ["npm:20.11.30", {\
+        "packageLocation": "./.yarn/cache/@types-node-npm-20.11.30-b20dd3f11f-867cfaf969.zip/node_modules/@types/node/",\
+        "packageDependencies": [\
+          ["@types/node", "npm:20.11.30"],\
+          ["undici-types", "npm:5.26.5"]\
         ],\
         "linkType": "HARD"\
       }],\
@@ -22261,6 +22269,42 @@ const RAW_RUNTIME_STATE =
         ],\
         "linkType": "SOFT"\
       }],\
+      ["virtual:1638d8a1a2d593b8169ffe9d70f3c9e9d1509d2f5963ba8fea516113e9e47063b31f182107f616b8cf93bd7e0d863174da1e8f027f01dffdc7988bf1eec9ba20#npm:10.9.1", {\
+        "packageLocation": "./.yarn/__virtual__/ts-node-virtual-23b266572a/0/cache/ts-node-npm-10.9.1-6c268be7f4-95187932fb.zip/node_modules/ts-node/",\
+        "packageDependencies": [\
+          ["ts-node", "virtual:1638d8a1a2d593b8169ffe9d70f3c9e9d1509d2f5963ba8fea516113e9e47063b31f182107f616b8cf93bd7e0d863174da1e8f027f01dffdc7988bf1eec9ba20#npm:10.9.1"],\
+          ["@cspotcode/source-map-support", "npm:0.8.1"],\
+          ["@swc/core", null],\
+          ["@swc/wasm", null],\
+          ["@tsconfig/node10", "npm:1.0.9"],\
+          ["@tsconfig/node12", "npm:1.0.11"],\
+          ["@tsconfig/node14", "npm:1.0.3"],\
+          ["@tsconfig/node16", "npm:1.0.4"],\
+          ["@types/node", "npm:20.11.30"],\
+          ["@types/swc__core", null],\
+          ["@types/swc__wasm", null],\
+          ["@types/typescript", null],\
+          ["acorn", "npm:8.10.0"],\
+          ["acorn-walk", "npm:8.2.0"],\
+          ["arg", "npm:4.1.3"],\
+          ["create-require", "npm:1.1.1"],\
+          ["diff", "npm:4.0.2"],\
+          ["make-error", "npm:1.3.6"],\
+          ["typescript", "patch:typescript@npm%3A5.2.2#optional!builtin<compat/typescript>::version=5.2.2&hash=f3b441"],\
+          ["v8-compile-cache-lib", "npm:3.0.1"],\
+          ["yn", "npm:3.1.1"]\
+        ],\
+        "packagePeers": [\
+          "@swc/core",\
+          "@swc/wasm",\
+          "@types/node",\
+          "@types/swc__core",\
+          "@types/swc__wasm",\
+          "@types/typescript",\
+          "typescript"\
+        ],\
+        "linkType": "HARD"\
+      }],\
       ["virtual:4111b2d7864b3f45889e018a6a18110e43b1cb5378b82946a848ff19d00715f1c32704ba2e42fb9f901df7223405fb0a70ee8d47daacf15fc4ee002993c22ef3#npm:10.9.1", {\
         "packageLocation": "./.yarn/__virtual__/ts-node-virtual-867ad64439/0/cache/ts-node-npm-10.9.1-6c268be7f4-95187932fb.zip/node_modules/ts-node/",\
         "packageDependencies": [\
@@ -22534,6 +22578,13 @@ const RAW_RUNTIME_STATE =
         "packageLocation": "./.yarn/cache/undici-types-npm-5.25.3-2ac9eafc9e-60a47c6db4.zip/node_modules/undici-types/",\
         "packageDependencies": [\
           ["undici-types", "npm:5.25.3"]\
+        ],\
+        "linkType": "HARD"\
+      }],\
+      ["npm:5.26.5", {\
+        "packageLocation": "./.yarn/cache/undici-types-npm-5.26.5-de4f7c7bb9-bb673d7876.zip/node_modules/undici-types/",\
+        "packageDependencies": [\
+          ["undici-types", "npm:5.26.5"]\
         ],\
         "linkType": "HARD"\
       }]\
