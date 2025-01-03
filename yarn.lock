@@ -2234,7 +2234,7 @@ __metadata:
     jest: "npm:^29"
     minimist: "npm:^1.2.8"
     postcss: "npm:^8.4.38"
-    postcss-color-mod-function: "npm:^3.0.3"
+    postcss-color-mod-function: "npm:^4.1.1"
     postcss-custom-media: "npm:^8.0.1"
     postcss-hash: "npm:^3.0.0"
     postcss-import: "npm:^15.1.0"
@@ -10729,6 +10729,18 @@ __metadata:
     postcss: "npm:^7.0.2"
     postcss-values-parser: "npm:^2.0.0"
   checksum: 10c0/1a74557199282ab1a90be81c1957146cf4dd6a6d3a2db304d7ce44a8db809cfb8b35d830c2526e1de77b37e8eceaa5d4603d881075eaf19e2d27513cdb70035d
+  languageName: node
+  linkType: hard
+
+"postcss-color-mod-function@npm:^4.1.1":
+  version: 4.1.1
+  resolution: "postcss-color-mod-function@npm:4.1.1"
+  dependencies:
+    "@csstools/convert-colors": "npm:^1.4.0"
+    postcss-value-parser: "npm:^4.2.0"
+  peerDependencies:
+    postcss: ^8.2.15
+  checksum: 10c0/840466cbba3c029c4912d1952aae2b18aa29e308323334c409aa4f540d505f9553659882171e944da37ed0506968046ebb016e933878175d5d9d74759a2db794
   languageName: node
   linkType: hard
 
