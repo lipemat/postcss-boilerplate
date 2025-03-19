@@ -4262,7 +4262,7 @@ const RAW_RUNTIME_STATE =
     ],\
     [\
       "serialize-javascript",\
-      "npm:6.0.1"\
+      "npm:6.0.2"\
     ],\
     [\
       "serve-index",\
@@ -12195,7 +12195,7 @@ const RAW_RUNTIME_STATE =
           ["compression-webpack-plugin", "virtual:4111b2d7864b3f45889e018a6a18110e43b1cb5378b82946a848ff19d00715f1c32704ba2e42fb9f901df7223405fb0a70ee8d47daacf15fc4ee002993c22ef3#npm:10.0.0"],\
           ["@types/webpack", null],\
           ["schema-utils", "npm:4.2.0"],\
-          ["serialize-javascript", "npm:6.0.1"],\
+          ["serialize-javascript", "npm:6.0.2"],\
           ["webpack", "virtual:4111b2d7864b3f45889e018a6a18110e43b1cb5378b82946a848ff19d00715f1c32704ba2e42fb9f901df7223405fb0a70ee8d47daacf15fc4ee002993c22ef3#npm:5.94.0"]\
         ],\
         "packagePeers": [\
@@ -21280,10 +21280,10 @@ const RAW_RUNTIME_STATE =
       }]\
     ]],\
     ["serialize-javascript", [\
-      ["npm:6.0.1", {\
-        "packageLocation": "./.yarn/cache/serialize-javascript-npm-6.0.1-fac87289ed-1af427f4fe.zip/node_modules/serialize-javascript/",\
+      ["npm:6.0.2", {\
+        "packageLocation": "./.yarn/cache/serialize-javascript-npm-6.0.2-cc09461d45-2dd09ef4b6.zip/node_modules/serialize-javascript/",\
         "packageDependencies": [\
-          ["serialize-javascript", "npm:6.0.1"],\
+          ["serialize-javascript", "npm:6.0.2"],\
           ["randombytes", "npm:2.1.0"]\
         ],\
         "linkType": "HARD"\
@@ -22382,7 +22382,7 @@ const RAW_RUNTIME_STATE =
           ["esbuild", null],\
           ["jest-worker", "npm:27.5.1"],\
           ["schema-utils", "npm:3.3.0"],\
-          ["serialize-javascript", "npm:6.0.1"],\
+          ["serialize-javascript", "npm:6.0.2"],\
           ["terser", "npm:5.31.6"],\
           ["uglify-js", null],\
           ["webpack", "virtual:4111b2d7864b3f45889e018a6a18110e43b1cb5378b82946a848ff19d00715f1c32704ba2e42fb9f901df7223405fb0a70ee8d47daacf15fc4ee002993c22ef3#npm:5.94.0"]\
