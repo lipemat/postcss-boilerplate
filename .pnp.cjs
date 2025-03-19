@@ -2753,8 +2753,8 @@ const RAW_RUNTIME_STATE =
       "npm:2.2.0"\
     ],\
     [\
-      "ip",\
-      "npm:2.0.1"\
+      "ip-address",\
+      "npm:9.0.5"\
     ],\
     [\
       "ipaddr.js",\
@@ -3111,6 +3111,10 @@ const RAW_RUNTIME_STATE =
     [\
       "js-yaml",\
       "npm:4.1.0"\
+    ],\
+    [\
+      "jsbn",\
+      "npm:1.1.0"\
     ],\
     [\
       "jsdoc-type-pratt-parser",\
@@ -4346,7 +4350,7 @@ const RAW_RUNTIME_STATE =
     ],\
     [\
       "socks",\
-      "npm:2.7.1"\
+      "npm:2.8.4"\
     ],\
     [\
       "socks-proxy-agent",\
@@ -4398,7 +4402,7 @@ const RAW_RUNTIME_STATE =
     ],\
     [\
       "sprintf-js",\
-      "npm:1.0.3"\
+      "npm:1.1.3"\
     ],\
     [\
       "ssri",\
@@ -15939,11 +15943,13 @@ const RAW_RUNTIME_STATE =
         "linkType": "HARD"\
       }]\
     ]],\
-    ["ip", [\
-      ["npm:2.0.1", {\
-        "packageLocation": "./.yarn/cache/ip-npm-2.0.1-ee48691f03-cab8eb3e88.zip/node_modules/ip/",\
+    ["ip-address", [\
+      ["npm:9.0.5", {\
+        "packageLocation": "./.yarn/cache/ip-address-npm-9.0.5-9fa024d42a-331cd07faf.zip/node_modules/ip-address/",\
         "packageDependencies": [\
-          ["ip", "npm:2.0.1"]\
+          ["ip-address", "npm:9.0.5"],\
+          ["jsbn", "npm:1.1.0"],\
+          ["sprintf-js", "npm:1.1.3"]\
         ],\
         "linkType": "HARD"\
       }]\
@@ -17186,6 +17192,15 @@ const RAW_RUNTIME_STATE =
         "packageDependencies": [\
           ["js-yaml", "npm:4.1.0"],\
           ["argparse", "npm:2.0.1"]\
+        ],\
+        "linkType": "HARD"\
+      }]\
+    ]],\
+    ["jsbn", [\
+      ["npm:1.1.0", {\
+        "packageLocation": "./.yarn/cache/jsbn-npm-1.1.0-1da0181838-4f907fb78d.zip/node_modules/jsbn/",\
+        "packageDependencies": [\
+          ["jsbn", "npm:1.1.0"]\
         ],\
         "linkType": "HARD"\
       }]\
@@ -21547,11 +21562,11 @@ const RAW_RUNTIME_STATE =
       }]\
     ]],\
     ["socks", [\
-      ["npm:2.7.1", {\
-        "packageLocation": "./.yarn/cache/socks-npm-2.7.1-17f2b53052-43f69dbc9f.zip/node_modules/socks/",\
+      ["npm:2.8.4", {\
+        "packageLocation": "./.yarn/cache/socks-npm-2.8.4-8194b86bd0-00c3271e23.zip/node_modules/socks/",\
         "packageDependencies": [\
-          ["socks", "npm:2.7.1"],\
-          ["ip", "npm:2.0.1"],\
+          ["socks", "npm:2.8.4"],\
+          ["ip-address", "npm:9.0.5"],\
           ["smart-buffer", "npm:4.2.0"]\
         ],\
         "linkType": "HARD"\
@@ -21564,7 +21579,7 @@ const RAW_RUNTIME_STATE =
           ["socks-proxy-agent", "npm:7.0.0"],\
           ["agent-base", "npm:6.0.2"],\
           ["debug", "virtual:4758feee42453c0e31b0d2032a7b1362d6b06281699830d2da9a056f2cca72bd2c5cfdb74005fdf03a64876be8eaca2dd7b0fc2dc59d14318badf19cb22ba18e#npm:4.3.4"],\
-          ["socks", "npm:2.7.1"]\
+          ["socks", "npm:2.8.4"]\
         ],\
         "linkType": "HARD"\
       }]\
