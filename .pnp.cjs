@@ -1761,20 +1761,12 @@ const RAW_RUNTIME_STATE =
       "virtual:4111b2d7864b3f45889e018a6a18110e43b1cb5378b82946a848ff19d00715f1c32704ba2e42fb9f901df7223405fb0a70ee8d47daacf15fc4ee002993c22ef3#npm:6.7.1"\
     ],\
     [\
-      "css-modules-loader-core",\
-      "npm:1.1.0"\
-    ],\
-    [\
       "css-prefers-color-scheme",\
       "virtual:2d56c369b4df2c0f0cbaa525cad67f60479b2020c6de16f02a8bffdbce1e3df938031920c59dc66ef6bba95c50c346ae43ff501151f3d7dce26cf09220aacba9#npm:6.0.3"\
     ],\
     [\
       "css-select",\
       "npm:4.3.0"\
-    ],\
-    [\
-      "css-selector-tokenizer",\
-      "npm:0.7.3"\
     ],\
     [\
       "css-what",\
@@ -2245,10 +2237,6 @@ const RAW_RUNTIME_STATE =
       "npm:1.0.16"\
     ],\
     [\
-      "fastparse",\
-      "npm:1.1.2"\
-    ],\
-    [\
       "fastq",\
       "npm:1.15.0"\
     ],\
@@ -2687,10 +2675,6 @@ const RAW_RUNTIME_STATE =
     [\
       "iconv-lite",\
       "npm:0.6.3"\
-    ],\
-    [\
-      "icss-replace-symbols",\
-      "npm:1.1.0"\
     ],\
     [\
       "icss-utils",\
@@ -5000,7 +4984,6 @@ const RAW_RUNTIME_STATE =
           ["browserslist", "npm:4.22.1"],\
           ["clean-css", "npm:5.3.2"],\
           ["cross-spawn", "npm:6.0.6"],\
-          ["css-modules-loader-core", "npm:1.1.0"],\
           ["ejs", "npm:3.1.10"],\
           ["eslint", "npm:8.52.0"],\
           ["fs-extra", "npm:7.0.1"],\
@@ -8847,7 +8830,6 @@ const RAW_RUNTIME_STATE =
           ["browserslist", "npm:4.22.1"],\
           ["clean-css", "npm:5.3.2"],\
           ["cross-spawn", "npm:6.0.6"],\
-          ["css-modules-loader-core", "npm:1.1.0"],\
           ["ejs", "npm:3.1.10"],\
           ["eslint", "npm:8.52.0"],\
           ["fs-extra", "npm:7.0.1"],\
@@ -12535,21 +12517,6 @@ const RAW_RUNTIME_STATE =
         "linkType": "HARD"\
       }]\
     ]],\
-    ["css-modules-loader-core", [\
-      ["npm:1.1.0", {\
-        "packageLocation": "./.yarn/cache/css-modules-loader-core-npm-1.1.0-ab1609ba12-abb710f892.zip/node_modules/css-modules-loader-core/",\
-        "packageDependencies": [\
-          ["css-modules-loader-core", "npm:1.1.0"],\
-          ["icss-replace-symbols", "npm:1.1.0"],\
-          ["postcss", "npm:6.0.1"],\
-          ["postcss-modules-extract-imports", "npm:1.1.0"],\
-          ["postcss-modules-local-by-default", "npm:1.2.0"],\
-          ["postcss-modules-scope", "npm:1.1.0"],\
-          ["postcss-modules-values", "npm:1.3.0"]\
-        ],\
-        "linkType": "HARD"\
-      }]\
-    ]],\
     ["css-prefers-color-scheme", [\
       ["npm:6.0.3", {\
         "packageLocation": "./.yarn/cache/css-prefers-color-scheme-npm-6.0.3-e1c91bc5cd-b0f1efba03.zip/node_modules/css-prefers-color-scheme/",\
@@ -12582,17 +12549,6 @@ const RAW_RUNTIME_STATE =
           ["domhandler", "npm:4.3.1"],\
           ["domutils", "npm:2.8.0"],\
           ["nth-check", "npm:2.1.1"]\
-        ],\
-        "linkType": "HARD"\
-      }]\
-    ]],\
-    ["css-selector-tokenizer", [\
-      ["npm:0.7.3", {\
-        "packageLocation": "./.yarn/cache/css-selector-tokenizer-npm-0.7.3-015149a7d1-bc4d14204b.zip/node_modules/css-selector-tokenizer/",\
-        "packageDependencies": [\
-          ["css-selector-tokenizer", "npm:0.7.3"],\
-          ["cssesc", "npm:3.0.0"],\
-          ["fastparse", "npm:1.1.2"]\
         ],\
         "linkType": "HARD"\
       }]\
@@ -14249,15 +14205,6 @@ const RAW_RUNTIME_STATE =
         "linkType": "HARD"\
       }]\
     ]],\
-    ["fastparse", [\
-      ["npm:1.1.2", {\
-        "packageLocation": "./.yarn/cache/fastparse-npm-1.1.2-6a35154770-c08d6e7ef1.zip/node_modules/fastparse/",\
-        "packageDependencies": [\
-          ["fastparse", "npm:1.1.2"]\
-        ],\
-        "linkType": "HARD"\
-      }]\
-    ]],\
     ["fastq", [\
       ["npm:1.15.0", {\
         "packageLocation": "./.yarn/cache/fastq-npm-1.15.0-1013f6514e-5ce4f83afa.zip/node_modules/fastq/",\
@@ -15327,13 +15274,6 @@ const RAW_RUNTIME_STATE =
       }]\
     ]],\
     ["has-flag", [\
-      ["npm:1.0.0", {\
-        "packageLocation": "./.yarn/cache/has-flag-npm-1.0.0-9e0c397172-d0ad4bebbb.zip/node_modules/has-flag/",\
-        "packageDependencies": [\
-          ["has-flag", "npm:1.0.0"]\
-        ],\
-        "linkType": "HARD"\
-      }],\
       ["npm:3.0.0", {\
         "packageLocation": "./.yarn/cache/has-flag-npm-3.0.0-16ac11fe05-1c6c83b14b.zip/node_modules/has-flag/",\
         "packageDependencies": [\
@@ -15737,15 +15677,6 @@ const RAW_RUNTIME_STATE =
         "packageDependencies": [\
           ["iconv-lite", "npm:0.6.3"],\
           ["safer-buffer", "npm:2.1.2"]\
-        ],\
-        "linkType": "HARD"\
-      }]\
-    ]],\
-    ["icss-replace-symbols", [\
-      ["npm:1.1.0", {\
-        "packageLocation": "./.yarn/cache/icss-replace-symbols-npm-1.1.0-bc11c612de-aaa5b67f82.zip/node_modules/icss-replace-symbols/",\
-        "packageDependencies": [\
-          ["icss-replace-symbols", "npm:1.1.0"]\
         ],\
         "linkType": "HARD"\
       }]\
@@ -19129,26 +19060,6 @@ const RAW_RUNTIME_STATE =
       }]\
     ]],\
     ["postcss", [\
-      ["npm:6.0.1", {\
-        "packageLocation": "./.yarn/cache/postcss-npm-6.0.1-28e1e66467-2d6a7deae0.zip/node_modules/postcss/",\
-        "packageDependencies": [\
-          ["postcss", "npm:6.0.1"],\
-          ["chalk", "npm:1.1.3"],\
-          ["source-map", "npm:0.5.7"],\
-          ["supports-color", "npm:3.2.3"]\
-        ],\
-        "linkType": "HARD"\
-      }],\
-      ["npm:6.0.23", {\
-        "packageLocation": "./.yarn/cache/postcss-npm-6.0.23-b0e5acc785-45d45184ff.zip/node_modules/postcss/",\
-        "packageDependencies": [\
-          ["postcss", "npm:6.0.23"],\
-          ["chalk", "npm:2.4.2"],\
-          ["source-map", "npm:0.6.1"],\
-          ["supports-color", "npm:5.5.0"]\
-        ],\
-        "linkType": "HARD"\
-      }],\
       ["npm:7.0.39", {\
         "packageLocation": "./.yarn/cache/postcss-npm-7.0.39-0f8737296e-fd27ee808c.zip/node_modules/postcss/",\
         "packageDependencies": [\
@@ -19764,14 +19675,6 @@ const RAW_RUNTIME_STATE =
       }]\
     ]],\
     ["postcss-modules-extract-imports", [\
-      ["npm:1.1.0", {\
-        "packageLocation": "./.yarn/cache/postcss-modules-extract-imports-npm-1.1.0-b33135c372-985ea94fcb.zip/node_modules/postcss-modules-extract-imports/",\
-        "packageDependencies": [\
-          ["postcss-modules-extract-imports", "npm:1.1.0"],\
-          ["postcss", "npm:6.0.23"]\
-        ],\
-        "linkType": "HARD"\
-      }],\
       ["npm:3.0.0", {\
         "packageLocation": "./.yarn/cache/postcss-modules-extract-imports-npm-3.0.0-619311282d-f8879d66d8.zip/node_modules/postcss-modules-extract-imports/",\
         "packageDependencies": [\
@@ -19794,15 +19697,6 @@ const RAW_RUNTIME_STATE =
       }]\
     ]],\
     ["postcss-modules-local-by-default", [\
-      ["npm:1.2.0", {\
-        "packageLocation": "./.yarn/cache/postcss-modules-local-by-default-npm-1.2.0-59f9733827-9139846cce.zip/node_modules/postcss-modules-local-by-default/",\
-        "packageDependencies": [\
-          ["postcss-modules-local-by-default", "npm:1.2.0"],\
-          ["css-selector-tokenizer", "npm:0.7.3"],\
-          ["postcss", "npm:6.0.23"]\
-        ],\
-        "linkType": "HARD"\
-      }],\
       ["npm:4.0.3", {\
         "packageLocation": "./.yarn/cache/postcss-modules-local-by-default-npm-4.0.3-f6674d7148-be49b86efb.zip/node_modules/postcss-modules-local-by-default/",\
         "packageDependencies": [\
@@ -19828,15 +19722,6 @@ const RAW_RUNTIME_STATE =
       }]\
     ]],\
     ["postcss-modules-scope", [\
-      ["npm:1.1.0", {\
-        "packageLocation": "./.yarn/cache/postcss-modules-scope-npm-1.1.0-18e35a3e7d-ef03282049.zip/node_modules/postcss-modules-scope/",\
-        "packageDependencies": [\
-          ["postcss-modules-scope", "npm:1.1.0"],\
-          ["css-selector-tokenizer", "npm:0.7.3"],\
-          ["postcss", "npm:6.0.23"]\
-        ],\
-        "linkType": "HARD"\
-      }],\
       ["npm:3.0.0", {\
         "packageLocation": "./.yarn/cache/postcss-modules-scope-npm-3.0.0-0678040a26-60af503910.zip/node_modules/postcss-modules-scope/",\
         "packageDependencies": [\
@@ -19860,15 +19745,6 @@ const RAW_RUNTIME_STATE =
       }]\
     ]],\
     ["postcss-modules-values", [\
-      ["npm:1.3.0", {\
-        "packageLocation": "./.yarn/cache/postcss-modules-values-npm-1.3.0-ce7f3c4af0-11bb1af247.zip/node_modules/postcss-modules-values/",\
-        "packageDependencies": [\
-          ["postcss-modules-values", "npm:1.3.0"],\
-          ["icss-replace-symbols", "npm:1.1.0"],\
-          ["postcss", "npm:6.0.23"]\
-        ],\
-        "linkType": "HARD"\
-      }],\
       ["npm:4.0.0", {\
         "packageLocation": "./.yarn/cache/postcss-modules-values-npm-4.0.0-63d7ec543a-dd18d7631b.zip/node_modules/postcss-modules-values/",\
         "packageDependencies": [\
@@ -21603,13 +21479,6 @@ const RAW_RUNTIME_STATE =
       }]\
     ]],\
     ["source-map", [\
-      ["npm:0.5.7", {\
-        "packageLocation": "./.yarn/cache/source-map-npm-0.5.7-7c3f035429-904e767bb9.zip/node_modules/source-map/",\
-        "packageDependencies": [\
-          ["source-map", "npm:0.5.7"]\
-        ],\
-        "linkType": "HARD"\
-      }],\
       ["npm:0.6.1", {\
         "packageLocation": "./.yarn/cache/source-map-npm-0.6.1-1a3621db16-ab55398007.zip/node_modules/source-map/",\
         "packageDependencies": [\
@@ -22202,14 +22071,6 @@ const RAW_RUNTIME_STATE =
         "packageLocation": "./.yarn/cache/supports-color-npm-2.0.0-22c0f0adbc-570e0b63be.zip/node_modules/supports-color/",\
         "packageDependencies": [\
           ["supports-color", "npm:2.0.0"]\
-        ],\
-        "linkType": "HARD"\
-      }],\
-      ["npm:3.2.3", {\
-        "packageLocation": "./.yarn/cache/supports-color-npm-3.2.3-117b06af49-d39a57dbd7.zip/node_modules/supports-color/",\
-        "packageDependencies": [\
-          ["supports-color", "npm:3.2.3"],\
-          ["has-flag", "npm:1.0.0"]\
         ],\
         "linkType": "HARD"\
       }],\
@@ -30781,7 +30642,10 @@ Required by: ${issuerForDisplay}
             if (runtimeState.enableTopLevelFallback) {
               if (dependencyReference == null && fallbackReference === null) {
                 const reference = runtimeState.fallbackPool.get(dependencyName);
-                if (reference != null) {
+                // # Warnings suppressed via @lipemat/postcss-boilerplate/fix-pnp script. 
+if (! alwaysWarnOnFallback && reference != null) { 
+dependencyReference = reference; 
+} else if (alwaysWarnOnFallback && reference != null) {
                   fallbackReference = reference;
                 }
               }
