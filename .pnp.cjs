@@ -1738,7 +1738,7 @@ const RAW_RUNTIME_STATE =
     ],\
     [\
       "cross-spawn",\
-      "npm:6.0.6"\
+      "npm:7.0.6"\
     ],\
     [\
       "crypto-random-string",\
@@ -4983,7 +4983,7 @@ const RAW_RUNTIME_STATE =
           ["@wordpress/browserslist-config", "npm:5.27.0"],\
           ["browserslist", "npm:4.22.1"],\
           ["clean-css", "npm:5.3.2"],\
-          ["cross-spawn", "npm:6.0.6"],\
+          ["cross-spawn", "npm:7.0.6"],\
           ["ejs", "npm:3.1.10"],\
           ["eslint", "npm:8.52.0"],\
           ["fs-extra", "npm:7.0.1"],\
@@ -8829,7 +8829,7 @@ const RAW_RUNTIME_STATE =
           ["@wordpress/browserslist-config", "npm:5.27.0"],\
           ["browserslist", "npm:4.22.1"],\
           ["clean-css", "npm:5.3.2"],\
-          ["cross-spawn", "npm:6.0.6"],\
+          ["cross-spawn", "npm:7.0.6"],\
           ["ejs", "npm:3.1.10"],\
           ["eslint", "npm:8.52.0"],\
           ["fs-extra", "npm:7.0.1"],\
@@ -30642,10 +30642,7 @@ Required by: ${issuerForDisplay}
             if (runtimeState.enableTopLevelFallback) {
               if (dependencyReference == null && fallbackReference === null) {
                 const reference = runtimeState.fallbackPool.get(dependencyName);
-                // # Warnings suppressed via @lipemat/postcss-boilerplate/fix-pnp script. 
-if (! alwaysWarnOnFallback && reference != null) { 
-dependencyReference = reference; 
-} else if (alwaysWarnOnFallback && reference != null) {
+                if (reference != null) {
                   fallbackReference = reference;
                 }
               }
