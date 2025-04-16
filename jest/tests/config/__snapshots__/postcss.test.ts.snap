@@ -99,7 +99,6 @@ exports[`postcss.js PostCSS config: develop 1`] = `
                 "last 2 iOS versions",
                 "last 2 Edge versions",
                 "last 2 Opera versions",
-                "not and_uc 15.5",
               ],
               "info": [Function],
               "options": {
@@ -113,7 +112,6 @@ exports[`postcss.js PostCSS config: develop 1`] = `
                   "last 2 iOS versions",
                   "last 2 Edge versions",
                   "last 2 Opera versions",
-                  "not and_uc 15.5",
                 ],
               },
               "postcssPlugin": "autoprefixer",
@@ -243,7 +241,6 @@ exports[`postcss.js PostCSS config: develop 1`] = `
                 "last 2 iOS versions",
                 "last 2 Edge versions",
                 "last 2 Opera versions",
-                "not and_uc 15.5",
               ],
               "info": [Function],
               "options": {
@@ -257,7 +254,6 @@ exports[`postcss.js PostCSS config: develop 1`] = `
                   "last 2 iOS versions",
                   "last 2 Edge versions",
                   "last 2 Opera versions",
-                  "not and_uc 15.5",
                 ],
               },
               "postcssPlugin": "autoprefixer",

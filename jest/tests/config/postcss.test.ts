@@ -140,12 +140,12 @@ describe( 'postcss.js', () => {
 				},
 			} ) ) );
 
-		// @notice If this fails, we can probably remove the override from adjustBrowserslist and the toEqual to `0`.
+		// @notice If this fails, we can probably change the toEqual to 1 as WP is now out of date.
 		const wpDefaultBrowsers = [ ...require( '@wordpress/browserslist-config' ) ];
 		process.env.BROWSERSLIST = browserslist( wpDefaultBrowsers );
 		expect( getBrowsersPlugin( getPostCSSConfig().toCSS.options.processors ).plugins.filter( plugin => {
 			return 'postcss-custom-properties' === plugin.postcssPlugin;
-		} ).length ).toEqual( 1 );
+		} ).length ).toEqual( 0 );
 	} );
 
 	test.each( fixtures )( 'PostCSS fixtures ( $description )', async fixture => {
