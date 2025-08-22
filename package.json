@@ -64,7 +64,7 @@
     "postcss-custom-media": "^8.0.1",
     "postcss-hash": "^3.0.0",
     "postcss-import": "^15.1.0",
-    "postcss-modules": "^6.0.0",
+    "postcss-modules": "^6.0.1",
     "postcss-nested": "^5.0.6",
     "postcss-preset-env": "^7.5.0",
     "postcss-scss": "^4.0.4",

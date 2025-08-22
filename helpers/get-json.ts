@@ -6,7 +6,7 @@ import {EnumModules} from './enum-modules';
 
 /**
  * Custom output of CSS modules JSON files to the `_css-modules-json` if not
- * using `combinedJson`. If using `combinedJson` the results are combined into a
+ * using `combinedJson`. If using `combinedJson`, the results are combined into a
  * single `modules.json` file generated in the `css_folder`.
  *
  * Excludes CSS modules from the global "pcss" directory.
@@ -14,7 +14,7 @@ import {EnumModules} from './enum-modules';
  * @link https://www.npmjs.com/package/postcss-modules#user-content-saving-exported-classes
  */
 export function getJSON( env: Environment ) {
-	return ( cssFileName: string, json: Object ) => {
+	return ( cssFileName: string, json: object ) => {
 		const filePath = path.relative( getPackageConfig().theme_path, cssFileName ).replace( /\\/g, '/' ) + '/';
 		// Exclude global pcss directory.
 		if ( 'pcss' === filePath.substring( 0, 4 ) ) {
@@ -62,16 +62,16 @@ function getDistFolder() {
  * @see getJSON
  */
 export class JsonModules {
-	private readonly json: Object;
+	private readonly json: object;
 	private readonly cssName: string;
 	private filePath: string;
 
-	private static content: Object = {
+	private static content: object = {
 		production: {},
 		development: {},
 	};
 
-	constructor( directory: string, cssName: string, json: Object ) {
+	constructor( directory: string, cssName: string, json: object ) {
 		this.filePath = directory;
 		this.cssName = cssName;
 		this.json = json;
