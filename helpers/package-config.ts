@@ -9,6 +9,8 @@ import fs from 'fs';
  * 4. `brotliFiles` should be `true` instead of `false`.
  * 5. `cssEnums` should be `true` instead of `false`.
  *
+ * @note Must be coordinated with version 11 of js-boilerplate.
+ *
  * Update the Readme.md file to reflect these changes.
  */
 export type PackageConfig = {
