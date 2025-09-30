@@ -1,33 +1,84 @@
-## Project specific
+################################
+#
+# @version 6.4.2
+#
+################################
+
+# Project specific
+#### Put project specific exclusions here so they may be easily transferred when updating gitignore.
 
 jest/theme/css
 
 
-
 # system/hidden files
+*.bak
+*.code-workspace
+*.sublime-project
+*.sublime-workspace
+*.swp
 *~
 .DS_Store
 .DS_Store?
-.svn
-.cvs
-*.bak
-*.swp
-.sass-cache
-.project
-*.sublime-project
-*.sublime-workspace
-*.map
 .Trashes
-ehthumbs.db
+.cvs
+.eslintcache
+.phpcs.cache
+.phpunit.cache
+.phpunit.result.cache
+.project
+.ready
+.running
+.sass-cache
+.stylelintcache
+.svn
+.vscode
 Thumbs.db
+apple-developer-merchantid-domain-association
+ehthumbs.db
+tsconfig.tsbuildinfo
 
 # log files
 *.log
 
-# Yarn berry files
+# local configs
+local-config.php
+local-config.json
+phpcs.xml
+phpstan.neon
+phpunit.xml
+
+# WordPress specific
+wp-content/backup-db
+wp-content/blogs.dir
+wp-content/cache
+wp-content/cache/supercache
+wp-content/logs
+wp-content/upgrade
+wp-content/upgrade-temp-backup
+wp-content/uploads/*
+!wp-content/uploads/.htaccess
+
+# vendor files
+wp-content/plugins/core/vendor
+wp-content/plugins/core/wp-content
+
+# Yarn Berry files
 install-state.gz
 build-state.yml
 node_modules
+
+# theme - compiled files
+wp-content/themes/core/js/dist
+wp-content/themes/core/js/dist-svelte
+wp-content/themes/core/_css-modules-json
+wp-content/themes/core/css/*.php
+wp-content/themes/core/css/dist
+.revision
+deploy
+
+# keep files (must be last).
+!.gitkeep
+!.keep
 
 # PHPStorm files
 # https://github.com/github/gitignore/blob/master/Global/JetBrains.gitignore
@@ -37,11 +88,12 @@ node_modules
 .idea/**/usage.statistics.xml
 .idea/**/dictionaries
 .idea/**/shelf
-.idea/php.xml
-.idea/sshConfigs.xml
+# AWS User-specific
+.idea/**/aws.xml
 # Generated files
 .idea/**/contentModel.xml
 # Sensitive or high-churn files
+.idea/data_source_mapping.xml
 .idea/**/dataSources/
 .idea/**/dataSources.ids
 .idea/**/dataSources.local.xml
@@ -51,5 +103,15 @@ node_modules
 .idea/**/dbnavigator.xml
 # JIRA plugin
 atlassian-ide-plugin.xml
-# Editor-based Rest Client
+# Editor-based HTTP Client
 .idea/httpRequests
+http-client.private.env.json
+# Copilot
+.idea/copilot
+.idea/copilotDiffState.xml
+.idea/copilot.data.migration.*
+# System configs
+.idea/csv-editor.xml
+.idea/csv-plugin.xml
+.idea/php.xml
+.idea/sshConfigs.xml
