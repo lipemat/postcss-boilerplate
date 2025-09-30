@@ -24,10 +24,6 @@ exports[`postcss.js PostCSS config: develop 1`] = `
         {
           "plugins": [
             {
-              "Declaration": [Function],
-              "postcssPlugin": "postcss-color-function",
-            },
-            {
               "postcssPlugin": "postcss-normalize-display-values",
               "prepare": [Function],
             },
@@ -54,10 +50,6 @@ exports[`postcss.js PostCSS config: develop 1`] = `
             },
             {
               "Rule": [Function],
-              "postcssPlugin": "postcss-selector-not",
-            },
-            {
-              "Rule": [Function],
               "postcssPlugin": "postcss-dir-pseudo-class",
             },
             {
@@ -77,16 +69,8 @@ exports[`postcss.js PostCSS config: develop 1`] = `
               "postcssPlugin": "postcss-font-variant",
             },
             {
-              "Rule": [Function],
-              "postcssPlugin": "css-has-pseudo",
-            },
-            {
               "Declaration": [Function],
               "postcssPlugin": "postcss-stepped-value-functions",
-            },
-            {
-              "Declaration": [Function],
-              "postcssPlugin": "postcss-trigonometric-functions",
             },
             {
               "browsers": [
@@ -166,10 +150,6 @@ exports[`postcss.js PostCSS config: develop 1`] = `
         {
           "plugins": [
             {
-              "Declaration": [Function],
-              "postcssPlugin": "postcss-color-function",
-            },
-            {
               "postcssPlugin": "postcss-normalize-display-values",
               "prepare": [Function],
             },
@@ -196,10 +176,6 @@ exports[`postcss.js PostCSS config: develop 1`] = `
             },
             {
               "Rule": [Function],
-              "postcssPlugin": "postcss-selector-not",
-            },
-            {
-              "Rule": [Function],
               "postcssPlugin": "postcss-dir-pseudo-class",
             },
             {
@@ -219,16 +195,8 @@ exports[`postcss.js PostCSS config: develop 1`] = `
               "postcssPlugin": "postcss-font-variant",
             },
             {
-              "Rule": [Function],
-              "postcssPlugin": "css-has-pseudo",
-            },
-            {
               "Declaration": [Function],
               "postcssPlugin": "postcss-stepped-value-functions",
-            },
-            {
-              "Declaration": [Function],
-              "postcssPlugin": "postcss-trigonometric-functions",
             },
             {
               "browsers": [
