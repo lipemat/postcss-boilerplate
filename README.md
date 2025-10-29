@@ -40,7 +40,7 @@ _This may also be found in the "templates" directory._
 * `css_folder : {string}` Path of directory for generate finished CSS files within. Defaults to `css/`.
 * `cssEnums : {bool}` Generate PHP enums for CSS modules. Has no effect if `combinedJson` is false. Defaults to `false`.
 * `file_name : {string}` Name of finished CSS file. Defaults to `front-end`.
-* `shortCssClasses: {bool}` Enable short 1-2 character CSS classes. Recommended if you're not running multiple instances of this package on the same site.
+* `shortCssClasses: {bool|{js:bool, pcss:bool}}` Enable short 1-2 character CSS classes. Recommended if you're not running multiple instances of this package on the same site.
 * `theme_path : {string}` Path or theme's root relative to the package.json file.
 
 

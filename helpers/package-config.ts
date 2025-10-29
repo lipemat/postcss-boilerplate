@@ -23,7 +23,10 @@ export type PackageConfig = {
 	cssEnums: boolean;
 	css_folder: string;
 	file_name: string;
-	shortCssClasses: boolean;
+	shortCssClasses: boolean | {
+		js: boolean;
+		pcss: boolean;
+	};
 	theme_path: string;
 	pcssWatch: string[];
 	workingDirectory: string;

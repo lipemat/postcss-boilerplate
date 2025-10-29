@@ -20,7 +20,11 @@ let counters = [ -1 ];
  * @since 4.6.0
  */
 export function usingShortCssClasses(): boolean {
-	return Boolean( getPackageConfig().shortCssClasses );
+	const short = getPackageConfig().shortCssClasses;
+	if ( 'object' === typeof short ) {
+		return Boolean( short.pcss );
+	}
+	return Boolean( short );
 }
 
 /**
@@ -33,10 +37,10 @@ export function resetCounters(): void {
 }
 
 /**
- * Get the next class is sequence based on:
+ * Get the next class in the sequence based on:
  * 1. Single character from SHORT_ALPHABET (prevent conflicts with JS boilerplate).
  * 2. Incremented character from the `ALPHABET`.
- *      1. Used once require 2+ characters.
+ *      1. Used once requires 2+ characters.
  *      2. Grows to 3+ characters as needed.
  *
  * @return {string}
@@ -45,7 +49,7 @@ export function getNextClass(): string {
 	const last = counters.length - 1;
 	let totalLetters = ALPHABET.length - 1;
 
-	// First level uses the SHORT_ALPHABET.
+	// The first level uses the SHORT_ALPHABET.
 	if ( 0 === last ) {
 		totalLetters = SHORT_ALPHABET.length - 1;
 	}
@@ -65,7 +69,7 @@ export function getNextClass(): string {
 /**
  * When we run out of characters on the current level:
  * 1. Increment the parent level.
- * 2. Reset current level and all child levels back to 0.
+ * 2. Reset the current level and all child levels back to 0.
  *
  * If we are out of characters on the parent level or have
  * no parent level:
@@ -78,7 +82,7 @@ function incrementParent() {
 	let totalLetters = ALPHABET.length - 1;
 
 	while ( counters[ parent ] !== undefined ) {
-		// First level uses the SHORT_ALPHABET.
+		// The first level uses the SHORT_ALPHABET.
 		if ( 0 === parent ) {
 			totalLetters = SHORT_ALPHABET.length - 1;
 		}
@@ -101,7 +105,7 @@ function incrementParent() {
 
 /**
  * Return a single character unique CSS class name based on
- * postcss-modules's `generateScopedName` callback.
+ * postcss-module's `generateScopedName` callback.
  *
  * Tracks CSS classes per each file so duplicate uses of the
  * same class in a file receive the same result.

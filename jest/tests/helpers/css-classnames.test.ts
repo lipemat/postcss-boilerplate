@@ -1,7 +1,8 @@
-import {ALPHABET, generateScopedName, getGenerateScopeName, getNextClass, resetCounters, SHORT_ALPHABET} from '../../../helpers/css-classnames';
+import {ALPHABET, generateScopedName, getGenerateScopeName, getNextClass, resetCounters, SHORT_ALPHABET, usingShortCssClasses} from '../../../helpers/css-classnames';
+import type {PackageConfig} from '../../../helpers/package-config';
 
 // Change this variable during tests.
-let mockShortCssEnabled = false;
+let mockShortCssEnabled: PackageConfig['shortCssClasses'] = false;
 
 // Change the result of the getPackageConfig function, so we can change shortCssClasses.
 jest.mock( '../../../helpers/package-config.ts', () => ( {
@@ -60,5 +61,30 @@ describe( 'Test CSS Classname Generation', () => {
 		jest.resetModules();
 		mockShortCssEnabled = true;
 		expect( getGenerateScopeName( 'production' ) ).toEqual( generateScopedName );
+	} );
+
+
+	test( 'Are Short CSS Classes Enabled?', () => {
+		expect( usingShortCssClasses() ).toEqual( false );
+		mockShortCssEnabled = true;
+		expect( usingShortCssClasses() ).toEqual( true );
+
+		mockShortCssEnabled = {
+			js: false,
+			pcss: true,
+		};
+		expect( usingShortCssClasses() ).toBe( true );
+
+		mockShortCssEnabled = {
+			js: true,
+			pcss: false,
+		};
+		expect( usingShortCssClasses() ).toBe( false );
+
+		mockShortCssEnabled = {
+			js: true,
+			pcss: true,
+		};
+		expect( usingShortCssClasses() ).toBe( true );
 	} );
 } );
