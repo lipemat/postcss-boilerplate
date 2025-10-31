@@ -11,7 +11,7 @@ namespace CSS_Modules {
 		 * @return array<string, string> (classNames => classValue)
 		 */
 		public static function classNames(): array {
-			return \array_combine( \array_map( fn( $case ) => $case->name, static::cases() ), \array_map( fn( $case ) => $case->value, static::cases() ) );
+			return \array_column( static::cases(), 'value', 'name' );
 		}
 	}
 }
