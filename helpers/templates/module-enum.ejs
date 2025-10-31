@@ -1,7 +1,8 @@
 
 namespace <%= nameSpace %> {
-
 	enum <%= className %>: string {
+		use \CSS_Modules\Utils;
+
         <%_ Object.entries( classMap ).forEach( ([key, value]) => {
 %>		case <%= key %> = '<%= value %>';
 <% }) %>	}
