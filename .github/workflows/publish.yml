@@ -1,31 +1,23 @@
+##########################################################
+# Publish on npm.js
+#
+# @version 5.0.0
+#
+###########################################################
+
 name: Publish
-env:
-  VERSION: 3.1.0
-  NODE_VERSION: '18.18.2'
+run-name: Publish package version ${{ github.ref_name }} on NPM.
 
 on:
   push:
     tags:
       - "*"
-      - "!*beta*"
 
 jobs:
   publish:
-    name: Publish on NPM.js
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v3
-      - uses: actions/setup-node@v3
-        with:
-          node-version: ${{env.NODE_VERSION}}
-          registry-url: 'https://registry.npmjs.org'
-      - name: Install yarn
-        shell: bash
-        run: corepack enable
-      - name: Install ts-node
-        shell: bash
-        run: npm install -g ts-node
-      - name: Publish to NPM
-        run: npm publish --access public
-        env:
-          NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}
+    name: Publish on npm.js
+    uses: lipemat/public-actions/.github/workflows/publish-package.yml@version/2
+    with:
+      beta: ${{ contains(github.ref_name, 'beta') }}
+      nodeVersion: '22.21.1'
+      withInstall: true
