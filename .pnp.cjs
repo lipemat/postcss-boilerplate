@@ -622,6 +622,14 @@ const RAW_RUNTIME_STATE =
       "npm:0.4.3"\
     ],\
     [\
+      "@isaacs/balanced-match",\
+      "npm:4.0.1"\
+    ],\
+    [\
+      "@isaacs/brace-expansion",\
+      "npm:5.0.0"\
+    ],\
+    [\
       "@isaacs/cliui",\
       "npm:8.0.2"\
     ],\
@@ -1039,7 +1047,7 @@ const RAW_RUNTIME_STATE =
     ],\
     [\
       "@types/node",\
-      "npm:20.11.30"\
+      "npm:22.19.3"\
     ],\
     [\
       "@types/node-forge",\
@@ -2447,7 +2455,7 @@ const RAW_RUNTIME_STATE =
     ],\
     [\
       "glob",\
-      "npm:10.4.5"\
+      "npm:11.1.0"\
     ],\
     [\
       "glob-parent",\
@@ -4875,7 +4883,7 @@ const RAW_RUNTIME_STATE =
           ["@types/grunt", "npm:0.4.32"],\
           ["@types/jest", "npm:29.5.14"],\
           ["@types/minimist", "npm:1.2.5"],\
-          ["@types/node", "npm:20.11.30"],\
+          ["@types/node", "npm:22.19.3"],\
           ["@types/postcss-import", "npm:14.0.3"],\
           ["@types/postcss-preset-env", "npm:7.7.0"],\
           ["@wordpress/browserslist-config", "npm:5.41.0"],\
@@ -4885,7 +4893,7 @@ const RAW_RUNTIME_STATE =
           ["ejs", "npm:3.1.10"],\
           ["eslint", "virtual:1638d8a1a2d593b8169ffe9d70f3c9e9d1509d2f5963ba8fea516113e9e47063b31f182107f616b8cf93bd7e0d863174da1e8f027f01dffdc7988bf1eec9ba20#npm:9.36.0"],\
           ["fs-extra", "npm:7.0.1"],\
-          ["glob", "npm:10.4.5"],\
+          ["glob", "npm:11.1.0"],\
           ["grunt", "npm:1.6.1"],\
           ["grunt-contrib-compress", "npm:2.0.0"],\
           ["grunt-contrib-watch", "npm:1.1.0"],\
@@ -9765,6 +9773,25 @@ const RAW_RUNTIME_STATE =
         "linkType": "HARD"\
       }]\
     ]],\
+    ["@isaacs/balanced-match", [\
+      ["npm:4.0.1", {\
+        "packageLocation": "./.yarn/cache/@isaacs-balanced-match-npm-4.0.1-8965afafe6-7da011805b.zip/node_modules/@isaacs/balanced-match/",\
+        "packageDependencies": [\
+          ["@isaacs/balanced-match", "npm:4.0.1"]\
+        ],\
+        "linkType": "HARD"\
+      }]\
+    ]],\
+    ["@isaacs/brace-expansion", [\
+      ["npm:5.0.0", {\
+        "packageLocation": "./.yarn/cache/@isaacs-brace-expansion-npm-5.0.0-754d3cb3f5-b4d4812f4b.zip/node_modules/@isaacs/brace-expansion/",\
+        "packageDependencies": [\
+          ["@isaacs/balanced-match", "npm:4.0.1"],\
+          ["@isaacs/brace-expansion", "npm:5.0.0"]\
+        ],\
+        "linkType": "HARD"\
+      }]\
+    ]],\
     ["@isaacs/cliui", [\
       ["npm:8.0.2", {\
         "packageLocation": "./.yarn/cache/@isaacs-cliui-npm-8.0.2-f4364666d5-b1bf42535d.zip/node_modules/@isaacs/cliui/",\
@@ -10413,7 +10440,7 @@ const RAW_RUNTIME_STATE =
           ["@types/grunt", "npm:0.4.32"],\
           ["@types/jest", "npm:29.5.14"],\
           ["@types/minimist", "npm:1.2.5"],\
-          ["@types/node", "npm:20.11.30"],\
+          ["@types/node", "npm:22.19.3"],\
           ["@types/postcss-import", "npm:14.0.3"],\
           ["@types/postcss-preset-env", "npm:7.7.0"],\
           ["@wordpress/browserslist-config", "npm:5.41.0"],\
@@ -10423,7 +10450,7 @@ const RAW_RUNTIME_STATE =
           ["ejs", "npm:3.1.10"],\
           ["eslint", "virtual:1638d8a1a2d593b8169ffe9d70f3c9e9d1509d2f5963ba8fea516113e9e47063b31f182107f616b8cf93bd7e0d863174da1e8f027f01dffdc7988bf1eec9ba20#npm:9.36.0"],\
           ["fs-extra", "npm:7.0.1"],\
-          ["glob", "npm:10.4.5"],\
+          ["glob", "npm:11.1.0"],\
           ["grunt", "npm:1.6.1"],\
           ["grunt-contrib-compress", "npm:2.0.0"],\
           ["grunt-contrib-watch", "npm:1.1.0"],\
@@ -11365,11 +11392,11 @@ const RAW_RUNTIME_STATE =
         ],\
         "linkType": "HARD"\
       }],\
-      ["npm:20.11.30", {\
-        "packageLocation": "./.yarn/cache/@types-node-npm-20.11.30-b20dd3f11f-867cfaf969.zip/node_modules/@types/node/",\
+      ["npm:22.19.3", {\
+        "packageLocation": "./.yarn/cache/@types-node-npm-22.19.3-0fc033f9b1-a30a75d503.zip/node_modules/@types/node/",\
         "packageDependencies": [\
-          ["@types/node", "npm:20.11.30"],\
-          ["undici-types", "npm:5.26.5"]\
+          ["@types/node", "npm:22.19.3"],\
+          ["undici-types", "npm:6.21.0"]\
         ],\
         "linkType": "HARD"\
       }],\
@@ -17101,6 +17128,19 @@ const RAW_RUNTIME_STATE =
         ],\
         "linkType": "HARD"\
       }],\
+      ["npm:11.1.0", {\
+        "packageLocation": "./.yarn/cache/glob-npm-11.1.0-9420ed5efe-1ceae07f23.zip/node_modules/glob/",\
+        "packageDependencies": [\
+          ["foreground-child", "npm:3.3.1"],\
+          ["glob", "npm:11.1.0"],\
+          ["jackspeak", "npm:4.1.1"],\
+          ["minimatch", "npm:10.1.1"],\
+          ["minipass", "npm:7.1.2"],\
+          ["package-json-from-dist", "npm:1.0.1"],\
+          ["path-scurry", "npm:2.0.1"]\
+        ],\
+        "linkType": "HARD"\
+      }],\
       ["npm:7.1.7", {\
         "packageLocation": "./.yarn/cache/glob-npm-7.1.7-5698ad9c48-173245e6f9.zip/node_modules/glob/",\
         "packageDependencies": [\
@@ -18735,6 +18775,14 @@ const RAW_RUNTIME_STATE =
           ["jackspeak", "npm:3.4.3"]\
         ],\
         "linkType": "HARD"\
+      }],\
+      ["npm:4.1.1", {\
+        "packageLocation": "./.yarn/cache/jackspeak-npm-4.1.1-582e5d1ed7-84ec4f8e21.zip/node_modules/jackspeak/",\
+        "packageDependencies": [\
+          ["@isaacs/cliui", "npm:8.0.2"],\
+          ["jackspeak", "npm:4.1.1"]\
+        ],\
+        "linkType": "HARD"\
       }]\
     ]],\
     ["jake", [\
@@ -19828,6 +19876,13 @@ const RAW_RUNTIME_STATE =
         ],\
         "linkType": "HARD"\
       }],\
+      ["npm:11.2.4", {\
+        "packageLocation": "./.yarn/cache/lru-cache-npm-11.2.4-3f72660965-4a24f9b175.zip/node_modules/lru-cache/",\
+        "packageDependencies": [\
+          ["lru-cache", "npm:11.2.4"]\
+        ],\
+        "linkType": "HARD"\
+      }],\
       ["npm:5.1.1", {\
         "packageLocation": "./.yarn/cache/lru-cache-npm-5.1.1-f475882a51-89b2ef2ef4.zip/node_modules/lru-cache/",\
         "packageDependencies": [\
@@ -20167,6 +20222,14 @@ const RAW_RUNTIME_STATE =
       }]\
     ]],\
     ["minimatch", [\
+      ["npm:10.1.1", {\
+        "packageLocation": "./.yarn/cache/minimatch-npm-10.1.1-453db4ee1a-c85d44821c.zip/node_modules/minimatch/",\
+        "packageDependencies": [\
+          ["@isaacs/brace-expansion", "npm:5.0.0"],\
+          ["minimatch", "npm:10.1.1"]\
+        ],\
+        "linkType": "HARD"\
+      }],\
       ["npm:3.0.8", {\
         "packageLocation": "./.yarn/cache/minimatch-npm-3.0.8-f3deb724b2-72b226f452.zip/node_modules/minimatch/",\
         "packageDependencies": [\
@@ -21061,6 +21124,15 @@ const RAW_RUNTIME_STATE =
           ["lru-cache", "npm:10.4.3"],\
           ["minipass", "npm:7.1.2"],\
           ["path-scurry", "npm:1.11.1"]\
+        ],\
+        "linkType": "HARD"\
+      }],\
+      ["npm:2.0.1", {\
+        "packageLocation": "./.yarn/cache/path-scurry-npm-2.0.1-7744619e5d-2a16ed0e81.zip/node_modules/path-scurry/",\
+        "packageDependencies": [\
+          ["lru-cache", "npm:11.2.4"],\
+          ["minipass", "npm:7.1.2"],\
+          ["path-scurry", "npm:2.0.1"]\
         ],\
         "linkType": "HARD"\
       }]\
@@ -24491,7 +24563,7 @@ const RAW_RUNTIME_STATE =
           ["@tsconfig/node12", "npm:1.0.11"],\
           ["@tsconfig/node14", "npm:1.0.3"],\
           ["@tsconfig/node16", "npm:1.0.4"],\
-          ["@types/node", "npm:20.11.30"],\
+          ["@types/node", "npm:22.19.3"],\
           ["@types/swc__core", null],\
           ["@types/swc__wasm", null],\
           ["@types/typescript", null],\
@@ -24786,6 +24858,13 @@ const RAW_RUNTIME_STATE =
         "packageLocation": "./.yarn/cache/undici-types-npm-5.26.5-de4f7c7bb9-bb673d7876.zip/node_modules/undici-types/",\
         "packageDependencies": [\
           ["undici-types", "npm:5.26.5"]\
+        ],\
+        "linkType": "HARD"\
+      }],\
+      ["npm:6.21.0", {\
+        "packageLocation": "./.yarn/cache/undici-types-npm-6.21.0-eb2b0ed56a-c01ed51829.zip/node_modules/undici-types/",\
+        "packageDependencies": [\
+          ["undici-types", "npm:6.21.0"]\
         ],\
         "linkType": "HARD"\
       }],\
@@ -32946,10 +33025,7 @@ Required by: ${issuerForDisplay}
             if (runtimeState.enableTopLevelFallback) {
               if (dependencyReference == null && fallbackReference === null) {
                 const reference = runtimeState.fallbackPool.get(dependencyName);
-                // # Warnings suppressed via @lipemat/postcss-boilerplate/fix-pnp script. 
-if (! alwaysWarnOnFallback && reference != null) { 
-dependencyReference = reference; 
-} else if (alwaysWarnOnFallback && reference != null) {
+                if (reference != null) {
                   fallbackReference = reference;
                 }
               }

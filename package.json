@@ -5,7 +5,7 @@
   "author": "Mat Lipe",
   "license": "MIT",
   "engines": {
-    "node": ">=20.11.0"
+    "node": ">=22.21.1"
   },
   "bugs": {
     "url": "https://github.com/lipemat/postcss-boilerplate/issues"
@@ -80,9 +80,9 @@
     "@types/ejs": "^3",
     "@types/jest": "^29",
     "@types/minimist": "^1",
-    "@types/node": "~20.11.0",
+    "@types/node": "^22.19.3",
     "eslint": "^9",
-    "glob": "^10.3.3",
+    "glob": "11.1.0",
     "jest": "^29"
   },
   "packageManager": "yarn@4.10.3"
