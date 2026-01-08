@@ -8,7 +8,7 @@ let mockJsonContents = {};
 /**
  * To prevent: ReferenceError: Cannot access 'mockCombinedJson' before initialization
  */
-function getJSON( cssFileName: string, json: Object ) {
+function getJSON( cssFileName: string, json: object ) {
 	const env = 'production' === process.env.NODE_ENV ? 'production' : 'development';
 	return require( '../../../helpers/get-json' ).getJSON( env )( cssFileName, json );
 }
@@ -17,9 +17,10 @@ function getJSON( cssFileName: string, json: Object ) {
 jest.mock( '../../../helpers/package-config.ts', () => ( {
 	...jest.requireActual( '../../../helpers/package-config.ts' ),
 	getPackageConfig: () => ( {
-		...jest.requireActual( '../../../helpers/package-config.ts' ),
+		...jest.requireActual( '../../../helpers/package-config.ts' ).getPackageConfig(),
 		// Change this variable during the test.
 		combinedJson: mockCombinedJson,
+		cssEnums: false,
 		// Point to our data directory for the theme_path.
 		theme_path: 'jest/theme/',
 	} ),
@@ -53,7 +54,7 @@ describe( 'getJSON', () => {
 		expect( fse.outputJsonSync ).toHaveBeenCalledTimes( 0 );
 		JsonModules.flushToDisk( 'development' );
 		expect( fse.outputJsonSync ).toHaveBeenCalledTimes( 1 );
-		expect( fse.outputJsonSync ).toHaveBeenLastCalledWith( THEME_PATH + 'css/modules.json', {
+		expect( fse.outputJsonSync ).toHaveBeenLastCalledWith( THEME_PATH + 'css/dist/modules.json', {
 			'test.pcss': {
 				'purple-bg': 'test_purple_bg_1',
 			},
@@ -66,7 +67,7 @@ describe( 'getJSON', () => {
 		} );
 		JsonModules.flushToDisk( 'development' );
 		expect( fse.outputJsonSync ).toHaveBeenCalledTimes( 2 );
-		expect( fse.outputJsonSync ).toHaveBeenLastCalledWith( THEME_PATH + 'css/modules.json', {
+		expect( fse.outputJsonSync ).toHaveBeenLastCalledWith( THEME_PATH + 'css/dist/modules.json', {
 			'test.pcss': {
 				'purple-bg': 'test_purple_bg_1',
 			},
@@ -81,7 +82,7 @@ describe( 'getJSON', () => {
 		getJSON( THEME_PATH + 'pcss/globals/variables.pcss', {} );
 		JsonModules.flushToDisk( 'development' );
 		expect( fse.outputJsonSync ).toHaveBeenCalledTimes( 3 );
-		expect( fse.outputJsonSync ).toHaveBeenLastCalledWith( THEME_PATH + 'css/modules.json', {
+		expect( fse.outputJsonSync ).toHaveBeenLastCalledWith( THEME_PATH + 'css/dist/modules.json', {
 			'test.pcss': {
 				'purple-bg': 'test_purple_bg_1',
 			},
@@ -130,7 +131,7 @@ describe( 'getJSON', () => {
 		} );
 		JsonModules.flushToDisk( 'production' );
 		expect( fse.outputJsonSync ).toHaveBeenCalledTimes( 1 );
-		expect( fse.outputJsonSync ).toHaveBeenLastCalledWith( THEME_PATH + 'css/modules.min.json', {
+		expect( fse.outputJsonSync ).toHaveBeenLastCalledWith( THEME_PATH + 'css/dist/modules.min.json', {
 			'test.pcss': {
 				'purple-bg': 'a',
 			},

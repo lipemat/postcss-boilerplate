@@ -31,7 +31,7 @@ function isEnvironment( env: string | undefined ): env is Environment {
  */
 function triggerReload() {
 	tinylr.changed( getEnumFilePath( 'development' ), () => {
-		console.log( 'CSS Modules updated, reloading browser.' );
+		console.debug( 'CSS Modules updated, reloading browser.' );
 	} );
 }
 

@@ -1,18 +1,6 @@
 import path from 'path';
 import fs from 'fs';
 
-/**
- * @todo In version 5 change default values.
- * 1. `css_folder` should be `./css/dist/` instead of `css/`.
- * 2. `combinedJson` should be `true` instead of `false`.
- * 3. `shortCssClasses` should be `true` instead of `false`.
- * 4. `brotliFiles` should be `true` instead of `false`.
- * 5. `cssEnums` should be `true` instead of `false`.
- *
- * @note Must be coordinated with version 11 of js-boilerplate.
- *
- * Update the Readme.md file to reflect these changes.
- */
 export type PackageConfig = {
 	brotliFiles: boolean;
 	certificates?: {
@@ -38,23 +26,23 @@ export type PackageConfig = {
 const workingDirectory = fs.realpathSync( process.cwd() ).replace( /\\/g, '/' );
 
 let packageConfig: PackageConfig = require( path.resolve( workingDirectory, 'package.json' ) );
-packageConfig.brotliFiles ||= false;
+packageConfig.brotliFiles ||= true;
 packageConfig.workingDirectory = workingDirectory;
 packageConfig.theme_path ||= './';
 // Could be set to "" which would always test false.
 if ( ! Boolean( packageConfig.hasOwnProperty( 'css_folder' ) ) ) {
-	packageConfig.css_folder = 'css/';
+	packageConfig.css_folder = './css/dist/';
 }
-packageConfig.cssEnums ||= false;
-packageConfig.combinedJson ||= false;
+packageConfig.cssEnums ||= true;
+packageConfig.combinedJson ||= true;
 packageConfig.file_name ||= 'front-end';
-packageConfig.shortCssClasses ||= false;
+packageConfig.shortCssClasses ||= true;
 packageConfig.pcssWatch ||= [ 'pcss', 'template-parts' ];
 
 try {
 	const localConfig = require( path.resolve( workingDirectory, './local-config.json' ) );
 	packageConfig = {...packageConfig, ...localConfig};
-} catch ( e ) {
+} catch {
 }
 
 /**
@@ -68,10 +56,3 @@ try {
 export function getPackageConfig() {
 	return packageConfig;
 }
-
-// @ts-ignore
-packageConfig.getPackageConfig = getPackageConfig;
-
-// Leaving old export structure for backwards compatibility.
-// @todo Remove in favor of default export in version 5.
-module.exports = packageConfig;

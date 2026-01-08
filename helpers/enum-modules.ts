@@ -54,10 +54,10 @@ function convertToCamelCase( cssClass: string ): string {
  * Uses `ejs` to render the template.
  */
 export class EnumModules {
-	private readonly json: Object;
+	private readonly json: object;
 	private readonly filePath: string;
 
-	private static content: Object = {
+	private static content: object = {
 		production: '',
 		development: '',
 	};
@@ -66,7 +66,7 @@ export class EnumModules {
 
 	private static template = '';
 
-	constructor( filePath: string, json: Object ) {
+	constructor( filePath: string, json: object ) {
 		this.filePath = filePath;
 		this.json = json;
 		if ( '' === EnumModules.template ) {
@@ -119,7 +119,7 @@ export class EnumModules {
 	/**
 	 * Get the JSON classmap with all keys converted to camelCase.
 	 */
-	private getFormattedClassMap(): Object {
+	private getFormattedClassMap(): object {
 		return Object.keys( this.json )
 			.map( key => convertToCamelCase( key ) )
 			.reduce( ( result, key, index ) => {

@@ -8,7 +8,7 @@ let mockCombinedJson: boolean = false;
 jest.mock( '../../../helpers/package-config.ts', () => ( {
 	...jest.requireActual( '../../../helpers/package-config.ts' ),
 	getPackageConfig: () => {
-		const pkgConfig = jest.requireActual( '../../../helpers/package-config.ts' );
+		const pkgConfig = jest.requireActual( '../../../helpers/package-config.ts' ).getPackageConfig();
 		pkgConfig.cssEnums = mockCssEnums;
 		pkgConfig.combinedJson = mockCombinedJson;
 		if ( false !== mockWatch ) {

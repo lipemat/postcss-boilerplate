@@ -9,8 +9,9 @@ jest.mock( '../../../helpers/package-config.ts', () => ( {
 	...jest.requireActual( '../../../helpers/package-config.ts' ),
 	getPackageConfig: () => {
 		const pkgConfig = jest.requireActual( '../../../helpers/package-config.ts' );
-		pkgConfig.cssEnums = true;
-		return pkgConfig;
+		const config = pkgConfig.getPackageConfig();
+		config.cssEnums = true;
+		return config;
 	},
 } ) );
 
@@ -50,7 +51,8 @@ describe( 'Test caching config', () => {
 		const tinylr = require( 'tiny-lr' );
 		tinylr.changed = triggerReload;
 		const config = getPackageConfig();
-		const dir = resolve( config.theme_path + config.css_folder ).replace( /\\/g, '/' );
+		const directories = config.css_folder.split( '/' ).filter( ( part: string ) => '' !== part && '.' !== part );
+		const dir = resolve( directories[ 0 ] ).replace( /\\/g, '/' );
 
 		( new EnumModules( 'template-parts/nav.pcss/', {
 			wrap: 'Ⓜnav__wrap__Jm Ⓜtest__purple-bg__ug',

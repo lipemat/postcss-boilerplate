@@ -16,7 +16,7 @@ let mockEnumContents = {};
 jest.mock( '../../../helpers/package-config.ts', () => ( {
 	...jest.requireActual( '../../../helpers/package-config.ts' ),
 	getPackageConfig: () => ( {
-		...jest.requireActual( '../../../helpers/package-config.ts' ),
+		...jest.requireActual( '../../../helpers/package-config.ts' ).getPackageConfig(),
 		...mockPackageConfig,
 	} ),
 } ) );

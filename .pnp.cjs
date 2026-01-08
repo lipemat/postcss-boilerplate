@@ -1519,7 +1519,7 @@ const RAW_RUNTIME_STATE =
     ],\
     [\
       "baseline-browser-mapping",\
-      "npm:2.8.9"\
+      "npm:2.9.13"\
     ],\
     [\
       "batch",\
@@ -13794,10 +13794,10 @@ const RAW_RUNTIME_STATE =
       }]\
     ]],\
     ["baseline-browser-mapping", [\
-      ["npm:2.8.9", {\
-        "packageLocation": "./.yarn/cache/baseline-browser-mapping-npm-2.8.9-1fb4cfe6b9-c54356eb90.zip/node_modules/baseline-browser-mapping/",\
+      ["npm:2.9.13", {\
+        "packageLocation": "./.yarn/cache/baseline-browser-mapping-npm-2.9.13-abf69b4ce9-0881e81347.zip/node_modules/baseline-browser-mapping/",\
         "packageDependencies": [\
-          ["baseline-browser-mapping", "npm:2.8.9"]\
+          ["baseline-browser-mapping", "npm:2.9.13"]\
         ],\
         "linkType": "HARD"\
       }]\
@@ -13919,7 +13919,7 @@ const RAW_RUNTIME_STATE =
       ["npm:4.26.2", {\
         "packageLocation": "./.yarn/cache/browserslist-npm-4.26.2-713d4a89d1-1146339dad.zip/node_modules/browserslist/",\
         "packageDependencies": [\
-          ["baseline-browser-mapping", "npm:2.8.9"],\
+          ["baseline-browser-mapping", "npm:2.9.13"],\
           ["browserslist", "npm:4.26.2"],\
           ["caniuse-lite", "npm:1.0.30001746"],\
           ["electron-to-chromium", "npm:1.5.227"],\
@@ -28695,28 +28695,40 @@ class FileHandle {
   sync() {
     throw new Error(`Method not implemented.`);
   }
-  async read(bufferOrOptions, offset, length, position) {
+  async read(bufferOrOptions, offsetOrOptions, length, position) {
     try {
       this[kRef](this.read);
       let buffer;
-      if (!Buffer.isBuffer(bufferOrOptions)) {
-        bufferOrOptions ??= {};
-        buffer = bufferOrOptions.buffer ?? Buffer.alloc(16384);
-        offset = bufferOrOptions.offset || 0;
-        length = bufferOrOptions.length ?? buffer.byteLength;
-        position = bufferOrOptions.position ?? null;
+      let offset;
+      if (!ArrayBuffer.isView(bufferOrOptions)) {
+        buffer = bufferOrOptions?.buffer ?? Buffer.alloc(16384);
+        offset = bufferOrOptions?.offset ?? 0;
+        length = bufferOrOptions?.length ?? buffer.byteLength - offset;
+        position = bufferOrOptions?.position ?? null;
+      } else if (typeof offsetOrOptions === `object` && offsetOrOptions !== null) {
+        buffer = bufferOrOptions;
+        offset = offsetOrOptions?.offset ?? 0;
+        length = offsetOrOptions?.length ?? buffer.byteLength - offset;
+        position = offsetOrOptions?.position ?? null;
       } else {
         buffer = bufferOrOptions;
+        offset = offsetOrOptions ?? 0;
+        length ??= 0;
       }
-      offset ??= 0;
-      length ??= 0;
       if (length === 0) {
         return {
           bytesRead: length,
           buffer
         };
       }
-      const bytesRead = await this[kBaseFs].readPromise(this.fd, buffer, offset, length, position);
+      const bytesRead = await this[kBaseFs].readPromise(
+        this.fd,
+        // FIXME: FakeFS should support ArrayBufferViews directly
+        Buffer.isBuffer(buffer) ? buffer : Buffer.from(buffer.buffer, buffer.byteOffset, buffer.byteLength),
+        offset,
+        length,
+        position
+      );
       return {
         bytesRead,
         buffer
@@ -31621,6 +31633,7 @@ function applyPatch(pnpapi, opts) {
       const optionNames = new Set(Object.keys(options));
       optionNames.delete(`paths`);
       optionNames.delete(`plugnplay`);
+      optionNames.delete(`conditions`);
       if (optionNames.size > 0) {
         throw makeError(
           ErrorCode.UNSUPPORTED,
@@ -31649,11 +31662,15 @@ function applyPatch(pnpapi, opts) {
       const issuerApi = apiPath !== null ? opts.manager.getApiEntry(apiPath, true).instance : null;
       try {
         if (issuerApi !== null) {
-          resolution = issuerApi.resolveRequest(request, path !== null ? `${path}/` : null);
+          resolution = issuerApi.resolveRequest(request, path !== null ? `${path}/` : null, {
+            conditions: options?.conditions
+          });
         } else {
           if (path === null)
             throw new Error(`Assertion failed: Expected the path to be set`);
-          resolution = originalModuleResolveFilename.call(require$$0.Module, request, module || makeFakeParent(path), isMain);
+          resolution = originalModuleResolveFilename.call(require$$0.Module, request, module || makeFakeParent(path), isMain, {
+            conditions: options?.conditions
+          });
         }
       } catch (error) {
         firstError = firstError || error;
@@ -33025,7 +33042,10 @@ Required by: ${issuerForDisplay}
             if (runtimeState.enableTopLevelFallback) {
               if (dependencyReference == null && fallbackReference === null) {
                 const reference = runtimeState.fallbackPool.get(dependencyName);
-                if (reference != null) {
+                // # Warnings suppressed via @lipemat/postcss-boilerplate/fix-pnp script. 
+if (! alwaysWarnOnFallback && reference != null) { 
+dependencyReference = reference; 
+} else if (alwaysWarnOnFallback && reference != null) {
                   fallbackReference = reference;
                 }
               }
