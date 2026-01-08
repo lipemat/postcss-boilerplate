@@ -9,7 +9,6 @@ let mockPackageConfig: Partial<PackageConfig> = {
 	css_folder: './css/dist/',
 	theme_path: 'jest/theme/',
 	cssEnums: true,
-	combinedJson: true,
 };
 let mockEnumContents = {};
 
@@ -44,7 +43,6 @@ afterEach( () => {
 		css_folder: './css/dist/',
 		theme_path: 'jest/theme/',
 		cssEnums: true,
-		combinedJson: true,
 	};
 	jest.clearAllMocks();
 } );
@@ -129,7 +127,6 @@ describe( 'cssModuleEnums', () => {
 
 	test( 'Through getJSON', () => {
 		mockPackageConfig.cssEnums = false;
-		mockPackageConfig.combinedJson = false;
 		const expected = fs.readFileSync( 'jest/fixtures/css-module-enums/module-enums.inc', 'utf-8' );
 		const getJSON = require( '../../../helpers/get-json.ts' ).getJSON( 'production' );
 		// Neither combinedJson nor cssEnums enabled.
@@ -143,20 +140,8 @@ describe( 'cssModuleEnums', () => {
 		expect( fse.outputFileSync ).toHaveBeenCalledTimes( 0 );
 
 
-		// Just enums enabled but not combinedJson.
 		mockPackageConfig.cssEnums = true;
-		getJSON( THEME_PATH + 'template-parts/nav.pcss', {
-			wrap: 'Ⓜnav__wrap__Jm Ⓜtest__purple-bg__ug',
-			'global-composes': 'Ⓜnav__global-composes__bw site-title nothing',
-			extra: 'Ⓜnav__extra__Ih',
-		} );
-		cachingTask( 'writeModules', 'production' );
-		expect( mockEnumContents ).toEqual( '' );
-		expect( fse.outputFileSync ).toHaveBeenCalledTimes( 0 );
-
-
 		// Both combinedJson and cssEnums enabled.
-		mockPackageConfig.combinedJson = true;
 		getJSON( THEME_PATH + 'template-parts/nav.pcss', {
 			wrap: 'Ⓜnav__wrap__Jm Ⓜtest__purple-bg__ug',
 			'global-composes': 'Ⓜnav__global-composes__bw site-title nothing',

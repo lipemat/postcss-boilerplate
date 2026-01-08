@@ -27,17 +27,14 @@ export function getJSON( env: Environment ) {
 			json
 		);
 
-		if ( getPackageConfig().combinedJson ) {
-			jsonModules.combinedJson( env );
 
-			if ( getPackageConfig().cssEnums ) {
-				const enums = new EnumModules( filePath, json );
-				enums.addModuleToEnum( env );
-			}
-		} else {
-			jsonModules.moduleFile( env );
+		jsonModules.combinedJson( env );
+
+		if ( getPackageConfig().cssEnums ) {
+			const enums = new EnumModules( filePath, json );
+			enums.addModuleToEnum( env );
 		}
-	}
+	};
 }
 
 

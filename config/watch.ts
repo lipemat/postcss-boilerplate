@@ -41,10 +41,8 @@ const postCSSTasks = [
 	'postcss:toCSS',
 ];
 
-if ( getPackageConfig().combinedJson ) {
-	postCSSTasks.unshift( 'caching:reset' );
-	postCSSTasks.push( 'caching:writeModules:development' );
-}
+postCSSTasks.unshift( 'caching:reset' );
+postCSSTasks.push( 'caching:writeModules:development' );
 
 if ( getPackageConfig().cssEnums ) {
 	postCSSTasks.push( 'caching:reload' );

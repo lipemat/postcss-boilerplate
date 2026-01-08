@@ -7,7 +7,6 @@ export type PackageConfig = {
 		cert: string;
 		key: string;
 	};
-	combinedJson: boolean;
 	cssEnums: boolean;
 	css_folder: string;
 	file_name: string;
@@ -34,7 +33,6 @@ if ( ! Boolean( packageConfig.hasOwnProperty( 'css_folder' ) ) ) {
 	packageConfig.css_folder = './css/dist/';
 }
 packageConfig.cssEnums ||= true;
-packageConfig.combinedJson ||= true;
 packageConfig.file_name ||= 'front-end';
 packageConfig.shortCssClasses ||= true;
 packageConfig.pcssWatch ||= [ 'pcss', 'template-parts' ];
