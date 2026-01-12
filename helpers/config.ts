@@ -43,8 +43,10 @@ export function getConfig<T extends keyof Configs>( fileName: T ): Configs[T] {
 			config = {...config, ...localConfig};
 		}
 	} catch ( e ) {
-		if ( 'MODULE_NOT_FOUND' !== e.code ) {
-			console.error( e );
+		if ( e instanceof Error ) {
+			if ( ! ( 'code' in e ) || ( 'MODULE_NOT_FOUND' !== e.code && 'ERR_MODULE_NOT_FOUND' !== e.code ) ) {
+				console.error( e );
+			}
 		}
 	}
 	return config;
