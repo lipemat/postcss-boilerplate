@@ -2491,7 +2491,7 @@ __metadata:
     "@lipemat/js-boilerplate": "npm:^10.14.5"
     "@lipemat/stylelint-config": "npm:^2.0.1"
     "@lodder/grunt-postcss": "npm:^3.1.1"
-    "@types/ejs": "npm:^3"
+    "@types/ejs": "npm:^3.1.5"
     "@types/fs-extra": "npm:^11.0.4"
     "@types/grunt": "npm:^0.4.31"
     "@types/jest": "npm:^29"
@@ -3026,7 +3026,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/ejs@npm:^3":
+"@types/ejs@npm:^3.1.5":
   version: 3.1.5
   resolution: "@types/ejs@npm:3.1.5"
   checksum: 10c0/13d994cf0323d7e0ad33b9384914ccd3b4cd8bf282eced3649b1621b66ee7c784ac2d120a9d7b1f43d6f873518248fb8c3221b06a649b847860b9c2389a0b0ed
