@@ -13,6 +13,7 @@
   ],
   "compilerOptions": {
     "esModuleInterop": true,
-    "module": "CommonJS"
+    "module": "CommonJS",
+    "strict": false
   }
 }
