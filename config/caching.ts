@@ -2,7 +2,7 @@ import {EnumModules, getEnumFilePath} from '../helpers/enum-modules';
 import {JsonModules} from '../helpers/get-json';
 import tinylr from 'tiny-lr';
 import type {Environment} from '../helpers/config';
-import {getPackageConfig} from '../helpers/package-config';
+import {getPackageConfig} from '@lipemat/js-boilerplate-shared/helpers/package-config.js';
 
 
 export type CachingGruntTasks = {

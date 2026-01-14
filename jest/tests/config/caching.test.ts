@@ -1,14 +1,14 @@
 import cachingTask from '../../../config/caching';
 import {EnumModules} from '../../../helpers/enum-modules';
-import {getPackageConfig} from '../../../helpers/package-config';
+import {getPackageConfig} from '@lipemat/js-boilerplate-shared/helpers/package-config.js';
 import {resolve} from 'path';
 
 
 // Change the result of the getPackageConfig function.
-jest.mock( '../../../helpers/package-config.ts', () => ( {
-	...jest.requireActual( '../../../helpers/package-config.ts' ),
+jest.mock( '@lipemat/js-boilerplate-shared/helpers/package-config.js', () => ( {
+	...jest.requireActual( '@lipemat/js-boilerplate-shared/helpers/package-config.js' ),
 	getPackageConfig: () => {
-		const pkgConfig = jest.requireActual( '../../../helpers/package-config.ts' );
+		const pkgConfig = jest.requireActual( '@lipemat/js-boilerplate-shared/helpers/package-config.js' );
 		const config = pkgConfig.getPackageConfig();
 		config.cssEnums = true;
 		return config;

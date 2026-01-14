@@ -1,14 +1,14 @@
 import {ALPHABET, generateScopedName, getGenerateScopeName, getNextClass, resetCounters, SHORT_ALPHABET, usingShortCssClasses} from '../../../helpers/css-classnames';
-import type {PackageConfig} from '../../../helpers/package-config';
+import type {PackageConfig} from '@lipemat/js-boilerplate-shared/helpers/package-config.js';
 
 // Change this variable during tests.
 let mockShortCssEnabled: PackageConfig['shortCssClasses'] = false;
 
 // Change the result of the getPackageConfig function, so we can change shortCssClasses.
-jest.mock( '../../../helpers/package-config.ts', () => ( {
-	...jest.requireActual( '../../../helpers/package-config.ts' ),
+jest.mock( '@lipemat/js-boilerplate-shared/helpers/package-config.js', () => ( {
+	...jest.requireActual( '@lipemat/js-boilerplate-shared/helpers/package-config.js' ),
 	getPackageConfig: () => ( {
-		...jest.requireActual( '../../../helpers/package-config.ts' ),
+		...jest.requireActual( '@lipemat/js-boilerplate-shared/helpers/package-config.js' ),
 		// Change this variable during the test.
 		shortCssClasses: mockShortCssEnabled,
 	} ),

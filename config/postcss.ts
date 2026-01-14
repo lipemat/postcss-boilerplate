@@ -1,5 +1,5 @@
 import {getGenerateScopeName} from '../helpers/css-classnames';
-import {getPackageConfig} from '../helpers/package-config';
+import {getPackageConfig} from '@lipemat/js-boilerplate-shared/helpers/package-config.js';
 import {getEntries} from '../helpers/entries';
 import {type Environment, getExternalFiles} from '../helpers/config';
 import {getJSON} from '../helpers/get-json';

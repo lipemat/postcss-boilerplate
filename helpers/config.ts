@@ -1,7 +1,7 @@
 import fs from 'fs';
 import path from 'path';
 
-import {getPackageConfig} from './package-config';
+import {getPackageConfig} from '@lipemat/js-boilerplate-shared/helpers/package-config.js';
 import type {PostCSSGruntTasks} from '../config/postcss';
 import type {CachingGruntTasks} from '../config/caching';
 import type {CompressGruntTasks} from '../config/compress';

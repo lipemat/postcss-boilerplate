@@ -1,4 +1,4 @@
-import {getPackageConfig} from './package-config';
+import {getPackageConfig} from '@lipemat/js-boilerplate-shared/helpers/package-config.js';
 import type {Environment} from './config';
 
 export const SHORT_ALPHABET = 'abcdefghijklmnopqrstuvwxyz';

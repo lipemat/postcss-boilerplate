@@ -1,4 +1,4 @@
-import {getPackageConfig} from '../helpers/package-config';
+import {getPackageConfig} from '@lipemat/js-boilerplate-shared/helpers/package-config.js';
 
 const folder = getPackageConfig().css_folder;
 

@@ -13,10 +13,10 @@ function getJSON( cssFileName: string, json: object ) {
 }
 
 // Change the result of the getPackageConfig function, so we can enable combined json.
-jest.mock( '../../../helpers/package-config.ts', () => ( {
-	...jest.requireActual( '../../../helpers/package-config.ts' ),
+jest.mock( '@lipemat/js-boilerplate-shared/helpers/package-config.js', () => ( {
+	...jest.requireActual( '@lipemat/js-boilerplate-shared/helpers/package-config.js' ),
 	getPackageConfig: () => ( {
-		...jest.requireActual( '../../../helpers/package-config.ts' ).getPackageConfig(),
+		...jest.requireActual( '@lipemat/js-boilerplate-shared/helpers/package-config.js' ).getPackageConfig(),
 		cssEnums: false,
 		// Point to our data directory for the theme_path.
 		theme_path: 'jest/theme/',

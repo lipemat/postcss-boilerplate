@@ -1,9 +1,9 @@
-import {getPackageConfig} from '../helpers/package-config';
+import {getPackageConfig} from '@lipemat/js-boilerplate-shared/helpers/package-config.js';
 
 export type PostcssEntries = { [ entry: string ]: string };
 
 const entries: PostcssEntries = {
-	main: getPackageConfig().file_name, // Default: "front-end".
+	main: getPackageConfig().mainCssFileName, // Default: "front-end".
 	admin: 'admin',
 	blocks: 'blocks',
 };

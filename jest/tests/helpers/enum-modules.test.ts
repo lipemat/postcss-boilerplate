@@ -1,5 +1,5 @@
 import {EnumModules, getDistFolder} from '../../../helpers/enum-modules';
-import {getPackageConfig, type PackageConfig} from '../../../helpers/package-config';
+import {getPackageConfig, type PackageConfig} from '@lipemat/js-boilerplate-shared/helpers/package-config.js';
 import fs from 'fs';
 import fse from 'fs-extra';
 import cachingTask from '../../../config/caching';
@@ -12,10 +12,10 @@ let mockPackageConfig: Partial<PackageConfig> = {
 };
 let mockEnumContents = {};
 
-jest.mock( '../../../helpers/package-config.ts', () => ( {
-	...jest.requireActual( '../../../helpers/package-config.ts' ),
+jest.mock( '@lipemat/js-boilerplate-shared/helpers/package-config.js', () => ( {
+	...jest.requireActual( '@lipemat/js-boilerplate-shared/helpers/package-config.js' ),
 	getPackageConfig: () => ( {
-		...jest.requireActual( '../../../helpers/package-config.ts' ).getPackageConfig(),
+		...jest.requireActual( '@lipemat/js-boilerplate-shared/helpers/package-config.js' ).getPackageConfig(),
 		...mockPackageConfig,
 	} ),
 } ) );

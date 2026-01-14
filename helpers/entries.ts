@@ -1,6 +1,6 @@
 import {existsSync} from 'fs';
 import {resolve} from 'path';
-import {getPackageConfig} from './package-config';
+import {getPackageConfig} from '@lipemat/js-boilerplate-shared/helpers/package-config.js';
 import {getConfig} from './config';
 
 const config = getPackageConfig();

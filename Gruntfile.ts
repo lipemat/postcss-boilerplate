@@ -1,7 +1,7 @@
 import {type Environment, getConfig} from './helpers/config';
 import type {GruntExposed} from './helpers/run-task';
 import caching from './config/caching';
-import {getPackageConfig} from './helpers/package-config';
+import {getPackageConfig} from '@lipemat/js-boilerplate-shared/helpers/package-config.js';
 
 export default function( grunt: GruntExposed ) {
 	grunt.task.init = () => {

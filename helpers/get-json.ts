@@ -1,4 +1,4 @@
-import {getPackageConfig} from './package-config';
+import {getPackageConfig} from '@lipemat/js-boilerplate-shared/helpers/package-config.js';
 import path from 'path';
 import fse from 'fs-extra';
 import type {Environment} from './config';

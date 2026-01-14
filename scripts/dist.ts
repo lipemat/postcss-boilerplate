@@ -1,6 +1,5 @@
 import runner from '../helpers/run-task';
-
-import {getPackageConfig} from '../helpers/package-config';
+import {getPackageConfig} from '@lipemat/js-boilerplate-shared/helpers/package-config.js';
 
 process.env.NODE_ENV = 'production';
 /**

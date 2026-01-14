@@ -1,10 +1,10 @@
 let mockBrotliFiles = false;
 
 // Change the result of the getPackageConfig function.
-jest.mock( '../../../helpers/package-config.ts', () => ( {
-	...jest.requireActual( '../../../helpers/package-config.ts' ),
+jest.mock( '@lipemat/js-boilerplate-shared/helpers/package-config.js', () => ( {
+	...jest.requireActual( '@lipemat/js-boilerplate-shared/helpers/package-config.js' ),
 	getPackageConfig: () => ( {
-		...jest.requireActual( '../../../helpers/package-config.ts' ),
+		...jest.requireActual( '@lipemat/js-boilerplate-shared/helpers/package-config.js' ),
 		brotliFiles: mockBrotliFiles,
 	} ),
 } ) );

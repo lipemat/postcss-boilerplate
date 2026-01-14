@@ -4,6 +4,7 @@
   "description": "Dependencies and scripts for a no config grunt postcss compiler.",
   "author": "Mat Lipe",
   "license": "MIT",
+  "jsPath": "./",
   "engines": {
     "node": ">=22.21.1"
   },

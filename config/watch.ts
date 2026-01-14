@@ -1,5 +1,5 @@
 import fs from 'fs';
-import {getPackageConfig, type PackageConfig} from '../helpers/package-config';
+import {getPackageConfig, type PackageConfig} from '@lipemat/js-boilerplate-shared/helpers/package-config.js';
 import {getDistFolder} from '../helpers/enum-modules';
 
 
