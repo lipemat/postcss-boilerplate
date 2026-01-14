@@ -1,7 +1,16 @@
 {
-  "extends": "@lipemat/js-boilerplate/config/tsconfig.json",
   "$schema": "https://json.schemastore.org/tsconfig",
   "display": "PostCSS Boilerplate",
+  "compilerOptions": {
+    "allowSyntheticDefaultImports": true,
+    "esModuleInterop": true,
+    "forceConsistentCasingInFileNames": true,
+    "module": "CommonJS",
+    "moduleResolution": "node",
+    "strict": false,
+    "strictNullChecks": true,
+    "target": "ES2024"
+  },
   "include": [
     "Gruntfile.ts",
     "bin/**/*",
@@ -10,10 +19,5 @@
     "jest/**/*",
     "scripts/**/*",
     "types/**/*.d.ts"
-  ],
-  "compilerOptions": {
-    "esModuleInterop": true,
-    "module": "CommonJS",
-    "strict": false
-  }
+  ]
 }
