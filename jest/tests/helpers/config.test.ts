@@ -1,7 +1,6 @@
-import browserslist = require( 'browserslist' );
-import {adjustBrowserslist, getExternalFiles} from '../../../helpers/config';
+import browserslist from 'browserslist';
+import {adjustBrowserslist, getBrowsersList, getExternalFiles} from '../../../helpers/config';
 
-const {getDefaultBrowsersList, getBrowsersList} = require( '../../../helpers/config' );
 
 afterEach( () => {
 	delete process.env.BROWSERSLIST;
@@ -15,17 +14,6 @@ describe( 'config', () => {
 		] );
 	} );
 
-	test( 'getDefaultBrowsersList', () => {
-		const expectedBrowsers = [ ...require( '@wordpress/browserslist-config' ) ];
-		//expectedBrowsers.push( 'not and_uc 15.5' );
-
-		expect( getDefaultBrowsersList() ).toEqual( expectedBrowsers );
-		expect( getDefaultBrowsersList() ).toEqual( getBrowsersList() );
-
-		process.env.BROWSERSLIST = 'chrome 71';
-		expect( getDefaultBrowsersList() ).toEqual( false );
-	} );
-
 	test( 'getBrowsersList', () => {
 		const expectedBrowsers = [ ...require( '@wordpress/browserslist-config' ) ];
 		//expectedBrowsers.push( 'not and_uc 15.5' );
@@ -35,7 +23,6 @@ describe( 'config', () => {
 		expect( expectedBrowsers ).toMatchSnapshot( 'expectedBrowsers' );
 
 		expect( getBrowsersList() ).toEqual( expectedBrowsers );
-		expect( getBrowsersList() ).toEqual( getDefaultBrowsersList() );
 
 
 		const wpDefaultBrowsers = browserslist( require( '@wordpress/browserslist-config' ), {

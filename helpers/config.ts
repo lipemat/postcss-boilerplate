@@ -68,25 +68,6 @@ export function getBrowsersList(): readonly string[] {
 	return projectBrowsersList;
 }
 
-/**
- * If browserslist is not specified, we fall back to WordPress defaults.
- *
- * Return false if a browserslist is specified in the current project.
- *
- * @deprecated Use getBrowsersList() instead.
- *
- * @link https://github.com/browserslist/browserslist#config-file
- *
- * @return {false | string[]}
- */
-export const getDefaultBrowsersList = () => {
-	if ( browserslist( browserslist.defaults ) === browserslist() ) {
-		const wp = [ ...require( '@wordpress/browserslist-config' ) ];
-		return adjustBrowserslist( wp );
-	}
-	return false;
-};
-
 
 /**
  * Provide CSS properties and media queries to all postcss plugins.
