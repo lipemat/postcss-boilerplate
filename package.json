@@ -37,14 +37,14 @@
   "scripts": {
     "browserslist": "lipemat-postcss-boilerplate browserslist",
     "pnp-fix": "lipemat-postcss-boilerplate fix-pnp",
-    "test": "lipemat-js-boilerplate test",
+    "test": "jest --config=jest/jest.config.ts",
     "validate-ts": "tsc --noEmit"
   },
   "dependencies": {
-    "@types/ejs": "^3.1.5",
     "@csstools/postcss-global-data": "^2.0.1",
     "@lipemat/stylelint-config": "^2.0.1",
     "@lodder/grunt-postcss": "^3.1.1",
+    "@types/ejs": "^3.1.5",
     "@types/fs-extra": "^11.0.4",
     "@types/grunt": "^0.4.31",
     "@types/postcss-import": "^14.0.3",
@@ -77,7 +77,6 @@
   },
   "devDependencies": {
     "@lipemat/eslint-config": "^5.1.3",
-    "@lipemat/js-boilerplate": "^10.14.5",
     "@types/jest": "^29",
     "@types/minimist": "^1",
     "@types/node": "^22.19.3",

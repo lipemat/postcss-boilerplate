@@ -2424,7 +2424,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@lipemat/js-boilerplate@npm:^10.14.3, @lipemat/js-boilerplate@npm:^10.14.5":
+"@lipemat/js-boilerplate@npm:^10.14.3":
   version: 10.14.5
   resolution: "@lipemat/js-boilerplate@npm:10.14.5"
   dependencies:
@@ -2488,7 +2488,6 @@ __metadata:
   dependencies:
     "@csstools/postcss-global-data": "npm:^2.0.1"
     "@lipemat/eslint-config": "npm:^5.1.3"
-    "@lipemat/js-boilerplate": "npm:^10.14.5"
     "@lipemat/stylelint-config": "npm:^2.0.1"
     "@lodder/grunt-postcss": "npm:^3.1.1"
     "@types/ejs": "npm:^3.1.5"
