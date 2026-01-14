@@ -1,6 +1,5 @@
 import fs from 'fs';
 import path from 'path';
-import browserslist from 'browserslist';
 
 import {getPackageConfig} from './package-config';
 import type {PostCSSGruntTasks} from '../config/postcss';
@@ -28,7 +27,7 @@ type Configs = {
  * Get a config for our /config directory merged with any
  * matching configuration from the project directory.
  *
- * For instance if we have a file named config/babel.config.js in our project
+ * For instance, if we have a file named config/babel.config.js in our project
  * we will merge the contents with our config/babel.config.js in favor of whatever
  * is specified with the project's file.
  */
@@ -50,22 +49,6 @@ export function getConfig<T extends keyof Configs>( fileName: T ): Configs[T] {
 		}
 	}
 	return config;
-}
-
-/**
- * Get the browserslist from the current project.
- *
- * - If specified using standard browserslist config, we will use that.
- *
- *  @link https://github.com/browserslist/browserslist#config-file
- */
-export function getBrowsersList(): readonly string[] {
-	const projectBrowsersList = browserslist();
-	if ( browserslist( browserslist.defaults ) === projectBrowsersList ) {
-		const wp = [ ...require( '@wordpress/browserslist-config' ) ];
-		return adjustBrowserslist( wp );
-	}
-	return projectBrowsersList;
 }
 
 
@@ -92,13 +75,4 @@ export function getExternalFiles(): string[] {
 	} );
 
 	return externalFiles;
-}
-
-
-/**
- * Adjust the browserslist to include our defaults.
- */
-export function adjustBrowserslist( browserRules: string[] ): string[] {
-	//browserRules.push( 'not and_uc 15.5' );
-	return browserRules;
 }

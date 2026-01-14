@@ -1,11 +1,10 @@
 import {readFileSync} from 'fs';
 import postcss, {Plugin} from 'postcss';
-import {basename} from 'path';
-import {adjustBrowserslist} from '../../../helpers/config';
+import path from 'path';
 import type {PostCSSGruntTasks} from '../../../config/postcss';
 
-const browserslist = require( 'browserslist' );
-const postcssPresetEnv = require( 'postcss-preset-env' );
+import browserslist from 'browserslist';
+import postcssPresetEnv from 'postcss-preset-env';
 
 export type Fixture = {
 	input: string;
@@ -67,7 +66,7 @@ const fixtures: Fixture[] = require( 'glob' )
 	.sync( 'jest/fixtures/{postcss,safari-15}/*.pcss' )
 	.map( file => {
 		return {
-			basename: basename( file ),
+			basename: path.basename( file ),
 			input: file,
 			output: file.replace( '.pcss', '.css' ),
 			description: file.replace( /\\/g, '/' ).replace( 'jest/fixtures/', '' ),
@@ -98,7 +97,7 @@ describe( 'postcss.js', () => {
 
 
 	test( 'Browserslist config', () => {
-		const expectedBrowsers = adjustBrowserslist( [ ...require( '@wordpress/browserslist-config' ) ] );
+		const expectedBrowsers = [ ...require( '@wordpress/browserslist-config' ) ];
 
 		const config = getPostCSSConfig();
 		// We want to make sure no matter what postcss-custom-properties is not included
@@ -142,7 +141,7 @@ describe( 'postcss.js', () => {
 
 		// @notice If this fails, we can probably change the toEqual to 1 as WP is now out of date.
 		const wpDefaultBrowsers = [ ...require( '@wordpress/browserslist-config' ) ];
-		process.env.BROWSERSLIST = browserslist( wpDefaultBrowsers );
+		process.env.BROWSERSLIST = browserslist( wpDefaultBrowsers ) as unknown as string;
 		expect( getBrowsersPlugin( getPostCSSConfig().toCSS.options.processors ).plugins.filter( plugin => {
 			return 'postcss-custom-properties' === plugin.postcssPlugin;
 		} ).length ).toEqual( 0 );

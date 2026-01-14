@@ -1,19 +1,19 @@
 import {getGenerateScopeName} from '../helpers/css-classnames';
 import {getPackageConfig} from '../helpers/package-config';
 import {getEntries} from '../helpers/entries';
-import {type Environment, getBrowsersList, getExternalFiles} from '../helpers/config';
+import {type Environment, getExternalFiles} from '../helpers/config';
 import {getJSON} from '../helpers/get-json';
 import type {Plugin, ProcessOptions, Processor} from 'postcss';
 import PrettyPlugin from '../lib/postcss-pretty';
-import {pluginOptions} from 'postcss-preset-env';
+import postcssPresetEnv, {pluginOptions} from 'postcss-preset-env';
 import type {AtImportOptions} from 'postcss-import';
+import {getBrowsersList} from '@lipemat/js-boilerplate-shared/helpers/browserslist.js';
 
 const config = getPackageConfig();
-const postcssPresetEnv = require( 'postcss-preset-env' );
 
 export type PostCSSConfig = Pick<ProcessOptions, 'map' | 'parser'> & {
 	processors: Plugin[];
-	diff?: string| boolean;
+	diff?: string | boolean;
 	failOnError?: boolean;
 	onError?: ( error: Error ) => void;
 	sequential?: boolean;
@@ -41,7 +41,8 @@ const presetEnv: pluginOptions = {
 };
 
 // Get a list of included postcss plugins based no the browsers list.
-const includedPlugins: string[] = postcssPresetEnv( presetEnv ).plugins.map( ( plugin: Processor['plugins'][number] ) => {
+const postcssProcessor = postcssPresetEnv( presetEnv ) as Processor;
+const includedPlugins: string[] = postcssProcessor.plugins.map( ( plugin: Processor['plugins'][number] ) => {
 	return 'postcssPlugin' in plugin ? plugin.postcssPlugin : '';
 } );
 

@@ -1,5 +1,5 @@
 import browserslist from 'browserslist';
-import {getBrowsersList} from '../helpers/config';
+import {getBrowsersList} from '@lipemat/js-boilerplate-shared/helpers/browserslist';
 
 const help = `
 List browsers being targeted by PostCSS.
