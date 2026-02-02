@@ -43,7 +43,7 @@
   },
   "dependencies": {
     "@csstools/postcss-global-data": "^2.0.1",
-    "@lipemat/js-boilerplate-shared": "^0.0.2",
+    "@lipemat/js-boilerplate-shared": ">=0.0.4 <1.0.0",
     "@lipemat/stylelint-config": "^2.0.1",
     "@lodder/grunt-postcss": "^3.1.1",
     "@types/ejs": "^3.1.5",
@@ -77,7 +77,7 @@
     "typescript": "^5.9.3"
   },
   "devDependencies": {
-    "@lipemat/eslint-config": "^5.2.0-beta.1",
+    "@lipemat/eslint-config": "^5.2.0-beta.2",
     "@types/jest": "^29",
     "@types/minimist": "^1",
     "@types/node": "^22.19.3",
