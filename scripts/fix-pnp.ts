@@ -9,7 +9,9 @@ import {existsSync} from 'fs';
  * No built-in way in Yarn to disable the warnings.
  * This script modifies to generate .pnp.js file to suppress
  * all loose module warnings unless the environmental variable
- * it set to display all warnings.
+ * is set to display all warnings.
+ *
+ * @deprecated In favor of the `js-boilerplate-shared__fix-pnp` script.
  *
  * @example
  * ```json
