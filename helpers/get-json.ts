@@ -44,7 +44,7 @@ function getCombinedName( env: Environment ): string {
 
 
 function getDistFolder() {
-	return path.resolve( getPackageConfig().theme_path + getPackageConfig().css_folder );
+	return path.resolve( getPackageConfig().css_folder );
 }
 
 /**
