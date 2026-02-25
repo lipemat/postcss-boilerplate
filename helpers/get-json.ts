@@ -5,9 +5,9 @@ import type {Environment} from './config';
 import {EnumModules} from './enum-modules';
 
 /**
- * Custom output of CSS modules JSON files to the `_css-modules-json` if not
- * using `combinedJson`. If using `combinedJson`, the results are combined into a
- * single `modules.json` file generated in the `css_folder`.
+ * Custom output of CSS modules JSON files.
+ * The results are combined into a single `modules.json` file generated
+ * in the `css_folder`.
  *
  * Excludes CSS modules from the global "pcss" directory.
  *
@@ -35,11 +35,6 @@ export function getJSON( env: Environment ) {
 			enums.addModuleToEnum( env );
 		}
 	};
-}
-
-
-function getModulesFolder( env: Environment ): string {
-	return 'production' === env ? '_css-modules-json/min/' : '_css-modules-json/';
 }
 
 
@@ -82,17 +77,6 @@ export class JsonModules {
 	 */
 	combinedJson( env: Environment ) {
 		JsonModules.content[ env ][ this.filePath.replace( this.cssName + '/', '' ) + this.cssName ] = this.json;
-	}
-
-	/**
-	 * Generate a .json file for each module in a separate
-	 * file, which matches the location of the origin module.
-	 *
-	 * @note Here for backwards compatibility. Not really using this anymore.
-	 */
-	moduleFile( env: Environment ) {
-		const jsonFileName = getPackageConfig().theme_path.replace( /\\/g, '/' ) + getModulesFolder( env ) + this.filePath.replace( this.cssName + '/', '' ) + this.cssName + '.json';
-		fse.outputJsonSync( jsonFileName, this.json );
 	}
 
 	/**

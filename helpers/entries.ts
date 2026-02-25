@@ -15,7 +15,7 @@ type Entries = {
 /**
  * Entry points to be loaded by Grunt.
  *
- * Checks each provided file for exists and includes if it does.
+ * Checks each provided file for existing and includes if it does.
  *
  * @see config/postcss-entries.js
  */
