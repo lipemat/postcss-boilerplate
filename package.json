@@ -37,7 +37,7 @@
   },
   "scripts": {
     "browserslist": "lipemat-postcss-boilerplate browserslist",
-    "pnp-fix": "lipemat-postcss-boilerplate fix-pnp",
+    "pnp-fix": "js-boilerplate-shared__fix-pnp",
     "test": "jest --config=jest/jest.config.ts",
     "validate-ts": "tsc --noEmit"
   },
