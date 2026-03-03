@@ -20,7 +20,6 @@ jest.mock( '@lipemat/js-boilerplate-shared/helpers/package-config.js', () => ( {
 		cssEnums: false,
 		// Point to our data directory for the theme_path.
 		theme_path: 'jest/theme/',
-		css_folder: 'jest/theme/css/dist/',
 	} ),
 } ) );
 
