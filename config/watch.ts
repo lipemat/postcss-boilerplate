@@ -1,6 +1,7 @@
 import fs from 'fs';
 import {getPackageConfig, type PackageConfig} from '@lipemat/js-boilerplate-shared/helpers/package-config.js';
 import {getDistFolder} from '../helpers/enum-modules';
+import {addTrailingSlash, removeTrailingSlash} from '@lipemat/js-boilerplate-shared/helpers/string.js';
 
 
 type Event = 'all' | 'changed' | 'added' | 'deleted';
@@ -48,10 +49,12 @@ if ( getPackageConfig().cssEnums ) {
 	postCSSTasks.push( 'caching:reload' );
 }
 
+const themePath: string = addTrailingSlash( packageConfig.theme_path );
+
 const config: WatchGruntTasks = {
 	postcss: {
 		files: packageConfig.pcssWatch.map( ( folder: string ) => {
-			return `${packageConfig.theme_path}${folder}/**/*.{pcss,css}`;
+			return addTrailingSlash( `${themePath}${removeTrailingSlash( folder )}` ) + `**/*.{pcss,css}`;
 		} ),
 		tasks: postCSSTasks,
 		options: {
@@ -61,7 +64,9 @@ const config: WatchGruntTasks = {
 	},
 	php: {
 		files: [
-			`${packageConfig.theme_path}**/*.php`,
+			...packageConfig.phpWatch.map( ( folder: string ): string => {
+				return addTrailingSlash( `${themePath}${removeTrailingSlash( folder )}` ) + `**/*.php`;
+			} ),
 			`!${getDistFolder( 'development', true )}/**/*.php`,
 		],
 		options: {
