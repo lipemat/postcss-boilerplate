@@ -3,6 +3,7 @@ import path from 'path';
 import fse from 'fs-extra';
 import type {Environment} from './config';
 import {EnumModules} from './enum-modules';
+import {addTrailingSlash, removeTrailingSlash} from '../../js-boilerplate-shared/helpers/string.js';
 
 /**
  * Custom output of CSS modules JSON files.
@@ -15,7 +16,7 @@ import {EnumModules} from './enum-modules';
  */
 export function getJSON( env: Environment ) {
 	return ( cssFileName: string, json: object ) => {
-		const filePath = path.relative( getPackageConfig().theme_path, cssFileName ).replace( /\\/g, '/' ) + '/';
+		const filePath = addTrailingSlash( path.relative( getPackageConfig().theme_path, cssFileName ) );
 		// Exclude global pcss directory.
 		if ( 'pcss' === filePath.substring( 0, 4 ) ) {
 			return;
@@ -43,8 +44,8 @@ function getCombinedName( env: Environment ): string {
 }
 
 
-function getDistFolder() {
-	return path.resolve( getPackageConfig().theme_path + getPackageConfig().css_folder );
+function getDistFolder(): string {
+	return addTrailingSlash( path.resolve( getPackageConfig().theme_path, getPackageConfig().css_folder ) );
 }
 
 /**
@@ -56,7 +57,7 @@ function getDistFolder() {
 export class JsonModules {
 	private readonly json: object;
 	private readonly cssName: string;
-	private filePath: string;
+	private readonly filePath: string;
 
 	private static content: object = {
 		production: {},
@@ -76,14 +77,14 @@ export class JsonModules {
 	 * Faster reading via PHP.
 	 */
 	combinedJson( env: Environment ) {
-		JsonModules.content[ env ][ this.filePath.replace( this.cssName + '/', '' ) + this.cssName ] = this.json;
+		JsonModules.content[ env ][ removeTrailingSlash( this.filePath ) ] = this.json;
 	}
 
 	/**
 	 * Flush the combined JSON file to disk.
 	 */
 	public static flushToDisk( env: Environment ) {
-		const combined = ( getDistFolder() + '/' + getCombinedName( env ) ).replace( /\\/g, '/' );
+		const combined = getDistFolder() + getCombinedName( env );
 		fse.outputJsonSync( combined, JsonModules.content[ env ] );
 	}
 

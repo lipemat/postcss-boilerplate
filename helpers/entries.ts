@@ -2,15 +2,18 @@ import {existsSync} from 'fs';
 import {resolve} from 'path';
 import {getPackageConfig} from '@lipemat/js-boilerplate-shared/helpers/package-config.js';
 import {getConfig} from './config';
-
-const config = getPackageConfig();
-const entries = getConfig( 'postcss-entries' );
+import {addTrailingSlash} from '../../js-boilerplate-shared/helpers/string.js';
 
 
 type Entries = {
 	min: Record<string, string>;
 	toCSS: Record<string, string>;
 };
+
+function getDistFolder(): string {
+	return addTrailingSlash( resolve( getPackageConfig().theme_path, getPackageConfig().css_folder ) );
+}
+
 
 /**
  * Entry points to be loaded by Grunt.
@@ -24,12 +27,14 @@ export function getEntries(): Entries {
 		min: {},
 		toCSS: {},
 	};
+	const config = getPackageConfig();
+	const entries = getConfig( 'postcss-entries' );
 
 	Object.values( entries ).forEach( possibleFile => {
 		const filePath = config.theme_path + 'pcss/' + possibleFile;
 		if ( existsSync( resolve( filePath + '.pcss' ) ) ) {
-			matches.toCSS[ config.css_folder + possibleFile + '.css' ] = config.theme_path + `pcss/${possibleFile}.pcss`;
-			matches.min[ config.css_folder + possibleFile + '.min.css' ] = config.theme_path + `pcss/${possibleFile}.pcss`;
+			matches.toCSS[ getDistFolder() + possibleFile + '.css' ] = config.theme_path + `pcss/${possibleFile}.pcss`;
+			matches.min[ getDistFolder() + possibleFile + '.min.css' ] = config.theme_path + `pcss/${possibleFile}.pcss`;
 		}
 	} );
 	return matches;
