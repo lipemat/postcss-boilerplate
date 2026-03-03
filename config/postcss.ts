@@ -1,6 +1,6 @@
 import {getGenerateScopeName} from '../helpers/css-classnames';
 import {getPackageConfig} from '@lipemat/js-boilerplate-shared/helpers/package-config.js';
-import {getEntries} from '../helpers/entries';
+import {getDistFolder, getEntries} from '../helpers/entries';
 import {type Environment, getExternalFiles} from '../helpers/config';
 import {getJSON} from '../helpers/get-json';
 import type {Plugin, ProcessOptions, Processor} from 'postcss';
@@ -8,6 +8,7 @@ import PrettyPlugin from '../lib/postcss-pretty';
 import postcssPresetEnv, {pluginOptions} from 'postcss-preset-env';
 import type {AtImportOptions} from 'postcss-import';
 import {getBrowsersList} from '@lipemat/js-boilerplate-shared/helpers/browserslist.js';
+import {addTrailingSlash} from '@lipemat/js-boilerplate-shared/helpers/string.js';
 
 const config = getPackageConfig();
 
@@ -108,7 +109,7 @@ const compileOptions: PostCSSConfig = {
 		require( 'postcss-hash' )( {
 			algorithm: 'md5',
 			trim: 20,
-			manifest: config.css_folder + '/manifest.json',
+			manifest: addTrailingSlash( getDistFolder() ) + 'manifest.json',
 			name: ( {hash} ) => hash,
 		} ),
 	],

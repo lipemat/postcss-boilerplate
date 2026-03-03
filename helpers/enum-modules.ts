@@ -17,7 +17,7 @@ import fse from 'fs-extra';
 export function getDistFolder( env: Environment, relativeOnly: boolean = false ): string {
 	const config = getPackageConfig();
 	if ( 'production' === env ) {
-		return path.resolve( config.theme_path + config.css_folder ).replace( /\\/g, '/' );
+		return path.resolve( config.theme_path, config.css_folder ).replace( /\\/g, '/' );
 	}
 
 	const directories = config.css_folder.split( '/' ).filter( ( part: string ) => '' !== part && '.' !== part );

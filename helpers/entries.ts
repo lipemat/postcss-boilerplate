@@ -10,8 +10,9 @@ type Entries = {
 	toCSS: Record<string, string>;
 };
 
-function getDistFolder(): string {
-	return addTrailingSlash( resolve( getPackageConfig().theme_path, getPackageConfig().css_folder ) );
+export function getDistFolder(): string {
+	const config = getPackageConfig();
+	return addTrailingSlash( resolve( config.theme_path, config.css_folder ) );
 }
 
 
