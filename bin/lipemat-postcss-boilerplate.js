@@ -16,9 +16,9 @@ switch ( script ) {
 	case 'fix-pnp':
 	case 'lint':
 	case 'start': {
-		// If the ts-node command is not available install it globally.
+		// If the ts-node command is not available, install it globally.
 		if ( spawn.sync( 'ts-node', [ '-v' ] ).error ) {
-			console.log( 'Installing ts-node globally.' );
+			console.debug( 'Installing ts-node globally.' );
 			spawn.sync( 'npm', [ 'install', '-g', 'ts-node' ] );
 		}
 
@@ -31,18 +31,18 @@ switch ( script ) {
 			{stdio: 'inherit'}
 		);
 		if ( result.error ) {
-			console.log( result.error );
+			console.error( result.error );
 			process.exit( 1 );
 		}
 		if ( result.signal ) {
 			if ( 'SIGKILL' === result.signal ) {
-				console.log(
+				console.error(
 					'The build failed because the process exited too early. ' +
 					'This probably means the system ran out of memory or someone called ' +
 					'`kill -9` on the process.'
 				);
 			} else if ( 'SIGTERM' === result.signal ) {
-				console.log(
+				console.error(
 					'The build failed because the process exited too early. ' +
 					'Someone might have called `kill` or `killall`, or the system could ' +
 					'be shutting down.'
@@ -54,7 +54,7 @@ switch ( script ) {
 		break;
 	}
 	default:
-		console.log( 'Unknown script "' + script + '".' );
-		console.log( 'Perhaps you need to update @lipemat/postcss-boilerplate?' );
+		console.error( 'Unknown script "' + script + '".' );
+		console.error( 'Perhaps you need to update @lipemat/postcss-boilerplate?' );
 		break;
 }
