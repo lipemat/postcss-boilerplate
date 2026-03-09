@@ -3,7 +3,10 @@
 exports[`postcss.js PostCSS config: develop 1`] = `
 {
   "min": {
-    "files": {},
+    "files": {
+      "jest/theme/css/dist/admin.min.css": "jest/theme/pcss/admin.pcss",
+      "jest/theme/css/dist/front-end.min.css": "jest/theme/pcss/front-end.pcss",
+    },
     "options": {
       "map": false,
       "parser": {
@@ -129,7 +132,10 @@ exports[`postcss.js PostCSS config: develop 1`] = `
     },
   },
   "toCSS": {
-    "files": {},
+    "files": {
+      "jest/theme/css/dist/admin.css": "jest/theme/pcss/admin.pcss",
+      "jest/theme/css/dist/front-end.css": "jest/theme/pcss/front-end.pcss",
+    },
     "options": {
       "map": true,
       "parser": {

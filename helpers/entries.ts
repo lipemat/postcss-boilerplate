@@ -1,5 +1,5 @@
 import {existsSync} from 'fs';
-import {resolve} from 'path';
+import {relative, resolve} from 'path';
 import {getPackageConfig} from '@lipemat/js-boilerplate-shared/helpers/package-config.js';
 import {getConfig} from './config';
 import {addTrailingSlash} from '@lipemat/js-boilerplate-shared/helpers/string.js';
@@ -12,7 +12,7 @@ type Entries = {
 
 export function getDistFolder(): string {
 	const config = getPackageConfig();
-	return addTrailingSlash( resolve( config.theme_path, config.css_folder ) );
+	return addTrailingSlash( relative( process.cwd(), resolve( config.theme_path, config.css_folder ) ) );
 }
 
 
