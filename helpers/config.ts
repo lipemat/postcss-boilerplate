@@ -35,7 +35,7 @@ export function getConfig<T extends keyof Configs>( fileName: T ): Configs[T] {
 	let config = require( '../config/' + fileName );
 	const packageConfig = getPackageConfig();
 	try {
-		const localConfig = require( path.resolve( packageConfig.workingDirectory + '/config', fileName ) );
+		const localConfig = require( path.resolve( packageConfig.workingDirectory, 'config', fileName ) );
 		if ( 'function' === typeof localConfig ) {
 			config = {...config, ...localConfig( config )};
 		} else {

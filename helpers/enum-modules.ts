@@ -3,10 +3,11 @@ import path from 'path';
 import {getPackageConfig} from '@lipemat/js-boilerplate-shared/helpers/package-config.js';
 import ejs from 'ejs';
 import fse from 'fs-extra';
+import {addTrailingSlash} from '../../js-boilerplate-shared/helpers/string.js';
 
 /**
  * - production: Get the dist folder from the package config.
- * - development: Get the top level folder from where the CSS is compiled.
+ * - development: Get the top-level folder from where the CSS is compiled.
  *
  * @example production: './css-root/dist/' => config.theme_path + 'css-root/dist'
  * @example development: './css-root/dist/' => config.theme_path + 'css-root'
@@ -21,7 +22,7 @@ export function getDistFolder( env: Environment, relativeOnly: boolean = false )
 	}
 
 	const directories = config.css_folder.split( '/' ).filter( ( part: string ) => '' !== part && '.' !== part );
-	const relativePath = config.theme_path + ( directories[ 0 ] ?? '' );
+	const relativePath = addTrailingSlash( config.theme_path ) + ( directories[ 0 ] ?? '' );
 
 	if ( relativeOnly ) {
 		return relativePath;
@@ -30,7 +31,7 @@ export function getDistFolder( env: Environment, relativeOnly: boolean = false )
 }
 
 export function getEnumFilePath( env: Environment ): string {
-	return ( getDistFolder( env ) + '/' + getCombinedName( env ) ).replace( /\\/g, '/' );
+	return ( addTrailingSlash( getDistFolder( env ) ) + getCombinedName( env ) ).replace( /\\/g, '/' );
 }
 
 
@@ -70,7 +71,7 @@ export class EnumModules {
 		this.filePath = filePath;
 		this.json = json;
 		if ( '' === EnumModules.template ) {
-			EnumModules.template = fse.readFileSync( __dirname + '/templates/module-enum.ejs', 'utf-8' );
+			EnumModules.template = fse.readFileSync( addTrailingSlash( __dirname ) + 'templates/module-enum.ejs', 'utf-8' );
 		}
 	}
 
@@ -79,7 +80,7 @@ export class EnumModules {
 	 */
 	addModuleToEnum( env: Environment ) {
 		if ( '' === EnumModules.content[ env ] ) {
-			EnumModules.content[ env ] = fse.readFileSync( __dirname + '/templates/module-enum-header.ejs', 'utf-8' );
+			EnumModules.content[ env ] = fse.readFileSync( addTrailingSlash( __dirname ) + 'templates/module-enum-header.ejs', 'utf-8' );
 		}
 
 		EnumModules.cssClasses = EnumModules.cssClasses.concat( Object.values( this.json ) );

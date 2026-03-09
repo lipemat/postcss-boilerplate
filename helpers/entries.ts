@@ -30,12 +30,13 @@ export function getEntries(): Entries {
 	};
 	const config = getPackageConfig();
 	const entries = getConfig( 'postcss-entries' );
+	const themePath = addTrailingSlash( config.theme_path );
 
 	Object.values( entries ).forEach( possibleFile => {
-		const filePath = config.theme_path + 'pcss/' + possibleFile;
+		const filePath = themePath + 'pcss/' + possibleFile;
 		if ( existsSync( resolve( filePath + '.pcss' ) ) ) {
-			matches.toCSS[ getDistFolder() + possibleFile + '.css' ] = config.theme_path + `pcss/${possibleFile}.pcss`;
-			matches.min[ getDistFolder() + possibleFile + '.min.css' ] = config.theme_path + `pcss/${possibleFile}.pcss`;
+			matches.toCSS[ getDistFolder() + possibleFile + '.css' ] = themePath + `pcss/${possibleFile}.pcss`;
+			matches.min[ getDistFolder() + possibleFile + '.min.css' ] = themePath + `pcss/${possibleFile}.pcss`;
 		}
 	} );
 	return matches;
