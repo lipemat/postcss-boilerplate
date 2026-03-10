@@ -1,5 +1,6 @@
 import {getPackageConfig} from '@lipemat/js-boilerplate-shared/helpers/package-config.js';
 import type {LinterOptions} from 'stylelint';
+import {addTrailingSlash} from '../../js-boilerplate-shared/helpers/string.js';
 
 const minimist = require( 'minimist' );
 
@@ -30,7 +31,7 @@ const config: StylelintGruntTasks = {
 		options: {
 			cache: true,
 			cacheStrategy: 'content',
-			configFile: `${themePath}.stylelintrc`,
+			configFile: addTrailingSlash( getPackageConfig().packageDirectory ) + '.stylelintrc',
 			formatter: 'string',
 			ignoreDisables: false,
 			failOnError: true,
