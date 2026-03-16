@@ -5,6 +5,7 @@ import type {PostCSSGruntTasks} from '../../../config/postcss';
 
 import browserslist from 'browserslist';
 import postcssPresetEnv from 'postcss-preset-env';
+import {modifyConfig} from '../../setup';
 
 export type Fixture = {
 	input: string;
@@ -12,17 +13,6 @@ export type Fixture = {
 	basename: string;
 	description: string;
 }
-
-let mockShortCssClasses = true;
-
-jest.mock( '@lipemat/js-boilerplate-shared/helpers/package-config.js', () => ( {
-	...jest.requireActual( '@lipemat/js-boilerplate-shared/helpers/package-config.js' ),
-	getPackageConfig: () => ( {
-		...jest.requireActual( '@lipemat/js-boilerplate-shared/helpers/package-config.js' ).getPackageConfig(),
-		shortCssClasses: mockShortCssClasses,
-	} ),
-} ) );
-
 
 const creator = ( browsers: string[], features = {} ) => {
 	return postcssPresetEnv( {
@@ -33,7 +23,7 @@ const creator = ( browsers: string[], features = {} ) => {
 
 
 function getPostCSSConfig(): PostCSSGruntTasks {
-	// @ts-ignore
+	// @ts-expect-error TS2739 - {} is not of type 'PostCSSGruntTasks'.
 	let config: PostCSSGruntTasks = {};
 	jest.isolateModules( () => {
 		config = require( '../../../config/postcss' );
@@ -43,11 +33,12 @@ function getPostCSSConfig(): PostCSSGruntTasks {
 
 
 function processPostCSS( input: string, min: boolean = false, file: string ): Promise<postcss.Result> {
-	mockShortCssClasses = false;
+	modifyConfig( {
+		shortCssClasses: false,
+	} );
 
 	const config = getPostCSSConfig();
 
-	mockShortCssClasses = true;
 
 	const task = min ? 'min' : 'toCSS';
 	const plugins = config[ task ].options.processors;
@@ -62,11 +53,16 @@ function processPostCSS( input: string, min: boolean = false, file: string ): Pr
 	}
 
 
-	return postcss( plugins ).process( input, {
+	const result = postcss( plugins ).process( input, {
 		from: file,
 		to: 'test.css',
 		parser: config[ task ].options.parser,
 	} );
+
+	modifyConfig( {
+		shortCssClasses: true,
+	} );
+	return result;
 }
 
 function cleanCSS( css: string ): string {
