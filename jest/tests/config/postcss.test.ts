@@ -13,6 +13,17 @@ export type Fixture = {
 	description: string;
 }
 
+let mockShortCssClasses = true;
+
+jest.mock( '@lipemat/js-boilerplate-shared/helpers/package-config.js', () => ( {
+	...jest.requireActual( '@lipemat/js-boilerplate-shared/helpers/package-config.js' ),
+	getPackageConfig: () => ( {
+		...jest.requireActual( '@lipemat/js-boilerplate-shared/helpers/package-config.js' ).getPackageConfig(),
+		shortCssClasses: mockShortCssClasses,
+	} ),
+} ) );
+
+
 const creator = ( browsers: string[], features = {} ) => {
 	return postcssPresetEnv( {
 		browsers,
@@ -32,9 +43,15 @@ function getPostCSSConfig(): PostCSSGruntTasks {
 
 
 function processPostCSS( input: string, min: boolean = false, file: string ): Promise<postcss.Result> {
+	mockShortCssClasses = false;
+
 	const config = getPostCSSConfig();
+
+	mockShortCssClasses = true;
+
 	const task = min ? 'min' : 'toCSS';
 	const plugins = config[ task ].options.processors;
+
 
 	// Prevent the manifest.json from being emitted.
 	const hashIndex = plugins.findIndex( ( plugin: Plugin ) => {
@@ -43,6 +60,7 @@ function processPostCSS( input: string, min: boolean = false, file: string ): Pr
 	if ( hashIndex > -1 ) {
 		plugins.splice( hashIndex, 1 );
 	}
+
 
 	return postcss( plugins ).process( input, {
 		from: file,
@@ -62,8 +80,18 @@ function getBrowsersPlugin( plugins: Plugin[] ): { plugins: Plugin[] } {
 }
 
 // Create a data provider for fixtures.
-const fixtures: Fixture[] = require( 'glob' )
+const postcssFixtures: Fixture[] = require( 'glob' )
 	.sync( 'jest/fixtures/{postcss,safari-15}/*.pcss' )
+	.map( file => {
+		return {
+			basename: path.basename( file ),
+			input: file,
+			output: file.replace( '.pcss', '.css' ),
+			description: file.replace( /\\/g, '/' ).replace( 'jest/fixtures/', '' ),
+		};
+	} );
+const postcssModuleFixtures: Fixture[] = require( 'glob' )
+	.sync( 'jest/fixtures/css-modules/*.pcss' )
 	.map( file => {
 		return {
 			basename: path.basename( file ),
@@ -147,7 +175,7 @@ describe( 'postcss.js', () => {
 		} ).length ).toEqual( 0 );
 	} );
 
-	test.each( fixtures )( 'PostCSS fixtures ( $description )', async fixture => {
+	test.each( postcssFixtures )( 'PostCSS fixtures: raw ( $description )', async fixture => {
 		if ( fixture.input.includes( 'safari-15' ) ) {
 			process.env.BROWSERSLIST = 'safari 15';
 		}
@@ -159,6 +187,25 @@ describe( 'postcss.js', () => {
 
 		result = await processPostCSS( input, true, fixture.input );
 		output = readFileSync( fixture.output.replace( '.css', '.raw.min.css' ), 'utf8' );
+		expect( cleanCSS( result.css ) ).toEqual( output.trim() );
+	} );
+
+	/**
+	 * PostCSS Modules are translated during @import statements.
+	 * We use separate fixtures to @import from primary CSS files and validate the finished .css.
+	 */
+	test.each( postcssModuleFixtures )( 'PostCSS Module fixtures ( $description )', async fixture => {
+		if ( fixture.input.includes( 'safari-15' ) ) {
+			process.env.BROWSERSLIST = 'safari 15';
+		}
+
+		const input = readFileSync( fixture.input, 'utf8' );
+		let output = readFileSync( fixture.output, 'utf8' );
+		let result = await processPostCSS( input, false, fixture.input );
+		expect( cleanCSS( result.css ) ).toEqual( output.trim() );
+
+		result = await processPostCSS( input, true, fixture.input );
+		output = readFileSync( fixture.output.replace( '.css', '.min.css' ), 'utf8' );
 		expect( cleanCSS( result.css ) ).toEqual( output.trim() );
 	} );
 } );

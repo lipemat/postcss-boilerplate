@@ -1,7 +1,0 @@
-.Ⓜfocus-visible__focused__Lr :root {
-	--color: lemonchiffon;
-}
-
-.Ⓜfocus-visible__focused__Lr:focus-visible {
-	outline: var(--color);
-}

@@ -1,0 +1,60 @@
+.Ⓜfocus-visible__focused__eU :root {
+	--color: lemonchiffon;
+}
+
+.Ⓜfocus-visible__focused__eU:global(.focus-visible) {
+	outline: var(--color);
+}
+
+.Ⓜfocus-visible__focused__eU:focus-visible {
+	outline: var(--color);
+}
+
+.Ⓜmedia-queries__genesis-nav-menu__ng {
+	background: teal;
+}
+
+.Ⓜmedia-queries__header__fW {
+	background: chocolate;
+}
+
+@media (any-hover: hover) {
+	.Ⓜmedia-queries__genesis-nav-menu__ng:hover ul {
+		background: purple;
+	}
+}
+
+@media (hover: hover) {
+	.Ⓜmedia-queries__second__VI:hover {
+		display: none;
+	}
+}
+
+@media (max-width: 960px) {
+	.Ⓜmedia-queries__genesis-nav-menu__ng {
+		float: none
+	}
+}
+
+@media (max-width: 800px) {
+	.Ⓜmedia-queries__genesis-nav-menu__ng {
+		display: none
+	}
+}
+
+@media (max-width: 480px) {
+	.Ⓜmedia-queries__genesis-nav-menu__ng {
+		display: inline-flex
+	}
+	@media (hover: hover) {
+		.Ⓜmedia-queries__genesis-nav-menu__ng:hover ul {
+			background: red;
+		}
+	}
+}
+
+@media print {
+	.Ⓜmedia-queries__genesis-nav-menu__ng {
+		display: none
+	}
+}
