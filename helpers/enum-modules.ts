@@ -3,7 +3,7 @@ import path from 'path';
 import {getPackageConfig} from '@lipemat/js-boilerplate-shared/helpers/package-config.js';
 import ejs from 'ejs';
 import fse from 'fs-extra';
-import {addTrailingSlash} from '../../js-boilerplate-shared/helpers/string.js';
+import {addTrailingSlash} from '@lipemat/js-boilerplate-shared/helpers/string.js';
 
 /**
  * - production: Get the dist folder from the package config.
