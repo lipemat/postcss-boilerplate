@@ -64,6 +64,7 @@
     "postcss": "^8.4.38",
     "postcss-color-mod-function": "^4.1.1",
     "postcss-custom-media": "^8.0.1",
+    "postcss-global-nested": "^1.2.0",
     "postcss-hash": "^3.0.0",
     "postcss-import": "^15.1.0",
     "postcss-modules": "^6.0.1",
