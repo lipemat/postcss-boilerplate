@@ -8,6 +8,7 @@ import type {CompressGruntTasks} from '../config/compress';
 import type {PostcssEntries} from '../config/postcss-entries';
 import type {WatchGruntTasks} from '../config/watch';
 import type {StylelintGruntTasks} from '../config/stylelint';
+import {mergeWithLocalConfig} from '../../js-boilerplate-shared/helpers/config';
 
 export type Environment = 'production' | 'development';
 
@@ -32,23 +33,9 @@ type Configs = {
  * is specified with the project's file.
  */
 export function getConfig<T extends keyof Configs>( fileName: T ): Configs[T] {
-	let config = require( '../config/' + fileName );
-	const packageConfig = getPackageConfig();
-	try {
-		const localConfig = require( path.resolve( packageConfig.workingDirectory, 'config', fileName ) );
-		if ( 'function' === typeof localConfig ) {
-			config = {...config, ...localConfig( config )};
-		} else {
-			config = {...config, ...localConfig};
-		}
-	} catch ( e ) {
-		if ( e instanceof Error ) {
-			if ( ! ( 'code' in e ) || ( 'MODULE_NOT_FOUND' !== e.code && 'ERR_MODULE_NOT_FOUND' !== e.code ) ) {
-				console.error( e );
-			}
-		}
-	}
-	return config;
+	const config = require( '../config/' + fileName );
+
+	return mergeWithLocalConfig<Configs[T]>( fileName, config );
 }
 
 
