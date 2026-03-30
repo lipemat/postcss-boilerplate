@@ -1,14 +1,14 @@
 import fs from 'fs';
 import path from 'path';
-
+import {mergeWithLocalConfig} from '@lipemat/js-boilerplate-shared/helpers/config.js';
 import {getPackageConfig} from '@lipemat/js-boilerplate-shared/helpers/package-config.js';
+
 import type {PostCSSGruntTasks} from '../config/postcss';
 import type {CachingGruntTasks} from '../config/caching';
 import type {CompressGruntTasks} from '../config/compress';
 import type {PostcssEntries} from '../config/postcss-entries';
 import type {WatchGruntTasks} from '../config/watch';
 import type {StylelintGruntTasks} from '../config/stylelint';
-import {mergeWithLocalConfig} from '../../js-boilerplate-shared/helpers/config';
 
 export type Environment = 'production' | 'development';
 
