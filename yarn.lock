@@ -2,7 +2,7 @@
 # Manual changes might be lost - proceed with caution!
 
 __metadata:
-  version: 8
+  version: 10
   cacheKey: 10c0
 
 "@ampproject/remapping@npm:^2.2.0":
@@ -2275,13 +2275,47 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@lipemat/js-boilerplate-shared@npm:^1.0.2":
+  version: 1.0.2
+  resolution: "@lipemat/js-boilerplate-shared@npm:1.0.2"
+  dependencies:
+    "@babel/preset-env": "npm:^7.28.5"
+    "@babel/preset-typescript": "npm:^7.28.5"
+    "@csstools/postcss-global-data": "npm:2.0.0"
+    "@types/clean-css": "npm:^4.2.11"
+    "@types/postcss-load-config": "npm:^3.0.1"
+    "@types/postcss-preset-env": "npm:^7.7.0"
+    "@types/webpack": "npm:^5.28.5"
+    "@wordpress/browserslist-config": "npm:^6.47.0"
+    babel-plugin-transform-import-meta: "npm:^2.3.3"
+    browserslist: "npm:^4.28.1"
+    clean-css: "npm:^5.3.3"
+    core-js: "npm:^3.33.1"
+    glob: "npm:^13.0.0"
+    postcss: "npm:^8.5.10"
+    postcss-color-mod-function: "npm:^4.1.1"
+    postcss-custom-media: "npm:^8.0.1"
+    postcss-import: "npm:^15.1.0"
+    postcss-loader: "npm:^8.1.1"
+    postcss-nested: "npm:^5.0.6"
+    postcss-preset-env: "npm:^7.8.3"
+    postcss-scss: "npm:^4.0.4"
+    postcss-sort-media-queries: "npm:^5.2.0"
+  peerDependencies:
+    typescript: ^5.9.3
+  bin:
+    js-boilerplate-shared__fix-pnp: bin/fix-pnp.js
+  checksum: 10c0/c786d27a59e1e65032ab76f779f81b9cb33f532db157006d329c61d3a43730fbc8742caf7996751519083b0fe0c484cc221fcfe1a3923351753be30a979c0e60
+  languageName: node
+  linkType: hard
+
 "@lipemat/postcss-boilerplate@workspace:.":
   version: 0.0.0-use.local
   resolution: "@lipemat/postcss-boilerplate@workspace:."
   dependencies:
     "@csstools/postcss-global-data": "npm:^2.0.1"
     "@lipemat/eslint-config": "npm:^5.2.0"
-    "@lipemat/js-boilerplate-shared": "npm:^1.0.0"
+    "@lipemat/js-boilerplate-shared": "npm:^1.0.2"
     "@lipemat/stylelint-config": "npm:^2.3.0"
     "@lodder/grunt-postcss": "npm:^3.1.1"
     "@types/ejs": "npm:^3.1.5"
@@ -2292,7 +2326,7 @@ __metadata:
     "@types/node": "npm:^22.19.3"
     "@types/postcss-import": "npm:^14.0.3"
     "@types/postcss-preset-env": "npm:7.7.0"
-    "@wordpress/browserslist-config": "npm:^5.19.0"
+    "@wordpress/browserslist-config": "npm:^6.47.0"
     clean-css: "npm:^5.3.0"
     cross-spawn: "npm:^7.0.6"
     ejs: "npm:^3.1.9"
@@ -2305,7 +2339,7 @@ __metadata:
     grunt-stylelint: "npm:^0.10.1"
     jest: "npm:^29"
     minimist: "npm:^1.2.8"
-    postcss: "npm:^8.4.38"
+    postcss: "npm:^8.5.10"
     postcss-color-mod-function: "npm:^4.1.1"
     postcss-custom-media: "npm:^8.0.1"
     postcss-global-nested: "npm:^1.2.0"
@@ -3329,17 +3363,17 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@wordpress/browserslist-config@npm:^5.19.0":
-  version: 5.41.0
-  resolution: "@wordpress/browserslist-config@npm:5.41.0"
-  checksum: 10c0/cf9be582251645c6f27c61c6db6d6141574c0848abcfdfcf80c42c543e408f7a70f11727be0a4a43a5d6e37b42235a4d2a3c678ca66819f9192e95abf4c68518
-  languageName: node
-  linkType: hard
-
 "@wordpress/browserslist-config@npm:^6.41.0":
   version: 6.41.0
   resolution: "@wordpress/browserslist-config@npm:6.41.0"
   checksum: 10c0/6a9c5ca320359fb53fddf87a971678603cd7758b52c2ee887add84ec4ca976a75a1be8a93d4a37f76d223799fab434037c71bc509e14ae84874b10741eb9fdf7
+  languageName: node
+  linkType: hard
+
+"@wordpress/browserslist-config@npm:^6.47.0":
+  version: 6.47.0
+  resolution: "@wordpress/browserslist-config@npm:6.47.0"
+  checksum: 10c0/295d05a7ea9d3318a1e9e9dba0c4b43854987e9b3b2c26248604e641e05eb827dd09748377390bb0623055a2be617a1350e6b1a46ba842039b266adabd117bca
   languageName: node
   linkType: hard
 
@@ -8371,6 +8405,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"nanoid@npm:^3.3.12":
+  version: 3.3.12
+  resolution: "nanoid@npm:3.3.12"
+  bin:
+    nanoid: bin/nanoid.cjs
+  checksum: 10c0/ba142b7b39e11e80c16dd74b0365d407880c87c1cf7e1480956981ae940ee36060fa5b6f092cd1e315184dd19244c657bd017d03327bd3c62247d691c5e8edfb
+  languageName: node
+  linkType: hard
+
 "natural-compare@npm:^1.4.0":
   version: 1.4.0
   resolution: "natural-compare@npm:1.4.0"
@@ -9522,7 +9565,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"postcss@npm:^8.0.0, postcss@npm:^8.4.14, postcss@npm:^8.4.19, postcss@npm:^8.4.32, postcss@npm:^8.4.38, postcss@npm:^8.4.47, postcss@npm:^8.5.0":
+"postcss@npm:^8.0.0, postcss@npm:^8.4.14, postcss@npm:^8.4.19, postcss@npm:^8.4.32, postcss@npm:^8.4.47, postcss@npm:^8.5.0":
   version: 8.5.8
   resolution: "postcss@npm:8.5.8"
   dependencies:
@@ -9530,6 +9573,17 @@ __metadata:
     picocolors: "npm:^1.1.1"
     source-map-js: "npm:^1.2.1"
   checksum: 10c0/dd918f7127ee7c60a0295bae2e72b3787892296e1d1c3c564d7a2a00c68d8df83cadc3178491259daa19ccc54804fb71ed8c937c6787e08d8bd4bedf8d17044c
+  languageName: node
+  linkType: hard
+
+"postcss@npm:^8.5.10":
+  version: 8.5.15
+  resolution: "postcss@npm:8.5.15"
+  dependencies:
+    nanoid: "npm:^3.3.12"
+    picocolors: "npm:^1.1.1"
+    source-map-js: "npm:^1.2.1"
+  checksum: 10c0/7f2e63ae22fbe43aace1bf652bd99da4e90737c64194d49e51ddc9cd0f9e51ff2861a7d734379b494deffa03a880a5c65eec70bc29ee9ebaa7136dde3eee8f31
   languageName: node
   linkType: hard
 

@@ -41,8 +41,8 @@ const presetEnv: pluginOptions = {
 	features: {},
 };
 
-// Get a list of included postcss plugins based no the browsers list.
-const postcssProcessor = postcssPresetEnv( presetEnv ) as Processor;
+// Get a list of included postcss plugins based on the browser's list.
+const postcssProcessor = postcssPresetEnv( presetEnv ) as Pick<Processor, 'plugins'>;
 const includedPlugins: string[] = postcssProcessor.plugins.map( ( plugin: Processor['plugins'][number] ) => {
 	return 'postcssPlugin' in plugin ? plugin.postcssPlugin : '';
 } );
@@ -53,7 +53,7 @@ if ( 'object' === typeof presetEnv.features && includedPlugins.includes( 'postcs
 		/**
 		 * Fixes `focus-visible` feature for CSS modules.
 		 *
-		 * Only needed if our browsers list includes non-supported browsers
+		 * Only needed if our browser's list includes non-supported browsers
 		 * such as Safari 15.3 and below.
 		 *
 		 * Requires `focus-visible` polyfill to be loaded externally.
