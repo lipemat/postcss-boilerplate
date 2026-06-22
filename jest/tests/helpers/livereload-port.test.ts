@@ -1,5 +1,14 @@
+import fs from 'fs';
 import net from 'net';
+import os from 'os';
+import path from 'path';
 import {getLiveReloadPort, LIVERELOAD_PORT_RANGE, LIVERELOAD_PORT_START} from '../../../helpers/livereload-port';
+
+const RESERVATION_DIR = path.join( os.tmpdir(), 'lipemat-livereload' );
+
+afterEach( () => {
+	fs.rmSync( RESERVATION_DIR, {recursive: true, force: true} );
+} );
 
 /**
  * Occupy a real port so the resolver must skip it.
@@ -34,11 +43,12 @@ function releasePort( server: net.Server ): Promise<void> {
 }
 
 describe( 'livereload-port helper', () => {
-	it( 'returns the first port when the range is free', async() => {
+	it( 'returns the first port when the range is free', async () => {
 		expect( await getLiveReloadPort() ).toBe( LIVERELOAD_PORT_START );
 	} );
 
-	it( 'skips occupied ports and returns the next free one', async() => {
+
+	it( 'skips occupied ports and returns the next free one', async () => {
 		const occupied = await occupyPort( LIVERELOAD_PORT_START );
 		try {
 			expect( await getLiveReloadPort() ).toBe( LIVERELOAD_PORT_START + 1 );
@@ -47,7 +57,14 @@ describe( 'livereload-port helper', () => {
 		}
 	} );
 
-	it( 'throws when every port in the range is in use', async() => {
+
+	it( 'reserves the port so a parallel allocation cannot reuse it', async () => {
+		expect( await getLiveReloadPort() ).toBe( LIVERELOAD_PORT_START );
+		expect( await getLiveReloadPort() ).toBe( LIVERELOAD_PORT_START + 1 );
+	} );
+
+
+	it( 'throws when every port in the range is in use', async () => {
 		const servers: net.Server[] = [];
 		try {
 			for ( let port = LIVERELOAD_PORT_START; port < LIVERELOAD_PORT_START + LIVERELOAD_PORT_RANGE; port++ ) {

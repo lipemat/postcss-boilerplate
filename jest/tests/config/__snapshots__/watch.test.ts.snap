@@ -8,7 +8,9 @@ exports[`Test watch config matches snapshot 1`] = `
       "!./css/**/*.php",
     ],
     "options": {
-      "livereload": 35729,
+      "livereload": {
+        "port": 35729,
+      },
     },
   },
   "postcss": {
@@ -38,7 +40,9 @@ exports[`Test watch config matches snapshot 2`] = `
       "!./css/**/*.php",
     ],
     "options": {
-      "livereload": 35729,
+      "livereload": {
+        "port": 35729,
+      },
     },
   },
   "postcss": {
@@ -69,7 +73,9 @@ exports[`Test watch config matches snapshot 3`] = `
       "!./css/**/*.php",
     ],
     "options": {
-      "livereload": 35729,
+      "livereload": {
+        "port": 35729,
+      },
     },
   },
   "postcss": {
