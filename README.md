@@ -64,3 +64,19 @@ If you are using https in your local environment, you may point to the certifica
 ```
 
 If certificates are provided, live reload will load via https. You'll want to point your livereload script https, and the domain of certificates origin.
+
+## Live Reload Port
+
+Each `start` run claims the first free LiveReload port in the range `35729`-`35748`, allowing up to 20 worktrees to run their dev servers in parallel. If all 20 ports are in use, `start` fails immediately.
+
+The chosen port is written to a `.running` JSON file in the CSS dist folder while `start` is active and removed on exit:
+
+```json
+{
+  "pid": 12345,
+  "port": 35730,
+  "started": "2026-06-22T00:00:00.000Z"
+}
+```
+
+PHP reads this file via `Lipe\Lib\Theme\Resources::live_reload()` to point the LiveReload script at the correct port for the current worktree, falling back to `35729` when the file is absent.

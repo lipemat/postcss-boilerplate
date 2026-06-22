@@ -1,10 +1,13 @@
 import fs from 'fs';
 import {getPackageConfig, type PackageConfig} from '@lipemat/js-boilerplate-shared/helpers/package-config.js';
 import {getDistFolder} from '../helpers/enum-modules';
+import {LIVERELOAD_PORT_START} from '../helpers/livereload-port';
 import {addTrailingSlash, removeTrailingSlash} from '@lipemat/js-boilerplate-shared/helpers/string.js';
 
 
 type Event = 'all' | 'changed' | 'added' | 'deleted';
+
+type LiveReload = boolean | { cert?: string; key?: string; port: number };
 
 type Task = {
 	files: string[];
@@ -16,7 +19,7 @@ type Task = {
 		event?: Event | Event[];
 		forever?: boolean;
 		interval?: number;
-		livereload?: boolean | PackageConfig['certificates'];
+		livereload?: LiveReload;
 		reload?: boolean;
 		spawn?: boolean;
 	};
@@ -29,10 +32,17 @@ export type WatchGruntTasks = {
 };
 
 const packageConfig: PackageConfig = getPackageConfig();
-let livereload: boolean | PackageConfig['certificates'] = true;
+const liveReloadPort: number = 'undefined' !== typeof process.env.LIPEMAT_LIVERELOAD_PORT
+	? Number( process.env.LIPEMAT_LIVERELOAD_PORT )
+	: LIVERELOAD_PORT_START;
+let livereload: LiveReload = {
+	port: liveReloadPort,
+};
+
 // Load local certificates for https if available.
 if ( 'object' === typeof ( packageConfig.certificates ) && 'development' === process.env.NODE_ENV ) {
 	livereload = {
+		port: liveReloadPort,
 		cert: fs.readFileSync( packageConfig.certificates.cert ).toString(),
 		key: fs.readFileSync( packageConfig.certificates.key ).toString(),
 	};
