@@ -2,7 +2,7 @@ import fs from 'fs';
 import {getPackageConfig, type PackageConfig} from '@lipemat/js-boilerplate-shared/helpers/package-config.js';
 import {getDistFolder} from '../helpers/enum-modules';
 import {LIVERELOAD_PORT_START} from '../helpers/livereload-port';
-import {addTrailingSlash, removeTrailingSlash} from '@lipemat/js-boilerplate-shared/helpers/string.js';
+import {addTrailingSlash, removeTrailingSlash} from '@lipemat/js-helpers';
 
 
 type Event = 'all' | 'changed' | 'added' | 'deleted';

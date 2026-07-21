@@ -43,7 +43,8 @@
   },
   "dependencies": {
     "@csstools/postcss-global-data": "^2.0.1",
-    "@lipemat/js-boilerplate-shared": "^1.0.2",
+    "@lipemat/js-boilerplate-shared": "^1.1.1",
+    "@lipemat/js-helpers": "^1.3.1",
     "@lipemat/stylelint-config": "^2.3.0",
     "@lodder/grunt-postcss": "^3.1.1",
     "@types/ejs": "^3.1.5",

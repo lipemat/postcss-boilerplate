@@ -3,7 +3,7 @@ import path from 'path';
 import fse from 'fs-extra';
 import type {Environment} from './config';
 import {EnumModules} from './enum-modules';
-import {addTrailingSlash, removeTrailingSlash} from '@lipemat/js-boilerplate-shared/helpers/string.js';
+import {addTrailingSlash, removeTrailingSlash} from '@lipemat/js-helpers';
 
 /**
  * Custom output of CSS modules JSON files.

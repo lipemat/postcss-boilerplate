@@ -8,7 +8,7 @@ import PrettyPlugin from '../lib/postcss-pretty';
 import postcssPresetEnv, {pluginOptions} from 'postcss-preset-env';
 import type {AtImportOptions} from 'postcss-import';
 import {getBrowsersList} from '@lipemat/js-boilerplate-shared/helpers/browserslist.js';
-import {addTrailingSlash} from '@lipemat/js-boilerplate-shared/helpers/string.js';
+import {addTrailingSlash} from '@lipemat/js-helpers';
 
 const config = getPackageConfig();
 

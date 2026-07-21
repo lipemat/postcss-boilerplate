@@ -2,8 +2,7 @@ import {existsSync} from 'fs';
 import {relative, resolve} from 'path';
 import {getPackageConfig} from '@lipemat/js-boilerplate-shared/helpers/package-config.js';
 import {getConfig} from './config';
-import {addTrailingSlash} from '@lipemat/js-boilerplate-shared/helpers/string.js';
-
+import {addTrailingSlash} from '@lipemat/js-helpers';
 
 type Entries = {
 	min: Record<string, string>;

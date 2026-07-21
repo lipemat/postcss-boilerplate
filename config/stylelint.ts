@@ -1,6 +1,6 @@
 import {getPackageConfig} from '@lipemat/js-boilerplate-shared/helpers/package-config.js';
 import type {LinterOptions} from 'stylelint';
-import {addTrailingSlash} from '@lipemat/js-boilerplate-shared/helpers/string.js';
+import {addTrailingSlash} from '@lipemat/js-helpers';
 
 const minimist = require( 'minimist' );
 
