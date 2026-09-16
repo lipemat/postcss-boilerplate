@@ -5,9 +5,9 @@ declare module 'tiny-lr' {
 	}
 
 	interface Server {
-		listen( port: number, callback?: () => void ): void;
+		listen: ( port: number, callback?: () => void ) => void;
 
-		changed( done: () => void ): void;
+		changed: ( done: () => void ) => void;
 	}
 
 	interface TinyLR {
@@ -15,7 +15,7 @@ declare module 'tiny-lr' {
 
 		Server: Server;
 
-		changed( filePath: string, done?: () => void ): void;
+		changed: ( filePath: string, done?: () => void ) => void;
 	}
 
 	const tinyLR: TinyLR;
