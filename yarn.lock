@@ -3296,17 +3296,17 @@ __metadata:
     "@wordpress/browserslist-config": "npm:^6.47.0"
     clean-css: "npm:^5.3.0"
     cross-spawn: "npm:^7.0.6"
-    ejs: "npm:^3.1.9"
+    ejs: "npm:^3.1.10"
     eslint: "npm:^9"
     fs-extra: "npm:^7.0.1"
     glob: "npm:11.1.0"
-    grunt: "npm:^1.0.4"
+    grunt: "npm:^1.6.3"
     grunt-contrib-compress: "npm:^2.0.0"
     grunt-contrib-watch: "npm:^1.1.0"
     grunt-stylelint: "npm:^0.10.1"
     jest: "npm:^29"
     minimist: "npm:^1.2.8"
-    postcss: "npm:^8.5.10"
+    postcss: "npm:^8.5.23"
     postcss-color-mod-function: "npm:^4.1.1"
     postcss-custom-media: "npm:^8.0.1"
     postcss-global-nested: "npm:^1.2.0"
@@ -6237,7 +6237,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"ejs@npm:^3.1.9":
+"ejs@npm:^3.1.10":
   version: 3.1.10
   resolution: "ejs@npm:3.1.10"
   dependencies:
@@ -7782,7 +7782,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"grunt@npm:^1.0.4":
+"grunt@npm:^1.6.3":
   version: 1.6.3
   resolution: "grunt@npm:1.6.3"
   dependencies:
@@ -11036,7 +11036,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"postcss@npm:^8.0.0, postcss@npm:^8.4.14, postcss@npm:^8.4.19, postcss@npm:^8.4.32, postcss@npm:^8.5.0, postcss@npm:^8.5.10":
+"postcss@npm:^8.0.0, postcss@npm:^8.4.14, postcss@npm:^8.4.19, postcss@npm:^8.4.32, postcss@npm:^8.5.0, postcss@npm:^8.5.10, postcss@npm:^8.5.23":
   version: 8.5.28
   resolution: "postcss@npm:8.5.28"
   dependencies:
