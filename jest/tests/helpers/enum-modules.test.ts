@@ -114,6 +114,41 @@ describe( 'cssModuleEnums', () => {
 		expect( mockEnumContents ).toEqual( expected );
 	} );
 
+	test( 'Module imported by multiple entries', () => {
+		const expected = fs.readFileSync( 'jest/fixtures/css-module-enums/module-enums.inc', 'utf-8' );
+		const navJson = {
+			wrap: 'Ⓜnav__wrap__Jm Ⓜtest__purple-bg__ug',
+			'global-composes': 'Ⓜnav__global-composes__bw site-title nothing',
+			extra: 'Ⓜnav__extra__Ih',
+		};
+		const deeperJson = {
+			'global-composes': 'Ⓜdeeper__global-composes__bw nothing',
+			extra: 'Ⓜdeeper__extra__Ih',
+		};
+
+		for ( const env of [ 'production', 'development' ] as const ) {
+			new EnumModules( 'template-parts/nav.pcss/', navJson ).addModuleToEnum( env );
+			new EnumModules( 'template-parts/header/deeper.pcss/', deeperJson ).addModuleToEnum( env );
+			new EnumModules( 'template-parts/nav.pcss/', navJson ).addModuleToEnum( env );
+			new EnumModules( 'template-parts/header/deeper.pcss/', deeperJson ).addModuleToEnum( env );
+			EnumModules.flushToDisk( env );
+			expect( mockEnumContents ).toEqual( expected );
+		}
+		expect( EnumModules.getCssClasses() ).toStrictEqual( [
+			...Object.values( navJson ),
+			...Object.values( deeperJson ),
+			...Object.values( navJson ),
+			...Object.values( deeperJson ),
+		] );
+
+		EnumModules._resetContent();
+		new EnumModules( 'template-parts/nav.pcss/', navJson ).addModuleToEnum( 'production' );
+		new EnumModules( 'template-parts/header/deeper.pcss/', deeperJson ).addModuleToEnum( 'production' );
+		EnumModules.flushToDisk( 'production' );
+		expect( mockEnumContents ).toEqual( expected );
+	} );
+
+
 	test( 'No contents to write', () => {
 		const consoleSpy = jest.spyOn( console, 'warn' ).mockImplementation( () => {
 		} );

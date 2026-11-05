@@ -65,6 +65,15 @@ export class EnumModules {
 
 	private static cssClasses: string[] = [];
 
+	/**
+	 * File paths of modules already added, so a module imported
+	 * by multiple entries is only declared once.
+	 */
+	private static added: Record<Environment, Set<string>> = {
+		production: new Set(),
+		development: new Set(),
+	};
+
 	private static template = '';
 
 	constructor( filePath: string, json: object ) {
@@ -79,6 +88,11 @@ export class EnumModules {
 	 * Add the module to the combined PHP enum file.
 	 */
 	addModuleToEnum( env: Environment ) {
+		if ( EnumModules.added[ env ].has( this.filePath ) ) {
+			return;
+		}
+		EnumModules.added[ env ].add( this.filePath );
+
 		if ( '' === EnumModules.content[ env ] ) {
 			EnumModules.content[ env ] = fse.readFileSync( addTrailingSlash( __dirname ) + 'templates/module-enum-header.ejs', 'utf-8' );
 		}
@@ -163,5 +177,9 @@ export class EnumModules {
 			development: '',
 		};
 		EnumModules.cssClasses = [];
+		EnumModules.added = {
+			production: new Set(),
+			development: new Set(),
+		};
 	}
 }
