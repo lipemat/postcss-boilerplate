@@ -115,7 +115,7 @@ describe( 'cssModuleEnums', () => {
 	} );
 
 	test( 'No contents to write', () => {
-		const consoleSpy = jest.spyOn( console, 'log' ).mockImplementation( () => {
+		const consoleSpy = jest.spyOn( console, 'warn' ).mockImplementation( () => {
 		} );
 		EnumModules.flushToDisk( 'production' );
 		expect( fse.readFileSync ).toHaveBeenCalledTimes( 0 );
