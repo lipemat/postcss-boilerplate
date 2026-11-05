@@ -71,6 +71,7 @@ describe( 'Test caching config', () => {
 		cachingTask( 'reload', undefined );
 		expect( triggerReload ).toHaveBeenCalledTimes( 1 );
 
+		cachingTask( 'reset', undefined );
 		( new EnumModules( 'template-parts/header/deeper.pcss/', {
 			'global-composes': 'changed nothing',
 		} ) ).addModuleToEnum( 'development' );
