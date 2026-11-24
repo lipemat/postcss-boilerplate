@@ -41,7 +41,7 @@ const config: StylelintGruntTasks = {
 			fix: ( flags.fix ?? true ) !== 'false',
 		},
 		src: [
-			`${themePath}js/src/**/*.{pcss,css}`,
+			`${themePath}js/src/**/*.{pcss,css,svelte}`,
 			`${themePath}pcss/**/*.{pcss,css}`,
 			`${themePath}template-parts/**/*.{pcss,css}`,
 		],
