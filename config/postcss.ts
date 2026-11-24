@@ -74,7 +74,6 @@ function getImportConfig( env: Environment ): AtImportOptions {
 	return {
 		plugins: [
 			require( 'postcss-nested' ),
-			require( 'postcss-global-nested' ),
 			require( 'postcss-modules' )( {
 				generateScopedName: getGenerateScopeName( env ),
 				globalModulePaths: [

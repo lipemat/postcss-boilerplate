@@ -1,37 +1,57 @@
-/* stylelint-disable selector-class-pattern */
-
 .form {
-	margin: 40px 0 50px;
-	width: 100%;
-
 	:global {
-		h3.gform_title {
-			font-size: 40px;
-			font-weight: 300;
-			line-height: 1.2;
+		h3.title {
+			color: red;
 		}
 
-		.gform_description {
-			color: var(--color-description);
-			font-size: 18px;
-		}
-
-		.gf_progressbar {
-			display: none;
-		}
-
-		.gf_progressbar_wrapper {
-			.gf_progressbar_title {
-				background-color: #1b3768;
-				border-radius: 2px;
-				color: #fff;
-				display: inline-block;
-				font-size: 18px;
-				font-weight: 700;
-				margin: 0 !important;
-				opacity: 1;
-				padding: 8px 12px !important;
+		.b, .c {
+			.d {
+				color: blue;
 			}
+		}
+	}
+
+	&:hover :global .e {
+		color: green;
+	}
+}
+
+:global {
+	.top {
+		color: black;
+	}
+}
+
+.x {
+	:global .y {
+		color: pink;
+	}
+}
+
+.z {
+	:global(.w) {
+		color: gray;
+	}
+}
+
+.m {
+	@media (any-hover: hover) {
+		&:hover :global .f {
+			color: purple;
+		}
+
+		:global {
+			.g {
+				color: orange;
+			}
+		}
+	}
+}
+
+@media (any-hover: hover) {
+	:global {
+		.h:hover {
+			color: teal;
 		}
 	}
 }
