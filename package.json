@@ -33,7 +33,7 @@
     "types/"
   ],
   "bin": {
-    "lipemat-postcss-boilerplate": "./bin/lipemat-postcss-boilerplate.js"
+    "lipemat-postcss-boilerplate": "bin/lipemat-postcss-boilerplate.js"
   },
   "scripts": {
     "browserslist": "lipemat-postcss-boilerplate browserslist",
