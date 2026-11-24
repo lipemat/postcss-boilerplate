@@ -6,9 +6,9 @@ import {getPackageConfig} from '@lipemat/js-boilerplate-shared/helpers/package-c
 
 
 export type CachingGruntTasks = {
-	reset: {}
-	reload: {}
-	writeModules: {}
+	reset: object
+	reload: object
+	writeModules: object
 }
 
 let lastCssClasses: string[] = [];

@@ -69,10 +69,16 @@ function cleanCSS( css: string ): string {
 	return css.replace( /undefined/g, '' ).trim();
 }
 
+function isPresetEnv( plugin: Plugin ): plugin is Plugin & { plugins: Plugin[] } {
+	return 'postcss-preset-env' === plugin.postcssPlugin && 'plugins' in plugin;
+}
+
 function getBrowsersPlugin( plugins: Plugin[] ): { plugins: Plugin[] } {
-	return plugins.find( plugin => 'postcss-preset-env' === plugin.postcssPlugin ) as unknown as {
-		plugins: Plugin[]
-	};
+	const presetEnv = plugins.find( isPresetEnv );
+	if ( 'object' === typeof presetEnv ) {
+		return presetEnv;
+	}
+	throw new Error( 'postcss-preset-env plugin not found.' );
 }
 
 // Create a data provider for fixtures.
@@ -165,7 +171,7 @@ describe( 'postcss.js', () => {
 
 		// @notice If this fails, we can probably change the toEqual to 1 as WP is now out of date.
 		const wpDefaultBrowsers = [ ...require( '@wordpress/browserslist-config' ) ];
-		process.env.BROWSERSLIST = browserslist( wpDefaultBrowsers ) as unknown as string;
+		process.env.BROWSERSLIST = browserslist( wpDefaultBrowsers ).join( ',' );
 		expect( getBrowsersPlugin( getPostCSSConfig().toCSS.options.processors ).plugins.filter( plugin => {
 			return 'postcss-custom-properties' === plugin.postcssPlugin;
 		} ).length ).toEqual( 0 );

@@ -2,7 +2,9 @@
   "$schema": "https://json.schemastore.org/tsconfig",
   "display": "PostCSS Boilerplate",
   "compilerOptions": {
+    "allowJs": true,
     "allowSyntheticDefaultImports": true,
+    "checkJs": true,
     "esModuleInterop": true,
     "forceConsistentCasingInFileNames": true,
     "module": "NodeNext",
@@ -22,6 +24,7 @@
     "config/**/*",
     "helpers/**/*",
     "jest/**/*",
+    "lib/**/*",
     "scripts/**/*",
     "types/**/*.d.ts"
   ]

@@ -38,6 +38,19 @@ function js_tests() {
 }
 js_tests &
 
+function js_lint() {
+    echo "${YELLOW}[pre-commit]${BLUE} Running ES Lint... ${WHITE}"
+    OUTPUT=$(yarn lint --fix=false 2>&1)
+    if [[ $? != 0 ]]; then
+        echo
+        echo "${BLUE}JS Lint failed. Fix the error before commit!"
+        echo "${RED}$OUTPUT"
+        exit_reset_colors
+    fi
+    echo "${YELLOW}[pre-commit]${GREEN} JS Lint Passed!${RESET_COLOR}"
+}
+js_lint &
+
 function validate_ts() {
     echo "${YELLOW}[pre-commit]${BLUE} Validating TS definitions... ${WHITE}"
 
